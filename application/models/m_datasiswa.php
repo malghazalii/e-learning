@@ -22,11 +22,27 @@ class m_datasiswa extends CI_Model
         return $query;
     }
 
-    function hapus_data($where, $table)
+    function delete($id)
     {
-        $this->db->where($where);
-        $this->db->delete($table);
+        return $this->db->where('nis', $id)->delete('siswa');
     }
 
-    
+    public function insert($data)
+    {
+        return $this->db->insert('siswa', $data);
+    }
+
+    public function joinkelasjurusan()
+    {
+        $this->db->select('*');
+        $this->db->from('kelas');
+        $this->db->join('penjurusan', 'penjurusan.id_jurusan=kelas.id_jurusan');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function update($data, $id)
+    {
+        return $this->db->where('nis', $id)->update('siswa', $data);
+    }
 }

@@ -39,7 +39,7 @@
                   <?= $this->session->flashdata('message'); ?>
                   <form class="user" method="POST" action="<?= base_url('Admin/auth'); ?>">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="nip" placeholder="Masukkan Nip..." name="nip" value="<?= set_value('nip'); ?>">
+                      <input type="text" class="form-control form-control-user" id="nip" placeholder="Masukkan Nip" name="nip" value="<?= set_value('nip'); ?>">
                       <?= form_error('nip', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">

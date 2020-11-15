@@ -8,6 +8,7 @@ class Auth extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
   }
+
   public function index()
   {
     $this->form_validation->set_rules('nip', 'Nip', 'required', [
@@ -22,6 +23,7 @@ class Auth extends CI_Controller
       $this->_login();
     }
   }
+
   private function _login()
   {
     $nip = $this->input->post('nip');
@@ -44,5 +46,13 @@ class Auth extends CI_Controller
       $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username salah!</div>');
       redirect('Admin/auth');
     }
+  }
+
+  public function logout()
+  {
+    $this->session->unset_userdata('nip');
+
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil logout!</div>');
+      redirect('Admin/auth');
   }
 }

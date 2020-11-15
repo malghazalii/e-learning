@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login</title>
+    <title>Login Guru</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -32,8 +32,8 @@
 
     <div class="limiter">
         <div class="container-login100">
-            <div class="wrap-login100 p-t-50 p-b-90">
-                <form class="login100-form validate-form flex-sb flex-w" method="post" action="<?= base_url('Guru/auth_guru'); ?>">
+            <div class="wrap-login100 p-b-90">
+                <form class="login100-form validate-form flex-sb flex-w" method="post" action="<?= base_url('Guru/auth'); ?>">
                     <span class="login100-form-title p-b-25">
                         Login
                     </span>
@@ -50,22 +50,7 @@
                     </div>
                     <?= form_error('password', '<small style="color:red" class="text-danger pl-3">', '</small>'); ?>
 
-                    <div class="flex-sb-m w-full p-t-16 p-b-24">
-                        <div class="contact100-form-checkbox">
-                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                            <label class="label-checkbox100" for="ckb1">
-                                Remember me
-                            </label>
-                        </div>
-
-                        <div>
-                            <a href="#" class="txt1">
-                                Forgot?
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="container-login100-form-btn m-t-17">
+                    <div class="container-login100-form-btn m-t-15">
                         <button type="submit" class="login100-form-btn">
                             Login
                         </button>

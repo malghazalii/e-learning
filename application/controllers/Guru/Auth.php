@@ -1,15 +1,18 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth_guru extends CI_Controller
+class Auth extends CI_Controller
 {
     public function index()
     {
-        $this->form_validation->set_rules('nip', 'Nip', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        $this->form_validation->set_rules('nip', 'Nip', 'trim|required', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'trim|required', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Login Page';
             $this->load->view('guru/login');
         } else {
             $this->_login();

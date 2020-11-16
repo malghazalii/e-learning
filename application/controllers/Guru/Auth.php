@@ -46,4 +46,11 @@ class Auth extends CI_Controller
             redirect('Guru/Auth');
         }
     }
+    public function blok()
+    {
+        $data['title'] = 'akses ditolak';
+        $this->load->view('Admin/templates/header', $data);
+        $this->load->view('blok');
+        $this->load->view('Admin/templates/footer');
+    }
 }

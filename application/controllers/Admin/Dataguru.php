@@ -7,6 +7,7 @@ class Dataguru extends CI_Controller
   {
     parent::__construct();
     $this->load->model('m_dataguru');
+    cek_login_admin();
   }
 
   public function index()

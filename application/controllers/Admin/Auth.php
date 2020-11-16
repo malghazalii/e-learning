@@ -55,4 +55,11 @@ class Auth extends CI_Controller
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil logout!</div>');
     redirect('Admin/auth');
   }
+  public function blok()
+  {
+    $data['title'] = 'akses ditolak';
+    $this->load->view('Admin/templates/header', $data);
+    $this->load->view('blok');
+    $this->load->view('Admin/templates/footer');
+  }
 }

@@ -7,6 +7,7 @@ class Walikelas extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_walikelas');
+        cek_login_admin();
     }
 
     public function index()

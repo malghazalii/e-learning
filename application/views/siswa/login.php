@@ -26,16 +26,16 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100 p-b-90">
-                <form class="login100-form validate-form flex-sb flex-w" method="post" action="<?= base_url('Guru/auth'); ?>">
+                <form class="login100-form validate-form flex-sb flex-w" method="post" action="<?= base_url('Siswa/auth'); ?>">
                     <span class="login100-form-title p-b-25">
                         Login
                     </span>
                     <?= $this->session->flashdata('message'); ?>
                     <div class="wrap-input100 validate-input m-b-7" data-validate="nip is required">
-                        <input class="input100" type="text" id="nip" name="nip" placeholder="NIP" value="<?= set_value('nip'); ?>">
+                        <input class="input100" type="text" id="nis" name="nis" placeholder="NIS" value="<?= set_value('nis'); ?>">
                         <span class="focus-input100"></span>
                     </div>
-                    <?= form_error('nip', '<small style="color:red" class="text-danger pl-3">', '</small>'); ?>
+                    <?= form_error('nis', '<small style="color:red" class="text-danger pl-3">', '</small>'); ?>
 
                     <div class="wrap-input100 validate-input m-t-16 m-b-7" data-validate="Password is required">
                         <input class="input100" type="password" id="password" name="password" placeholder="Password">

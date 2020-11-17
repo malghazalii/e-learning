@@ -11,17 +11,15 @@
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">NIP</h6>
                     </label>
-                    <input type="number" class="form-control" name="nip" id="nip" placeholder="nip" value="" />
+                    <input type="number" class="form-control form-control-user" name="nip" id="nip" placeholder="nip" value="<?= set_value('nip'); ?>" />
+                    <?= form_error('nip', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">NAMA</h6>
-                    </label> <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" value="" />
-                </div>
-                <div class="form-group">
-                    <label for="varchar">
-                        <h6 class="m-0 font-weight-bold text-dark">PASSWORD</h6>
-                    </label> <input type="text" class="form-control" name="password" id="password" placeholder="password" value="" />
+                    </label>
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" value="<?= set_value('nama'); ?>" />
+                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="enum">
@@ -35,12 +33,15 @@
                 <div class="form-group">
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">ALAMAT</h6>
-                    </label> <input type="text" class="form-control" name="alamat" id="alamat" placeholder="alamat" value="" />
+                    </label>
+                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="alamat" value="<?= set_value('alamat'); ?>" />
+                    <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">NO HP</h6>
-                    </label> <input type="number" class="form-control" name="no_hp" id="no_hp" maxlength="13" placeholder="Telp" value="" />
+                    </label> <input type="number" class="form-control" name="no_hp" id="no_hp" maxlength="13" placeholder="Telp" value="<?= set_value('no_hp'); ?>" />
+                    <?= form_error('no_hp', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="enum">

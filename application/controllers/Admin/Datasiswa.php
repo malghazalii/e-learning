@@ -98,27 +98,52 @@ class Datasiswa extends CI_Controller
 
   public function simpanData()
   {
-    $nis = $this->input->post('nis');
-    $nama = $this->input->post('nama');
-    $jenis_kelamin = $this->input->post('jenis_kelamin');
-    $alamat = $this->input->post('alamat');
-    $agama = $this->input->post('agama');
-    $no_hp = $this->input->post('no_hp');
-    $password = $this->input->post('password');
-    $id_kelas = $this->input->post('kelas');
+    $this->form_validation->set_rules('nis', 'Nis', 'required|trim|is_unique[siswa.nis]|min_length[2]', [
+      'required' => 'Field tidak boleh kosong',
+      'is_unique' => 'NIs guru sudah ada',
+      'min_length' => 'Nis terlalu pendek'
+    ]);
+    $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
+    $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
+    $this->form_validation->set_rules('no_hp', 'nama', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
+    if ($this->form_validation->run() == false) {
+      $data['title'] = 'Tambah Siswa';
+      $data['siswa'] = $this->m_datasiswa->joinkelasjurusan()->result();
+      $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
+      $this->load->view('admin/templates/header', $data);
+      $this->load->view('admin/templates/sidebar', $data);
+      $this->load->view('admin/templates/topbar', $data);
+      $this->load->view('admin/tambahsiswa', $data);
+      $this->load->view('admin/templates/footer', $data);
+    } else {
+      $nis = $this->input->post('nis');
+      $nama = $this->input->post('nama');
+      $jenis_kelamin = $this->input->post('jenis_kelamin');
+      $alamat = $this->input->post('alamat');
+      $agama = $this->input->post('agama');
+      $no_hp = $this->input->post('no_hp');
+      $password = 'sma1jaya';
+      $id_kelas = $this->input->post('kelas');
 
-    $data = [
-      'nis' => $nis,
-      'nama' => $nama,
-      'jenis_kelamin' => $jenis_kelamin,
-      'alamat' => $alamat,
-      'agama' => $agama,
-      'no_hp' => $no_hp,
-      'password' => $password,
-      'id_kelas' => $id_kelas
-    ];
+      $data = [
+        'nis' => $nis,
+        'nama' => $nama,
+        'jenis_kelamin' => $jenis_kelamin,
+        'alamat' => $alamat,
+        'agama' => $agama,
+        'no_hp' => $no_hp,
+        'password' => $password,
+        'id_kelas' => $id_kelas
+      ];
 
-    $simpan = $this->m_datasiswa->insert($data);
-    redirect('Admin/datasiswa', $simpan);
+      $simpan = $this->m_datasiswa->insert($data);
+      redirect('Admin/datasiswa', $simpan);
+    }
   }
 }

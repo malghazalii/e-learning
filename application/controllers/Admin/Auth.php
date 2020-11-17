@@ -11,10 +11,11 @@ class Auth extends CI_Controller
 
   public function index()
   {
-    $this->form_validation->set_rules('nip', 'Nip', 'required', [
+    $this->form_validation->set_rules('nip', 'Nip', 'required|trim', [
       'required' => 'Field tidak boleh kosong'
+
     ]);
-    $this->form_validation->set_rules('password', 'Password', 'required', [
+    $this->form_validation->set_rules('password', 'Password', 'required|trim', [
       'required' => 'Field tidak boleh kosong'
     ]);
     if ($this->form_validation->run() == false) {

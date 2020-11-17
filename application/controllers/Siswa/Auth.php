@@ -8,8 +8,9 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('nis', 'Nis', 'trim|required', [
             'required' => 'Field tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('password', 'Password', 'trim|required', [
-            'required' => 'Field tidak boleh kosong'
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_lenght[8]', [
+            'required' => 'Field tidak boleh kosong',
+            'min_lenght' => 'nip terlalu pendek'
         ]);
 
         if ($this->form_validation->run() == false) {

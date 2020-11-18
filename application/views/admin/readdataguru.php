@@ -39,10 +39,6 @@
                 <td>golongan</td>
                 <td><?= $d->nama_golongan; ?></td>
               </tr>
-              <tr>
-                <td>Wali Kelas</td>
-                <td><?= $d->kelas; ?> <?= $d->nama_jurusan ?></td>
-              </tr>
             <?php endforeach; ?>
           </thead>
         </table>

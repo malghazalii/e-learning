@@ -41,8 +41,8 @@ class m_datasiswa extends CI_Model
         return $query;
     }
 
-    public function update($data, $id)
+    public function update($data, $nis)
     {
-        return $this->db->where('nis', $id)->update('siswa', $data);
+        return $this->db->where('nis', $nis)->update('siswa', $data);
     }
 }

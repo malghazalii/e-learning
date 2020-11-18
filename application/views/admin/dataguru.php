@@ -42,7 +42,7 @@
                   <?php
                   echo anchor(base_url('Admin/dataguru/detail/' . $g->nip), 'Read');
                   echo ' | ';
-                  echo anchor(base_url('Admin/dataguru/'), 'Edit');
+                  echo anchor(base_url('Admin/dataguru/edit/' . $g->nip), 'Edit');
                   echo ' | ';
                   echo anchor(base_url('Admin/dataguru/delete/' . $g->nip), 'delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
                   ?>

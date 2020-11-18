@@ -29,4 +29,14 @@ class m_dataguru extends CI_Model
     {
         return $this->db->insert('guru', $data);
     }
+
+    public function update($data, $nip)
+    {
+        return $this->db->where('nip', $nip)->update('guru', $data);
+    }
+
+    public function golongan()
+    {
+        return $this->db->get('golongan')->result();
+    }
 }

@@ -27,7 +27,7 @@
                     </label>
                     <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
                         <option value="laki-laki">laki-laki</option>
-                        <option value="wanita">wanita</option>
+                        <option value="perempuan">perempuan</option>
                     </select>
                 </div>
                 <div class="form-group">

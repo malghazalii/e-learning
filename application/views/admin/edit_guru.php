@@ -6,12 +6,12 @@
         </div>
         <div class="card-body">
 
-            <form action="<?= base_url('Admin/datasiswa/update'); ?>" method="post">
+            <form action="<?= base_url('Admin/dataguru/update'); ?>" method="post">
                 <div class="form-group">
                     <label for="varchar">
-                        <h6 class="m-0 font-weight-bold text-dark">NIS</h6>
+                        <h6 class="m-0 font-weight-bold text-dark">NIP</h6>
                     </label>
-                    <input type="number" class="form-control" name="nis" id="nis" placeholder="nis" value="<?= $edit->nis ?>" />
+                    <input type="number" class="form-control" name="nip" id="nip" placeholder="nip" value="<?= $edit->nip ?>" />
                     <?= form_error('nis', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
@@ -20,6 +20,13 @@
                     </label>
                     <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" value="<?= $edit->nama ?>" />
                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label for="varchar">
+                        <h6 class="m-0 font-weight-bold text-dark">PASSWORD</h6>
+                    </label>
+                    <input type="text" class="form-control" name="password" id="password" placeholder="password" value="<?= $edit->password; ?>" />
+                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="enum">
@@ -38,37 +45,18 @@
                     <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label for="enum">
-                        <h6 class="m-0 font-weight-bold text-dark">AGAMA</h6>
-                    </label>
-                    <select class="form-control" name="agama" id="agama">
-                        <option value="Islam" <?php if ($edit->agama == 'Islam') echo 'selected'; ?>>Islam</option>
-                        <option value="Kristen" <?php if ($edit->agama == 'Kristen') echo 'selected' ?>>Kristen</option>
-                        <option value="Hindu" <?php if ($edit->agama == 'Hindu') echo 'selected' ?>>Hindu</option>
-                        <option value="Buddha" <?php if ($edit->agama == 'Buddha') echo 'selected' ?>>Buddha</option>
-                        <option value="Khatolik" <?php if ($edit->agama == 'Khatolik') echo 'selected' ?>>Katolik</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">NO HP</h6>
                     </label> <input type="number" class="form-control" name="no_hp" id="no_hp" maxlength="13" placeholder="Telp" value="<?= $edit->no_hp; ?>" />
                     <?= form_error('no_hp', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label for="varchar">
-                        <h6 class="m-0 font-weight-bold text-dark">PASSWORD</h6>
-                    </label>
-                    <input type="text" class="form-control" name="password" id="password" placeholder="password" value="<?= $edit->password; ?>" />
-                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
-                <div class="form-group">
                     <label for="enum">
-                        <h6 class="m-0 font-weight-bold text-dark">KELAS</h6>
+                        <h6 class="m-0 font-weight-bold text-dark">GOLONGAN</h6>
                     </label>
-                    <select class="form-control" name="kelas" id="kelas">
-                        <?php foreach ($siswa as $s) : ?>
-                            <option value="<?= $s->id_kelas ?>" <?php if ($s->id_kelas == $edit->id_kelas) echo 'selected'; ?>> <?= $s->kelas ?> <?= $s->nama_jurusan ?></option>
+                    <select class="form-control" name="golongan" id="golongan">
+                        <?php foreach ($golongan as $g) : ?>
+                            <option value="<?= $g->id_gol ?>" <?php if ($g->id_gol == $edit->id_gol) echo 'selected'; ?>><?= $g->nama_golongan ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

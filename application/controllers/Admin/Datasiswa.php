@@ -48,8 +48,8 @@ class Datasiswa extends CI_Controller
   public function edit($id)
   {
     $data['title'] = 'Edit Siswa';
-    $data['siswa'] = $this->m_datasiswa->joinkelasjurusan();
-    $data['edit'] = $this->m_datasiswa->detail_data($id)->result();
+    $data['siswa'] = $this->m_datasiswa->joinkelasjurusan()->result();
+    $data['edit'] = $this->m_datasiswa->detail_data($id)->row();
     $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
     $this->load->view('admin/templates/header', $data);
     $this->load->view('admin/templates/sidebar', $data);
@@ -81,6 +81,13 @@ class Datasiswa extends CI_Controller
     ];
 
     $save = $this->m_datasiswa->update($data, $nis);
+
+    if ($save) {
+      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+    } else {
+      $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Data tidak berhasil diubah</div>');
+    }
+
     redirect('Admin/datasiswa', $save);
   }
 
@@ -98,29 +105,10 @@ class Datasiswa extends CI_Controller
 
   public function simpanData()
   {
-    $this->form_validation->set_rules('nis', 'Nis', 'required|trim|is_unique[siswa.nis]|min_length[2]', [
-      'required' => 'Field tidak boleh kosong',
-      'is_unique' => 'NIs guru sudah ada',
-      'min_length' => 'Nis terlalu pendek'
-    ]);
-    $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
-      'required' => 'Field tidak boleh kosong'
-    ]);
-    $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', [
-      'required' => 'Field tidak boleh kosong'
-    ]);
-    $this->form_validation->set_rules('no_hp', 'nama', 'required|trim', [
-      'required' => 'Field tidak boleh kosong'
-    ]);
+    $this->rules();
+
     if ($this->form_validation->run() == false) {
-      $data['title'] = 'Tambah Siswa';
-      $data['siswa'] = $this->m_datasiswa->joinkelasjurusan()->result();
-      $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
-      $this->load->view('admin/templates/header', $data);
-      $this->load->view('admin/templates/sidebar', $data);
-      $this->load->view('admin/templates/topbar', $data);
-      $this->load->view('admin/tambahsiswa', $data);
-      $this->load->view('admin/templates/footer', $data);
+      $this->tambahData();
     } else {
       $nis = $this->input->post('nis');
       $nama = $this->input->post('nama');
@@ -143,7 +131,32 @@ class Datasiswa extends CI_Controller
       ];
 
       $simpan = $this->m_datasiswa->insert($data);
-      redirect('Admin/datasiswa', $simpan);
+
+      if ($simpan) {
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
+      } else {
+        $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Data tidak berhasil ditambah</div>');
+      }
+
+      redirect('Admin/datasiswa');
     }
+  }
+
+  public function rules()
+  {
+    $this->form_validation->set_rules('nis', 'Nis', 'required|trim|is_unique[siswa.nis]|min_length[2]', [
+      'required' => 'Field tidak boleh kosong',
+      'is_unique' => 'NIs guru sudah ada',
+      'min_length' => 'Nis terlalu pendek'
+    ]);
+    $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
+    $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
+    $this->form_validation->set_rules('no_hp', 'nama', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
   }
 }

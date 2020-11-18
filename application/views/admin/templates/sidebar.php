@@ -3,7 +3,7 @@
 
    <!-- Sidebar - Brand -->
    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-     <img style="width: 60px; height:60px;" src="<?= base_url('assets/img/logosekolah.gif'); ?>">
+     <img style="width: 60px; height:60px;" src="<?= base_url('assets/admin/img/logosekolah.gif'); ?>">
      <div class="sidebar-brand-text mx-3">Siakad Admin</div>
    </a>
 

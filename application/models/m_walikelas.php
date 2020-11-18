@@ -36,4 +36,21 @@ class m_walikelas extends CI_Model
     {
         return $this->db->where('id_walikelas', $id)->delete('wali_kelas');
     }
+
+    public function get($id)
+    {
+        $this->db->select('*');
+        $this->db->from('wali_kelas');
+        $this->db->join('guru', 'guru.nip=wali_kelas.nip');
+        $this->db->join('kelas', 'kelas.id_kelas=wali_kelas.id_kelas');
+        $this->db->join('penjurusan', 'penjurusan.id_jurusan=kelas.id_jurusan');
+        $this->db->where('wali_kelas.id_walikelas', $id);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function update($data, $id)
+    {
+        return $this->db->where('id_walikelas', $id)->update('wali_kelas', $data);
+    }
 }

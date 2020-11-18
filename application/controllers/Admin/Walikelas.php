@@ -59,4 +59,42 @@ class Walikelas extends CI_Controller
         }
         redirect('Admin/walikelas');
     }
+
+    public function edit($id)
+    {
+        $data['title'] = 'Edit Wali Kelas';
+        $data['walikelas'] = $this->m_walikelas->get($id)->row();
+        $data['guru'] = $this->m_walikelas->getAllGuru();
+        $data['kelas'] = $this->m_walikelas->joinkelasjurusan()->result();
+        $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
+        $this->load->view('admin/templates/header', $data);
+        $this->load->view('admin/templates/sidebar', $data);
+        $this->load->view('admin/templates/topbar', $data);
+        $this->load->view('admin/edit_walikelas', $data);
+        $this->load->view('admin/templates/footer', $data);
+    }
+
+    public function update()
+    {
+        $id = $this->input->post('id');
+        $nip = $this->input->post('nip');
+        $kelas = $this->input->post('kelas');
+
+        $data = [
+            'id_walikelas' => $id,
+            'nip' => $nip,
+            'id_kelas' => $kelas
+        ];
+
+        $save = $this->m_walikelas->update($data, $id);
+
+        if ($save) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tidak berhasil diubah</div>');
+        }
+
+
+        redirect('Admin/walikelas');
+    }
 }

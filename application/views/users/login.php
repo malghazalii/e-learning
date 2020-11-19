@@ -6,40 +6,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 </div>
-<!-- breadcrumb -->
-<nav aria-label="breadcrumb">
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item">
-			<a href="index.html">Home</a>
-		</li>
-		<li class="breadcrumb-item active" aria-current="page">Login Form</li>
-	</ol>
-</nav>
-<!-- breadcrumb -->
-<!-- //banner -->
+
 
 <!-- login -->
-<div class="login-w3ls py-5">
+
+<div class="login-w3ls">
 	<div class="container py-xl-5 py-lg-3">
-		<h3 class="title text-capitalize font-weight-light text-dark text-center mb-5">Login
-			<span class="font-weight-bold">now</span>
-		</h3>
 		<!-- content -->
-		<div class="sub-main-w3 pt-md-4">
+		<div class="sub-main-w3 ">
 			<form action="#" method="post">
+			<h3 class="text-capitalize font-weight-light text-light text-center">Login</h3>
 				<div class="form-style-agile form-group">
 					<label>
-						Username
+						NIS
 						<i class="fas fa-user"></i>
 					</label>
-					<input placeholder="Username" class="form-control" name="Name" type="text" required="">
+					<input placeholder="Masukkan NIS" class="form-control" name="Name" type="text" required="">
 				</div>
 				<div class="form-style-agile form-group">
 					<label>
 						Password
 						<i class="fas fa-unlock-alt"></i>
 					</label>
-					<input placeholder="Password" class="form-control" name="Password" type="password" required="">
+					<input placeholder=" Masukkan Password" class="form-control" name="Password" type="password" required="">
 				</div>
 				<!-- switch -->
 				<ul class="list-unstyled list-login">
@@ -56,9 +45,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</ul>
 				<!-- //switch -->
 				<input type="submit" value="Log In">
-				<p class="text-center dont-do mt-4 text-white">Don't have an account?
+				<p class="text-center dont-do mt-4 text-white">Some courses may allow guest access
 					<a href="register.html" class="text-white  font-weight-bold">
-						Register Now</a>
+						Login Now</a>
 				</p>
 			</form>
 		</div>

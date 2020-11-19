@@ -36,8 +36,9 @@ class Mapel extends CI_Controller
 
     public function simpanData()
     {
-        $this->form_validation->set_rules('mapel', 'Mapel', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
+        $this->form_validation->set_rules('mapel', 'Mapel', 'required|trim|is_unique[mata_pelajaran.mata_pelajaran]', [
+            'required' => 'Field tidak boleh kosong',
+            'is_unique' => 'Nama pelajaran tidak boleh sama persis'
         ]);
 
         if ($this->form_validation->run() == false) {
@@ -85,24 +86,31 @@ class Mapel extends CI_Controller
         $this->load->view('admin/templates/footer', $data);
     }
 
-    public function update()
+    public function update($id)
     {
-        $id = $this->input->post('id');
-        $mapel = $this->input->post('mata_pelajaran');
-
-        $data = [
-            'id_mapel' => $id,
-            'mata_pelajaran' => $mapel
-        ];
-
-        $save = $this->m_mapel->update($data, $id);
-
-        if ($save) {
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+        $this->form_validation->set_rules('mata_pelajaran', 'Mata_pelajaran', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+        if ($this->form_validation->run() == false) {
+            $this->edit($id);
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tidak berhasil diubah</div>');
-        }
+            $id = $this->input->post('id');
+            $mapel = $this->input->post('mata_pelajaran');
 
-        redirect('Admin/mapel', $save);
+            $data = [
+                'id_mapel' => $id,
+                'mata_pelajaran' => $mapel
+            ];
+
+            $save = $this->m_mapel->update($data, $id);
+
+            if ($save) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tidak berhasil diubah</div>');
+            }
+
+            redirect('Admin/mapel', $save);
+        }
     }
 }

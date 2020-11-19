@@ -11,49 +11,63 @@
    <hr class="sidebar-divider my-0">
 
    <!-- Nav Item - Tables -->
-   <li class="nav-item active">
+   <?php if ($title == 'Data Siswa') : ?>
+     <li class="nav-item active">
+     <?php else : ?>
+     <li class="nav-item">
+     <?php endif; ?>
      <a class="nav-link" href="<?= base_url('Admin/datasiswa'); ?>">
        <i class="fas fa-fw fa-table"></i>
        <span>Data Siswa</span></a>
-   </li>
+     </li>
 
-   <!-- Divider -->
-   <hr class="sidebar-divider d-none d-md-block">
+     <!-- Divider -->
+     <hr class="sidebar-divider d-none d-md-block">
 
-   <!-- Nav Item - Tables -->
-   <li class="nav-item active">
-     <a class="nav-link" href="<?= base_url('Admin/dataguru'); ?>">
-       <i class="fas fa-fw fa-table"></i>
-       <span>Data Guru</span></a>
-   </li>
+     <!-- Nav Item - Tables -->
+     <?php if ($title == 'Data Guru') : ?>
+       <li class="nav-item active">
+       <?php else : ?>
+       <li class="nav-item">
+       <?php endif; ?>
+       <a class="nav-link" href="<?= base_url('Admin/dataguru'); ?>">
+         <i class="fas fa-fw fa-table"></i>
+         <span>Data Guru</span></a>
+       </li>
 
-   <!-- Divider -->
-   <hr class="sidebar-divider d-none d-md-block">
+       <!-- Divider -->
+       <hr class="sidebar-divider d-none d-md-block">
 
-   <!-- Nav Item - Dashboard -->
-   <li class="nav-item active">
-     <a class="nav-link" href="<?= base_url('Admin/mapel'); ?>">
-       <i class="fas fa-fw fa-folder"></i>
-       <span>Data Mapel</span></a>
-   </li>
+       <!-- Nav Item - Dashboard -->
+       <?php if ($title == 'Data Mapel') : ?>
+         <li class="nav-item active">
+         <?php else : ?>
+         <li class="nav-item">
+         <?php endif; ?>
+         <a class="nav-link" href="<?= base_url('Admin/mapel'); ?>">
+           <i class="fas fa-fw fa-folder"></i>
+           <span>Data Mapel</span></a>
+         </li>
 
-   <!-- Divider -->
-   <hr class="sidebar-divider d-none d-md-block">
+         <!-- Divider -->
+         <hr class="sidebar-divider d-none d-md-block">
 
-   <!-- Nav Item - Dashboard -->
-   <li class="nav-item active">
-     <a class="nav-link" href="<?= base_url('Admin/walikelas'); ?>">
-       <i class="fas fa-fw fa-folder"></i>
-       <span>Wali Kelas</span></a>
-   </li>
+         <!-- Nav Item - Dashboard -->
+         <?php if ($title == 'Wali Kelas') : ?>
+           <li class="nav-item active">
+           <?php else : ?>
+           <li class="nav-item">
+           <?php endif; ?>
+           <a class="nav-link" href="<?= base_url('Admin/walikelas'); ?>">
+             <i class="fas fa-fw fa-folder"></i>
+             <span>Wali Kelas</span></a>
+           </li>
 
-   <!-- Divider -->
-   <hr class="sidebar-divider">
-
-   <!-- Sidebar Toggler (Sidebar) -->
-   <div class="text-center d-none d-md-inline">
-     <button class="rounded-circle border-0" id="sidebarToggle"></button>
-   </div>
+           <!-- Divider -->
+           <!-- Sidebar Toggler (Sidebar) -->
+           <div class="text-center d-none d-md-inline">
+             <button class="rounded-circle border-0" id="sidebarToggle"></button>
+           </div>
 
  </ul>
  <!-- End of Sidebar -->

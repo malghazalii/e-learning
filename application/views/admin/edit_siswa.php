@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
 
-            <form action="<?= base_url('Admin/datasiswa/update'); ?>" method="post">
+            <form action="<?= base_url('Admin/datasiswa/update/' . $edit->nis); ?>" method="post">
                 <div class="form-group">
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">NIS</h6>

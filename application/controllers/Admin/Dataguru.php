@@ -59,7 +59,6 @@ class Dataguru extends CI_Controller
   public function simpanData()
   {
     $this->rules();
-
     if ($this->form_validation->run() == false) {
       $this->tambahData();
     } else {
@@ -105,42 +104,62 @@ class Dataguru extends CI_Controller
     $this->load->view('admin/templates/footer', $data);
   }
 
-  public function update()
+  public function update($id)
   {
-    $nip = $this->input->post('nip');
-    $nama = $this->input->post('nama');
-    $password = $this->input->post('password');
-    $jenis_kelamin = $this->input->post('jenis_kelamin');
-    $alamat = $this->input->post('alamat');
-    $no_hp = $this->input->post('no_hp');
-    $golongan = $this->input->post('golongan');
-
-    $data = [
-      'nip' => $nip,
-      'nama' => $nama,
-      'password' => $password,
-      'jenis_kelamin' => $jenis_kelamin,
-      'alamat' => $alamat,
-      'no_hp' => $no_hp,
-      'id_gol' => $golongan
-    ];
-
-    $save = $this->m_dataguru->update($data, $nip);
-
-    if ($save) {
-      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+    $this->rulesedit();
+    if ($this->form_validation->run() == false) {
+      $this->edit($id);
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tidak berhasil diubah</div>');
+      $nip = $this->input->post('nip');
+      $nama = $this->input->post('nama');
+      $password = $this->input->post('password');
+      $jenis_kelamin = $this->input->post('jenis_kelamin');
+      $alamat = $this->input->post('alamat');
+      $no_hp = $this->input->post('no_hp');
+      $golongan = $this->input->post('golongan');
+
+      $data = [
+        'nip' => $nip,
+        'nama' => $nama,
+        'password' => $password,
+        'jenis_kelamin' => $jenis_kelamin,
+        'alamat' => $alamat,
+        'no_hp' => $no_hp,
+        'id_gol' => $golongan
+      ];
+
+      $save = $this->m_dataguru->update($data, $nip);
+
+      if ($save) {
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+      } else {
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tidak berhasil diubah</div>');
+      }
+
+      redirect('Admin/dataguru', $save);
     }
-
-    redirect('Admin/dataguru', $save);
   }
-
   public function rules()
   {
-    $this->form_validation->set_rules('nip', 'Nip', 'required|trim|is_unique[siswa.nis]|min_length[2]', [
+    $this->form_validation->set_rules('nip', 'Nip', 'required|trim|is_unique[guru.nip]|min_length[2]', [
       'required' => 'Field tidak boleh kosong',
       'is_unique' => 'NIP guru sudah ada',
+      'min_length' => 'Nip terlalu pendek'
+    ]);
+    $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
+    $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
+    $this->form_validation->set_rules('no_hp', 'nama', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
+    ]);
+  }
+  public function rulesedit()
+  {
+    $this->form_validation->set_rules('nip', 'Nip', 'required|trim|min_length[2]', [
+      'required' => 'Field tidak boleh kosong',
       'min_length' => 'Nip terlalu pendek'
     ]);
     $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [

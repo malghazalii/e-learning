@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-    <title>E-Learning SMAN 1 Bondowoso</title>
+    <title><?= $title; ?></title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
@@ -46,7 +46,7 @@
                         <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>welcome to eLearning</h1>
                     <!-- social icons -->
                     <div class="social-icons text-right col-5">
-                    <a href="login.html" class="button-head-mow3 text-white">Login</a>
+                        <a href="login.html" class="button-head-mow3 text-white">Login</a>
                     </div>
                     <!-- //social icons -->
                 </div>
@@ -58,7 +58,7 @@
             <div class="container">
                 <div class="row">
                     <a class="logo  font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">SMAN 1 Bondowoso</a>
-                   
+
                 </div>
             </div>
         </div>

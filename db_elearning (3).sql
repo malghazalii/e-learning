@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2020 at 03:08 PM
+-- Generation Time: Nov 20, 2020 at 12:23 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -49,15 +49,16 @@ CREATE TABLE `admin` (
   `alamat` varchar(50) NOT NULL,
   `no_telp` varchar(13) NOT NULL,
   `email` varchar(150) NOT NULL,
-  `jenis_kelamin` enum('laki-laki','wanita') NOT NULL
+  `jenis_kelamin` enum('laki-laki','wanita') NOT NULL,
+  `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`nama`, `nip`, `password`, `alamat`, `no_telp`, `email`, `jenis_kelamin`) VALUES
-('Abdul', '123123', '123', 'Jember', '0895358129878', 'unyinga@gmail.com', 'laki-laki');
+INSERT INTO `admin` (`nama`, `nip`, `password`, `alamat`, `no_telp`, `email`, `jenis_kelamin`, `is_active`) VALUES
+('Abdul', '123123', '123', 'Jember', '0895358129878', 'unyinga@gmail.com', 'laki-laki', 0);
 
 -- --------------------------------------------------------
 
@@ -99,8 +100,10 @@ CREATE TABLE `guru` (
 --
 
 INSERT INTO `guru` (`nip`, `nama`, `password`, `jenis_kelamin`, `alamat`, `no_hp`, `id_gol`) VALUES
-('123456', 'sulis', '1234', 'wanita', 'lumajang', '089667788776', 2),
-('2567', 'samsul', '1234', 'laki-laki', 'Jember', '0895359914312', 1);
+('123456', 'sulis ku', '1234', 'laki-laki', 'lumajang', '089667788776', 1),
+('231452', 'gfdddsaf', 'sma1jaya', 'laki-laki', 'jhfgdfb', '13414', 2),
+('2567', 'samsul', '1234', 'laki-laki', 'Jember', '0895359914312', 2),
+('3232342', 'ssfasdffas', 'sma1jaya', 'laki-laki', 'asfdas', '34432454', 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +151,6 @@ CREATE TABLE `jawaban_tugas` (
 
 CREATE TABLE `kelas` (
   `id_kelas` int(11) NOT NULL,
-  `id_jurusan` int(11) NOT NULL,
   `kelas` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -156,12 +158,10 @@ CREATE TABLE `kelas` (
 -- Dumping data for table `kelas`
 --
 
-INSERT INTO `kelas` (`id_kelas`, `id_jurusan`, `kelas`) VALUES
-(1, 1, '10'),
-(2, 2, '11'),
-(3, 3, '12'),
-(4, 2, '10'),
-(5, 4, '12');
+INSERT INTO `kelas` (`id_kelas`, `kelas`) VALUES
+(1, '10'),
+(2, '11'),
+(3, '12');
 
 -- --------------------------------------------------------
 
@@ -171,16 +171,16 @@ INSERT INTO `kelas` (`id_kelas`, `id_jurusan`, `kelas`) VALUES
 
 CREATE TABLE `mata_pelajaran` (
   `id_mapel` int(11) NOT NULL,
-  `mata__pelajaran` varchar(20) NOT NULL
+  `mata_pelajaran` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mata_pelajaran`
 --
 
-INSERT INTO `mata_pelajaran` (`id_mapel`, `mata__pelajaran`) VALUES
-(1, 'Matematika'),
-(2, 'Bahasa Indonesia');
+INSERT INTO `mata_pelajaran` (`id_mapel`, `mata_pelajaran`) VALUES
+(2, 'Bahasa Indonesia'),
+(6, 'Matematika');
 
 -- --------------------------------------------------------
 
@@ -218,6 +218,7 @@ CREATE TABLE `mengajar` (
 
 CREATE TABLE `penjurusan` (
   `id_jurusan` int(11) NOT NULL,
+  `id_kelas` int(11) NOT NULL,
   `nama_jurusan` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -225,11 +226,13 @@ CREATE TABLE `penjurusan` (
 -- Dumping data for table `penjurusan`
 --
 
-INSERT INTO `penjurusan` (`id_jurusan`, `nama_jurusan`) VALUES
-(1, 'ipa 1'),
-(2, 'ipa 2'),
-(3, 'ipa 3'),
-(4, 'ipa 4');
+INSERT INTO `penjurusan` (`id_jurusan`, `id_kelas`, `nama_jurusan`) VALUES
+(2, 2, 'ipa 3'),
+(3, 3, 'ipa 3'),
+(4, 1, 'ipa 2'),
+(8, 1, 'ipa 3'),
+(9, 1, 'ipa 1'),
+(10, 2, 'ipa 1');
 
 -- --------------------------------------------------------
 
@@ -240,21 +243,21 @@ INSERT INTO `penjurusan` (`id_jurusan`, `nama_jurusan`) VALUES
 CREATE TABLE `siswa` (
   `nis` varchar(20) NOT NULL,
   `nama` varchar(30) NOT NULL,
-  `jenis_kelamin` enum('laki-laki','wanita') NOT NULL,
+  `jenis_kelamin` enum('laki-laki','perempuan') NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `agama` enum('Islam','Kristen','Hindu','Buddha','Katholik') NOT NULL,
   `no_hp` varchar(13) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `id_kelas` int(11) NOT NULL
+  `id_jurusan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`nis`, `nama`, `jenis_kelamin`, `alamat`, `agama`, `no_hp`, `password`, `id_kelas`) VALUES
-('0099', 'Dana Pradana', 'wanita', 'Madiun', 'Katholik', '089678876678', '1234', 3),
-('6971', 'Ihza Oktavira', 'laki-laki', 'Perumahan Muktisari Blok AE 5 ', 'Islam', '087654321456', '1234', 1);
+INSERT INTO `siswa` (`nis`, `nama`, `jenis_kelamin`, `alamat`, `agama`, `no_hp`, `password`, `id_jurusan`) VALUES
+('0099', 'Dana', 'perempuan', 'Madiun', 'Islam', '089678876678', '1234', 1),
+('6971', 'Ihza lol', 'laki-laki', 'Perumahan Muktisari Blok AE 5', 'Kristen', '087654321456', '1234', 3);
 
 -- --------------------------------------------------------
 
@@ -322,18 +325,15 @@ CREATE TABLE `ujian` (
 CREATE TABLE `wali_kelas` (
   `id_walikelas` int(11) NOT NULL,
   `nip` int(20) NOT NULL,
-  `id_kelas` int(11) NOT NULL
+  `id_jurusan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `wali_kelas`
 --
 
-INSERT INTO `wali_kelas` (`id_walikelas`, `nip`, `id_kelas`) VALUES
-(7, 2147483647, 2),
-(8, 2147483647, 3),
-(10, 2147483647, 2),
-(11, 2567, 1),
+INSERT INTO `wali_kelas` (`id_walikelas`, `nip`, `id_jurusan`) VALUES
+(11, 2567, 4),
 (12, 123456, 3);
 
 --
@@ -474,7 +474,7 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
-  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `materi`
@@ -492,7 +492,7 @@ ALTER TABLE `mengajar`
 -- AUTO_INCREMENT for table `penjurusan`
 --
 ALTER TABLE `penjurusan`
-  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `soal`
@@ -516,7 +516,7 @@ ALTER TABLE `ujian`
 -- AUTO_INCREMENT for table `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
-  MODIFY `id_walikelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_walikelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

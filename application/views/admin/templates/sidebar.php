@@ -46,28 +46,42 @@
          <?php endif; ?>
          <a class="nav-link" href="<?= base_url('Admin/mapel'); ?>">
            <i class="fas fa-fw fa-folder"></i>
-           <span>Data Mapel</span></a>
+           <span>Mata Pelajaran</span></a>
          </li>
 
          <!-- Divider -->
          <hr class="sidebar-divider d-none d-md-block">
 
          <!-- Nav Item - Dashboard -->
-         <?php if ($title == 'Wali Kelas') : ?>
+         <?php if ($title == 'Kelas') : ?>
            <li class="nav-item active">
            <?php else : ?>
            <li class="nav-item">
            <?php endif; ?>
-           <a class="nav-link" href="<?= base_url('Admin/walikelas'); ?>">
+           <a class="nav-link" href="<?= base_url('Admin/kelas'); ?>">
              <i class="fas fa-fw fa-folder"></i>
-             <span>Wali Kelas</span></a>
+             <span>Kelas</span></a>
            </li>
 
            <!-- Divider -->
-           <!-- Sidebar Toggler (Sidebar) -->
-           <div class="text-center d-none d-md-inline">
-             <button class="rounded-circle border-0" id="sidebarToggle"></button>
-           </div>
+           <hr class="sidebar-divider d-none d-md-block">
+
+           <!-- Nav Item - Dashboard -->
+           <?php if ($title == 'Wali Kelas') : ?>
+             <li class="nav-item active">
+             <?php else : ?>
+             <li class="nav-item">
+             <?php endif; ?>
+             <a class="nav-link" href="<?= base_url('Admin/walikelas'); ?>">
+               <i class="fas fa-fw fa-folder"></i>
+               <span>Wali Kelas</span></a>
+             </li>
+
+             <!-- Divider -->
+             <!-- Sidebar Toggler (Sidebar) -->
+             <div class="text-center d-none d-md-inline">
+               <button class="rounded-circle border-0" id="sidebarToggle"></button>
+             </div>
 
  </ul>
  <!-- End of Sidebar -->

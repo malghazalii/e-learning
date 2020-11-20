@@ -5,8 +5,8 @@ class m_datasiswa extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('siswa');
-        $this->db->join('kelas', 'kelas.id_kelas=siswa.id_kelas');
-        $this->db->join('penjurusan', 'penjurusan.id_jurusan=kelas.id_jurusan');
+        $this->db->join('penjurusan', 'penjurusan.id_jurusan=siswa.id_jurusan');
+        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
         $query = $this->db->get();
         return $query;
     }
@@ -15,8 +15,8 @@ class m_datasiswa extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('siswa');
-        $this->db->join('kelas', 'kelas.id_kelas=siswa.id_kelas');
-        $this->db->join('penjurusan', 'penjurusan.id_jurusan=kelas.id_jurusan');
+        $this->db->join('penjurusan', 'penjurusan.id_jurusan=siswa.id_jurusan');
+        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
         $this->db->where('siswa.nis', $id);
         $query = $this->db->get();
         return $query;
@@ -35,8 +35,8 @@ class m_datasiswa extends CI_Model
     public function joinkelasjurusan()
     {
         $this->db->select('*');
-        $this->db->from('kelas');
-        $this->db->join('penjurusan', 'penjurusan.id_jurusan=kelas.id_jurusan');
+        $this->db->from('penjurusan');
+        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
         $query = $this->db->get();
         return $query;
     }

@@ -84,7 +84,7 @@ class Datasiswa extends CI_Controller
         'agama' => $agama,
         'no_hp' => $no_hp,
         'password' => $password,
-        'id_kelas' => $id_kelas
+        'id_jurusan' => $id_kelas
       ];
 
       $save = $this->m_datasiswa->update($data, $nis);
@@ -133,7 +133,7 @@ class Datasiswa extends CI_Controller
         'agama' => $agama,
         'no_hp' => $no_hp,
         'password' => $password,
-        'id_kelas' => $id_kelas
+        'id_jurusan' => $id_kelas
       ];
 
       $simpan = $this->m_datasiswa->insert($data);

@@ -61,7 +61,7 @@
                     </label>
                     <select class="form-control" name="kelas" id="kelas">
                         <?php foreach ($siswa as $s) : ?>
-                            <option value="<?= $s->id_kelas ?>"> <?= $s->kelas ?> <?= $s->nama_jurusan ?></option>
+                            <option value="<?= $s->id_jurusan ?>"> <?= $s->kelas ?> <?= $s->nama_jurusan ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

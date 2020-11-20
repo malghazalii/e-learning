@@ -7,8 +7,8 @@ class m_walikelas extends CI_Model
         $this->db->select('*');
         $this->db->from('wali_kelas');
         $this->db->join('guru', 'guru.nip=wali_kelas.nip');
-        $this->db->join('kelas', 'kelas.id_kelas=wali_kelas.id_kelas');
-        $this->db->join('penjurusan', 'penjurusan.id_jurusan=kelas.id_jurusan');
+        $this->db->join('penjurusan', 'penjurusan.id_jurusan=wali_kelas.id_jurusan');
+        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
         $query = $this->db->get();
         return $query;
     }
@@ -26,8 +26,8 @@ class m_walikelas extends CI_Model
     public function joinkelasjurusan()
     {
         $this->db->select('*');
-        $this->db->from('kelas');
-        $this->db->join('penjurusan', 'penjurusan.id_jurusan=kelas.id_jurusan');
+        $this->db->from('penjurusan');
+        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
         $query = $this->db->get();
         return $query;
     }
@@ -42,8 +42,8 @@ class m_walikelas extends CI_Model
         $this->db->select('*');
         $this->db->from('wali_kelas');
         $this->db->join('guru', 'guru.nip=wali_kelas.nip');
-        $this->db->join('kelas', 'kelas.id_kelas=wali_kelas.id_kelas');
-        $this->db->join('penjurusan', 'penjurusan.id_jurusan=kelas.id_jurusan');
+        $this->db->join('penjurusan', 'penjurusan.id_jurusan=wali_kelas.id_jurusan');
+        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
         $this->db->where('wali_kelas.id_walikelas', $id);
         $query = $this->db->get();
         return $query;

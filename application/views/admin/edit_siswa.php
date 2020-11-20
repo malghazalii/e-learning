@@ -68,7 +68,7 @@
                     </label>
                     <select class="form-control" name="kelas" id="kelas">
                         <?php foreach ($siswa as $s) : ?>
-                            <option value="<?= $s->id_kelas ?>" <?php if ($s->id_kelas == $edit->id_kelas) echo 'selected'; ?>> <?= $s->kelas ?> <?= $s->nama_jurusan ?></option>
+                            <option value="<?= $s->id_jurusan ?>" <?php if ($s->id_jurusan == $edit->id_jurusan) echo 'selected'; ?>> <?= $s->kelas ?> <?= $s->nama_jurusan ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

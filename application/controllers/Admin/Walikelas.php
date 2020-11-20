@@ -42,10 +42,17 @@ class Walikelas extends CI_Controller
 
         $data = [
             'nip' => $nip,
-            'id_kelas' => $id_kelas
+            'id_jurusan' => $id_kelas
         ];
 
         $simpan = $this->m_walikelas->insert($data);
+
+        if ($simpan) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
+        } else {
+            $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Data tidak berhasil ditambah</div>');
+        }
+
         redirect('Admin/walikelas', $data);
     }
 
@@ -83,7 +90,7 @@ class Walikelas extends CI_Controller
         $data = [
             'id_walikelas' => $id,
             'nip' => $nip,
-            'id_kelas' => $kelas
+            'id_jurusan' => $kelas
         ];
 
         $save = $this->m_walikelas->update($data, $id);

@@ -8,9 +8,10 @@
    </a>
 
    <!-- Divider -->
-   <hr class="sidebar-divider my-0">
+   <hr class="sidebar-divider">
 
    <!-- Nav Item - Tables -->
+   <div class="sidebar-heading">Data Master</div>
    <?php if ($title == 'Data Siswa') : ?>
      <li class="nav-item active">
      <?php else : ?>
@@ -20,10 +21,7 @@
        <i class="fas fa-fw fa-table"></i>
        <span>Data Siswa</span></a>
      </li>
-
      <!-- Divider -->
-     <hr class="sidebar-divider d-none d-md-block">
-
      <!-- Nav Item - Tables -->
      <?php if ($title == 'Data Guru') : ?>
        <li class="nav-item active">
@@ -35,9 +33,6 @@
          <span>Data Guru</span></a>
        </li>
 
-       <!-- Divider -->
-       <hr class="sidebar-divider d-none d-md-block">
-
        <!-- Nav Item - Dashboard -->
        <?php if ($title == 'Data Mapel') : ?>
          <li class="nav-item active">
@@ -48,10 +43,6 @@
            <i class="fas fa-fw fa-folder"></i>
            <span>Mata Pelajaran</span></a>
          </li>
-
-         <!-- Divider -->
-         <hr class="sidebar-divider d-none d-md-block">
-
          <!-- Nav Item - Dashboard -->
          <?php if ($title == 'Kelas') : ?>
            <li class="nav-item active">
@@ -62,10 +53,6 @@
              <i class="fas fa-fw fa-folder"></i>
              <span>Kelas</span></a>
            </li>
-
-           <!-- Divider -->
-           <hr class="sidebar-divider d-none d-md-block">
-
            <!-- Nav Item - Dashboard -->
            <?php if ($title == 'Wali Kelas') : ?>
              <li class="nav-item active">
@@ -78,10 +65,23 @@
              </li>
 
              <!-- Divider -->
-             <!-- Sidebar Toggler (Sidebar) -->
-             <div class="text-center d-none d-md-inline">
-               <button class="rounded-circle border-0" id="sidebarToggle"></button>
-             </div>
+             <hr class="sidebar-divider">
+
+             <!-- Nav Item - Tables -->
+             <div class="sidebar-heading">Absensi Guru</div>
+             <?php if ($title == 'Absensi guru') : ?>
+               <li class="nav-item active">
+               <?php else : ?>
+               <li class="nav-item">
+               <?php endif; ?>
+               <a class="nav-link" href="<?= base_url('Admin/datasiswa'); ?>">
+                 <i class="fas fa-fw fa-table"></i>
+                 <span>Absen guru</span></a>
+               </li>
+               <!-- Sidebar Toggler (Sidebar) -->
+               <div class="text-center d-none d-md-inline">
+                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
+               </div>
 
  </ul>
  <!-- End of Sidebar -->

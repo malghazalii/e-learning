@@ -33,6 +33,14 @@
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <!-- //Web-Fonts -->
 
+    <style>
+        @media screen and (max-width: 640px) {
+    .cek{
+      margin-left: 150px;
+    }
+}
+</style>
+
 </head>
 
 <body>
@@ -57,7 +65,7 @@
         <div style="background-color:#182A6E" class="middle-w3ls-nav py-2">
             <div class="container">
                 <div class="row">
-                <img src="assets/users/images/LOGOBRO.png" alt="Image" height="100" width="100">
+                <img class="cek" src="assets/users/images/LOGOBRO.png" alt="Image" height="100" width="100">
                     <a  class="logo  font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">SMAN 1 Bondowoso</a>
 
                 </div>

@@ -57,7 +57,8 @@
         <div style="background-color:#182A6E" class="middle-w3ls-nav py-2">
             <div class="container">
                 <div class="row">
-                    <a class="logo  font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">SMAN 1 Bondowoso</a>
+                <img src="assets/users/images/LOGOBRO.png" alt="Image" height="100" width="100">
+                    <a  class="logo  font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">SMAN 1 Bondowoso</a>
 
                 </div>
             </div>

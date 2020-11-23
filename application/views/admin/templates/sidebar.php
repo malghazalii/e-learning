@@ -67,16 +67,35 @@
              <!-- Divider -->
              <hr class="sidebar-divider">
 
-             <!-- Nav Item - Tables -->
-             <div class="sidebar-heading">Absensi Guru</div>
-             <?php if ($title == 'Absensi guru') : ?>
+             <?php if ($title == 'Absensi Guru') : ?>
                <li class="nav-item active">
                <?php else : ?>
                <li class="nav-item">
                <?php endif; ?>
-               <a class="nav-link" href="<?= base_url('Admin/datasiswa'); ?>">
-                 <i class="fas fa-fw fa-table"></i>
-                 <span>Absen guru</span></a>
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                 <i class="fas fa-fw fa-folder"></i>
+                 <span>Absensi Guru</span>
+               </a>
+               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                   <h6 class="collapse-header">Absensi Guru:</h6>
+                   <?php if ($title == 'Absensi Guru') : ?>
+                     <a class="collapse-item active" href="<?= base_url('Admin/Absensi_Guru'); ?>">Aktif/NonAktif</a>
+                   <?php else : ?>
+                     <a class="collapse-item" href="<?= base_url('Admin/Absensi_Guru'); ?>">Aktif/NonAktif</a>
+                   <?php endif; ?>
+                   <?php if ($title == 'Absensi Guru PNS') : ?>
+                     <a class="collapse-item active" href="<?= base_url('Admin/Absensi_Guru'); ?>">Absensi Guru PNS</a>
+                   <?php else : ?>
+                     <a class="collapse-item" href="<?= base_url('Admin/Absensi_Guru'); ?>">Absensi Guru PNS</a>
+                   <?php endif; ?>
+                   <?php if ($title == 'Absensi Guru Non PNS') : ?>
+                     <a class="collapse-item active" href="<?= base_url('Admin/Absensi_Guru'); ?>">Absensi Guru Non PNS</a>
+                   <?php else : ?>
+                     <a class="collapse-item" href="<?= base_url('Admin/Absensi_Guru'); ?>">Absensi Guru Non PNS</a>
+                   <?php endif; ?>
+                 </div>
+               </div>
                </li>
                <!-- Sidebar Toggler (Sidebar) -->
                <div class="text-center d-none d-md-inline">

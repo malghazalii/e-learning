@@ -65,7 +65,7 @@
         <div style="background-color:#182A6E" class="middle-w3ls-nav py-2">
             <div class="container">
                 <div class="row">
-                <img class="cek" src="assets/users/images/LOGOBRO.png" alt="Image" height="100" width="100">
+                <img class="cek" src="<?php echo base_url(); ?>assets/users/images/LOGOBRO.png" alt="Image" height="100" width="100">
                     <a  class="logo  font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">SMAN 1 Bondowoso</a>
 
                 </div>

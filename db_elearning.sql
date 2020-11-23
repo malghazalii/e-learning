@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2020 at 12:23 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Waktu pembuatan: 23 Nov 2020 pada 14.40
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absensi`
+-- Struktur dari tabel `absensi`
 --
 
 CREATE TABLE `absensi` (
@@ -39,7 +38,19 @@ CREATE TABLE `absensi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `absen_guru`
+--
+
+CREATE TABLE `absen_guru` (
+  `id_absen` int(11) NOT NULL,
+  `tgl` datetime NOT NULL,
+  `is_active` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -54,7 +65,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`nama`, `nip`, `password`, `alamat`, `no_telp`, `email`, `jenis_kelamin`, `is_active`) VALUES
@@ -63,7 +74,7 @@ INSERT INTO `admin` (`nama`, `nip`, `password`, `alamat`, `no_telp`, `email`, `j
 -- --------------------------------------------------------
 
 --
--- Table structure for table `golongan`
+-- Struktur dari tabel `golongan`
 --
 
 CREATE TABLE `golongan` (
@@ -72,7 +83,7 @@ CREATE TABLE `golongan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `golongan`
+-- Dumping data untuk tabel `golongan`
 --
 
 INSERT INTO `golongan` (`id_gol`, `nama_golongan`) VALUES
@@ -82,7 +93,7 @@ INSERT INTO `golongan` (`id_gol`, `nama_golongan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guru`
+-- Struktur dari tabel `guru`
 --
 
 CREATE TABLE `guru` (
@@ -96,7 +107,7 @@ CREATE TABLE `guru` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `guru`
+-- Dumping data untuk tabel `guru`
 --
 
 INSERT INTO `guru` (`nip`, `nama`, `password`, `jenis_kelamin`, `alamat`, `no_hp`, `id_gol`) VALUES
@@ -108,7 +119,7 @@ INSERT INTO `guru` (`nip`, `nama`, `password`, `jenis_kelamin`, `alamat`, `no_hp
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ikut_ujian`
+-- Struktur dari tabel `ikut_ujian`
 --
 
 CREATE TABLE `ikut_ujian` (
@@ -128,7 +139,7 @@ CREATE TABLE `ikut_ujian` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jawaban_tugas`
+-- Struktur dari tabel `jawaban_tugas`
 --
 
 CREATE TABLE `jawaban_tugas` (
@@ -146,7 +157,7 @@ CREATE TABLE `jawaban_tugas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelas`
+-- Struktur dari tabel `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -155,7 +166,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kelas`
+-- Dumping data untuk tabel `kelas`
 --
 
 INSERT INTO `kelas` (`id_kelas`, `kelas`) VALUES
@@ -166,7 +177,7 @@ INSERT INTO `kelas` (`id_kelas`, `kelas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mata_pelajaran`
+-- Struktur dari tabel `mata_pelajaran`
 --
 
 CREATE TABLE `mata_pelajaran` (
@@ -175,7 +186,7 @@ CREATE TABLE `mata_pelajaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `mata_pelajaran`
+-- Dumping data untuk tabel `mata_pelajaran`
 --
 
 INSERT INTO `mata_pelajaran` (`id_mapel`, `mata_pelajaran`) VALUES
@@ -185,7 +196,7 @@ INSERT INTO `mata_pelajaran` (`id_mapel`, `mata_pelajaran`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `materi`
+-- Struktur dari tabel `materi`
 --
 
 CREATE TABLE `materi` (
@@ -201,7 +212,7 @@ CREATE TABLE `materi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mengajar`
+-- Struktur dari tabel `mengajar`
 --
 
 CREATE TABLE `mengajar` (
@@ -213,7 +224,7 @@ CREATE TABLE `mengajar` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penjurusan`
+-- Struktur dari tabel `penjurusan`
 --
 
 CREATE TABLE `penjurusan` (
@@ -223,7 +234,7 @@ CREATE TABLE `penjurusan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `penjurusan`
+-- Dumping data untuk tabel `penjurusan`
 --
 
 INSERT INTO `penjurusan` (`id_jurusan`, `id_kelas`, `nama_jurusan`) VALUES
@@ -237,7 +248,7 @@ INSERT INTO `penjurusan` (`id_jurusan`, `id_kelas`, `nama_jurusan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siswa`
+-- Struktur dari tabel `siswa`
 --
 
 CREATE TABLE `siswa` (
@@ -252,7 +263,7 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `siswa`
+-- Dumping data untuk tabel `siswa`
 --
 
 INSERT INTO `siswa` (`nis`, `nama`, `jenis_kelamin`, `alamat`, `agama`, `no_hp`, `password`, `id_jurusan`) VALUES
@@ -262,7 +273,7 @@ INSERT INTO `siswa` (`nis`, `nama`, `jenis_kelamin`, `alamat`, `agama`, `no_hp`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `soal`
+-- Struktur dari tabel `soal`
 --
 
 CREATE TABLE `soal` (
@@ -286,7 +297,19 @@ CREATE TABLE `soal` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tugas`
+-- Struktur dari tabel `tr_absen_guru`
+--
+
+CREATE TABLE `tr_absen_guru` (
+  `id_absen` int(11) NOT NULL,
+  `nip` varchar(20) NOT NULL,
+  `status` int(1) NOT NULL COMMENT '1=hadir, 2=sakit, 3=ijin, 4=alpa'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tugas`
 --
 
 CREATE TABLE `tugas` (
@@ -300,7 +323,7 @@ CREATE TABLE `tugas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ujian`
+-- Struktur dari tabel `ujian`
 --
 
 CREATE TABLE `ujian` (
@@ -319,7 +342,7 @@ CREATE TABLE `ujian` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wali_kelas`
+-- Struktur dari tabel `wali_kelas`
 --
 
 CREATE TABLE `wali_kelas` (
@@ -329,7 +352,7 @@ CREATE TABLE `wali_kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `wali_kelas`
+-- Dumping data untuk tabel `wali_kelas`
 --
 
 INSERT INTO `wali_kelas` (`id_walikelas`, `nip`, `id_jurusan`) VALUES
@@ -341,179 +364,191 @@ INSERT INTO `wali_kelas` (`id_walikelas`, `nip`, `id_jurusan`) VALUES
 --
 
 --
--- Indexes for table `absensi`
+-- Indeks untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id_absen`);
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `absen_guru`
+--
+ALTER TABLE `absen_guru`
+  ADD PRIMARY KEY (`id_absen`);
+
+--
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`nip`);
 
 --
--- Indexes for table `golongan`
+-- Indeks untuk tabel `golongan`
 --
 ALTER TABLE `golongan`
   ADD PRIMARY KEY (`id_gol`);
 
 --
--- Indexes for table `guru`
+-- Indeks untuk tabel `guru`
 --
 ALTER TABLE `guru`
   ADD PRIMARY KEY (`nip`);
 
 --
--- Indexes for table `ikut_ujian`
+-- Indeks untuk tabel `ikut_ujian`
 --
 ALTER TABLE `ikut_ujian`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jawaban_tugas`
+-- Indeks untuk tabel `jawaban_tugas`
 --
 ALTER TABLE `jawaban_tugas`
   ADD PRIMARY KEY (`id_jawaban`);
 
 --
--- Indexes for table `kelas`
+-- Indeks untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indexes for table `mata_pelajaran`
+-- Indeks untuk tabel `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
   ADD PRIMARY KEY (`id_mapel`);
 
 --
--- Indexes for table `materi`
+-- Indeks untuk tabel `materi`
 --
 ALTER TABLE `materi`
   ADD PRIMARY KEY (`id_materi`);
 
 --
--- Indexes for table `mengajar`
+-- Indeks untuk tabel `mengajar`
 --
 ALTER TABLE `mengajar`
   ADD PRIMARY KEY (`id_mengajar`);
 
 --
--- Indexes for table `penjurusan`
+-- Indeks untuk tabel `penjurusan`
 --
 ALTER TABLE `penjurusan`
   ADD PRIMARY KEY (`id_jurusan`);
 
 --
--- Indexes for table `siswa`
+-- Indeks untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`nis`);
 
 --
--- Indexes for table `soal`
+-- Indeks untuk tabel `soal`
 --
 ALTER TABLE `soal`
   ADD PRIMARY KEY (`id_soal`);
 
 --
--- Indexes for table `tugas`
+-- Indeks untuk tabel `tugas`
 --
 ALTER TABLE `tugas`
   ADD PRIMARY KEY (`id_tugas`);
 
 --
--- Indexes for table `ujian`
+-- Indeks untuk tabel `ujian`
 --
 ALTER TABLE `ujian`
   ADD PRIMARY KEY (`id_ujian`);
 
 --
--- Indexes for table `wali_kelas`
+-- Indeks untuk tabel `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
   ADD PRIMARY KEY (`id_walikelas`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `absensi`
+-- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `golongan`
+-- AUTO_INCREMENT untuk tabel `absen_guru`
+--
+ALTER TABLE `absen_guru`
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `golongan`
 --
 ALTER TABLE `golongan`
   MODIFY `id_gol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `ikut_ujian`
+-- AUTO_INCREMENT untuk tabel `ikut_ujian`
 --
 ALTER TABLE `ikut_ujian`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `jawaban_tugas`
+-- AUTO_INCREMENT untuk tabel `jawaban_tugas`
 --
 ALTER TABLE `jawaban_tugas`
   MODIFY `id_jawaban` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `kelas`
+-- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `mata_pelajaran`
+-- AUTO_INCREMENT untuk tabel `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
   MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `materi`
+-- AUTO_INCREMENT untuk tabel `materi`
 --
 ALTER TABLE `materi`
   MODIFY `id_materi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `mengajar`
+-- AUTO_INCREMENT untuk tabel `mengajar`
 --
 ALTER TABLE `mengajar`
   MODIFY `id_mengajar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `penjurusan`
+-- AUTO_INCREMENT untuk tabel `penjurusan`
 --
 ALTER TABLE `penjurusan`
   MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `soal`
+-- AUTO_INCREMENT untuk tabel `soal`
 --
 ALTER TABLE `soal`
   MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tugas`
+-- AUTO_INCREMENT untuk tabel `tugas`
 --
 ALTER TABLE `tugas`
   MODIFY `id_tugas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ujian`
+-- AUTO_INCREMENT untuk tabel `ujian`
 --
 ALTER TABLE `ujian`
   MODIFY `id_ujian` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `wali_kelas`
+-- AUTO_INCREMENT untuk tabel `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
   MODIFY `id_walikelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;

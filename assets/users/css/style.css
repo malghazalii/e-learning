@@ -584,12 +584,9 @@ h3.title:after {
 /*-- footer --*/
 
 footer {
-    background: url(../images/bg3.jpg) no-repeat center;
     background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
+    position: relative;
+    min-height: 100%;
 }
 
 p.para-agileits-w3layouts a:hover {

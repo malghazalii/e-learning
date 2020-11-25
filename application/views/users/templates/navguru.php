@@ -16,6 +16,7 @@
                             Event
                         </a>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item" href="about.html">Show Event</a>
                             <a class="dropdown-item" href="about.html">Create Event</a>
                             <a class="dropdown-item" href="index.html">Result Event</a>
                         </div>

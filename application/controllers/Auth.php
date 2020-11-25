@@ -10,26 +10,13 @@ class Auth extends CI_Controller
   }
 
     public function index()
-    {
-        $this->form_validation->set_rules('nis', 'Nis', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-          ]);
-        $this->form_validation->set_rules('password', 'Password', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-          ]);
-       
-          if($this->form_validation->run() == false){
-            $this->load->view('users/templates/header');
-            $this->load->view('users/login');
-            $this->load->view('users/templates/footer');
-          }else{
-              $this->_login();
-          }
+    {   $this->load->view('users/templates/header');
+        $this->load->view('users/login');
+        $this->load->view('users/templates/footer');
     }
-    private function _login()
-    {
-        $name = $this->input->post('Name');
-        $password = $this->input->post('Password');
+    public function login()
+    {   $name = $this->input->post('name');
+        $password = $this->input->post('password');
 
         $user = $this->db->get_where('siswa',['nis'=>$name])->row_array();
         $guru = $this->db->get_where('guru',['nip'=>$name])->row_array();
@@ -39,7 +26,7 @@ class Auth extends CI_Controller
                     'nis' => $user['nis']
                 ];
                 $this->session->set_userdata($data);
-                redirect('Siswa');
+                redirect('Siswa/siswa');
             }else{
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
                 redirect('Auth');
@@ -55,7 +42,7 @@ class Auth extends CI_Controller
                     'nip' => $guru['nip']
                     ];
                 $this->session->set_userdata($data);
-                redirect('Guru');
+                redirect('Guru/guru');
             }else{
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
                     redirect('Auth');
@@ -63,9 +50,9 @@ class Auth extends CI_Controller
         }
         else{
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username salah!</div>');
-        redirect('Auth');
-        }
+        redirect('Auth');   
     } 
+}
     public function logout()
     {
       $this->session->unset_userdata('nip');

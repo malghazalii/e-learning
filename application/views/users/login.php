@@ -6,20 +6,21 @@
 			</h3>
 			<!-- content -->
 			<div class="sub-main-w3 pt-md-4">
-				<form action="#" method="post">
+			<?= $this->session->flashdata('message'); ?>
+				<form action="<?= base_url('Auth/login'); ?>" method="post">
 					<div class="form-style-agile form-group">
 						<label>
 							Username
 							<i class="fas fa-user"></i>
 						</label>
-						<input placeholder="Username" class="form-control" name="Name" type="text" required="">
+						<input placeholder="Username" class="form-control" id="name" name="name" type="text" required="">
 					</div>
 					<div class="form-style-agile form-group">
 						<label>
 							Password
 							<i class="fas fa-unlock-alt"></i>
 						</label>
-						<input placeholder="Password" class="form-control" name="Password" type="password" required="">
+						<input placeholder="Password" class="form-control" id="password" name="password" type="password" required="">
 					</div>
 					<!-- switch -->
 				

@@ -16,12 +16,12 @@ function cek_login_guru()
 {
   $ci = get_instance();
   if (!$ci->session->userdata('nip')) {
-    redirect('Guru/auth');
+    redirect('Auth');
   } else {
     $nip = $ci->session->userdata('nip');
     $cekadmin = $ci->db->get_where('guru', ['nip' => $nip]);
     if ($cekadmin->num_rows() < 1) {
-      redirect('Guru/auth/blok');
+      redirect('Auth/blok');
     }
   }
 }
@@ -29,12 +29,12 @@ function cek_login_siswa()
 {
   $ci = get_instance();
   if (!$ci->session->userdata('nis')) {
-    redirect('Siswa/auth');
+    redirect('Auth');
   } else {
     $nip = $ci->session->userdata('nip');
     $cekadmin = $ci->db->get_where('guru', ['nip' => $nip]);
     if ($cekadmin->num_rows() < 1) {
-      redirect('Guru/auth/blok');
+      redirect('Auth/blok');
     }
   }
 }

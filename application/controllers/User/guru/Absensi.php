@@ -5,7 +5,8 @@ class Absensi extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('users/templates/header');
+        $data['title'] = 'Absensi';
+        $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
         $this->load->view('users/guru/absensi');
         $this->load->view('users/templates/footer');

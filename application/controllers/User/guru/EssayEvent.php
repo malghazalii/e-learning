@@ -5,7 +5,8 @@ class EssayEvent extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('users/templates/header');
+        $data['title'] = 'Essay Event';
+        $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
         $this->load->view('users/guru/create_event/esai');
         $this->load->view('users/templates/footer');

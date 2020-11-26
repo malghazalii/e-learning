@@ -8,7 +8,6 @@ class Auth extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
   }
-
   public function index()
   {
     $this->form_validation->set_rules('nip', 'Nip', 'required|trim', [
@@ -56,11 +55,28 @@ class Auth extends CI_Controller
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil logout!</div>');
     redirect('Admin/auth');
   }
-  public function blok()
+  public function blokS()
   {
     $data['title'] = 'akses ditolak';
+    $data['link'] = base_url('User/Siswa/Dashboard');
     $this->load->view('Admin/templates/header', $data);
-    $this->load->view('blok');
+    $this->load->view('blok', $data);
+    $this->load->view('Admin/templates/footer');
+  }
+  public function blokG()
+  {
+    $data['title'] = 'akses ditolak';
+    $data['link'] = base_url('User/Guru/Dashboard');
+    $this->load->view('Admin/templates/header', $data);
+    $this->load->view('blok', $data);
+    $this->load->view('Admin/templates/footer');
+  }
+  public function blokA()
+  {
+    $data['title'] = 'akses ditolak';
+    $data['link'] = base_url('Admin/datasiswa');
+    $this->load->view('Admin/templates/header', $data);
+    $this->load->view('blok', $data);
     $this->load->view('Admin/templates/footer');
   }
 }

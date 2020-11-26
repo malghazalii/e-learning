@@ -7,7 +7,7 @@ class Dashboard extends CI_Controller
     {
       parent::__construct();
       $this->load->model('m_datasiswa');
-      cek_login_guru();
+      //cek_login_guru();
     }
     public function index()
     {

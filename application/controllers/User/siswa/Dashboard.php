@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller
     function __construct()
     {
       parent::__construct();
-      cek_login_siswa();
+      //cek_login_siswa();
     }
     public function index()
     {

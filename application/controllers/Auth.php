@@ -29,7 +29,7 @@ class Auth extends CI_Controller
                     'nis' => $user['nis']
                 ];
                 $this->session->set_userdata($data);
-                redirect('USer/Siswa/Dashboard');
+                redirect('User/Siswa/Dashboard');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
                 redirect('Auth');

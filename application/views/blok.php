@@ -12,7 +12,7 @@
       <div class="text-center">
         <div class="error mx-auto" data-text="403">403</div>
         <p class="lead text-gray-800 mb-5">Akses ditolak</p>
-        <a href="<?= base_url('dashboard'); ?>">&larr; Back to Dashboard</a>
+        <a href="<?= $link;?>">&larr; Back to Dashboard</a>
       </div>
 
     </div>

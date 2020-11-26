@@ -2,8 +2,6 @@
 <div class="container-fluid">
     <div style="padding-bottom: 10px;">
         <a href="<?= base_url('Admin/absensi_guru/simpanData'); ?>" class="btn btn-primary">Aktifkan Absen</a>
-
-        <a href="<?= base_url('Admin/absensi_guru/simpanDataNon'); ?>" class="btn btn-danger"> Non Aktifkan Absen</a>
     </div>
     <?= $this->session->flashdata('message'); ?>
     <!-- DataTales Example -->
@@ -28,7 +26,9 @@
                                 <td><?php if ($a->is_active == 1) echo 'aktif' ?> <?php if ($a->is_active == 0) echo 'non aktif' ?></td>
                                 <td>
                                     <?php
-                                    echo anchor(base_url('Admin/Absensi_Guru/delete/' . $a->id_absen), 'delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                                    echo anchor(base_url('Admin/Absensi_Guru/update/' . $a->id_absen), 'Non-Aktifkan', 'onclick="javasciprt: return confirm(\'Anda Yakin Non-Aktifkan ?\')"');
+                                    echo ' | ';
+                                    echo anchor(base_url('Admin/Absensi_Guru/delete/' . $a->id_absen), 'Hapus', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
                                     ?>
                                 </td>
                             </tr>

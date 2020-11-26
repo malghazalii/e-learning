@@ -40,14 +40,13 @@ class Absensi_Guru extends CI_Controller
         redirect('Admin/Absensi_Guru');
     }
 
-    public function simpanDataNon()
+    public function update($id)
     {
         $data = [
             'tgl' => date('y-m-d H:i:s'),
             'is_active' => 0
         ];
-
-        $simpan = $this->m_absensi_guru->insert($data);
+        $simpan = $this->m_absensi_guru->update($data, $id);
 
         if ($simpan) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Absen berhasil di non aktifkan</div>');
@@ -69,20 +68,20 @@ class Absensi_Guru extends CI_Controller
         redirect('Admin/Absensi_Guru');
     }
 
-    public function update($id)
-    {
-        $data = [
-            'is_active' => 0
-        ];
+    // public function update($id)
+    // {
+    //     $data = [
+    //         'is_active' => 0
+    //     ];
 
-        $save = $this->m_absensi_guru->update($data, $id);
+    //     $save = $this->m_absensi_guru->update($data, $id);
 
-        if ($save) {
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
-        } else {
-            $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Data tidak berhasil diubah</div>');
-        }
+    //     if ($save) {
+    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+    //     } else {
+    //         $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Data tidak berhasil diubah</div>');
+    //     }
 
-        redirect('Admin/Absensi_Guru', $save);
-    }
+    //     redirect('Admin/Absensi_Guru', $save);
+    // }
 }

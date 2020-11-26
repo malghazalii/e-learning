@@ -10,21 +10,10 @@ class Auth extends CI_Controller
   }
   public function index()
   {
-    $this->form_validation->set_rules('nip', 'Nip', 'required|trim', [
-      'required' => 'Field tidak boleh kosong'
-
-    ]);
-    $this->form_validation->set_rules('password', 'Password', 'required|trim', [
-      'required' => 'Field tidak boleh kosong'
-    ]);
-    if ($this->form_validation->run() == false) {
-      $this->load->view('admin/login');
-    } else {
-      $this->_login();
-    }
+    $this->load->view('admin/login');
   }
 
-  private function _login()
+  public function login()
   {
     $nip = $this->input->post('nip');
     $password = $this->input->post('password');
@@ -39,11 +28,11 @@ class Auth extends CI_Controller
         $this->session->set_userdata($data);
         redirect('Admin/datasiswa');
       } else {
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle">  </i> Username atau Password salah!</div>');
         redirect('Admin/auth');
       }
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username salah!</div>');
+      $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle">  </i> Username atau Password salah!</div>');
       redirect('Admin/auth');
     }
   }
@@ -51,8 +40,7 @@ class Auth extends CI_Controller
   public function logout()
   {
     $this->session->unset_userdata('nip');
-
-    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil logout!</div>');
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><i class="fas fa-check">  </i>Anda berhasil logout!</div>');
     redirect('Admin/auth');
   }
   public function blokS()

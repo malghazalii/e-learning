@@ -11,11 +11,11 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Login';
-        $this->load->view('users/templates/header', $data);
-        $this->load->view('users/login');
-        $this->load->view('users/templates/footer');
-    }
+              $data['title'] = 'Login';
+              $this->load->view('users/templates/header', $data);
+              $this->load->view('users/login');
+              $this->load->view('users/templates/footer');
+      }
     public function login()
     {
         $name = $this->input->post('name');
@@ -31,7 +31,7 @@ class Auth extends CI_Controller
                 $this->session->set_userdata($data);
                 redirect('User/Siswa/Dashboard');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle">  </i> Username atau Password salah!</div>');
                 redirect('Auth');
             }
         } else if ($guru) {
@@ -42,11 +42,11 @@ class Auth extends CI_Controller
                 $this->session->set_userdata($data);
                 redirect('User/Guru/Dashboard');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle">  </i> Username atau Password salah!</div>');
                 redirect('Auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username salah!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle">  </i> Username atau Password salah!</div>');
             redirect('Auth');
         }
     }
@@ -54,8 +54,7 @@ class Auth extends CI_Controller
     {
         $this->session->unset_userdata('nip');
         $this->session->unset_userdata('nis');
-
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil logout!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><i class="fas fa-check">  </i>Anda berhasil logout!</div>');
         redirect('Auth');
     }
     public function blok()

@@ -18,7 +18,7 @@
      <li class="nav-item">
      <?php endif; ?>
      <a class="nav-link" href="<?= base_url('Admin/datasiswa'); ?>">
-       <i class="fas fa-fw fa-table"></i>
+       <i class="fas fa-fw fa-layer-group"></i>
        <span>Data Siswa</span></a>
      </li>
      <!-- Divider -->
@@ -29,7 +29,7 @@
        <li class="nav-item">
        <?php endif; ?>
        <a class="nav-link" href="<?= base_url('Admin/dataguru'); ?>">
-         <i class="fas fa-fw fa-table"></i>
+         <i class="fas fa-fw fa-layer-group"></i>
          <span>Data Guru</span></a>
        </li>
 
@@ -40,7 +40,7 @@
          <li class="nav-item">
          <?php endif; ?>
          <a class="nav-link" href="<?= base_url('Admin/mapel'); ?>">
-           <i class="fas fa-fw fa-folder"></i>
+           <i class="fas fa-fw fa-book"></i>
            <span>Mata Pelajaran</span></a>
          </li>
          <!-- Nav Item - Dashboard -->
@@ -60,7 +60,7 @@
              <li class="nav-item">
              <?php endif; ?>
              <a class="nav-link" href="<?= base_url('Admin/walikelas'); ?>">
-               <i class="fas fa-fw fa-folder"></i>
+               <i class="fas fa-fw fa-chalkboard-teacher"></i>
                <span>Wali Kelas</span></a>
              </li>
 

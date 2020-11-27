@@ -16,6 +16,7 @@ class Mapel extends CI_Controller
         $data['title'] = 'Data Mapel';
         $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['mapel'] = $this->m_mapel->TampilMapel();
+        $data['kodeunik'] = $this->m_mapel->buat_kode();
         $this->load->view('admin/templates/header', $data);
         $this->load->view('admin/templates/sidebar', $data);
         $this->load->view('admin/templates/topbar', $data);
@@ -47,7 +48,7 @@ class Mapel extends CI_Controller
             $mapel = $this->input->post('mapel');
 
             $data = [
-                'mata_pelajaran' => $mapel
+                'mata_pelajaran' => $mapel,
             ];
 
             $simpan = $this->m_mapel->insert($data);
@@ -58,7 +59,7 @@ class Mapel extends CI_Controller
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tidak berhasil ditambah</div>');
             }
 
-            redirect('Admin/mapel', $simpan);
+            redirect('Admin/mapel', $data);
         }
     }
 
@@ -113,4 +114,13 @@ class Mapel extends CI_Controller
             redirect('Admin/mapel', $save);
         }
     }
+    // public function kode()
+    // {
+    //     $data['kodeunik'] = $this->m_mapel->buat_kode(); // variable $kodeunik merujuk ke file model_user.php pada function buat_kode. paham kan ya? harus paham dong
+    //     $this->load->view('admin/templates/header', $data);
+    //     $this->load->view('admin/templates/sidebar', $data);
+    //     $this->load->view('admin/templates/topbar', $data);
+    //     $this->load->view('admin/mapel', $data);
+    //     $this->load->view('admin/templates/footer', $data);
+    // }
 }

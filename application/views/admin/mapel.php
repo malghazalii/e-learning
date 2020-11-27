@@ -25,7 +25,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $no = 1;
+                        $no = $kodeunik;
                         foreach ($mapel as $m) : ?>
                             <tr>
                                 <td><?= $no++ ?></td>

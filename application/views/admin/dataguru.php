@@ -32,10 +32,10 @@
             <?php foreach ($guru as $g) : ?>
               <tr>
                 <td><?= $g->nip ?></td>
-                <td><?= substr($g->nama, 0, 10) . '...' ?></td>
+                <td><?= word_limiter($g->nama, 2); ?></td>
                 <td><?= $g->password ?></td>
                 <td><?= $g->jenis_kelamin ?></td>
-                <td><?= substr($g->alamat, 0, 20) . '...' ?></td>
+                <td><?= word_limiter($g->alamat, 2); ?></td>
                 <td><?= $g->no_hp ?></td>
                 <td><?= $g->nama_golongan ?></td>
                 <td>

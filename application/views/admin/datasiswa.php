@@ -32,9 +32,9 @@
             <?php foreach ($siswa as $s) : ?>
               <tr>
                 <td><?= $s->nis ?></td>
-                <td><?= substr($s->nama, 0, 10) . '...' ?></td>
+                <td><?= word_limiter($s->nama, 2); ?></td>
                 <td><?= $s->jenis_kelamin ?></td>
-                <td><?= substr($s->alamat, 0, 20) . '...' ?></td>
+                <td><?= word_limiter($s->alamat, 2); ?></td>
                 <td><?= $s->agama ?></td>
                 <td><?= $s->no_hp ?></td>
                 <td><?= $s->password ?></td>

@@ -37,7 +37,7 @@
                                     <?php
                                     echo anchor(base_url('Admin/walikelas/edit/' . $w->id_walikelas), 'Edit');
                                     echo ' | ';
-                                    echo anchor(base_url('Admin/walikelas/delete/' . $w->id_walikelas), 'delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                                    echo anchor(base_url('Admin/walikelas/delete/' . $w->id_walikelas), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
                                     ?>
                                 </td>
                             </tr>

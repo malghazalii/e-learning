@@ -25,6 +25,7 @@
                     <?= form_error('jurusan', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="<?= base_url('Admin/kelas'); ?>" class="btn btn-danger">Batal</a>
             </form>
         </div>
     </div>

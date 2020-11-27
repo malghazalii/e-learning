@@ -53,6 +53,7 @@
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="<?= base_url('Admin/dataguru'); ?>" class="btn btn-danger">Batal</a>
             </form>
         </div>
     </div>

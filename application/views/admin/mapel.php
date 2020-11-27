@@ -34,7 +34,7 @@
                                     <?php
                                     echo anchor(base_url('Admin/mapel/edit/' . $m->id_mapel), 'Edit');
                                     echo ' | ';
-                                    echo anchor(base_url('Admin/mapel/delete/' . $m->id_mapel), 'delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                                    echo anchor(base_url('Admin/mapel/delete/' . $m->id_mapel), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
                                     ?>
                                 </td>
                             </tr>

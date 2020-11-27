@@ -15,6 +15,7 @@
                     <?= form_error('mapel', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>
+                <a href="<?= base_url('Admin/mapel'); ?>" class="btn btn-danger">Batal</a>
             </form>
         </div>
     </div>

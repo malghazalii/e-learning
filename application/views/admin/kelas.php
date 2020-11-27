@@ -34,7 +34,7 @@
                                 <td><?= $k->nama_jurusan ?></td>
                                 <td>
                                     <?php
-                                    echo anchor(base_url('Admin/kelas/delete/' . $k->id_jurusan), 'delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                                    echo anchor(base_url('Admin/kelas/delete/' . $k->id_jurusan), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
                                     ?>
                                 </td>
                             </tr>

@@ -42,6 +42,7 @@
             <?php endforeach; ?>
           </thead>
         </table>
+        <a href="<?= base_url('Admin/dataguru'); ?>" class="btn btn-danger">Kembali</a>
       </div>
     </div>
   </div>

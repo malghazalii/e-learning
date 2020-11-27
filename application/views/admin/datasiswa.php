@@ -32,9 +32,9 @@
             <?php foreach ($siswa as $s) : ?>
               <tr>
                 <td><?= $s->nis ?></td>
-                <td><?= $s->nama ?></td>
+                <td><?= substr($s->nama, 0, 10) . '...' ?></td>
                 <td><?= $s->jenis_kelamin ?></td>
-                <td><?= $s->alamat ?></td>
+                <td><?= substr($s->alamat, 0, 20) . '...' ?></td>
                 <td><?= $s->agama ?></td>
                 <td><?= $s->no_hp ?></td>
                 <td><?= $s->password ?></td>
@@ -45,7 +45,7 @@
                   echo ' | ';
                   echo anchor(base_url('Admin/datasiswa/edit/' . $s->nis), 'Edit');
                   echo ' | ';
-                  echo anchor(base_url('Admin/datasiswa/delete/' . $s->nis), 'delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                  echo anchor(base_url('Admin/datasiswa/delete/' . $s->nis), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
                   ?>
                 </td>
               </tr>

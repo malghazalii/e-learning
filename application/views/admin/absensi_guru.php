@@ -23,11 +23,14 @@
                         <?php foreach ($absen as $a) : ?>
                             <tr>
                                 <td><?= $a->tgl ?></td>
-                                <td><?php if ($a->is_active == 1) echo 'aktif' ?> <?php if ($a->is_active == 0) echo 'non aktif' ?></td>
+                                <td><?php if ($a->is_active == 1) echo 'Aktif' ?> <?php if ($a->is_active == 0) echo 'Non-Aktif' ?></td>
                                 <td>
                                     <?php
-                                    echo anchor(base_url('Admin/Absensi_Guru/update/' . $a->id_absen), 'Non-Aktifkan', 'onclick="javasciprt: return confirm(\'Anda Yakin Non-Aktifkan ?\')"');
-                                    echo ' | ';
+                                    if ($a->is_active == 1) {
+                                        echo anchor(base_url('Admin/Absensi_Guru/update/' . $a->id_absen), 'Non-Aktifkan', 'onclick="javasciprt: return confirm(\'Anda Yakin Non-Aktifkan ?\')"');
+                                        echo ' | ';
+                                    } else {
+                                    }
                                     echo anchor(base_url('Admin/Absensi_Guru/delete/' . $a->id_absen), 'Hapus', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
                                     ?>
                                 </td>

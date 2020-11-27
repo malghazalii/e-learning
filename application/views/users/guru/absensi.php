@@ -10,20 +10,16 @@
   <thead>
     <tr>
       <th scope="col">Tanggal</th>
-      <th scope="col">kelas</th>
-      <th scope="col">jurusan</th>
-      <th scope="col">Mata pelajaran</th>
-	  <th scope="col">status</th>
-	  <th scope="col">poin</th>
+      <th scope="col">Deskripsi</th>
+	  <th scope="col">Status</th>
+	  <th scope="col">Poin</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Tue 3 Nov 2020 10AM - 12PM</td>
-      <td>12-1</td>
-	  <td>ipa</td>
-	  <td>matematika</td>
-      <td>Hadir</td>
+      <td>Guru Pengajar</td>
+      <td><a href="aksi_absensi">kehadiran</a></td>
       <td>2 / 2</td>
     </tr>
   </tbody>

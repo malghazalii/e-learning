@@ -17,7 +17,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-info upload">
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="tekssoal" placeholder="teks soal" class="form-control" autofocus>
@@ -30,7 +30,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -41,7 +41,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -52,7 +52,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -63,7 +63,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -74,7 +74,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -87,7 +87,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Kunci Jawaban</label>
 					<div class="col-sm-3">
-                        <select id="country" class="form-control">
+                        <select style="height:35px;" id="country" class="form-control">
                             <option>A</option>
                             <option>B</option>
                             <option>C</option>
@@ -114,7 +114,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-info upload">
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="tekssoal" placeholder="teks soal" class="form-control" autofocus>
@@ -127,7 +127,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -138,7 +138,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -149,7 +149,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -160,7 +160,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -171,7 +171,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
                     <div class="col-sm-3">
-                        <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
 					</div>  
 					<div class="col-sm-6">
                         <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
@@ -184,7 +184,7 @@
 					<div class="row">
 					<label for="birthDate" class="col-sm-3 control-label">Kunci Jawaban</label>
 					<div class="col-sm-3">
-                        <select id="country" class="form-control">
+                        <select style="height:35px;" id="country" class="form-control">
                             <option>A</option>
                             <option>B</option>
                             <option>C</option>

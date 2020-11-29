@@ -1,150 +1,223 @@
-
-<div class="container py-xl-5 py-lg-3">
-		<div class="card">
-  		<div class="card-body">
-		  <form class="form-horizontal" role="form">
-                <div class="form-group">
+<html lang="en">
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+<br>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Input Soal</div>
+    <div class="panel-body">
+      <!-- membuat form  -->
+      <!-- gunakan tanda [] untuk menampung array  -->
+        <form action="proses.php" method="POST">
+          <div class="control-group after-add-more">
+            <div class="form-group">
 					<div class="row">
-                    <label for="soal" class="col-sm-2 control-label">Soal</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="masukkansoal" placeholder="masukkan soal" class="form-control" autofocus>
+					<label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-info upload">
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="tekssoal" placeholder="teks soal" class="form-control" autofocus>
 					</div>
-				</div>
-                </div>
-                    <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Jawaban</legend>
-                            <div class="col-sm-10">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                        <div class="col-sm-9">
-                                            <input type="text" id="masukkansoal" placeholder="masukkan soal" class="form-control" autofocus>
-					                    </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                        <div class="col-sm-9">
-                                            <input type="text" id="masukkansoal" placeholder="masukkan soal" class="form-control" autofocus>
-					                    </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                        <div class="col-sm-9">
-                                            <input type="text" id="masukkansoal" placeholder="masukkan soal" class="form-control" autofocus>
-					                    </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                        <div class="col-sm-9">
-                                            <input type="text" id="masukkansoal" placeholder="masukkan soal" class="form-control" autofocus>
-					                    </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                        <div class="col-sm-9">
-                                            <input type="text" id="masukkansoal" placeholder="masukkan soal" class="form-control" autofocus>
-					                    </div>
-                                </div>
-                                
-                            </div>
-                    </div>          
-                <div class="form-group">           			
-                </div> <!-- /.form-group -->
-                <div class="form-group">          
-                </div> <!-- /.form-group -->     
-                </div> <!-- /.form-group -->
-                <div class="form-group">       
-                </div> <!-- /.form-group -->
-                <div id="insert-form"></div>
-                        <label class="col-md-3 ml-4"></label>
-                        <button type="button" id="btn-tambah-form" class="btn btn-primary">Tambah Soal</button>
-                        
-			</form> <!-- /form -->
-			
-  		</div>
-	</div>
+			        </div>
+			</div>
+            <hr>
+            </br>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <hr>
+            </br>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Kunci Jawaban</label>
+					<div class="col-sm-3">
+                        <select style="height:35px;" id="country" class="form-control">
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>E</option>
+                        </select>
+					</div>
+					</div>
+			</div>
+            </br>
+            <button class="btn btn-success add-more" type="button">
+              <i class="glyphicon glyphicon-plus"></i> Add
+            </button>
+            <hr>
+          </div>
+          <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+
+        <!-- class hide membuat form disembunyikan  -->
+        <!-- hide adalah fungsi bootstrap 3, klo bootstrap 4 pake invisible  -->
+        <div class="copy hide">
+            <div class="control-group">
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-info upload">
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="tekssoal" placeholder="teks soal" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <hr>
+            </br>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
+                    <div class="col-sm-3">
+                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload"> 
+					</div>  
+					<div class="col-sm-6">
+                        <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
+					</div>
+			        </div>
+			</div>
+            <hr>
+            </br>
+            <div class="form-group">
+					<div class="row">
+					<label for="birthDate" class="col-sm-3 control-label">Kunci Jawaban</label>
+					<div class="col-sm-3">
+                        <select style="height:35px;" id="country" class="form-control">
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>E</option>
+                        </select>
+					</div>
+					</div>
+			</div>
+            </br>
+              <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+              <hr>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
-
-<input type="hidden" id="jumlah-form" value="1">
-
-<script>
-    $(document).ready(function() { // Ketika halaman sudah diload dan siap
-      $("#btn-tambah-form").click(function() { // Ketika tombol Tambah Data Form di klik
-        var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
-        var nextform = jumlah + 1; // Tambah 1 untuk jumlah form nya
-
-        // Kita akan menambahkan form dengan menggunakan append
-        // pada sebuah tag div yg kita beri id insert-form
-        if (nextform <= 5) {
-          $("#insert-form").append(
-            "<div class='card-body'>" +
-		    "<form class='form-horizontal' role='form'>" +
-                "<div class='form-group'>" +
-					"<div class='row'>" +
-                    "<label for='soal' class='col-sm-2 control-label'>Soal</label>" +
-                    "<div class='col-sm-9'>" +
-                        "<input type='text' id='masukkansoal' placeholder='masukkan soal' class='form-control' autofocus>" +
-					"</div>" 
-				"</div>" 
-                "</div>" 
-                    "<div class='row'>" +
-                        "<legend class='col-form-label col-sm-2 pt-0'>Jawaban</legend>" +
-                            "<div class='col-sm-10'>" +
-                                "<div class='form-check'>" +
-                                    "<input class='form-check-input' type='radio' name='gridRadios' id='gridRadios1' value='option1' checked>" +
-                                        "<div class='col-sm-9'>" +
-                                            "<input type='text' id='masukkansoal' placeholder='masukkan soal' class='form-control' autofocus>" +
-					                    "</div>" 
-                                "</div>" 
-                                "<div class='form-check'>"+
-                                    "<input class='form-check-input' type='radio' name='gridRadios' id='gridRadios1' value='option1' checked>" +
-                                        "<div class='col-sm-9'>" +
-                                            "<input type='text' id='masukkansoal' placeholder='masukkan soal' class='form-control' autofocus>" +
-					                    "</div>" 
-                                "</div>" 
-                                "<div class='form-check'>" +
-                                    "<input class='form-check-input' type='radio' name='gridRadios' id='gridRadios1' value='option1' checked>" +
-                                        "<div class='col-sm-9'>" +
-                                            "<input type='text' id='masukkansoal' placeholder='masukkan soal' class='form-control' autofocus>" +
-					                    "</div>" 
-                                "</div>" 
-                                "<div class='form-check'>"+
-                                    "<input class='form-check-input' type='radio' name='gridRadios' id='gridRadios1' value='option1' checked>" +
-                                        "<div class='col-sm-9'>" +
-                                            "<input type='text' id='masukkansoal' placeholder='masukkan soal' class='form-control' autofocus>" +
-					                    "</div>" 
-                                "</div>" 
-                                "<div class='form-check'>" +
-                                    "<input class='form-check-input' type='radio' name='gridRadios' id='gridRadios1' value='option1' checked>" +
-                                        "<div class='col-sm-9'>" +
-                                            "<input type='text' id='masukkansoal' placeholder='masukkan soal' class='form-control' autofocus>" +
-					                    "</div>" 
-                                "</div>"                                
-                            "</div>" 
-                    "</div>"           
-                "<div class='form-group'>" +           			
-                "</div> <!-- /.form-group -->" 
-                "<div class='form-group'>" +          
-                "</div> <!-- /.form-group -->"      
-                "</div> <!-- /.form-group -->"
-                "<div class='form-group'>" +      
-                "</div> <!-- /.form-group -->"                   
-			"</form>" 			
-  		"</div>"
-
-          );
-          $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
-        } else {
-          "<div class = 'alert alert-danger'role = 'alert' >" +
-          "This is a danger alert— check it out!" +
-          "</div>"
-        }
-
+<!-- fungsi javascript untuk menampilkan form dinamis  -->
+<!-- penjelasan :
+saat tombol add-more ditekan, maka akan memunculkan div dengan class copy -->
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".add-more").click(function(){ 
+          var html = $(".copy").html();
+          $(".after-add-more").after(html);
       });
 
-      // Buat fungsi untuk mereset form ke semula
-      $("#btn-reset-form").click(function() {
-        $("#insert-form").html(""); // Kita kosongkan isi dari div insert-form
-        $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+      // saat tombol remove dklik control group akan dihapus 
+      $("body").on("click",".remove",function(){ 
+          $(this).parents(".control-group").remove();
       });
     });
-  </script>
+</script>
+</body>
+</html>

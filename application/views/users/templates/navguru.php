@@ -29,7 +29,16 @@
                             <a class="dropdown-item" href="about.html">Buat Absensi</a>
                             <a class="dropdown-item" href="index.html">Hasil Absensi</a>
                         </div>
-                    </li>   
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mata Pelajaran
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="about.html">Biologi</a>
+                            <a class="dropdown-item" href="index.html">Kima</a>
+                        </div>
+                    </li>      
                     <li class="nav-item">
                         <a class="nav-link text-white" href="blog.html">Wali Kelas</a>
                     </li>

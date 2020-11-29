@@ -5,11 +5,8 @@
 		  <div class="form-group">
 					<div class="row">
 					<div class="col-sm-3">
-                        <select id="country" class="form-control">
-                            <option>Esai</option>
-                            <option>Pilihan Ganda</option>
-                            <option>Kuis</option>
-                        </select>
+                    <div class="panel-heading"><b>Data Soal</b>
+           </div>
 					</div>
 					</div>
 				</div>

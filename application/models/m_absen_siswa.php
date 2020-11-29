@@ -7,70 +7,14 @@ class m_absen_siswa extends CI_Model
         return $this->db->order_by('tgl', 'DESC')->get('
         ')->result();
     }
-
-    public function insert($data)
+    
+    public function joinmengajarkelasjurusan()
     {
-        return $this->db->insert('absen_guru', $data);
-    }
-
-    public function delete($id)
-    {
-        return $this->db->where('id_absen', $id)->delete('absen_guru');
-    }
-
-    public function update($data, $id)
-    {
-        return $this->db->where('id_absen', $id)->update('absen_guru', $data);
-    }
-    public function TampilWalikelas()
-    {
-        $this->db->select('*');
-        $this->db->from('wali_kelas');
-        $this->db->join('guru', 'guru.nip=wali_kelas.nip');
-        $this->db->join('penjurusan', 'penjurusan.id_jurusan=wali_kelas.id_jurusan');
-        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
+        $this->db->select('kelas.kelas', 'penjurusan.nama_jurusan');
+        $this->db->from('mengajar');
+        $this->db->join('penjurusan', 'penjurusan.id_jurusan = mengajar.id_jurusan');
+        $this->db->join('kelas', 'penjurusan.id_jurusan = mengajar.id_jurusan');
         $query = $this->db->get();
         return $query;
-    }
-
-    public function insert($data)
-    {
-        return $this->db->insert('wali_kelas', $data);
-    }
-
-    public function getAllGuru()
-    {
-        return $this->db->get('guru')->result();
-    }
-
-    public function joinkelasjurusan()
-    {
-        $this->db->select('*');
-        $this->db->from('penjurusan');
-        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
-        $query = $this->db->get();
-        return $query;
-    }
-
-    public function delete($id)
-    {
-        return $this->db->where('id_walikelas', $id)->delete('wali_kelas');
-    }
-
-    public function get($id)
-    {
-        $this->db->select('*');
-        $this->db->from('wali_kelas');
-        $this->db->join('guru', 'guru.nip=wali_kelas.nip');
-        $this->db->join('penjurusan', 'penjurusan.id_jurusan=wali_kelas.id_jurusan');
-        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
-        $this->db->where('wali_kelas.id_walikelas', $id);
-        $query = $this->db->get();
-        return $query;
-    }
-
-    public function update($data, $id)
-    {
-        return $this->db->where('id_walikelas', $id)->update('wali_kelas', $data);
     }
 }

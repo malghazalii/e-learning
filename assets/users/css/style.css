@@ -7,6 +7,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /*-- Reset Code --*/
 
+ 
+.panel-heading > .tombol-kanan {margin-top: -5px; float: right;}
+.panel-heading > .tbl-kanan-soal {float: right;}
+
+.panel-heading > .tombol-kanan > .btn-xs {	margin-top: 4px;}
+
+.top15 {margin-top: 15px;}
+.top25 {margin-top: 25px;}
+
+.top150 {margin-top: 150px;}
+
 body {
     padding: 0;
     margin: 0;

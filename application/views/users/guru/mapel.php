@@ -9,7 +9,7 @@
 <div class="container">
     <label for="birthDate" class=" control-label">*Biologi</label>
 </div>
-<div class="container  py-xl-5 py-lg-3">
+<div class="container">
 <div class="form-group">
 					<div class="row">
 					<label for="birthDate" class="col-sm-2 control-label">Pilih kelas</label>

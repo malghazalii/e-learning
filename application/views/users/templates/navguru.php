@@ -42,15 +42,9 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="about.html">Wali Kelas</a>
             </li>
-            <?php if (!$absensi) : ?>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="<?= base_url('User/Guru/Absensi/status'); ?>">Absensi</a>
-                </li>
-            <?php else : ?>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="<?= base_url('User/Guru/Absensi'); ?>">Absensi</a>
-                </li>
-            <?php endif; ?>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="<?= base_url('User/Guru/Absensi/status'); ?>">Absensi</a>
+            </li>
 
 
         </ul>

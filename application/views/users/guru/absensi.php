@@ -17,27 +17,29 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><?= $tanggal->tgl ?></td>
-									<td>Guru Mengajar</td>
-									<td>
-										<?php if ($absen->status == 1) {
-											echo 'Hadir';
-										} elseif ($absen->status == 2) {
-											echo 'Sakit';
-										} elseif ($absen->status == 3) {
-											echo 'Ijin';
-										} elseif ($absen->status == 4) {
-											echo 'Terlambat';
-										} else {
-											echo anchor(base_url('User/Guru/Absensi/status'), 'Kehadiran');
-										} ?>
+								<?php foreach ($absen as $a) : ?>
+									<tr>
+										<td><?= $a->tgl ?></td>
+										<td>Guru Mengajar</td>
+										<td>
+											<?php if ($a->status == 1) {
+												echo 'Hadir';
+											} elseif ($a->status == 2) {
+												echo 'Sakit';
+											} elseif ($a->status == 3) {
+												echo 'Ijin';
+											} elseif ($a->status == 4) {
+												echo 'Terlambat';
+											} else {
+												echo anchor(base_url('User/Guru/Absensi/status'), 'Kehadiran');
+											} ?>
 
 
 
-									</td>
-									<!-- <td>2 / 2</td> -->
-								</tr>
+										</td>
+										<!-- <td>2 / 2</td> -->
+									</tr>
+								<?php endforeach; ?>
 							</tbody>
 						</table>
 					</div>

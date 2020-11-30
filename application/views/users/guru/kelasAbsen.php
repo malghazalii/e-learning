@@ -29,7 +29,7 @@
                     <td><?= $a->mata_pelajaran; ?></td>
                     <td><?= $a->kelas; ?></td>
                     <td><?= $a->nama_jurusan; ?></td>
-                    <td><a class="badge badge-primary" href="<?= base_url('User/Guru/Buat_absensi'); ?>">Aktifkan</a></td>
+                    <td><a class="badge badge-primary" href="<?= base_url('User/Guru/KelasAbsen/Tampil/' . $a->id_mengajar); ?>">Aktifkan</a></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
@@ -58,6 +58,7 @@
                   <th>kelas</th>
                   <th>Nama jurusan</th>
                   <th>Tanggal</th>
+                  <th>Status</th>
                   <th>action</th>
                 </tr>
               </thead>
@@ -72,7 +73,23 @@
                     <td><?= $a->kelas; ?></td>
                     <td><?= $a->nama_jurusan; ?></td>
                     <td><?= $a->tanggal; ?></td>
-                    <td><button>Aktifkan</button></td>
+                    <td>
+                      <?php
+                      if ($a->is_active == 1) {
+                        echo 'Aktif';
+                      } else {
+                        echo 'Nonaktif';
+                      } ?>
+                    </td>
+                    <td>
+                      <?php
+                      if ($a->is_active == 1) {
+                        echo  '<a class="badge badge-primary" href="">Nonaktifkan</a> | <a class="badge badge-danger" href="">Hapus</a>';
+                      } else {
+                        echo '<a class="badge badge-danger" href="">Hapus</a>';
+                      }
+                      ?>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

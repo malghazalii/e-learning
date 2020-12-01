@@ -14,6 +14,7 @@ class EssayEvent extends CI_Controller
         $data['mengajar'] = $this->db->query($queryMengajar)->result();
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
+        $this->load->view('users/templates/navPilihan');
         $this->load->view('users/guru/create_event/esai');
         $this->load->view('users/templates/footer');
     }

@@ -8,8 +8,8 @@ class UploadMateri extends CI_Controller
         $data['title'] = 'Upload Materi';
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
+        $this->load->view('users/templates/navPilihan', $data);
         $this->load->view('users/guru/uploadmateri');
         $this->load->view('users/templates/footer');
-
     }
 }

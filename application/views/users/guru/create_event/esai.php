@@ -2,14 +2,21 @@
 <div class="container py-xl-5 py-lg-3">
 		<div class="card">
   		<div class="card-header">
-		  <div class="form-group">
+		  <div class="container">
+                <div class="form-group">
 					<div class="row">
+					<label for="birthDate" class="col-sm-2 control-label"><strong>Pilih Tugas</strong></label>
 					<div class="col-sm-3">
-                    <div class="panel-heading"><b>Data Soal</b>
-           </div>
+                        <select style="height:35px;" id="country" class="form-control">
+                            <option>Tugas Uraian</option>
+                            <option>Tugas PIlihan Ganda</option>
+                            <option>Kuis</option>
+                            <option>Upload materi</option>
+                        </select>
 					</div>
 					</div>
-				</div>
+			</div>
+        </div>
   		</div>
   		<div class="card-body">
 		  <form class="form-horizontal" role="form">

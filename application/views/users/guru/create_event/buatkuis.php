@@ -56,7 +56,7 @@
 				</div>
                 <div class="form-group">
 					<div class="row">
-                    <label for="namatugas" class="col-sm-3 control-label">Nama tugas</label>
+                    <label for="namatugas" class="col-sm-3 control-label">Nama Kuis</label>
                     <div class="col-sm-9">
                         <input type="text" id="namatugas" placeholder="nama tugas" class="form-control" autofocus>
 					</div>

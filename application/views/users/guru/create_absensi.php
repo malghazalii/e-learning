@@ -7,12 +7,12 @@
             <div class="w3ls-cource-first">
                <div class="px-md-5 px-4  pb-md-5 pb-4">
 
-                  <form action="<?= base_url('User/Guru/KelasAbsen/Input'); ?>" method="POST">
+                  <form action="<?= base_url('User/Guru/KelasAbsen/Input/' . $mengajar->id_mengajar); ?>" method="POST">
                      <table width="452" cellpadding="5" cellspacing="1" style="padding: 2px">
                         <tr>
                            <td width="150">Tanggal</td>
                            <td width="80">:</td>
-                           <td width="250"><input readonly type="text" id="tanggal" name="tanggal" value="<?= $mengajar->tanggal; ?>"></td>
+                           <td width="250"><input readonly type="text" id="tanggal" name="tanggal" value="<?= $tanggal; ?>"></td>
                         </tr>
                         <br>
                         <tr>
@@ -40,9 +40,9 @@
                            <td>
                         </tr>
                      </table>
+                     <br>
+                     <button type="submit" class="btn btn-primary">kirim</button>
                   </form>
-                  <br>
-                  <button type="button" class="btn btn-primary">kirim</button>
                </div>
             </div>
          </div>

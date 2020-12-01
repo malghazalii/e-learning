@@ -30,10 +30,6 @@ class KelasAbsen extends CI_Controller
     JOIN kelas ON kelas.id_kelas=penjurusan.id_kelas
     WHERE mengajar.nip = $nip";
 
-    $querytryabsen = "SELECT * FROM `tr_absen_guru` join absen_guru on absen_guru.id_absen = tr_absen_guru.id_absen 
-    WHERE absen_guru.is_active=1 and tr_absen_guru.nip=$nip";
-
-    $data['absensi'] = $this->db->query($querytryabsen)->row();
     $data['title'] = 'Buat Absen';
     $data['mengajar'] = $this->db->query($queryMengajar)->result();
     $data['absen'] = $this->db->query($queryAbsen)->result();
@@ -47,8 +43,36 @@ class KelasAbsen extends CI_Controller
   public function Tampil($id)
   {
     $nip = $this->session->userdata('nip');
-    $querytryabsen = "SELECT * FROM `tr_absen_guru` join absen_guru on absen_guru.id_absen = tr_absen_guru.id_absen 
-		WHERE absen_guru.is_active=1 and tr_absen_guru.nip=$nip";
+    $data['tanggal'] = date('y-m-d');
+
+    // $queryAbsen = "SELECT * FROM `absen_siswa`";
+    $queryAbsen = "SELECT * FROM `absen_siswa` 
+    JOIN mengajar on mengajar.id_mengajar=absen_siswa.id_mengajar
+    JOIN guru ON guru.nip=mengajar.nip
+    JOIN mata_pelajaran ON mata_pelajaran.id_mapel=mengajar.id_mapel
+    JOIN penjurusan on penjurusan.id_jurusan=mengajar.id_jurusan
+    JOIN kelas ON kelas.id_kelas=penjurusan.id_kelas
+    WHERE mengajar.nip = $nip";
+
+    $queryMengajar = "SELECT * FROM mengajar 
+    JOIN guru ON guru.nip=mengajar.nip
+    JOIN mata_pelajaran ON mata_pelajaran.id_mapel=mengajar.id_mapel
+    JOIN penjurusan on penjurusan.id_jurusan=mengajar.id_jurusan
+    JOIN kelas ON kelas.id_kelas=penjurusan.id_kelas
+    WHERE mengajar.nip = $nip AND mengajar.id_mengajar=$id";
+
+    $data['absen'] = $this->db->query($queryAbsen)->result();
+    $data['mengajar'] = $this->db->query($queryMengajar)->row();
+
+    $data['title'] = 'Buat Absen';
+    $this->load->view('users/templates/header', $data);
+    $this->load->view('users/templates/navguru');
+    $this->load->view('users/guru/create_absensi');
+    $this->load->view('users/templates/footer');
+  }
+  public function TampilU($id)
+  {
+    $nip = $this->session->userdata('nip');
 
     // $queryAbsen = "SELECT * FROM `absen_siswa`";
     $queryAbsen = "SELECT * FROM `absen_siswa` 
@@ -65,16 +89,43 @@ class KelasAbsen extends CI_Controller
     JOIN mata_pelajaran ON mata_pelajaran.id_mapel=mengajar.id_mapel
     JOIN penjurusan on penjurusan.id_jurusan=mengajar.id_jurusan
     JOIN kelas ON kelas.id_kelas=penjurusan.id_kelas
-    WHERE mengajar.nip = $nip";
-    
+    WHERE absen_siswa.id_absen = $id";
+
     $data['absen'] = $this->db->query($queryAbsen)->result();
-    $data['absensi'] = $this->db->query($querytryabsen)->row();
     $data['mengajar'] = $this->db->query($queryMengajar)->row();
 
     $data['title'] = 'Buat Absen';
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navguru');
-    $this->load->view('users/guru/create_absensi');
+    $this->load->view('users/guru/update_absensi');
     $this->load->view('users/templates/footer');
+  }
+  public function Input($id)
+  {
+    $data = [
+      'id_mengajar' => $id,
+      'tanggal' => date('y-m-d'),
+      'is_active' => 1
+    ];
+    $this->db->insert('absen_siswa', $data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Absen berhasil di aktifkan</div>');
+    redirect('User/Guru/KelasAbsen');
+  }
+  public function update($id)
+  {
+    $data = [
+      'tanggal' => date('y-m-d'),
+      'is_active' => 0
+    ];
+    $this->db->where('id_absen', $id)->update('absen_siswa', $data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Absen berhasil di non aktifkan</div>');
+    redirect('User/Guru/KelasAbsen');
+  }
+
+  public function Delete($id)
+  {
+    $this->db->where('id_absen', $id)->delete('absen_siswa');
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data yang anda pilih telah terhapus</div>');
+    redirect('User/Guru/KelasAbsen');
   }
 }

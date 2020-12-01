@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Nov 2020 pada 14.40
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.2.34
+-- Waktu pembuatan: 01 Des 2020 pada 06.32
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,20 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `absensi`
---
-
-CREATE TABLE `absensi` (
-  `id_absen` int(11) NOT NULL,
-  `nis` varchar(20) NOT NULL,
-  `status` enum('hadir','alpha','sakit','ijin') NOT NULL,
-  `tanggal_absen` datetime NOT NULL,
-  `id_mengajar` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `absen_guru`
 --
 
@@ -45,6 +32,26 @@ CREATE TABLE `absen_guru` (
   `id_absen` int(11) NOT NULL,
   `tgl` datetime NOT NULL,
   `is_active` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `absen_guru`
+--
+
+INSERT INTO `absen_guru` (`id_absen`, `tgl`, `is_active`) VALUES
+(7, '2020-11-30 21:24:59', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `absen_siswa`
+--
+
+CREATE TABLE `absen_siswa` (
+  `id_absen` int(11) NOT NULL,
+  `id_mengajar` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -217,9 +224,21 @@ CREATE TABLE `materi` (
 
 CREATE TABLE `mengajar` (
   `id_mengajar` int(11) NOT NULL,
-  `id_guru` int(11) NOT NULL,
-  `id_mapel` int(11) NOT NULL
+  `nip` varchar(20) NOT NULL,
+  `id_mapel` int(11) NOT NULL,
+  `id_jurusan` int(11) NOT NULL,
+  `jam` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mengajar`
+--
+
+INSERT INTO `mengajar` (`id_mengajar`, `nip`, `id_mapel`, `id_jurusan`, `jam`) VALUES
+(1, '2567', 2, 9, '02:00:00'),
+(2, '2567', 6, 10, '02:00:00'),
+(3, '3232342', 2, 8, '02:00:00'),
+(4, '231452', 2, 3, '05:00:00');
 
 -- --------------------------------------------------------
 
@@ -306,6 +325,34 @@ CREATE TABLE `tr_absen_guru` (
   `status` int(1) NOT NULL COMMENT '1=hadir, 2=sakit, 3=ijin, 4=alpa'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tr_absen_guru`
+--
+
+INSERT INTO `tr_absen_guru` (`id_absen`, `nip`, `status`) VALUES
+(4, '2567', 1),
+(7, '2567', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tr_absen_siswa`
+--
+
+CREATE TABLE `tr_absen_siswa` (
+  `id_absen` int(11) NOT NULL,
+  `nis` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tr_absen_siswa`
+--
+
+INSERT INTO `tr_absen_siswa` (`id_absen`, `nis`, `status`) VALUES
+(1, '0099', 1),
+(1, '6971', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -364,15 +411,15 @@ INSERT INTO `wali_kelas` (`id_walikelas`, `nip`, `id_jurusan`) VALUES
 --
 
 --
--- Indeks untuk tabel `absensi`
---
-ALTER TABLE `absensi`
-  ADD PRIMARY KEY (`id_absen`);
-
---
 -- Indeks untuk tabel `absen_guru`
 --
 ALTER TABLE `absen_guru`
+  ADD PRIMARY KEY (`id_absen`);
+
+--
+-- Indeks untuk tabel `absen_siswa`
+--
+ALTER TABLE `absen_siswa`
   ADD PRIMARY KEY (`id_absen`);
 
 --
@@ -427,7 +474,10 @@ ALTER TABLE `materi`
 -- Indeks untuk tabel `mengajar`
 --
 ALTER TABLE `mengajar`
-  ADD PRIMARY KEY (`id_mengajar`);
+  ADD PRIMARY KEY (`id_mengajar`),
+  ADD KEY `nip` (`nip`),
+  ADD KEY `id_jurusan` (`id_jurusan`),
+  ADD KEY `id_mapel` (`id_mapel`);
 
 --
 -- Indeks untuk tabel `penjurusan`
@@ -446,6 +496,13 @@ ALTER TABLE `siswa`
 --
 ALTER TABLE `soal`
   ADD PRIMARY KEY (`id_soal`);
+
+--
+-- Indeks untuk tabel `tr_absen_siswa`
+--
+ALTER TABLE `tr_absen_siswa`
+  ADD KEY `id_absen` (`id_absen`),
+  ADD KEY `nis` (`nis`);
 
 --
 -- Indeks untuk tabel `tugas`
@@ -470,16 +527,16 @@ ALTER TABLE `wali_kelas`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `absensi`
---
-ALTER TABLE `absensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT untuk tabel `absen_guru`
 --
 ALTER TABLE `absen_guru`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `absen_siswa`
+--
+ALTER TABLE `absen_siswa`
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `golongan`
@@ -503,7 +560,7 @@ ALTER TABLE `jawaban_tugas`
 -- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `mata_pelajaran`
@@ -521,7 +578,7 @@ ALTER TABLE `materi`
 -- AUTO_INCREMENT untuk tabel `mengajar`
 --
 ALTER TABLE `mengajar`
-  MODIFY `id_mengajar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mengajar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjurusan`
@@ -551,7 +608,19 @@ ALTER TABLE `ujian`
 -- AUTO_INCREMENT untuk tabel `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
-  MODIFY `id_walikelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_walikelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `mengajar`
+--
+ALTER TABLE `mengajar`
+  ADD CONSTRAINT `mengajar_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `guru` (`nip`),
+  ADD CONSTRAINT `mengajar_ibfk_2` FOREIGN KEY (`id_jurusan`) REFERENCES `penjurusan` (`id_jurusan`),
+  ADD CONSTRAINT `mengajar_ibfk_3` FOREIGN KEY (`id_mapel`) REFERENCES `mata_pelajaran` (`id_mapel`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,6 +3,7 @@
     <h3 class="title text-capitalize font-weight-light text-dark text-center mb-sm-5 mb-4">Tabel Absen
     </h3>
     <div class="row justify-content-center pt-7">
+      <?= $this->session->flashdata('message'); ?>
       <div class="col-lg-10 agile-course-main">
         <div class="w3ls-cource-first">
           <div class="px-md-5 px-4  pb-md-5 pb-4">
@@ -83,10 +84,11 @@
                     </td>
                     <td>
                       <?php
-                      if ($a->is_active == 1) {
-                        echo  '<a class="badge badge-primary" href="">Nonaktifkan</a> | <a class="badge badge-danger" href="">Hapus</a>';
-                      } else {
-                        echo '<a class="badge badge-danger" href="">Hapus</a>';
+                      if ($a->is_active == 1) { ?>
+                        <a class="badge badge-primary" href="<?= base_url('User/Guru/KelasAbsen/TampilU/' . $a->id_absen); ?>">Nonaktifkan</a> | <a class="badge badge-danger" href="<?= base_url('User/Guru/KelasAbsen/TampilU/' . $a->id_absen); ?>">Hapus</a>'
+                      <?php } else { ?>
+                        <a class="badge badge-danger" onclick="javasciprt: return confirm('Anda Yakin Non-Aktifkan ?')" href="<?= base_url('User/Guru/KelasAbsen/Delete/' . $a->id_absen); ?>">Hapus</a>'
+                      <?php
                       }
                       ?>
                     </td>

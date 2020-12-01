@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="buttons-w3ls">
-					<a class="btn bg-dark text-white" href="form.html" role="button">Apply Now</a>
+					<a class="btn bg-dark text-white" href="form.html" role="button">Go to activity</a>
 				</div>
             </div>
             <br>
@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div class="buttons-w3ls">
-					<a class="btn bg-dark text-white" href="form.html" role="button">Apply Now</a>
+					<a class="btn bg-dark text-white" href="form.html" role="button">Go to activity</a>
 				</div>
 			</div>
 		</div>

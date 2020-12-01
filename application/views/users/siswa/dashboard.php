@@ -41,6 +41,8 @@
 										<ul class="wthree_blog_events_list mt-2">
 											<li class="mr-2 text-dark">
 												<i class="far fa-calendar-alt  mr-2"></i>4 Months</li>
+												<li class="my-3">
+												<i class="fas fa-clock mr-3"></i>4 - 6 hours</li>
 											
 										</ul>
 									</div>
@@ -58,6 +60,8 @@
 										<ul class="wthree_blog_events_list mt-2">
 											<li class="mr-2 text-dark">
 												<i class="far fa-calendar-alt mr-2"></i>8 Months</li>
+												<li class="my-3">
+												<i class="fas fa-clock mr-3"></i>4 - 6 hours</li>
 											
 										</ul>
 									</div>
@@ -75,6 +79,8 @@
 										<ul class="wthree_blog_events_list mt-2">
 											<li class="mr-2 text-dark">
 												<i class="far fa-calendar-alt mr-2"></i>1 Year</li>
+												<li class="my-3">
+												<i class="fas fa-clock mr-3"></i>4 - 6 hours</li>
 											
 										</ul>
 									</div>
@@ -98,6 +104,8 @@
 										<ul class="wthree_blog_events_list mt-2">
 											<li class="mr-2 text-dark">
 												<i class="far fa-calendar-alt  mr-2"></i>4 Months</li>
+												<li class="my-3">
+												<i class="fas fa-clock mr-3"></i>4 - 6 hours</li>
 											
 										</ul>
 									</div>
@@ -115,6 +123,8 @@
 										<ul class="wthree_blog_events_list mt-2">
 											<li class="mr-2 text-dark">
 												<i class="far fa-calendar-alt mr-2"></i>8 Months</li>
+												<li class="my-3">
+												<i class="fas fa-clock mr-3"></i>4 - 6 hours</li>
 											
 										</ul>
 									</div>
@@ -132,6 +142,8 @@
 										<ul class="wthree_blog_events_list mt-2">
 											<li class="mr-2 text-dark">
 												<i class="far fa-calendar-alt mr-2"></i>1 Year</li>
+												<li class="my-3">
+												<i class="fas fa-clock mr-3"></i>4 - 6 hours</li>
 											
 										</ul>
 									</div>

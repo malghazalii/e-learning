@@ -13,7 +13,7 @@ class Dataguru extends CI_Controller
 
   public function index()
   {
-    $data['title'] = 'Data Guru';
+    $data['title'] = 'Guru';
     $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
     $data['guru'] = $this->m_dataguru->TampilGuru()->result();
     $this->load->view('admin/templates/header', $data);

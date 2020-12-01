@@ -28,9 +28,25 @@
        <?php else : ?>
        <li class="nav-item">
        <?php endif; ?>
-       <a class="nav-link" href="<?= base_url('Admin/dataguru'); ?>">
+       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
          <i class="fas fa-fw fa-layer-group"></i>
-         <span>Data Guru</span></a>
+         <span>Data Guru</span>
+       </a>
+       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+         <div class="bg-white py-2 collapse-inner rounded">
+           <h6 class="collapse-header">Data Guru:</h6>
+           <?php if ($title == 'Guru') : ?>
+             <a class="collapse-item active" href="<?= base_url('Admin/Dataguru'); ?>">Guru</a>
+           <?php else : ?>
+             <a class="collapse-item" href="<?= base_url('Admin/Dataguru'); ?>">Guru</a>
+           <?php endif; ?>
+           <?php if ($title == 'Guru Mengajar') : ?>
+             <a class="collapse-item active" href="<?= base_url('Admin/GuruMengajar'); ?>">Guru Mengajar</a>
+           <?php else : ?>
+             <a class="collapse-item" href="<?= base_url('Admin/GuruMengajar'); ?>">Guru Mengajar</a>
+           <?php endif; ?>
+         </div>
+       </div>
        </li>
 
        <!-- Nav Item - Dashboard -->

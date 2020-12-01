@@ -13,7 +13,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Courses
+                            Mata Pelajaran
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="language.html">Language</a>
@@ -23,23 +23,6 @@
                             <a class="dropdown-item" href="social_media.html">Social Media</a>
                             <a class="dropdown-item" href="photography.html">Photography</a>
                             <a class="dropdown-item" href="course_details.html">Course Details</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="form.html">Apply Now</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pages
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="about.html">Instructors</a>
-                            <a class="dropdown-item" href="index.html">What We Do</a>
-                            <a class="dropdown-item active" href="login.html">Login</a>
-                            <a class="dropdown-item" href="register.html">Register</a>
-                            <a class="dropdown-item" href="404.html">404 Page</a>
-                            <a class="dropdown-item" href="coming_soon.html">Coming Soon</a>
-                            <a class="dropdown-item" href="form.html">Admission Form</a>
-                            <a class="dropdown-item" href="faq.html">Faq</a>
                         </div>
                     </li>
                     <li class="nav-item">

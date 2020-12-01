@@ -41,7 +41,7 @@
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">Waktu</h6>
                     </label>
-                    <input type="time" class="form-control" name="jam" id="jam" placeholder="waktu" value="" />
+                    <input type="time" class="form-control col-sm-2" name="jam" id="jam" placeholder="waktu" value="" />
                     <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>

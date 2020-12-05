@@ -11,11 +11,11 @@ class Auth extends CI_Controller
 
     public function index()
     {
-              $data['title'] = 'Login';
-              $this->load->view('users/templates/header', $data);
-              $this->load->view('users/login');
-              $this->load->view('users/templates/footer');
-      }
+        $data['title'] = 'Login';
+        $this->load->view('users/templates/header', $data);
+        $this->load->view('users/login');
+        $this->load->view('users/templates/footer');
+    }
     public function login()
     {
         $name = $this->input->post('name');
@@ -24,7 +24,7 @@ class Auth extends CI_Controller
         $user = $this->db->get_where('siswa', ['nis' => $name])->row_array();
         $guru = $this->db->get_where('guru', ['nip' => $name])->row_array();
         if ($user) {
-            if ($password == $user['password']) {
+            if (md5($password) == $user['password']) {
                 $data = [
                     'nis' => $user['nis']
                 ];
@@ -35,7 +35,7 @@ class Auth extends CI_Controller
                 redirect('Auth');
             }
         } else if ($guru) {
-            if ($password == $guru['password']) {
+            if (md5($password) == $guru['password']) {
                 $data = [
                     'nip' => $guru['nip']
                 ];

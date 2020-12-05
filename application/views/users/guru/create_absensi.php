@@ -10,9 +10,9 @@
                   <form action="<?= base_url('User/Guru/KelasAbsen/Input/' . $mengajar->id_mengajar); ?>" method="POST">
                      <table width="452" cellpadding="5" cellspacing="1" style="padding: 2px">
                         <tr>
-                           <td width="150">Tanggal</td>
+                           <td width="150">Tanggal Berakhir</td>
                            <td width="80">:</td>
-                           <td width="250"><input readonly type="text" id="tanggal" name="tanggal" value="<?= $tanggal; ?>"></td>
+                           <td width="250"><input type="text" id="tanggal" name="tanggal"></td>
                         </tr>
                         <br>
                         <tr>

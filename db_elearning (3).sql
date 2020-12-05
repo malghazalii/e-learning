@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Des 2020 pada 06.32
+-- Waktu pembuatan: 05 Des 2020 pada 20.07
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -22,6 +22,25 @@ SET time_zone = "+00:00";
 -- Database: `db_elearning`
 --
 
+DELIMITER $$
+--
+-- Fungsi
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `SimpleCompare` (`n` INT, `m` INT) RETURNS VARCHAR(20) CHARSET latin1 BEGIN
+    DECLARE s VARCHAR(20);
+
+    IF n > m THEN SET s = '>';
+    ELSEIF n = m THEN SET s = '=';
+    ELSE SET s = '<';
+    END IF;
+
+    SET s = CONCAT(n, ' ', s, ' ', m);
+
+    RETURN s;
+  END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -30,16 +49,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `absen_guru` (
   `id_absen` int(11) NOT NULL,
-  `tgl` datetime NOT NULL,
-  `is_active` int(1) NOT NULL
+  `tanggal_berakhir` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `absen_guru`
 --
 
-INSERT INTO `absen_guru` (`id_absen`, `tgl`, `is_active`) VALUES
-(7, '2020-11-30 21:24:59', 1);
+INSERT INTO `absen_guru` (`id_absen`, `tanggal_berakhir`) VALUES
+(7, '2020-12-02 04:45:58'),
+(8, '2020-12-03 04:45:52'),
+(9, '2020-12-04 04:45:50'),
+(10, '2020-12-05 04:45:59'),
+(11, '2020-12-06 04:51:44'),
+(12, '2020-12-07 04:51:45');
 
 -- --------------------------------------------------------
 
@@ -54,6 +77,13 @@ CREATE TABLE `absen_siswa` (
   `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `absen_siswa`
+--
+
+INSERT INTO `absen_siswa` (`id_absen`, `id_mengajar`, `tanggal`, `is_active`) VALUES
+(1, 2, '2020-12-03', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -63,7 +93,7 @@ CREATE TABLE `absen_siswa` (
 CREATE TABLE `admin` (
   `nama` varchar(30) NOT NULL,
   `nip` varchar(20) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `no_telp` varchar(13) NOT NULL,
   `email` varchar(150) NOT NULL,
@@ -76,7 +106,18 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`nama`, `nip`, `password`, `alamat`, `no_telp`, `email`, `jenis_kelamin`, `is_active`) VALUES
-('Abdul', '123123', '123', 'Jember', '0895358129878', 'unyinga@gmail.com', 'laki-laki', 0);
+('Abdul', '123123', '202cb962ac59075b964b07152d234b70', 'Jember', '0895358129878', 'unyinga@gmail.com', 'laki-laki', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `dt_absen_guru`
+--
+
+CREATE TABLE `dt_absen_guru` (
+  `id_tr_absen` int(11) NOT NULL,
+  `id_absen` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -106,7 +147,7 @@ INSERT INTO `golongan` (`id_gol`, `nama_golongan`) VALUES
 CREATE TABLE `guru` (
   `nip` varchar(20) NOT NULL,
   `nama` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `jenis_kelamin` enum('laki-laki','wanita') NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `no_hp` varchar(13) NOT NULL,
@@ -118,10 +159,10 @@ CREATE TABLE `guru` (
 --
 
 INSERT INTO `guru` (`nip`, `nama`, `password`, `jenis_kelamin`, `alamat`, `no_hp`, `id_gol`) VALUES
-('123456', 'sulis ku', '1234', 'laki-laki', 'lumajang', '089667788776', 1),
-('231452', 'gfdddsaf', 'sma1jaya', 'laki-laki', 'jhfgdfb', '13414', 2),
-('2567', 'samsul', '1234', 'laki-laki', 'Jember', '0895359914312', 2),
-('3232342', 'ssfasdffas', 'sma1jaya', 'laki-laki', 'asfdas', '34432454', 1);
+('123456', 'sulis ku', '81dc9bdb52d04dc20036dbd8313ed055', 'laki-laki', 'lumajang', '089667788776', 1),
+('231452', 'gfdddsaf', '86ada79e49d513c454aca555cdb60037', 'laki-laki', 'jhfgdfb', '13414', 2),
+('2567', 'samsul', '81dc9bdb52d04dc20036dbd8313ed055', 'laki-laki', 'Jember', '0895359914312', 2),
+('3232342', 'ssfasdffas', '86ada79e49d513c454aca555cdb60037', 'laki-laki', 'asfdas', '34432454', 1);
 
 -- --------------------------------------------------------
 
@@ -277,7 +318,7 @@ CREATE TABLE `siswa` (
   `alamat` varchar(50) NOT NULL,
   `agama` enum('Islam','Kristen','Hindu','Buddha','Katholik') NOT NULL,
   `no_hp` varchar(13) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `id_jurusan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -286,8 +327,10 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`nis`, `nama`, `jenis_kelamin`, `alamat`, `agama`, `no_hp`, `password`, `id_jurusan`) VALUES
-('0099', 'Dana', 'perempuan', 'Madiun', 'Islam', '089678876678', '1234', 1),
-('6971', 'Ihza lol', 'laki-laki', 'Perumahan Muktisari Blok AE 5', 'Kristen', '087654321456', '1234', 3);
+('0099', 'Dana', 'perempuan', 'Madiun', 'Islam', '089678876678', '81dc9bdb52d04dc20036dbd8313ed055', 1),
+('123', 'ali', 'laki-laki', 'jember', 'Islam', '2321323', '86ada79e49d513c454aca555cdb60037', 2),
+('2333', 'Kaleng', 'perempuan', 'jember', 'Islam', '2333', '86ada79e49d513c454aca555cdb60037', 2),
+('6971', 'Ihza lol', 'laki-laki', 'Perumahan Muktisari Blok AE 5', 'Kristen', '087654321456', '81dc9bdb52d04dc20036dbd8313ed055', 3);
 
 -- --------------------------------------------------------
 
@@ -330,8 +373,9 @@ CREATE TABLE `tr_absen_guru` (
 --
 
 INSERT INTO `tr_absen_guru` (`id_absen`, `nip`, `status`) VALUES
-(4, '2567', 1),
-(7, '2567', 1);
+(7, '2567', 1),
+(11, '2567', 1),
+(12, '2567', 4);
 
 -- --------------------------------------------------------
 
@@ -530,13 +574,13 @@ ALTER TABLE `wali_kelas`
 -- AUTO_INCREMENT untuk tabel `absen_guru`
 --
 ALTER TABLE `absen_guru`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `absen_siswa`
 --
 ALTER TABLE `absen_siswa`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `golongan`

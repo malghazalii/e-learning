@@ -21,7 +21,7 @@ class Auth extends CI_Controller
     $user = $this->db->get_where('admin', ['nip' => $nip])->row_array();
 
     if ($user) {
-      if ($password == $user['password']) {
+      if (md5($password) == $user['password']) {
         $data = [
           'nip' => $user['nip']
         ];

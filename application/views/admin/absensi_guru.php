@@ -1,6 +1,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div style="padding-bottom: 10px;">
+        <input type="text" id="tanggal" placeholder="Tanggal Berakhir" class="form-control" autofocus>
         <a href="<?= base_url('Admin/absensi_guru/simpanData'); ?>" class="btn btn-primary">Aktifkan Absen</a>
     </div>
     <?= $this->session->flashdata('message'); ?>
@@ -14,26 +15,15 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Tanggal Absen</th>
-                            <th>Status Absen</th>
+                            <th>Tanggal Berakhir Absen</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($absen as $a) : ?>
                             <tr>
-                                <td><?= $a->tgl ?></td>
-                                <td><?php if ($a->is_active == 1) echo 'Aktif' ?> <?php if ($a->is_active == 0) echo 'Non-Aktif' ?></td>
-                                <td>
-                                    <?php
-                                    if ($a->is_active == 1) {
-                                        echo anchor(base_url('Admin/Absensi_Guru/update/' . $a->id_absen), 'Non-Aktifkan', 'onclick="javasciprt: return confirm(\'Anda Yakin Non-Aktifkan ?\')"');
-                                        echo ' | ';
-                                    } else {
-                                    }
-                                    echo anchor(base_url('Admin/Absensi_Guru/delete/' . $a->id_absen), 'Hapus', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
-                                    ?>
-                                </td>
+                                <td><?= $a->tanggal_berakhir ?></td>
+                                <td><a class="badge badge-danger" href="<?= base_url('Admin/Absensi_Guru/delete/' . $a->id_absen); ?>">Hapus</a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

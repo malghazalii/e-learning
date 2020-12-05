@@ -13,34 +13,39 @@ class Absensi extends CI_Controller
         $nip = $this->session->userdata('nip');
 
         $querytrabsen = "SELECT * FROM `tr_absen_guru` join absen_guru on absen_guru.id_absen = tr_absen_guru.id_absen 
-        WHERE tr_absen_guru.nip=$nip";
+        WHERE tr_absen_guru.nip=$nip ";
 
         $querytryabsen = "SELECT * FROM `tr_absen_guru` join absen_guru on absen_guru.id_absen = tr_absen_guru.id_absen 
-        WHERE absen_guru.is_active=1 and tr_absen_guru.nip=$nip";
+        WHERE tr_absen_guru.nip=$nip";
 
-        $queryabsen = "SELECT * FROM `absen_guru` WHERE absen_guru.is_active=1";
+        $queryabsen = "SELECT *
+        FROM absen_guru
+        WHERE NOT EXISTS
+        (SELECT * FROM tr_absen_guru WHERE absen_guru.id_absen=tr_absen_guru.id_absen) ";
+
 
         $data['title'] = 'Absensi';
         $data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['absen'] = $this->db->query($querytrabsen)->result();
         $data['absensi'] = $this->db->query($querytryabsen)->row();
-        $data['tanggal'] = $this->db->query($queryabsen)->row();
+        $data['tanggal'] = $this->db->query($queryabsen)->result();
+
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru', $data);
         $this->load->view('users/guru/absensi');
         $this->load->view('users/templates/footer');
     }
 
-    public function status()
+    public function status($id)
     {
         $nip = $this->session->userdata('nip');
 
         $querytryabsen = "SELECT * FROM `tr_absen_guru` join absen_guru on absen_guru.id_absen = tr_absen_guru.id_absen 
-        WHERE absen_guru.is_active=1 and tr_absen_guru.nip=$nip";
+        WHERE tr_absen_guru.nip=$nip ";
 
-        $queryabsen = "SELECT * FROM `absen_guru` WHERE absen_guru.is_active=1";
+        $queryabsen = "SELECT * FROM `absen_guru` WHERE id_absen=$id";
 
-        $data['title'] = 'Absensi';
+        $data['title'] = 'Abs ensi';
         $data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['tampil'] = $this->db->query($queryabsen)->row();
         $data['absensi'] = $this->db->query($querytryabsen)->row();

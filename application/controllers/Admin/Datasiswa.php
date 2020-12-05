@@ -83,7 +83,7 @@ class Datasiswa extends CI_Controller
         'alamat' => $alamat,
         'agama' => $agama,
         'no_hp' => $no_hp,
-        'password' => $password,
+        'password' => md5($password),
         'id_jurusan' => $id_kelas
       ];
 
@@ -132,7 +132,7 @@ class Datasiswa extends CI_Controller
         'alamat' => $alamat,
         'agama' => $agama,
         'no_hp' => $no_hp,
-        'password' => $password,
+        'password' => md5($password),
         'id_jurusan' => $id_kelas
       ];
 

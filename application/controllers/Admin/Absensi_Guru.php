@@ -25,7 +25,7 @@ class Absensi_Guru extends CI_Controller
     public function simpanData()
     {
         $data = [
-            'tgl' => date('y-m-d H:i:s'),
+            'tanggal_berakhir' => date('y-m-d H:i:s'),
             'is_active' => 1
         ];
 
@@ -43,7 +43,7 @@ class Absensi_Guru extends CI_Controller
     public function update($id)
     {
         $data = [
-            'tgl' => date('y-m-d H:i:s'),
+            'tanggal_berakhir' => date('y-m-d H:i:s'),
             'is_active' => 0
         ];
         $simpan = $this->m_absensi_guru->update($data, $id);

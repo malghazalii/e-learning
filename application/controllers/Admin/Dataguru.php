@@ -73,7 +73,7 @@ class Dataguru extends CI_Controller
       $data = [
         'nip' => $nip,
         'nama' => $nama,
-        'password' => $password,
+        'password' => md5($password),
         'jenis_kelamin' => $jenis_kelamin,
         'alamat' => $alamat,
         'no_hp' => $no_hp,
@@ -121,7 +121,7 @@ class Dataguru extends CI_Controller
       $data = [
         'nip' => $nip,
         'nama' => $nama,
-        'password' => $password,
+        'password' => md5($password),
         'jenis_kelamin' => $jenis_kelamin,
         'alamat' => $alamat,
         'no_hp' => $no_hp,

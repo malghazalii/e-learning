@@ -3,7 +3,7 @@ class m_absensi_guru extends CI_Model
 {
     public function TampilAbsen()
     {
-        return $this->db->order_by('tgl', 'DESC')->get('absen_guru')->result();
+        return $this->db->order_by('tanggal_berakhir', 'DESC')->get('absen_guru')->result();
     }
 
     public function insert($data)

@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
                 <ul class="navbar-nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="index.html">Dashboard
+                        <a class="nav-link text-white" href="<?= base_url('User/Siswa/Dashboard')?>">Dashboard
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -26,7 +26,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="blog.html">Event</a>
+                        <a class="nav-link text-white" href="<?= base_url('User/Siswa/Event')?>">Event</a>
                     </li>
                 </ul>
 

@@ -54,7 +54,7 @@
                         <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>welcome to eLearning</h1>
                     <!-- social icons -->
                     <div class="social-icons text-right col-5">
-                        <a href="login.html" class="button-head-mow3 text-white">Login</a>
+                        <a href="<?= base_url()?>" class="button-head-mow3 text-white">Login</a>
                     </div>
                     <!-- //social icons -->
                 </div>

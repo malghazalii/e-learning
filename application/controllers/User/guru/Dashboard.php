@@ -13,7 +13,7 @@ class Dashboard extends CI_Controller
   public function index()
   {
 
-    $data['title'] = "Dec 9, 2020 15:37:25";
+    $data['title'] = "Dashboard";
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navguru', $data);
     $this->load->view('users/guru/dashboard', $data);

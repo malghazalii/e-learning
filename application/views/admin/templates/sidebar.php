@@ -101,14 +101,14 @@
                      <a class="collapse-item" href="<?= base_url('Admin/Absensi_Guru'); ?>">Aktif/NonAktif</a>
                    <?php endif; ?>
                    <?php if ($title == 'Absensi Guru PNS') : ?>
-                     <a class="collapse-item active" href="<?= base_url('Admin/Absensi_Guru'); ?>">Absensi Guru PNS</a>
+                     <a class="collapse-item active" href="<?= base_url('Admin/Dataabsenpns'); ?>">Absensi Guru PNS</a>
                    <?php else : ?>
-                     <a class="collapse-item" href="<?= base_url('Admin/Absensi_Guru'); ?>">Absensi Guru PNS</a>
+                     <a class="collapse-item" href="<?= base_url('Admin/Dataabsenpns'); ?>">Absensi Guru PNS</a>
                    <?php endif; ?>
                    <?php if ($title == 'Absensi Guru Non PNS') : ?>
-                     <a class="collapse-item active" href="<?= base_url('Admin/Absensi_Guru'); ?>">Absensi Guru Non PNS</a>
+                     <a class="collapse-item active" href="<?= base_url('Admin/Dataabsengtt'); ?>">Absensi Guru GTT</a>
                    <?php else : ?>
-                     <a class="collapse-item" href="<?= base_url('Admin/Absensi_Guru'); ?>">Absensi Guru Non PNS</a>
+                     <a class="collapse-item" href="<?= base_url('Admin/Dataabsengtt'); ?>">Absensi Guru GTT</a>
                    <?php endif; ?>
                  </div>
                </div>

@@ -12,8 +12,8 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
                                 <a class="dropdown-item" href="<?= base_url('User/siswa/Absensi'); ?>">Semua Mapel</a>
-                                <a class="dropdown-item" href="<?= base_url('User/siswa/Absensi/bahasaindonesia'); ?>">Bahasa Indonesia</a>
-                                <a class="dropdown-item" href="<?= base_url('User/siswa/absensi/matematika'); ?>">Matematika</a>
+                                <a class="dropdown-item" href="<?= base_url('User/siswa/absen/bahasaindonesia'); ?>">Bahasa Indonesia</a>
+                                <a class="dropdown-item" href="<?= base_url('User/siswa/absen/matematika'); ?>">Matematika</a>
                             </div>
                         </div>
                     </div>

@@ -21,8 +21,6 @@
 							<label for="status">sakit</label><br />
 							<input type="radio" id="status" name="status" value="3">
 							<label for="status">ijin</label><br />
-							<input type="radio" id="status" name="status" value="4">
-							<label for="status">terlambat</label><br />
 
 
 

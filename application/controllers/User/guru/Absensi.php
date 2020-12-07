@@ -71,4 +71,29 @@ class Absensi extends CI_Controller
 
         redirect('User/Guru/Absensi', $simpan);
     }
+    public function updateData($id)
+    {
+        $nip = $this->session->userdata('nip');
+        // $total = "SELECT COUNT(absen_guru.id_absen) AS id
+        // FROM absen_guru
+        // WHERE NOT EXISTS
+        // (SELECT * FROM tr_absen_guru WHERE absen_guru.id_absen=tr_absen_guru.id_absen and tr_absen_guru.nip=$nip";
+        // $tot = $this->db->query($total)->result();
+        // $s = 0;
+        // foreach ($tot as $a) {
+        //     for ($i = 0; $i < $a->id; $i++) {
+        // $id_absen = $this->input->post('id_absen' . $i);
+        // $status = $this->input->post('status' . $i);
+
+        $data = [
+            'id_absen' => $id,
+            'nip' => $nip,
+            'status' => '4'
+        ];
+
+        $simpan = $this->m_absensi->insert($data);
+
+
+        redirect('User/Guru/Absensi', $simpan);
+    }
 }

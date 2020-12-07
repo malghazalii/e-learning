@@ -21,7 +21,7 @@ class Absensi extends CI_Controller
         $queryabsen = "SELECT *
         FROM absen_guru
         WHERE NOT EXISTS
-        (SELECT * FROM tr_absen_guru WHERE absen_guru.id_absen=tr_absen_guru.id_absen) ";
+        (SELECT * FROM tr_absen_guru WHERE absen_guru.id_absen=tr_absen_guru.id_absen and tr_absen_guru.nip=$nip) ";
 
 
         $data['title'] = 'Absensi';

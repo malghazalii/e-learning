@@ -1,8 +1,11 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div style="padding-bottom: 10px;">
-        <input type="text" id="tanggal" placeholder="Tanggal Berakhir" class="form-control" autofocus>
-        <a href="<?= base_url('Admin/absensi_guru/simpanData'); ?>" class="btn btn-primary">Aktifkan Absen</a>
+        <form action="<?= base_url('Admin/absensi_guru/simpanData'); ?>" method="post">
+            <h4 class="m-0 font-weight-bold text-primary">Tanggal dan Jam Absen Berakhir</h4>
+            <input type="datetime-local" name="tanggal" id="tanggal" placeholder="Tanggal Berakhir" class="form-control" autofocus>
+            <button type="submit" class="btn btn-primary">Aktifkan Absen</button>
+        </form>
     </div>
     <?= $this->session->flashdata('message'); ?>
     <!-- DataTales Example -->

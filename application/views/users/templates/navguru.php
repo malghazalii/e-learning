@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link text-white" href="<?= base_url('User/Guru/Dashboard')?>">Dashboard
+                <a class="nav-link text-white" href="<?= base_url('User/Guru/Dashboard') ?>">Dashboard
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
@@ -16,9 +16,9 @@
                     Event
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/Dashboard')?>">Tampil Event</a>
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/BuatKuis')?>">Buat Tugas</a>
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/HasilTugas')?>">Tugas Siswa</a>
+                    <a class="dropdown-item" href="<?= base_url('User/Guru/Dashboard') ?>">Tampil Event</a>
+                    <a class="dropdown-item" href="<?= base_url('User/Guru/BuatKuis') ?>">Buat Tugas</a>
+                    <a class="dropdown-item" href="<?= base_url('User/Guru/HasilTugas') ?>">Tugas Siswa</a>
                 </div>
             </li>
             <li class="nav-item dropdown ">
@@ -26,8 +26,8 @@
                     Absensi
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/KelasAbsen')?>">Buat Absensi</a>
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi')?>">Hasil Absensi</a>
+                    <a class="dropdown-item" href="<?= base_url('User/Guru/KelasAbsen') ?>">Buat Absensi</a>
+                    <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi') ?>">Hasil Absensi</a>
                 </div>
             </li>
             <li class="nav-item dropdown ">
@@ -35,15 +35,18 @@
                     Mata Pelajaran
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel')?>">Biologi</a>
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel')?>">Kima</a>
+                    <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel') ?>">Biologi</a>
+                    <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel') ?>">Kima</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="<?= base_url('User/Guru/wali_kelas/DaftarSiswa')?>">Wali Kelas</a>
+                <a class="nav-link text-white" href="<?= base_url('User/Guru/wali_kelas/DaftarSiswa') ?>">Wali Kelas</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="<?= base_url('User/Guru/Absensi'); ?>">Absensi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="<?= base_url('Auth/logout'); ?>">Logout</a>
             </li>
 
 
@@ -53,4 +56,4 @@
     </div>
 </nav>
 
-        <!-- //navigation -->
+<!-- //navigation -->

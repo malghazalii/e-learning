@@ -35,11 +35,11 @@
 
     <style>
         @media screen and (max-width: 640px) {
-    .cek{
-      margin-left: 150px;
-    }
-}
-</style>
+            .cek {
+                margin-left: 150px;
+            }
+        }
+    </style>
 
 </head>
 
@@ -54,7 +54,7 @@
                         <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>welcome to eLearning</h1>
                     <!-- social icons -->
                     <div class="social-icons text-right col-5">
-                        <a href="<?= base_url()?>" class="button-head-mow3 text-white">Login</a>
+                        <a href="<?= base_url() ?>" class="button-head-mow3 text-white">Login</a>
                     </div>
                     <!-- //social icons -->
                 </div>
@@ -65,8 +65,8 @@
         <div style="background-color:#182A6E" class="middle-w3ls-nav py-2">
             <div class="container">
                 <div class="row">
-                <img class="cek" src="<?php echo base_url(); ?>assets/users/images/LOGOBRO.png" alt="Image" height="100" width="100">
-                    <a  class="logo  font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">SMAN 1 Bondowoso</a>
+                    <img class="cek" src="<?php echo base_url(); ?>assets/users/images/LOGOBRO.png" alt="Image" height="100" width="100">
+                    <a class="logo  font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">SMAN 1 Bondowoso</a>
 
                 </div>
             </div>

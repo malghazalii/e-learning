@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Des 2020 pada 20.07
+-- Waktu pembuatan: 08 Des 2020 pada 11.12
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -22,25 +22,6 @@ SET time_zone = "+00:00";
 -- Database: `db_elearning`
 --
 
-DELIMITER $$
---
--- Fungsi
---
-CREATE DEFINER=`root`@`localhost` FUNCTION `SimpleCompare` (`n` INT, `m` INT) RETURNS VARCHAR(20) CHARSET latin1 BEGIN
-    DECLARE s VARCHAR(20);
-
-    IF n > m THEN SET s = '>';
-    ELSEIF n = m THEN SET s = '=';
-    ELSE SET s = '<';
-    END IF;
-
-    SET s = CONCAT(n, ' ', s, ' ', m);
-
-    RETURN s;
-  END$$
-
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
@@ -57,12 +38,11 @@ CREATE TABLE `absen_guru` (
 --
 
 INSERT INTO `absen_guru` (`id_absen`, `tanggal_berakhir`) VALUES
-(7, '2020-12-02 04:45:58'),
-(8, '2020-12-03 04:45:52'),
-(9, '2020-12-04 04:45:50'),
-(10, '2020-12-05 04:45:59'),
-(11, '2020-12-06 04:51:44'),
-(12, '2020-12-07 04:51:45');
+(7, '2020-12-08 00:00:00'),
+(8, '2020-12-16 00:00:00'),
+(9, '2020-12-08 02:56:00'),
+(10, '2020-12-08 02:57:00'),
+(11, '2020-12-08 02:59:00');
 
 -- --------------------------------------------------------
 
@@ -111,17 +91,6 @@ INSERT INTO `admin` (`nama`, `nip`, `password`, `alamat`, `no_telp`, `email`, `j
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dt_absen_guru`
---
-
-CREATE TABLE `dt_absen_guru` (
-  `id_tr_absen` int(11) NOT NULL,
-  `id_absen` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `golongan`
 --
 
@@ -135,8 +104,8 @@ CREATE TABLE `golongan` (
 --
 
 INSERT INTO `golongan` (`id_gol`, `nama_golongan`) VALUES
-(1, 'pns'),
-(2, 'non pns');
+(1, 'PNS'),
+(2, 'GTT');
 
 -- --------------------------------------------------------
 
@@ -250,7 +219,6 @@ INSERT INTO `mata_pelajaran` (`id_mapel`, `mata_pelajaran`) VALUES
 CREATE TABLE `materi` (
   `id_materi` int(11) NOT NULL,
   `judul` varchar(150) NOT NULL,
-  `id_kelas` int(11) NOT NULL,
   `id_mengajar` int(11) NOT NULL,
   `nama_file` varchar(150) NOT NULL,
   `tgl_posting` datetime NOT NULL,
@@ -373,9 +341,14 @@ CREATE TABLE `tr_absen_guru` (
 --
 
 INSERT INTO `tr_absen_guru` (`id_absen`, `nip`, `status`) VALUES
-(7, '2567', 1),
-(11, '2567', 1),
-(12, '2567', 4);
+(11, '2567', 4),
+(10, '2567', 4),
+(9, '2567', 4),
+(7, '2567', 4),
+(11, '123456', 4),
+(10, '123456', 4),
+(9, '123456', 4),
+(7, '123456', 4);
 
 -- --------------------------------------------------------
 
@@ -410,6 +383,30 @@ CREATE TABLE `tugas` (
   `file` varchar(255) NOT NULL,
   `tgl_buat` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tugas_siswa`
+--
+
+CREATE TABLE `tugas_siswa` (
+  `id_tugas` int(11) NOT NULL,
+  `id_mengajar` int(11) NOT NULL,
+  `nama` text NOT NULL,
+  `keterangan` longtext NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `tanggal_berakhir` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tugas_siswa`
+--
+
+INSERT INTO `tugas_siswa` (`id_tugas`, `id_mengajar`, `nama`, `keterangan`, `file`, `tanggal_berakhir`) VALUES
+(1, 1, 'vvvvv', 'jbbbb', '.pdf', '0000-00-00 00:00:00'),
+(2, 1, 'scjscn', 'nscjscn', 'M AL GHAZALI SI.pdf', '0000-00-00 00:00:00'),
+(3, 1, 'bahasa indo', 'mari belajar', 'PROFIL CLIENT.docx', '2020-12-31 23:59:00');
 
 -- --------------------------------------------------------
 
@@ -555,6 +552,12 @@ ALTER TABLE `tugas`
   ADD PRIMARY KEY (`id_tugas`);
 
 --
+-- Indeks untuk tabel `tugas_siswa`
+--
+ALTER TABLE `tugas_siswa`
+  ADD PRIMARY KEY (`id_tugas`);
+
+--
 -- Indeks untuk tabel `ujian`
 --
 ALTER TABLE `ujian`
@@ -574,7 +577,7 @@ ALTER TABLE `wali_kelas`
 -- AUTO_INCREMENT untuk tabel `absen_guru`
 --
 ALTER TABLE `absen_guru`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `absen_siswa`
@@ -616,7 +619,7 @@ ALTER TABLE `mata_pelajaran`
 -- AUTO_INCREMENT untuk tabel `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id_materi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_materi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `mengajar`
@@ -641,6 +644,12 @@ ALTER TABLE `soal`
 --
 ALTER TABLE `tugas`
   MODIFY `id_tugas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `tugas_siswa`
+--
+ALTER TABLE `tugas_siswa`
+  MODIFY `id_tugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `ujian`

@@ -1,5 +1,5 @@
 <div class="card-body">
-    <form class="form-horizontal" method="POST" action="<?= base_url('User/Guru/EssayEvent/tambahData'); ?>">
+    <form class="form-horizontal" method="POST" action="<?= base_url('User/Guru/EssayEvent/tambahData'); ?>" enctype="multipart/form-data">
         <div class="form-group">
             <div class="row">
                 <label for="birthDate" class="col-sm-3 control-label">Pilih Mata Pelajaran</label>
@@ -25,7 +25,7 @@
             <div class="row">
                 <label for="keterangan" class="col-sm-3 control-label">Keterangan</label>
                 <div class="col-sm-9">
-                    <input type="text" id="Keterangan" placeholder="keterangan" class="form-control">
+                    <input type="text" id="Keterangan" name="keterangan" placeholder="keterangan" class="form-control">
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="col-sm-3">
-                    <input type="date" id="tanggal" class="form-control">
+                    <input type="date" id="tanggal" name="tanggal" class="form-control">
                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
             </div>
@@ -46,9 +46,9 @@
             <div class="row">
                 <label for="keterangan" class="col-sm-3 control-label">Masukkan File</label>
                 <div class="col-sm-9">
-                    <input type="file" id="Keterangan" placeholder="Keterangan" class="form-control">
-                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
-                    <?= $this->session->flashdata('message'); ?>
+                    <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
+                    <?= form_error('file_input', '<small class="text-danger pl-3">', '</small>'); ?>
+
                 </div>
             </div>
         </div>

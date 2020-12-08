@@ -31,7 +31,6 @@
                 </div>
                 <div class="form-group">
                     <div class="row">
-
                         <label for="keterangan" class="col-sm-3 control-label">Masukkan File</label>
                         <div class="col-sm-9">
                             <input type="file" name="file_input" id="file_input" class="btn btn-info upload">

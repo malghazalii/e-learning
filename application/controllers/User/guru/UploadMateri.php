@@ -75,23 +75,14 @@ class UploadMateri extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-        $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-        $this->form_validation->set_rules('file_input', 'File_input', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
 
         if ($this->form_validation->run() == false) {
             $this->index();
         } else {
-            $username = $this->input->post('mapel');
-            $password = $this->input->post('nama');
-            $negara = $this->input->post('keterangan');
-            $poto = $_FILES['file_input']['name'];
+            $mengajar = $this->input->post('mapel');
+            $nama = $this->input->post('nama');
+            $keterangan = $this->input->post('keterangan');
+            $file = $_FILES['file_input']['name'];
             // $file_ext = pathinfo($_FILES['file_input']['name'], PATHINFO_EXTENSION);
 
 
@@ -103,34 +94,41 @@ class UploadMateri extends CI_Controller
 
             $this->load->library('upload', $config);
 
-
-            if ($this->upload->do_upload('file_input')) {
-                $data = array(
-                    'id_mengajar' => $username,
-                    'nama' => $password,
-                    'keterangan' => $negara,
-                    'file' => $poto
-
-                );
-                $this->db->insert('tugas_siswa', $data);
-
-
-                if ($this->db->affected_rows() > 0) {
-                    echo "<script>alert('data Berhasil Di simpan');</script>";
-                }
-                echo "<script>window.location='" . site_url('User/Guru/Dashboard') . "';</script>";
+            if (@$_FILES['file_input']['name'] == null) {
+                echo "<script>alert('File Tidak Boleh Kosong');</script>";
+                echo "<script>window.location='" . site_url('User/Guru/UploadMateri') . "';</script>";
             } else {
-                $error = array('error' => $this->upload->display_errors());
-                echo "<script>alert('Format file salah');</script>";
-                echo "<script>window.location='" . site_url('User/Guru/EssayEvent') . "';</script>";
+                if ($this->upload->do_upload('file_input')) {
+                    $data = array(
+                        'id_mengajar' => $mengajar,
+                        'judul' => $nama,
+                        'nama_file' => $file,
+                        'tgl_posting' => date('y-m-d'),
+                        'isi' => $keterangan
+
+                    );
+                    $this->db->insert('materi', $data);
+
+
+                    if ($this->db->affected_rows() > 0) {
+                        echo "<script>alert('data Berhasil Di simpan');</script>";
+                    }
+                    echo "<script>window.location='" . site_url('User/Guru/Dashboard') . "';</script>";
+                } else {
+                    $error = array('error' => $this->upload->display_errors());
+                    echo "<script>alert('Format file salah');</script>";
+                    echo "<script>window.location='" . site_url('User/Guru/UploadMateri') . "';</script>";
+                }
             }
+
+
+            // $data = array(
+            // 	'username' => $username,
+            // 	'password' => $password,
+            // 	'image' => $image
+            // 	);
+            // $this->mlogin->input_data($data,'admin');
+            // redirect('admin/user');
         }
-        // $data = array(
-        // 	'username' => $username,
-        // 	'password' => $password,
-        // 	'image' => $image
-        // 	);
-        // $this->mlogin->input_data($data,'admin');
-        // redirect('admin/user');
     }
 }

@@ -27,7 +27,7 @@ class Matematika extends CI_Controller
         $data['absen'] = $this->db->query($querytrabsen)->result();
         $data['tanggal'] = $this->db->query($queryabsen)->result();
         $this->load->view('users/templates/header', $data);
-        $this->load->view('users/templates/navguru');
+        $this->load->view('users/templates/navsiswa');
         $this->load->view('users/templates/navAbsensi');
         $this->load->view('users/siswa/absen/matematika');
         $this->load->view('users/templates/footer');

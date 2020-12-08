@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Des 2020 pada 11.12
+-- Waktu pembuatan: 08 Des 2020 pada 21.45
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -194,6 +194,29 @@ INSERT INTO `kelas` (`id_kelas`, `kelas`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `kuis`
+--
+
+CREATE TABLE `kuis` (
+  `id_kuis` int(11) NOT NULL,
+  `id_mengajar` int(11) NOT NULL,
+  `nama_ujian` varchar(255) NOT NULL,
+  `tanggal_berakhir` datetime NOT NULL,
+  `jenis` enum('Ulangan Harian','Ujian Tengah Semester','Ujian Akhir Sekolah') NOT NULL,
+  `jml_soal` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kuis`
+--
+
+INSERT INTO `kuis` (`id_kuis`, `id_mengajar`, `nama_ujian`, `tanggal_berakhir`, `jenis`, `jml_soal`) VALUES
+(1, 2, 'Reproduksi', '2020-12-08 05:00:00', 'Ulangan Harian', 4),
+(2, 4, 'sejarah', '2020-12-09 03:00:00', 'Ujian Tengah Semester', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `mata_pelajaran`
 --
 
@@ -287,18 +310,19 @@ CREATE TABLE `siswa` (
   `agama` enum('Islam','Kristen','Hindu','Buddha','Katholik') NOT NULL,
   `no_hp` varchar(13) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `id_jurusan` int(11) NOT NULL
+  `id_jurusan` int(11) NOT NULL,
+  `angkatan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `siswa`
 --
 
-INSERT INTO `siswa` (`nis`, `nama`, `jenis_kelamin`, `alamat`, `agama`, `no_hp`, `password`, `id_jurusan`) VALUES
-('0099', 'Dana', 'perempuan', 'Madiun', 'Islam', '089678876678', '81dc9bdb52d04dc20036dbd8313ed055', 1),
-('123', 'ali', 'laki-laki', 'jember', 'Islam', '2321323', '86ada79e49d513c454aca555cdb60037', 2),
-('2333', 'Kaleng', 'perempuan', 'jember', 'Islam', '2333', '86ada79e49d513c454aca555cdb60037', 2),
-('6971', 'Ihza lol', 'laki-laki', 'Perumahan Muktisari Blok AE 5', 'Kristen', '087654321456', '81dc9bdb52d04dc20036dbd8313ed055', 3);
+INSERT INTO `siswa` (`nis`, `nama`, `jenis_kelamin`, `alamat`, `agama`, `no_hp`, `password`, `id_jurusan`, `angkatan`) VALUES
+('0099', 'Dana', 'perempuan', 'Madiun', 'Islam', '089678876678', '81dc9bdb52d04dc20036dbd8313ed055', 1, '2018'),
+('123', 'ali', 'laki-laki', 'jember', 'Islam', '2321323', '86ada79e49d513c454aca555cdb60037', 2, '2018'),
+('2333', 'Kaleng', 'perempuan', 'jember', 'Islam', '2333', '86ada79e49d513c454aca555cdb60037', 2, '2018'),
+('6971', 'Ihza lol', 'laki-laki', 'Perumahan Muktisari Blok AE 5', 'Kristen', '087654321456', '81dc9bdb52d04dc20036dbd8313ed055', 3, '2018');
 
 -- --------------------------------------------------------
 
@@ -308,21 +332,26 @@ INSERT INTO `siswa` (`nis`, `nama`, `jenis_kelamin`, `alamat`, `agama`, `no_hp`,
 
 CREATE TABLE `soal` (
   `id_soal` int(11) NOT NULL,
-  `id_mengajar` int(11) NOT NULL,
-  `bobot` int(11) NOT NULL,
-  `file` varchar(255) NOT NULL,
-  `tipe_file` varchar(255) NOT NULL,
-  `soal` varchar(250) NOT NULL,
-  `opsiA` varchar(250) NOT NULL,
-  `opsiB` varchar(250) NOT NULL,
-  `opsiC` varchar(250) NOT NULL,
-  `opsiD` varchar(250) NOT NULL,
-  `opsiE` varchar(250) NOT NULL,
-  `jawaban` varchar(150) NOT NULL,
-  `tgl_input` datetime NOT NULL,
-  `jml_benar` int(6) NOT NULL,
-  `jml_salah` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nama_file` varchar(255) NOT NULL,
+  `soal` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `soal`
+--
+
+INSERT INTO `soal` (`id_soal`, `nama_file`, `soal`) VALUES
+(1, 'Soal Reproduksi', 'bagaimana jika A?'),
+(2, 'Bagaimana Kika B', 'Bagaimana Kika B?'),
+(3, 'Sejarah', 'Bagaimana Jikka C?');
+
+--
+-- Trigger `soal`
+--
+DELIMITER $$
+CREATE TRIGGER `Jumlah Soal` AFTER INSERT ON `soal` FOR EACH ROW UPDATE kuis SET kuis.jml_soal = kuis.jml_soal + 1 WHERE kuis.id_kuis = NEW.id_kuis
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -373,6 +402,47 @@ INSERT INTO `tr_absen_siswa` (`id_absen`, `nis`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tr_kuis`
+--
+
+CREATE TABLE `tr_kuis` (
+  `id_kuis` int(11) NOT NULL,
+  `id_soal` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tr_kuis`
+--
+
+INSERT INTO `tr_kuis` (`id_kuis`, `id_soal`) VALUES
+(1, 1),
+(1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tr_soal`
+--
+
+CREATE TABLE `tr_soal` (
+  `id_soal` int(11) NOT NULL,
+  `opsiA` varchar(200) NOT NULL,
+  `opsiB` varchar(200) NOT NULL,
+  `opsiC` varchar(200) NOT NULL,
+  `opsiD` varchar(200) NOT NULL,
+  `opsiE` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tr_soal`
+--
+
+INSERT INTO `tr_soal` (`id_soal`, `opsiA`, `opsiB`, `opsiC`, `opsiD`, `opsiE`) VALUES
+(2, 'a', 'as', 'ssd', 'sd', 'sd');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tugas`
 --
 
@@ -407,25 +477,6 @@ INSERT INTO `tugas_siswa` (`id_tugas`, `id_mengajar`, `nama`, `keterangan`, `fil
 (1, 1, 'vvvvv', 'jbbbb', '.pdf', '0000-00-00 00:00:00'),
 (2, 1, 'scjscn', 'nscjscn', 'M AL GHAZALI SI.pdf', '0000-00-00 00:00:00'),
 (3, 1, 'bahasa indo', 'mari belajar', 'PROFIL CLIENT.docx', '2020-12-31 23:59:00');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `ujian`
---
-
-CREATE TABLE `ujian` (
-  `id_ujian` int(11) NOT NULL,
-  `id_mengajar` int(11) NOT NULL,
-  `nama_ujian` varchar(255) NOT NULL,
-  `jml_soal` int(11) NOT NULL,
-  `waktu` int(11) NOT NULL,
-  `jenis` enum('acak','set') NOT NULL,
-  `detail_jenis` varchar(150) NOT NULL,
-  `tgl_mulai` datetime NOT NULL,
-  `terlambat` int(11) NOT NULL,
-  `token` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -500,6 +551,13 @@ ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
+-- Indeks untuk tabel `kuis`
+--
+ALTER TABLE `kuis`
+  ADD PRIMARY KEY (`id_kuis`),
+  ADD KEY `id_mengajar` (`id_mengajar`);
+
+--
 -- Indeks untuk tabel `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
@@ -546,6 +604,19 @@ ALTER TABLE `tr_absen_siswa`
   ADD KEY `nis` (`nis`);
 
 --
+-- Indeks untuk tabel `tr_kuis`
+--
+ALTER TABLE `tr_kuis`
+  ADD KEY `id_kuis` (`id_kuis`),
+  ADD KEY `id_soal` (`id_soal`);
+
+--
+-- Indeks untuk tabel `tr_soal`
+--
+ALTER TABLE `tr_soal`
+  ADD KEY `id_soal` (`id_soal`);
+
+--
 -- Indeks untuk tabel `tugas`
 --
 ALTER TABLE `tugas`
@@ -556,12 +627,6 @@ ALTER TABLE `tugas`
 --
 ALTER TABLE `tugas_siswa`
   ADD PRIMARY KEY (`id_tugas`);
-
---
--- Indeks untuk tabel `ujian`
---
-ALTER TABLE `ujian`
-  ADD PRIMARY KEY (`id_ujian`);
 
 --
 -- Indeks untuk tabel `wali_kelas`
@@ -610,6 +675,12 @@ ALTER TABLE `kelas`
   MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT untuk tabel `kuis`
+--
+ALTER TABLE `kuis`
+  MODIFY `id_kuis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
@@ -637,7 +708,7 @@ ALTER TABLE `penjurusan`
 -- AUTO_INCREMENT untuk tabel `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tugas`
@@ -652,12 +723,6 @@ ALTER TABLE `tugas_siswa`
   MODIFY `id_tugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `ujian`
---
-ALTER TABLE `ujian`
-  MODIFY `id_ujian` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT untuk tabel `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
@@ -668,12 +733,31 @@ ALTER TABLE `wali_kelas`
 --
 
 --
+-- Ketidakleluasaan untuk tabel `kuis`
+--
+ALTER TABLE `kuis`
+  ADD CONSTRAINT `kuis_ibfk_1` FOREIGN KEY (`id_mengajar`) REFERENCES `mengajar` (`id_mengajar`);
+
+--
 -- Ketidakleluasaan untuk tabel `mengajar`
 --
 ALTER TABLE `mengajar`
   ADD CONSTRAINT `mengajar_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `guru` (`nip`),
   ADD CONSTRAINT `mengajar_ibfk_2` FOREIGN KEY (`id_jurusan`) REFERENCES `penjurusan` (`id_jurusan`),
   ADD CONSTRAINT `mengajar_ibfk_3` FOREIGN KEY (`id_mapel`) REFERENCES `mata_pelajaran` (`id_mapel`);
+
+--
+-- Ketidakleluasaan untuk tabel `tr_kuis`
+--
+ALTER TABLE `tr_kuis`
+  ADD CONSTRAINT `tr_kuis_ibfk_1` FOREIGN KEY (`id_kuis`) REFERENCES `kuis` (`id_kuis`),
+  ADD CONSTRAINT `tr_kuis_ibfk_2` FOREIGN KEY (`id_soal`) REFERENCES `soal` (`id_soal`);
+
+--
+-- Ketidakleluasaan untuk tabel `tr_soal`
+--
+ALTER TABLE `tr_soal`
+  ADD CONSTRAINT `tr_soal_ibfk_1` FOREIGN KEY (`id_soal`) REFERENCES `soal` (`id_soal`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

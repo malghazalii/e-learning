@@ -65,6 +65,16 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="enum">
+                        <h6 class="m-0 font-weight-bold text-dark">TAHUN ANGKATAN</h6>
+                    </label>
+                    <select class="form-control" name="tahunangkatan" id="tahunangkatan">
+                        <?php foreach ($tahun as $t) : ?>
+                            <option value="<?= $t->id_tahun ?>"> <?= $t->tahun_angkatan ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <a href="<?= base_url('Admin/datasiswa'); ?>" class="btn btn-danger">Batal</a>
             </form>

@@ -15,6 +15,7 @@ class Datasiswa extends CI_Controller
     $data['title'] = 'Data Siswa';
     $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
     $data['siswa'] = $this->m_datasiswa->TampilSiswa()->result();
+    $data['tahun'] = $this->m_datasiswa->tahunangkatan()->result();
     $this->load->view('admin/templates/header', $data);
     $this->load->view('admin/templates/sidebar', $data);
     $this->load->view('admin/templates/topbar', $data);
@@ -34,6 +35,21 @@ class Datasiswa extends CI_Controller
     $this->load->view('admin/templates/footer', $data);
   }
 
+  public function tahunAngkatan($id)
+  {
+    $data['title'] = 'Hasil Tahun Angkatan';
+    $data['detail'] = $this->m_datasiswa->hasiltahunangkatan($id)->result();
+    $data['tahun'] = $this->m_datasiswa->tahunangkatan()->result();
+    $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
+    $this->load->view('admin/templates/header', $data);
+    $this->load->view('admin/templates/sidebar', $data);
+    $this->load->view('admin/templates/topbar', $data);
+    $this->load->view('admin/datasiswa', $data);
+    $this->load->view('admin/templates/footer', $data);
+  }
+
+
+
   public function delete($id)
   {
     $delete = $this->m_datasiswa->delete($id);
@@ -49,6 +65,7 @@ class Datasiswa extends CI_Controller
   {
     $data['title'] = 'Edit Siswa';
     $data['siswa'] = $this->m_datasiswa->joinkelasjurusan()->result();
+    $data['tahun'] = $this->m_datasiswa->tahunangkatan()->result();
     $data['edit'] = $this->m_datasiswa->detail_data($id)->row();
     $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
     $this->load->view('admin/templates/header', $data);
@@ -75,6 +92,7 @@ class Datasiswa extends CI_Controller
       $no_hp = $this->input->post('no_hp');
       $password = $this->input->post('password');
       $id_kelas = $this->input->post('kelas');
+      $tahun = $this->input->post('tahunangkatan');
 
       $data = [
         'nis' => $nis,
@@ -84,7 +102,8 @@ class Datasiswa extends CI_Controller
         'agama' => $agama,
         'no_hp' => $no_hp,
         'password' => md5($password),
-        'id_jurusan' => $id_kelas
+        'id_jurusan' => $id_kelas,
+        'id_tahun' => $tahun
       ];
 
       $save = $this->m_datasiswa->update($data, $nis);
@@ -102,6 +121,7 @@ class Datasiswa extends CI_Controller
   {
     $data['title'] = 'Tambah Siswa';
     $data['siswa'] = $this->m_datasiswa->joinkelasjurusan()->result();
+    $data['tahun'] = $this->m_datasiswa->tahunangkatan()->result();
     $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
     $this->load->view('admin/templates/header', $data);
     $this->load->view('admin/templates/sidebar', $data);
@@ -124,6 +144,7 @@ class Datasiswa extends CI_Controller
       $no_hp = $this->input->post('no_hp');
       $password = 'sma1jaya';
       $id_kelas = $this->input->post('kelas');
+      $tahun_angkatan = $this->input->post('tahunangkatan');
 
       $data = [
         'nis' => $nis,
@@ -133,7 +154,8 @@ class Datasiswa extends CI_Controller
         'agama' => $agama,
         'no_hp' => $no_hp,
         'password' => md5($password),
-        'id_jurusan' => $id_kelas
+        'id_jurusan' => $id_kelas,
+        'id_tahun' => $tahun_angkatan
       ];
 
       $simpan = $this->m_datasiswa->insert($data);

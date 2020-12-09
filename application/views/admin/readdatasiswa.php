@@ -43,6 +43,10 @@
                 <td>kelas</td>
                 <td><?= $d->kelas; ?> <?= $d->nama_jurusan ?></td>
               </tr>
+              <tr>
+                <td>tahun angkatan</td>
+                <td><?= $d->tahun_angkatan; ?> </td>
+              </tr>
             <?php endforeach; ?>
           </thead>
         </table>

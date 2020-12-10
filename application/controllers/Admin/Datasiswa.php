@@ -16,6 +16,7 @@ class Datasiswa extends CI_Controller
     $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
     $data['siswa'] = $this->m_datasiswa->TampilSiswa()->result();
     $data['tahun'] = $this->m_datasiswa->tahunangkatan()->result();
+    $data['kelas'] = $this->m_datasiswa->joinkelasjurusan()->result();
     $this->load->view('admin/templates/header', $data);
     $this->load->view('admin/templates/sidebar', $data);
     $this->load->view('admin/templates/topbar', $data);
@@ -40,6 +41,7 @@ class Datasiswa extends CI_Controller
     $data['title'] = 'Hasil Tahun Angkatan';
     $data['detail'] = $this->m_datasiswa->hasiltahunangkatan($id)->result();
     $data['tahun'] = $this->m_datasiswa->tahunangkatan()->result();
+    $data['kelas'] = $this->m_datasiswa->joinkelasjurusan()->result();
     $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
     $this->load->view('admin/templates/header', $data);
     $this->load->view('admin/templates/sidebar', $data);
@@ -48,7 +50,19 @@ class Datasiswa extends CI_Controller
     $this->load->view('admin/templates/footer', $data);
   }
 
-
+  public function kelasjurusan($id)
+  {
+    $data['title'] = 'Hasil Kelas Jurusan';
+    $data['detail'] = $this->m_datasiswa->hasilkelasjurusan($id)->result();
+    $data['tahun'] = $this->m_datasiswa->tahunangkatan()->result();
+    $data['kelas'] = $this->m_datasiswa->joinkelasjurusan()->result();
+    $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
+    $this->load->view('admin/templates/header', $data);
+    $this->load->view('admin/templates/sidebar', $data);
+    $this->load->view('admin/templates/topbar', $data);
+    $this->load->view('admin/datasiswa', $data);
+    $this->load->view('admin/templates/footer', $data);
+  }
 
   public function delete($id)
   {

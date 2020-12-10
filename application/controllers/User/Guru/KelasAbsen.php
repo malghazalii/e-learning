@@ -93,6 +93,9 @@ class KelasAbsen extends CI_Controller
 
     $data['absen'] = $this->db->query($queryAbsen)->result();
     $data['mengajar'] = $this->db->query($queryMengajar)->row();
+    $tanggal = $this->db->query($queryMengajar)->row();
+    $data['tanggal'] = $tanggal->tanggal;
+    
 
     $data['title'] = 'Buat Absen';
     $this->load->view('users/templates/header', $data);
@@ -102,24 +105,46 @@ class KelasAbsen extends CI_Controller
   }
   public function Input($id)
   {
+
+    $jam = $this->input->post('jam');
+    $tanggal = $this->input->post('tanggal');
+
+    $waktu = $tanggal . " " . $jam;
     $data = [
       'id_mengajar' => $id,
-      'tanggal' => date('y-m-d'),
-      'is_active' => 1
+      'tanggal' => $waktu,
     ];
-    $this->db->insert('absen_siswa', $data);
-    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Absen berhasil di aktifkan</div>');
-    redirect('User/Guru/KelasAbsen');
+    if ($jam == "" || $tanggal == "") {
+      echo "<script>alert('Tanggal atau Jam tidak boleh kosong');</script>";
+      echo "<script>window.location='" . site_url('User/Guru/KelasAbsen/Tampil/' . $id) . "';</script>";
+    } else {
+      $this->db->insert('absen_siswa', $data);
+      if ($this->db->affected_rows() > 0) {
+        echo "<script>alert('data Berhasil Di simpan');</script>";
+        echo "<script>window.location='" . site_url('User/Guru/KelasAbsen') . "';</script>";
+      }
+    }
   }
   public function update($id)
   {
+    $jam = $this->input->post('jam');
+    $tanggal = $this->input->post('tanggal');
+
+    $waktu = $tanggal . " " . $jam;
+
     $data = [
-      'tanggal' => date('y-m-d'),
-      'is_active' => 0
+      'tanggal' => $waktu
     ];
-    $this->db->where('id_absen', $id)->update('absen_siswa', $data);
-    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Absen berhasil di non aktifkan</div>');
-    redirect('User/Guru/KelasAbsen');
+    if ($jam == "" || $tanggal == "") {
+      echo "<script>alert('Tanggal atau Jam tidak boleh kosong');</script>";
+      echo "<script>window.location='" . site_url('User/Guru/KelasAbsen/TampilU/' . $id) . "';</script>";
+    } else {
+      $this->db->where('id_absen', $id)->update('absen_siswa', $data);
+      if ($this->db->affected_rows() > 0) {
+        echo "<script>alert('data Berhasil Di simpan');</script>";
+        echo "<script>window.location='" . site_url('User/Guru/KelasAbsen') . "';</script>";
+      }
+    }
   }
 
   public function Delete($id)

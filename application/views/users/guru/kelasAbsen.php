@@ -30,7 +30,7 @@
                     <td><?= $a->mata_pelajaran; ?></td>
                     <td><?= $a->kelas; ?></td>
                     <td><?= $a->nama_jurusan; ?></td>
-                    <td><a class="badge badge-primary" href="<?= base_url('User/Guru/KelasAbsen/Tampil/' . $a->id_mengajar); ?>">Aktifkan</a></td>
+                    <td><a class="badge badge-primary" href="<?= base_url('User/Guru/KelasAbsen/Tampil/' . $a->id_mengajar); ?>">Buat Absen</a></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
@@ -59,7 +59,6 @@
                   <th>kelas</th>
                   <th>Nama jurusan</th>
                   <th>Tanggal</th>
-                  <th>Status</th>
                   <th>action</th>
                 </tr>
               </thead>
@@ -74,23 +73,8 @@
                     <td><?= $a->kelas; ?></td>
                     <td><?= $a->nama_jurusan; ?></td>
                     <td><?= $a->tanggal; ?></td>
-                    <td>
-                      <?php
-                      if ($a->is_active == 1) {
-                        echo 'Aktif';
-                      } else {
-                        echo 'Nonaktif';
-                      } ?>
-                    </td>
-                    <td>
-                      <?php
-                      if ($a->is_active == 1) { ?>
-                        <a class="badge badge-primary" href="<?= base_url('User/Guru/KelasAbsen/TampilU/' . $a->id_absen); ?>">Nonaktifkan</a> | <a class="badge badge-danger" href="<?= base_url('User/Guru/KelasAbsen/TampilU/' . $a->id_absen); ?>">Hapus</a>'
-                      <?php } else { ?>
-                        <a class="badge badge-danger" onclick="javasciprt: return confirm('Anda Yakin Non-Aktifkan ?')" href="<?= base_url('User/Guru/KelasAbsen/Delete/' . $a->id_absen); ?>">Hapus</a>'
-                      <?php
-                      }
-                      ?>
+                    <td style="width: 140px;">
+                      <a class="badge badge-primary" href="<?= base_url('User/Guru/KelasAbsen/TampilU/' . $a->id_absen); ?>">Edit</a> | <a class="badge badge-danger" onclick="javasciprt: return confirm('Anda Yakin Non-Aktifkan ?')" href="<?= base_url('User/Guru/KelasAbsen/Delete/' . $a->id_absen); ?>">Hapus</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>

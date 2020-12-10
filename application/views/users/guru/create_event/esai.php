@@ -34,11 +34,11 @@
                 <label for="birthDate" class="col-sm-3 control-label">Batas Akhir</label>
                 <div class="col-sm-3">
                     <input type="time" id="jam" name="jam" class="form-control">
-                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="col-sm-3">
                     <input type="date" id="tanggal" name="tanggal" class="form-control">
-                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
             </div>
         </div>

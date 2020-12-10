@@ -20,7 +20,6 @@
             <tr>
               <th>Nip</th>
               <th>Nama</th>
-              <th>Password</th>
               <th>Jenis_Kelamin</th>
               <th>Alamat</th>
               <th>No HP</th>
@@ -33,7 +32,6 @@
               <tr>
                 <td><?= $g->nip ?></td>
                 <td><?= word_limiter($g->nama, 2); ?></td>
-                <td><?= $g->password ?></td>
                 <td><?= $g->jenis_kelamin ?></td>
                 <td><?= word_limiter($g->alamat, 2); ?></td>
                 <td><?= $g->no_hp ?></td>

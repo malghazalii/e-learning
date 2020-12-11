@@ -1,10 +1,13 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-  <div style="padding-bottom: 10px;">
+  <div class="row">
+    <div style="padding-bottom: 10px; margin-left: 10px">
     <a href="<?= base_url('Admin/datasiswa/tambahData'); ?>" class="btn btn-primary"><span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
           <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
         </svg> Tambah Siswa</a>
+    </div>
+    <div style="padding-bottom: 10px; margin-left: 10px">
     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Tahun Angkatan
     </a>
@@ -14,6 +17,18 @@
         <a class="dropdown-item" href="<?= base_url('Admin/Datasiswa/tahunangkatan/' . $t->id_tahun); ?>"><?= $t->tahun_angkatan ?></a>
       <?php endforeach; ?>
     </div>
+    </div>
+    <div style="padding-bottom: 10px; margin-left: 10px"> 
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Kelas
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+      <a class="dropdown-item" href="<?= base_url('Admin/Datasiswa'); ?>">Semua Kelas</a>
+      <?php foreach ($kelas as $k) : ?>
+        <a class="dropdown-item" href="<?= base_url('Admin/Datasiswa/kelasjurusan/' . $k->id_jurusan); ?>"><?= $k->kelas ?> <?= $k->nama_jurusan?></a>
+      <?php endforeach; ?>
+      </div>
+    </div>  
   </div>
   <?= $this->session->flashdata('message'); ?>
   <!-- DataTales Example -->
@@ -62,8 +77,49 @@
                 </tr>
             </tbody>
           <?php endforeach; ?>
+              <?php endif; ?>
 
-        <?php else : ?>
+          <?php if ($title == "Hasil Kelas Jurusan") : ?>
+            <thead>
+              <tr>
+                <th>Nis</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>Alamat</th>
+                <th>Agama</th>
+                <th>No HP</th>
+                <th>Kelas</th>
+                <th>Tahun Angkatan</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($detail as $d) : ?>
+                <tr>
+                  <td><?= $d->nis ?></td>
+                  <td><?= word_limiter($d->nama, 2); ?></td>
+                  <td><?= $d->jenis_kelamin ?></td>
+                  <td><?= word_limiter($d->alamat, 2); ?></td>
+                  <td><?= $d->agama ?></td>
+                  <td><?= $d->no_hp ?></td>
+                  <td><?= $d->kelas ?> <?= $d->nama_jurusan ?> </td>
+                  <td><?= $d->tahun_angkatan ?> </td>
+
+                  <td>
+                    <?php
+                    echo anchor(base_url('Admin/datasiswa/detail/' . $d->nis), 'Read');
+                    echo ' | ';
+                    echo anchor(base_url('Admin/datasiswa/edit/' . $d->nis), 'Edit');
+                    echo ' | ';
+                    echo anchor(base_url('Admin/datasiswa/delete/' . $d->nis), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                    ?>
+                  </td>
+                </tr>
+            </tbody>
+          <?php endforeach; ?>
+              <?php endif; ?>
+
+        <?php if ($title == 'Data Siswa') : ?>
           <thead>
             <tr>
               <th>Nis</th>

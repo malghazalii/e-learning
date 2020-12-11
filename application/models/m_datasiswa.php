@@ -36,6 +36,18 @@ class m_datasiswa extends CI_Model
         return $query;
     }
 
+    function hasilkelasjurusan($id)
+    {
+        $this->db->select('*');
+        $this->db->from('siswa');
+        $this->db->join('penjurusan', 'penjurusan.id_jurusan=siswa.id_jurusan');
+        $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
+        $this->db->join('tahun_angkatan', 'tahun_angkatan.id_tahun=siswa.id_tahun');
+        $this->db->where('siswa.id_jurusan', $id);
+        $query = $this->db->get();
+        return $query;
+    }
+
     function delete($id)
     {
         return $this->db->where('nis', $id)->delete('siswa');

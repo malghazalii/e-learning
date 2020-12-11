@@ -26,7 +26,7 @@ class Auth extends CI_Controller
           'nip' => $user['nip']
         ];
         $this->session->set_userdata($data);
-        redirect('Admin/datasiswa');
+        redirect('Admin/dashboard');
       } else {
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle">  </i> Username atau Password salah!</div>');
         redirect('Admin/auth');

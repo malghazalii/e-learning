@@ -12,11 +12,12 @@
                         <tr>
                            <td width="150">Tanggal Berakhir</td>
                            <td width="80">:</td>
-                           <td width="250"><input type="text" id="tanggal" name="tanggal"></td>
+                           <td width="250"><input style="width: 162px;" type="time" id="tanggal" name="jam"></td>
+                           <td width="250"><input type="date" id="tanggal" name="tanggal"></td>
                         </tr>
                         <br>
                         <tr>
-                           <td>Waktu</td>
+                           <td>Waktu Mengejar</td>
                            <td>:</td>
                            <td><input readonly type="time" id="waktuawal" name="waktuawal" value="<?= $mengajar->jam; ?>"> </td>
                         </tr>

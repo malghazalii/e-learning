@@ -10,15 +10,16 @@
             <form action="<?= base_url('User/Guru/KelasAbsen/Update/' . $mengajar->id_absen); ?>" method="POST">
               <table width="452" cellpadding="5" cellspacing="1" style="padding: 2px">
                 <tr>
-                  <td width="150">Tanggal</td>
+                  <td width="150">Tanggal Berakhir</td>
                   <td width="80">:</td>
-                  <td width="250"><input readonly type="text" id="tanggal" name="tanggal" value="<?= $mengajar->tanggal; ?>"></td>
+                  <td width="250"><input style="width: 162px;" type="time" id="tanggal" name="jam" value="<?= $mengajar->tanggal; ?>"></td>
+                  <td width="250"><input type="date" id="tanggal" name="tanggal" value="<?= $mengajar->tanggal; ?>"></td>
                 </tr>
                 <br>
                 <tr>
                   <td>Waktu</td>
                   <td>:</td>
-                  <td><input readonly type="time" id="waktuawal" name="waktuawal" value="<?= $mengajar->jam; ?>"> </td>
+                  <td><input readonly type=" time" id="waktuawal" name="waktuawal" value="<?= $mengajar->jam; ?>"> </td>
                 </tr>
                 <br>
                 <tr>
@@ -41,7 +42,7 @@
                 </tr>
               </table>
               <br>
-              <button type="submit" class="btn btn-primary">Nonaktif</button>
+              <button type="submit" class="btn btn-primary">Edit</button>
             </form>
           </div>
         </div>

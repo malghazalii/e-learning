@@ -12,6 +12,16 @@
 
    <!-- Nav Item - Tables -->
    <div class="sidebar-heading">Data Master</div>
+   <?php if ($title == 'Dashboard') : ?>
+     <li class="nav-item active">
+     <?php else : ?>
+     <li class="nav-item">
+     <?php endif; ?>
+     <a class="nav-link" href="<?= base_url('Admin/dashboard'); ?>">
+       <i class="fas fa-fw fa-layer-group"></i>
+       <span>Dashboard</span></a>
+     </li>
+   <!-- Nav Item -->
    <?php if ($title == 'Data Siswa') : ?>
      <li class="nav-item active">
      <?php else : ?>

@@ -13,7 +13,7 @@
                 <a class="dropdown-item" href="<?= base_url('User/Guru/UploadMateri'); ?>">Upload Materi</a>
                 <a class="dropdown-item" href="<?= base_url('User/Guru/EssayEvent'); ?>">Tugas Essai</a>
                 <a class="dropdown-item" href="<?= base_url('User/Guru/PilganEvent'); ?>">Tugas Pilihan Ganda</a>
-                <a class="dropdown-item" href="<?= base_url('User/Guru/BuatKuis'); ?>">Buat Kuis</a>
+                <a class="dropdown-item" href="<?= base_url('User/Guru/BuatKuis'); ?>">Buat Ujian</a>
               </div>
             </div>
           </div>

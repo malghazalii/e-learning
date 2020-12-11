@@ -1,132 +1,67 @@
         <div class="card-body">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" method="POST" action="<?= base_url('User/Guru/BuatKuis/tambahData/'); ?>" role="form">
                 <div class="form-group">
                     <div class="row">
                         <label for="birthDate" class="col-sm-3 control-label">Pilih Mata Pelajaran</label>
                         <div class="col-sm-9">
-                            <select id="country" class="form-control">
-                                <option>Fisika</option>
-                                <option>Biologi</option>
-                                <option>Kimia</option>
+                            <select id="country" name="mengajar" class="form-control">
+                                <?php foreach ($mengajar as $m) : ?>
+                                    <option value="<?= $m->id_mengajar ?>"> <?= $m->mata_pelajaran ?> - <?= $m->kelas ?> <?= $m->nama_jurusan ?> </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <label for="birthDate" class="col-sm-3 control-label">Kelas - Jurusan</label>
-                        <div class="col-sm-3">
-                            <select id="country" class="form-control">
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6">
-                            <select id="country" class="form-control">
-                                <option>MIPA-1</option>
-                                <option>MIPA-2</option>
-                                <option>IPS-1</option>
-                                <option>IPS-2</option>
-                            </select>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <label for="namatugas" class="col-sm-3 control-label">Nama Kuis</label>
+                        <label for="birthDate" class="col-sm-3 control-label">Pilih Jenis Ujian</label>
                         <div class="col-sm-9">
-                            <input type="text" id="namatugas" placeholder="nama tugas" class="form-control" autofocus>
+                            <select id="country" name="jenisujian" class="form-control">>
+                                <option value="Ulangan Harian">Ulangan Harian</option>
+                                <option value="Ulangan Tengah Semester">Ujian Tengah Semester</option>
+                                <option value="Ulangan Akhir Sekolah">Ujian Akhir Sekolah</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <label for="keterangan" class="col-sm-3 control-label">Keterangan</label>
+                        <label for="namatugas" class="col-sm-3 control-label">Nama Ujian</label>
                         <div class="col-sm-9">
-                            <input type="text" id="Keterangan" placeholder="keterangan" class="form-control">
+                            <input type="text" id="namaujian" name="namaujian" placeholder="nama ujian" class="form-control" autofocus>
+                            <?= form_error('namaujian', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="birthDate" class="col-sm-3 control-label">Batas Akhir</label>
+                            <div class="col-sm-3">
+                                <input type="time" id="jam" name="jam" class="form-control">
+                                <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="date" id="tanggal" name="tanggal" class="form-control">
+                                <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="row">
-                        <label for="birthDate" class="col-sm-3 control-label">Batas awal</label>
-                        <div class="col-sm-3">
-                            <select id="country" class="form-control">
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                                <option>04</option>
-                                <option>05</option>
-                                <option>06</option>
-                                <option>07</option>
-                                <option>08</option>
-                                <option>09</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <select id="country" class="form-control">
-                                <option>a.m</option>
-                                <option>p.m</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="date" id="birthDate" class="form-control">
+                        <label for="namatugas" class="col-sm-3 control-label">Jumlah Soal Keluar</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="jmlsoalkeluar" name="jmlsoalkeluar" placeholder="jumlah soal keluar" class="form-control" autofocus>
+                            <?= form_error('jmlsoalkeluar', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="row">
-                        <label for="birthDate" class="col-sm-3 control-label">Batas Akhir</label>
-                        <div class="col-sm-3">
-                            <select id="country" class="form-control">
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                                <option>04</option>
-                                <option>05</option>
-                                <option>06</option>
-                                <option>07</option>
-                                <option>08</option>
-                                <option>09</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <select id="country" class="form-control">
-                                <option>a.m</option>
-                                <option>p.m</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="date" id="birthDate" class="form-control">
-                        </div>
+                    <div class="col-sm-3 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Lanjut</button>
                     </div>
                 </div>
-                <div class="form-group">
-
-
-
-                </div> <!-- /.form-group -->
-                <div class="form-group">
-                </div> <!-- /.form-group -->
+            </form>
         </div> <!-- /.form-group -->
-        <div class="form-group">
-        </div> <!-- /.form-group -->
-        <div class="form-group">
-            <div class="col-sm-3 col-sm-offset-3">
-                <button type="submit" class="btn btn-primary btn-block">Lanjut</button>
-            </div>
-        </div>
-        </form> <!-- /form -->
-
-        </div>
-        </div>
-        </div>

@@ -8,241 +8,186 @@
 <body>
     <br>
     <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <!-- <b>Input Soal</b> -->
-                <div class="form-group" style="padding-top: 20px;">
-                    <div class="row">
-                        <label for="birthDate" class="col-sm-2 control-label">Pilih Nama Ujian</label>
-                        <div class="col-sm-5">
-                            <select id="country" name="mengajar" class="form-control">
-                                <?php foreach ($mengajar as $m) : ?>
-                                    <option value="<?= $m->id_mengajar ?>"> <?= $m->mata_pelajaran ?> - <?= $m->kelas ?> <?= $m->nama_jurusan ?> </option>
-                                <?php endforeach; ?>
-                            </select>
+        <?php if ($title == "Input Soal Ujian Pilihan Ganda") : ?>
+            <form method="POST" action="<?= base_url('User/Guru/KuisPilgan/tambahData/' . $det->id_kuis); ?>" enctype="multipart/form-data">
+            <?php endif; ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="form-group">
+                        <label>Pilih Nama Ujian</label> <br>
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php if ($title == "Input Soal Ujian Pilihan Ganda") : ?>
+                                <?= $det->nama_ujian ?>
+                            <?php else : ?>
+                                Daftar Nama Ujian
+                            <?php endif; ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <?php foreach ($nama as $n) : ?>
+                                <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan/kuis/' . $n->id_kuis); ?>"><?= $n->nama_ujian ?></a>
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
-                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?= $title; ?>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan'); ?>">Ujian Pilihan Ganda</a>
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay'); ?>">Ujian Essay</a>
-                </div>
-            </div>
-            <div class="panel-body">
-                <!-- membuat form  -->
-                <!-- gunakan tanda [] untuk menampung array  -->
-                <form action="proses.php" method="POST">
-                    <div class="control-group after-add-more">
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-info upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="tekssoal" placeholder="teks soal" class="form-control" autofocus>
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        <label>Pilih Tipe Soal</label> <br>
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Soal Pilihan Ganda
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan'); ?>">Input Soal Pilihan Ganda</a>
+                            <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay'); ?>">Input Soal Essay</a>
                         </div>
-                        <hr>
-                        </br>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        </br>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Kunci Jawaban</label>
-                                <div class="col-sm-3">
-                                    <select style="height:35px;" id="country" class="form-control">
-                                        <option>A</option>
-                                        <option>B</option>
-                                        <option>C</option>
-                                        <option>D</option>
-                                        <option>E</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        </br>
-                        <button class="btn btn-success add-more" type="button">
-                            <i class="glyphicon glyphicon-plus"></i> Add
-                        </button>
-                        <hr>
-                    </div>
-                    <button class="btn btn-success" type="submit">Submit</button>
-                    <button class="btn btn-primary" type="submit">Tambah Soal Uraian</button>
-                </form>
-
-                <!-- class hide membuat form disembunyikan  -->
-                <!-- hide adalah fungsi bootstrap 3, klo bootstrap 4 pake invisible  -->
-                <div class="copy hide">
-                    <div class="control-group">
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-info upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="tekssoal" placeholder="teks soal" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        </br>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
-                                <div class="col-sm-3">
-                                    <input type="file" name="gambar_soal" id="gambar_soal" class="btn btn-success upload">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" id="jawaban" placeholder="jawaban" class="form-control" autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        </br>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="birthDate" class="col-sm-3 control-label">Kunci Jawaban</label>
-                                <div class="col-sm-3">
-                                    <select style="height:35px;" id="country" class="form-control">
-                                        <option>A</option>
-                                        <option>B</option>
-                                        <option>C</option>
-                                        <option>D</option>
-                                        <option>E</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        </br>
-                        <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-                        <hr>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
-    <!-- fungsi javascript untuk menampilkan form dinamis  -->
-    <!-- penjelasan :
-saat tombol add-more ditekan, maka akan memunculkan div dengan class copy -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".add-more").click(function() {
-                var html = $(".copy").html();
-                $(".after-add-more").after(html);
-            });
 
-            // saat tombol remove dklik control group akan dihapus 
-            $("body").on("click", ".remove", function() {
-                $(this).parents(".control-group").remove();
-            });
-        });
-    </script>
+            <hr>
+            <?php if ($title == "Input Soal Ujian Pilihan Ganda") : ?>
+                <div class="panel-body">
+                    <!-- membuat form  -->
+                    <!-- gunakan tanda [] untuk menampung array  -->
+                    <form action="proses.php" method="POST">
+                        <div class="control-group after-add-more">
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
+                                    <div class="col-sm-3">
+                                        <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
+                                        <input type="text" name="soal" hidden value="<?= $soal->hello + 1 ?>">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="tekssoal" name="tekssoal" placeholder="teks soal" class="form-control" autofocus>
+                                        <?= form_error('tekssoal', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            </br>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
+                                    <!-- <div class="col-sm-3">
+                                        <input type="file" name="fileinputA" id="fileinputA" class="btn btn-success upload">
+                                    </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" id="jawabanA" name="jawabanA" placeholder="jawaban" class="form-control" autofocus>
+                                        <?= form_error('jawabanA', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
+                                    <!-- <div class="col-sm-3">
+                                        <input type="file" name="fileinputB" id="fileinputB" class="btn btn-success upload">
+                                    </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" id="jawabanB" name="jawabanB" placeholder="jawaban" class="form-control" autofocus>
+                                        <?= form_error('jawabanB', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
+                                    <!-- <div class="col-sm-3">
+                                        <input type="file" name="fileinputC" id="fileinputC" class="btn btn-success upload">
+                                    </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" id="jawabanC" name="jawabanC" placeholder="jawaban" class="form-control" autofocus>
+                                        <?= form_error('jawabanC', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
+                                    <!-- <div class="col-sm-3">
+                                        <input type="file" name="fileinputD" id="fileinputD" class="btn btn-success upload">
+                                    </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" id="jawabanD" name="jawabanD" placeholder="jawaban" class="form-control" autofocus>
+                                        <?= form_error('jawabanD', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
+                                    <!-- <div class="col-sm-3">
+                                        <input type="file" name="fileinputE" id="fileinputE" class="btn btn-success upload">
+                                    </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" id="jawabanE" name="jawabanE" placeholder="jawaban" class="form-control" autofocus>
+                                        <?= form_error('jawabanE', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            </br>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Tambah</button>
+                </div>
+
+                <hr>
+
+                <div class="row justify-content-center pt-7">
+                    <div class="col-lg-12 agile-course-main">
+                        <div class="w3ls-cource-first">
+                            <div class="px-md-5 px-4  pb-md-5 pb-4">
+                                <table class="table table-striped">
+
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nama Ujian</th>
+                                            <th scope="col">Gambar</th>
+                                            <th scope="col">Soal</th>
+                                            <th scope="col">opsi A</th>
+                                            <th scope="col">opsi B</th>
+                                            <th scope="col">opsi C</th>
+                                            <th scope="col">opsi D</th>
+                                            <th scope="col">opsi E</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <?php foreach ($detail as $d) : ?>
+                                            <tr>
+                                                <td><?= $d->nama_ujian ?></td>
+                                            <?php endforeach; ?> -->
+                                        <?php foreach ($pilgan as $p) : ?>
+                                            <?php if ($p->nama_file) : ?>
+                                                <td><img src="<?= base_url('assets/users/upload/' . $p->nama_file); ?>"></td>
+                                                <td><?= $p->soal ?></td>
+                                                <td><?= $p->opsiA ?></td>
+                                                <td><?= $p->opsiB ?></td>
+                                                <td><?= $p->opsiC ?></td>
+                                                <td><?= $p->opsiD ?></td>
+                                                <td><?= $p->opsiE ?></td>
+                                            <?php else : ?>
+                                                <td></td>
+                                                <td><?= $p->soal ?></td>
+                                            <?php endif; ?>
+
+                                            </tr>
+                                        <?php endforeach; ?>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+
+            </form>
+        <?php endif; ?>
+
+    </div>
+    </div>
+    </div>
 </body>
 
 </html>

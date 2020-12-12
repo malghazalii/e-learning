@@ -42,7 +42,33 @@
       </div>
 
       <hr>
+
       <?php if ($title == "Input Soal Ujian Essay") : ?>
+        <div class="panel-body">
+          <!-- membuat form  -->
+          <!-- gunakan tanda [] untuk menampung array  -->
+          <div class="control-group after-add-more">
+            <div class="form-group">
+              <div class="row">
+                <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
+                <div class="col-sm-3">
+                  <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
+                  <input type="text" id="idkuis" name="idkuis" hidden value="<?= $det->id_kuis ?>">
+                  <input type="text" name="soal" hidden value="<?= $soal->hello + 1 ?>">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" id="tekssoal" name="tekssoal" placeholder="teks soal" class="form-control" autofocus>
+                  <?= form_error('tekssoal', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <button class="btn btn-primary" type="submit">Tambah</button>
+        </div>
+
+        <hr>
+        <?= $this->session->flashdata('message'); ?>
         <div class="row justify-content-center pt-7">
           <div class="col-lg-12 agile-course-main">
             <div class="w3ls-cource-first">
@@ -54,6 +80,7 @@
                       <th scope="col">Nama Ujian</th>
                       <th scope="col">Gambar</th>
                       <th scope="col">Soal</th>
+                      <th scope="col">Action</th>
                       <!-- <th scope="col">Poin</th> -->
                     </tr>
                   </thead>
@@ -64,9 +91,23 @@
                         <?php if ($d->nama_file) : ?>
                           <td><img src="<?= base_url('assets/users/upload/' . $d->nama_file); ?>"></td>
                           <td><?= $d->soal ?></td>
+                          <td>
+                            <?php
+                            echo anchor(base_url('User/Guru/KuisEssay/edit/' . $d->id_soal), 'Edit');
+                            echo ' | ';
+                            echo anchor(base_url('User/Guru/KuisEssay/delete/' . $d->id_soal), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                            ?>
+                          </td>
                         <?php else : ?>
                           <td></td>
                           <td><?= $d->soal ?></td>
+                          <td>
+                            <?php
+                            echo anchor(base_url('User/Guru/KuisEssay/edit/' . $d->id_soal), 'Edit');
+                            echo ' | ';
+                            echo anchor(base_url('User/Guru/KuisEssay/delete/' . $d->id_soal), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                            ?>
+                          </td>
                         <?php endif; ?>
 
                       </tr>
@@ -80,27 +121,6 @@
 
         <hr>
 
-        <div class="panel-body">
-          <!-- membuat form  -->
-          <!-- gunakan tanda [] untuk menampung array  -->
-          <div class="control-group after-add-more">
-            <div class="form-group">
-              <div class="row">
-                <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
-                <div class="col-sm-3">
-                  <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
-                  <input type="text" name="soal" hidden value="<?= $soal->hello + 1 ?>">
-                </div>
-                <div class="col-sm-6">
-                  <input type="text" id="tekssoal" name="tekssoal" placeholder="teks soal" class="form-control" autofocus>
-                  <?= form_error('tekssoal', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
-              </div>
-            </div>
-            <hr>
-          </div>
-          <button class="btn btn-success" type="submit">Kembali</button>
-          <button class="btn btn-primary" type="submit">Submit</button>
       </form>
     <?php endif; ?>
   </div>

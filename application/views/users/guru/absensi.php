@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 <body onload="JavaScript:AutoRefresh(30000);">
 	<div class="course-w3ls py-5">

@@ -15,13 +15,10 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-    </script>
-    <script>
         function AutoRefresh(t) {
             setTimeout("location.reload(true);", t);
         }
     </script>
-
     <!--// Meta tag Keywords -->
 
     <!-- Custom-Files -->

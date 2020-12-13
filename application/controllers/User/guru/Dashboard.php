@@ -29,6 +29,7 @@ class Dashboard extends CI_Controller
 
     $data['title'] = "Dashboard";
     $data['tugas'] = $this->db->query($querytugas)->result();
+    $data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
     $data['mapel'] = $this->db->query($querymapel)->result();
     $data['kuis'] = $this->db->query($querykuis)->result();
     $this->load->view('users/templates/header', $data);
@@ -57,6 +58,7 @@ class Dashboard extends CI_Controller
 
     $data['title'] = "Dashboard";
     $data['tugas'] = $this->db->query($querytugas)->result();
+    $data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
     $data['mapel'] = $this->db->query($querymapel)->result();
     $data['kuis'] = $this->db->query($querykuis)->result();
     $this->load->view('users/templates/header', $data);
@@ -80,6 +82,7 @@ class Dashboard extends CI_Controller
 
     $data['title'] = "Dashboard Histori Tugas";
     $data['tugass'] = $this->db->query($querytugas)->result();
+    $data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
     $data['mapel'] = $this->db->query($querymapel)->result();
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navguru', $data);
@@ -102,6 +105,7 @@ class Dashboard extends CI_Controller
 
     $data['title'] = "Dashboard Histori Kuis";
     $data['kuiss'] = $this->db->query($querykuis)->result();
+    $data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
     $data['mapel'] = $this->db->query($querymapel)->result();
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navguru', $data);

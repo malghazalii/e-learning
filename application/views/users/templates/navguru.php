@@ -35,8 +35,9 @@
                     Mata Pelajaran
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel') ?>">Biologi</a>
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel') ?>">Kima</a>
+                    <?php foreach ($mapel as $m) : ?>
+                        <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel/' . $m->id_mengajar) ?>"><?= $m->mata_pelajaran ?> <?= $m->kelas ?> <?= $m->nama_jurusan ?></a>
+                    <?php endforeach; ?>
                 </div>
             </li>
             <li class="nav-item">

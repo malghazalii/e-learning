@@ -1,81 +1,109 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <br>
-<div class="container">
-  <img src="<?php echo base_url(); ?>assets/users/images/menu.png" style=”float:left; margin:0 8px 4px 0;” /><strong> Aktivitas Guru</strong>
-  <hr>
-  <div class="row">
-    <div style="margin-left: 15px; margin-bottom: -30px">
-      <a class="btn btn-primary" href="<?= base_url('User/Guru/Dashboard'); ?>">Semua</a>
-    </div>
-    <div style="margin-left: 15px; margin-bottom: -30px">
-      <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Mata Pelajaran
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <?php foreach ($mapel as $m) : ?>
-          <a class="dropdown-item" href="<?= base_url('User/Guru/Dashboard/mapel/' . $m->id_mapel); ?>"><?= $m->mata_pelajaran ?> <?= $m->kelas ?> <?= $m->nama_jurusan ?></a>
-        <?php endforeach; ?>
-      </div>
-    </div>
-    <div style="margin-left: 15px; margin-bottom: -30px">
-      <a class=" btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Histori
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="<?= base_url('User/Guru/Dashboard/historitugas'); ?>">Semua Tugas</a>
-        <a class="dropdown-item" href="<?= base_url('User/Guru/Dashboard/historikuis'); ?>">Semua Kuis</a>
-      </div>
-    </div>
-  </div>
-  <br>
-  <br>
-  <?php if ($title == 'Dashboard Histori Tugas') : ?>
+
+<body onload="JavaScript:AutoRefresh(30000);">
+  <div class="container">
+    <img src="<?php echo base_url(); ?>assets/users/images/menu.png" style=”float:left; margin:0 8px 4px 0;” /><strong> Event Guru</strong>
+    <hr>
     <div class="card">
-      <h5 class="card-header">Histori Tugas</h5>
-      <div class="card-body">
-        <?php foreach ($tugass as $tt) : ?>
-          <img src="<?php echo base_url(); ?>assets/users/images/doc1.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $tt->NAMA ?>
-          <p><img src="<?= base_url('assets/users/upload/' . $tt->file); ?>"></p>
-          <p class="card-text-left"><?= $tt->TANGGAL ?></p>
-        <?php endforeach; ?>
-        <hr>
-      </div>
-    </div>
-  <?php elseif ($title == 'Dashboard Histori Kuis') : ?>
-    <div class="card">
-      <h5 class="card-header">Histori Kuis</h5>
-      <div class="card-body">
-        <?php foreach ($kuiss as $k) : ?>
-          <img src="<?php echo base_url(); ?>assets/users/images/pie.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $k->nama_ujian ?>
-          <p><?= $k->jenis ?></p>
-          <p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
-        <?php endforeach; ?>
-        <hr>
-      </div>
-    </div>
-  <?php else : ?>
-    <div class="card">
-      <h5 class="card-header">Histori Tugas</h5>
-      <div class="card-body">
-        <?php foreach ($tugas as $t) : ?>
+      <h5 class="card-header">Tugas</h5>
+      <?php
+      $s = 0;
+      foreach ($tugas as $t) : ?>
+        <div class="card-body" id="perulangan<?= $s; ?>">
           <img src="<?php echo base_url(); ?>assets/users/images/doc1.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $t->NAMA ?>
           <p><img src="<?= base_url('assets/users/upload/' . $t->file); ?>"></p>
           <p class="card-text-left"><?= $t->TANGGAL ?></p>
-        <?php endforeach; ?>
-        <hr>
-      </div>
+        </div>
+        <script>
+          // Mengatur waktu akhir perhitungtitan mundur
+
+          var countDownDate = new Date("<?= $t->TANGGAL ?>").getTime();
+
+
+          // Memperbarui hitungan mundur setiap 1 detik
+
+
+          // Untuk mendapatkan tanggal dan waktu hari ini
+          var now = new Date().getTime();
+
+          // Temukan jarak antara sekarang dan tanggal hitung mundur
+          var distance = countDownDate - now;
+
+          // // Perhitungan waktu untuk hari, jam, menit dan detik
+          // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          // var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          // var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Keluarkan hasil dalam elemen dengan id = "demo"
+          // document.getElementById("coba<?= $s; ?>").innerHTML = days + "d " + hours + "h " +
+          //   minutes + "m " + seconds + "s ";
+
+          // Jika hitungan mundur selesai, tulis beberapa teks
+          if (distance < 0) {
+            //document.getElementById("Perulangan<?= $s; ?>").innerHTML = "";
+            // document.getElementById("demo<?= $s; ?>").innerHTML = "";
+
+            $("#perulangan<?= $s; ?>").remove();
+          }
+        </script>
+      <?php
+        $s++;
+      endforeach; ?>
     </div>
     <br>
     <div class="card">
-      <h5 class="card-header">Histori Kuis</h5>
-      <div class="card-body">
-        <?php foreach ($kuis as $k) : ?>
+      <h5 class="card-header">Kuis</h5>
+      <?php
+      $s = 0;
+      foreach ($kuis as $k) : ?>
+        <div class="card-body" id="looping<?= $s ?>">
           <img src="<?php echo base_url(); ?>assets/users/images/pie.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $k->nama_ujian ?>
           <p><?= $k->jenis ?></p>
           <p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
-        <?php endforeach; ?>
-        <hr>
-      </div>
+        </div>
+        <script>
+          // Mengatur waktu akhir perhitungtitan mundur
+
+          var countDownDate = new Date("<?= $k->tanggal_berakhir ?>").getTime();
+
+
+          // Memperbarui hitungan mundur setiap 1 detik
+
+
+          // Untuk mendapatkan tanggal dan waktu hari ini
+          var now = new Date().getTime();
+
+          // Temukan jarak antara sekarang dan tanggal hitung mundur
+          var distance = countDownDate - now;
+
+          // // Perhitungan waktu untuk hari, jam, menit dan detik
+          // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          // var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          // var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Keluarkan hasil dalam elemen dengan id = "demo"
+          // document.getElementById("coba<?= $s; ?>").innerHTML = days + "d " + hours + "h " +
+          //   minutes + "m " + seconds + "s ";
+
+          // Jika hitungan mundur selesai, tulis beberapa teks
+          if (distance < 0) {
+            //document.getElementById("Perulangan<?= $s; ?>").innerHTML = "";
+            // document.getElementById("demo<?= $s; ?>").innerHTML = "";
+
+            $("#looping<?= $s; ?>").remove();
+          }
+        </script>
+      <?php
+        $s++;
+      endforeach; ?>
     </div>
-</div>
-<br>
-<?php endif; ?>
+    <br>
+  </div>
+  </div>
+  <br>
+
+
+</body>

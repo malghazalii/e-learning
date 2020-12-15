@@ -34,8 +34,13 @@
                             Soal Pilihan Ganda
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan'); ?>">Input Soal Pilihan Ganda</a>
-                            <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay'); ?>">Input Soal Essay</a>
+                            <?php if ($title == "Input Soal Ujian Pilihan Ganda") : ?>
+                                <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan/kuis/' . $det->id_kuis); ?>">Input Soal Pilihan Ganda</a>
+                                <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay/kuis/' . $det->id_kuis); ?>">Input Soal Essay</a>
+                            <?php else : ?>
+                                <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan'); ?>">Input Soal Pilihan Ganda</a>
+                                <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay'); ?>">Input Soal Essay</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

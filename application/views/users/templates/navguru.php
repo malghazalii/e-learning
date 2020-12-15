@@ -36,7 +36,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <?php foreach ($mapel as $m) : ?>
-                        <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel/' . $m->id_mengajar) ?>"><?= $m->mata_pelajaran ?> <?= $m->kelas ?> <?= $m->nama_jurusan ?></a>
+                        <a class="dropdown-item" href="<?= base_url('User/Guru/Mapel/getMapel/' . $m->id_mengajar) ?>"><?= $m->mata_pelajaran ?> <?= $m->kelas ?> <?= $m->nama_jurusan ?></a>
                     <?php endforeach; ?>
                 </div>
             </li>

@@ -25,69 +25,13 @@ class EssayEvent extends CI_Controller
         $this->load->view('users/guru/create_event/esai');
         $this->load->view('users/templates/footer');
     }
-    //     public function tambahData()
-    //     {
-    //         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
-    //             'required' => 'Field tidak boleh kosong'
-    //         ]);
-    //         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
-    //             'required' => 'Field tidak boleh kosong'
-    //         ]);
-    //         $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
-    //             'required' => 'Field tidak boleh kosong'
-    //         ]);
-    //         $this->form_validation->set_rules('file', 'File', 'required|trim', [
-    //             'required' => 'Field tidak boleh kosong'
-    //         ]);
 
-    //         if (!$this->form_validation->run() == false) {
-    //             //$this->index();
-    //         } else {
-    //             $mapel = $this->input->post('mapel');
-    //             $nama = $this->input->post('nama');
-    //             $keterangan = $this->input->post('keterangan');
-    //             $file = $_FILES['file'];
-
-    //             $config['upload_path']  =   './assets/users/upload';
-    //             $config['allowed_types'] =  'pdf|docx|pptx';
-
-    //             $this->load->library('upload', $config);
-    //             if (!$this->upload->do_upload('file')) {
-    //                 echo 'gagal';
-    //                 die;
-    //             } else {
-    //                 $file = $this->upload->data('file_name');
-    //             }
-
-    //             $data = [
-    //                 'judul' => $nama,
-    //                 'id_mengajar' => $mapel,
-    //                 'nama_file' => $file,
-    //                 'tgl_posting' => date('y-m-d'),
-    //                 'isi' => $keterangan
-    //             ];
-
-    //             $simpan = $this->db->insert('materi', $data);
-
-    //             if ($simpan) {
-    //                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Materi berhasil diupload</div>');
-    //             } else {
-    //                 $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Materi gagal diupload</div>');
-    //             }
-
-    //             redirect('User/Guru/Dashboard');
-    //         }
-    //     }
-    // }
     function tambahData()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-        $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
+        $this->form_validation->set_rules('tanggalberakhir', 'Tanggalberakhir', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
 
@@ -99,10 +43,7 @@ class EssayEvent extends CI_Controller
             $password = $this->input->post('nama');
             $negara = $this->input->post('keterangan');
             $poto = $_FILES['file_input']['name'];
-            $jam = $this->input->post('jam');
-            $tanggal = $this->input->post('tanggal');
-
-            $waktu = $tanggal . " " . $jam;
+            $tglberakhir = $this->input->post('tanggalberakhir');
 
             // $file_ext = pathinfo($_FILES['file_input']['name'], PATHINFO_EXTENSION);
 
@@ -122,7 +63,7 @@ class EssayEvent extends CI_Controller
                         'nama' => $password,
                         'keterangan' => $negara,
                         'file' => $poto,
-                        'tanggal_berakhir' => $waktu
+                        'tanggal_berakhir' => $tglberakhir
 
                     );
                     $this->db->insert('tugas_siswa', $data);
@@ -147,7 +88,7 @@ class EssayEvent extends CI_Controller
                     'nama' => $password,
                     'keterangan' => $negara,
                     'file' => null,
-                    'tanggal_berakhir' => $waktu
+                    'tanggal_berakhir' => $tglberakhir
                 );
 
                 $this->db->insert('tugas_siswa', $data);
@@ -158,14 +99,100 @@ class EssayEvent extends CI_Controller
                 }
                 echo "<script>window.location='" . site_url('User/Guru/Dashboard') . "';</script>";
             }
+        }
+    }
 
-            // $data = array(
-            // 	'username' => $username,
-            // 	'password' => $password,
-            // 	'image' => $image
-            // 	);
-            // $this->mlogin->input_data($data,'admin');
-            // redirect('admin/user');
+    public function editTugas($id)
+    {
+        $nip = $this->session->userdata('nip');
+
+        $queryMengajar = "SELECT * FROM `mengajar` JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran 
+        on mata_pelajaran.id_mapel = mengajar.id_mapel join penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas 
+        on kelas.id_kelas = penjurusan.id_kelas  WHERE mengajar.nip = $nip";
+
+        $querytugas = "SELECT *, tugas_siswa.nama as NAMA, tugas_siswa.tanggal_berakhir as TANGGAL FROM tugas_siswa JOIN mengajar on mengajar.id_mengajar = tugas_siswa.id_mengajar 
+        JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
+        JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas WHERE tugas_siswa.id_tugas = $id";
+
+        $data['title'] = 'Edit Tugas';
+        $data['mengajar'] = $this->db->query($queryMengajar)->result();
+        $data['tugas'] = $this->db->query($querytugas)->row();
+        $this->load->view('users/templates/header', $data);
+        $this->load->view('users/templates/navguru');
+        $this->load->view('users/guru/create_event/edit_esai', $data);
+        $this->load->view('users/templates/footer');
+    }
+
+    public function update($id)
+    {
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('tanggalberakhir', 'Tanggalberakhir', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->editTugas($id);
+        } else {
+            $username = $this->input->post('mapel');
+            $password = $this->input->post('nama');
+            $negara = $this->input->post('keterangan');
+            $poto = $_FILES['file_input']['name'];
+            $tglberakhir = $this->input->post('tanggalberakhir');
+
+            // $file_ext = pathinfo($_FILES['file_input']['name'], PATHINFO_EXTENSION);
+
+
+            $config['upload_path']        =    './assets/users/upload';
+            $config['allowed_types']    =    'pdf|docx|pptx';
+            $config['max_size']            =    10000;
+            // $config['file_name']		=	'picture-'.date('ymd').'-'.substr(md5(rand()),0,10);
+            // $config['file_name']        =    $poto;
+
+            $this->load->library('upload', $config);
+
+            if (@$_FILES['file_input']['name'] != null) {
+                if ($this->upload->do_upload('file_input')) {
+                    $data = array(
+                        'id_mengajar' => $username,
+                        'nama' => $password,
+                        'keterangan' => $negara,
+                        'file' => $poto,
+                        'tanggal_berakhir' => $tglberakhir
+                    );
+
+                    $this->db->where('id_tugas', $id)->update('tugas_siswa', $data);
+
+                    if ($this->db->affected_rows() > 0) {
+                        echo "<script>alert('Data berhasil di update');</script>";
+                        echo "<script>window.location='" . site_url('User/Guru/Mapel/getMapel/' . $username) . "';</script>";
+                    }
+                } else {
+                    $error = array('error' => $this->upload->display_errors());
+                    echo "<script>alert('Format file salah');</script>";
+                    echo "<script>window.location='" . site_url('User/Guru/essayEvent/editTugas/' . $id) . "';</script>";
+                }
+                // if ($this->db->affected_rows() > 0) {
+                //     echo "<script>alert('Data berhasil ditambah');</script>";
+                // }
+                // echo "<script>window.location='" . site_url('User/Guru/Dashboard') . "';</script>";
+            } else {
+                $data = array(
+                    'id_mengajar' => $username,
+                    'nama' => $password,
+                    'keterangan' => $negara,
+                    'tanggal_berakhir' => $tglberakhir
+                );
+
+                $this->db->where('id_tugas', $id)->update('tugas_siswa', $data);
+
+                if ($this->db->affected_rows() > 0) {
+                    echo "<script>alert('Data berhasil di update');</script>";
+                    echo "<script>window.location='" . site_url('User/Guru/mapel/getMapel/' . $username) . "';</script>";
+                }
+                echo "<script>window.location='" . site_url('User/Guru/mapel/getMapel/' . $username) . "';</script>";
+            }
         }
     }
 }

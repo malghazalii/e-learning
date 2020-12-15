@@ -15,6 +15,7 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
         function AutoRefresh(t) {
             setTimeout("location.reload(true);", t);
         }

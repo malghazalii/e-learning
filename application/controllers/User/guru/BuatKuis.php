@@ -24,10 +24,7 @@ class BuatKuis extends CI_Controller
         $this->form_validation->set_rules('namaujian', 'Namaujian', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-        $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
+        $this->form_validation->set_rules('tanggalberakhir', 'Tanggalberakhir', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
         $this->form_validation->set_rules('jmlsoalkeluar', 'Jmlsoalkeluar', 'required|trim', [
@@ -40,16 +37,13 @@ class BuatKuis extends CI_Controller
             $mengajar = $this->input->post('mengajar');
             $namaujian = $this->input->post('namaujian');
             $jenisujian = $this->input->post('jenisujian');
-            $jam = $this->input->post('jam');
-            $tanggal = $this->input->post('tanggal');
+            $tanggal = $this->input->post('tanggalberakhir');
             $jmlsoalkeluar = $this->input->post('jmlsoalkeluar');
-
-            $waktu = $tanggal . " " . $jam;
 
             $data = [
                 'id_mengajar' => $mengajar,
                 'nama_ujian' => $namaujian,
-                'tanggal_berakhir' => $waktu,
+                'tanggal_berakhir' => $tanggal,
                 'jenis' => $jenisujian,
                 'jumlah_keluar' => $jmlsoalkeluar
             ];

@@ -14,22 +14,24 @@
 							<a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
 							<?php foreach ($mengajar as $t) :
 							?>
-								<a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
+								<a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $t->id_jurusan); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
 							<?php endforeach; ?>
 						</div>
 						<br>
 						<br>
-						<br>
+						<form action="<?= base_url('User/Guru/Report_absensi/tanggal'); ?>" method="POST">
+							<input type="date" name="tanggal" id="tanggal">
+							<button type="submit" class="btn btn-primary">Cari</button>
+						</form>
 						<table class="table table-striped">
 							<thead>
 								<tr>
 									<th scope="col">Nama</th>
 									<th scope="col">NIS</th>
-									<th scope="col">H</th>
-									<th scope="col">S/I</th>
-									<th scope="col">A</th>
-									<th scope="col">Point</th>
-									<th scope="col">Presentase</th>
+									<th scope="col">Status</th>
+									<th scope="col">Tanggal Berakhir</th>
+									<th scope="col">Kelas</th>
+									<th scope="col">Action</th>
 								</tr>
 							</thead>
 							<?php foreach ($absensi as $a) : ?>
@@ -37,17 +39,19 @@
 									<tr>
 										<td><?= $a->NAMA; ?></td>
 										<td><?= $a->nis; ?></td>
-										<td><?php if ($a->status == 2) {
-											echo '';
-										}
-										else {
-											echo '';
-										} ?></td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0 / 0</td>
-										<td>0.0%</td>
+										<td><?php if ($a->status == 1) {
+													echo 'Hadir';
+												} else if ($a->status == 2) {
+													echo 'Sakit';
+												} else if ($a->status == 3) {
+													echo 'Izin';
+												} else if ($a->status == 4) {
+													echo 'Terlambat';
+												}
+												?></td>
+										<td><?= $a->tanggal; ?></td>
+										<td><?= $a->kelas, "-", $a->nama_jurusan; ?></td>
+										<td>Edit Delete</td>
 									</tr>
 								</tbody>
 							<?php endforeach; ?>

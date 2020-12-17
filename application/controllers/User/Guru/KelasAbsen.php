@@ -73,6 +73,7 @@ class KelasAbsen extends CI_Controller
   public function TampilU($id)
   {
     $nip = $this->session->userdata('nip');
+    $data['tang'] = date('Y-m-d');
 
     // $queryAbsen = "SELECT * FROM `absen_siswa`";
     $queryAbsen = "SELECT * FROM `absen_siswa` 
@@ -95,7 +96,7 @@ class KelasAbsen extends CI_Controller
     $data['mengajar'] = $this->db->query($queryMengajar)->row();
     $tanggal = $this->db->query($queryMengajar)->row();
     $data['tanggal'] = $tanggal->tanggal;
-    
+
 
     $data['title'] = 'Buat Absen';
     $this->load->view('users/templates/header', $data);

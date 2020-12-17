@@ -6,11 +6,13 @@ class BuatKuis extends CI_Controller
     public function index()
     {
         $nip = $this->session->userdata('nip');
+
         $queryMengajar = "SELECT * FROM mengajar JOIN mata_pelajaran ON mata_pelajaran.id_mapel = mengajar.id_mapel 
         JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas
         WHERE mengajar.nip=$nip";
 
         $data['title'] = 'Buat Ujian';
+        $data['tanggal'] = date('Y-m-d');
         $data['mengajar'] = $this->db->query($queryMengajar)->result();
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
@@ -24,7 +26,10 @@ class BuatKuis extends CI_Controller
         $this->form_validation->set_rules('namaujian', 'Namaujian', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('tanggalberakhir', 'Tanggalberakhir', 'required|trim', [
+        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
         $this->form_validation->set_rules('jmlsoalkeluar', 'Jmlsoalkeluar', 'required|trim', [
@@ -37,13 +42,16 @@ class BuatKuis extends CI_Controller
             $mengajar = $this->input->post('mengajar');
             $namaujian = $this->input->post('namaujian');
             $jenisujian = $this->input->post('jenisujian');
-            $tanggal = $this->input->post('tanggalberakhir');
+            $jam = $this->input->post('jam');
+            $tanggal = $this->input->post('tanggal');
             $jmlsoalkeluar = $this->input->post('jmlsoalkeluar');
+
+            $waktu = $tanggal . " " . $jam;
 
             $data = [
                 'id_mengajar' => $mengajar,
                 'nama_ujian' => $namaujian,
-                'tanggal_berakhir' => $tanggal,
+                'tanggal_berakhir' => $waktu,
                 'jenis' => $jenisujian,
                 'jumlah_keluar' => $jmlsoalkeluar
             ];

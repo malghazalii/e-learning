@@ -13,6 +13,7 @@ class EssayEvent extends CI_Controller
     public function index()
     {
         $nip = $this->session->userdata('nip');
+        $data['tanggal'] = date('Y-m-d');
         $queryMengajar = "SELECT * FROM `mengajar` JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran 
         on mata_pelajaran.id_mapel = mengajar.id_mapel join penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas 
         on kelas.id_kelas = penjurusan.id_kelas  WHERE mengajar.nip = $nip";
@@ -31,7 +32,10 @@ class EssayEvent extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('tanggalberakhir', 'Tanggalberakhir', 'required|trim', [
+        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
 
@@ -43,7 +47,10 @@ class EssayEvent extends CI_Controller
             $password = $this->input->post('nama');
             $negara = $this->input->post('keterangan');
             $poto = $_FILES['file_input']['name'];
-            $tglberakhir = $this->input->post('tanggalberakhir');
+            $jam = $this->input->post('jam');
+            $tanggal = $this->input->post('tanggal');
+
+            $waktu = $tanggal . " " . $jam;
 
             // $file_ext = pathinfo($_FILES['file_input']['name'], PATHINFO_EXTENSION);
 
@@ -63,7 +70,7 @@ class EssayEvent extends CI_Controller
                         'nama' => $password,
                         'keterangan' => $negara,
                         'file' => $poto,
-                        'tanggal_berakhir' => $tglberakhir
+                        'tanggal_berakhir' => $waktu
 
                     );
                     $this->db->insert('tugas_siswa', $data);
@@ -88,7 +95,7 @@ class EssayEvent extends CI_Controller
                     'nama' => $password,
                     'keterangan' => $negara,
                     'file' => null,
-                    'tanggal_berakhir' => $tglberakhir
+                    'tanggal_berakhir' => $waktu
                 );
 
                 $this->db->insert('tugas_siswa', $data);
@@ -128,7 +135,10 @@ class EssayEvent extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('tanggalberakhir', 'Tanggalberakhir', 'required|trim', [
+        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
 
@@ -139,7 +149,10 @@ class EssayEvent extends CI_Controller
             $password = $this->input->post('nama');
             $negara = $this->input->post('keterangan');
             $poto = $_FILES['file_input']['name'];
-            $tglberakhir = $this->input->post('tanggalberakhir');
+            $jam = $this->input->post('jam');
+            $tanggal = $this->input->post('tanggal');
+
+            $waktu = $tanggal . " " . $jam;
 
             // $file_ext = pathinfo($_FILES['file_input']['name'], PATHINFO_EXTENSION);
 
@@ -159,7 +172,7 @@ class EssayEvent extends CI_Controller
                         'nama' => $password,
                         'keterangan' => $negara,
                         'file' => $poto,
-                        'tanggal_berakhir' => $tglberakhir
+                        'tanggal_berakhir' => $waktu
                     );
 
                     $this->db->where('id_tugas', $id)->update('tugas_siswa', $data);
@@ -182,7 +195,7 @@ class EssayEvent extends CI_Controller
                     'id_mengajar' => $username,
                     'nama' => $password,
                     'keterangan' => $negara,
-                    'tanggal_berakhir' => $tglberakhir
+                    'tanggal_berakhir' => $waktu
                 );
 
                 $this->db->where('id_tugas', $id)->update('tugas_siswa', $data);

@@ -13,7 +13,7 @@
                   <td width="150">Tanggal Berakhir</td>
                   <td width="80">:</td>
                   <td width="250"><input style="width: 162px;" type="time" id="tanggal" name="jam" value="<?= $mengajar->tanggal; ?>"></td>
-                  <td width="250"><input type="date" id="tanggal" name="tanggal" value="<?= $mengajar->tanggal; ?>"></td>
+                  <td width="250"><input type="date" id="tanggal" name="tanggal" min="<?= $tang ?>" value="<?= $mengajar->tanggal; ?>"></td>
                 </tr>
                 <br>
                 <tr>

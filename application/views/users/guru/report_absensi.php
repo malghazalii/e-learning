@@ -20,7 +20,11 @@
 						<br>
 						<br>
 						<form action="<?= base_url('User/Guru/Report_absensi/tanggal'); ?>" method="POST">
-							<input type="date" name="tanggal" id="tanggal">
+							<select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
+								<?php foreach ($tanggal as $m) : ?>
+									<option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
+								<?php endforeach; ?>
+							</select>
 							<button type="submit" class="btn btn-primary">Cari</button>
 						</form>
 						<table class="table table-striped">

@@ -43,7 +43,7 @@ class KelasAbsen extends CI_Controller
   public function Tampil($id)
   {
     $nip = $this->session->userdata('nip');
-    $data['tanggal'] = date('y-m-d');
+    $data['tanggal'] = date('Y-m-d');
 
     // $queryAbsen = "SELECT * FROM `absen_siswa`";
     $queryAbsen = "SELECT * FROM `absen_siswa` 

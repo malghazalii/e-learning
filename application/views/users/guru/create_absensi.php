@@ -10,16 +10,16 @@
                   <form action="<?= base_url('User/Guru/KelasAbsen/Input/' . $mengajar->id_mengajar); ?>" method="POST">
                      <table width="452" cellpadding="5" cellspacing="1" style="padding: 2px">
                         <tr>
-                           <td width="150">Tanggal Berakhir</td>
+                           <td width="150">Waktu Berakhir</td>
                            <td width="80">:</td>
                            <td width="250"><input style="width: 162px;" type="time" id="tanggal" name="jam"></td>
-                           <td width="250"><input type="date" id="tanggal" name="tanggal"></td>
+                           <td width="250"><input type="date" id="tanggal" name="tanggal" min="<?= $tanggal; ?>"></td>
                         </tr>
                         <br>
                         <tr>
                            <td>Waktu Mengejar</td>
                            <td>:</td>
-                           <td><input readonly type="time" id="waktuawal" name="waktuawal" value="<?= $mengajar->jam; ?>"> </td>
+                           <td><input readonly type="time" id="waktuawal" name="waktuawal"  value="<?= $mengajar->jam; ?>"> </td>
                         </tr>
                         <br>
                         <tr>

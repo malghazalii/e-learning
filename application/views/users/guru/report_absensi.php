@@ -35,8 +35,7 @@
 									<th scope="col">Status</th>
 									<th scope="col">Tanggal Berakhir</th>
 									<th scope="col">Kelas</th>
-									<th scope="col">Action</th>
-								</tr>
+									</tr>
 							</thead>
 							<?php foreach ($absensi as $a) : ?>
 								<tbody>
@@ -55,8 +54,7 @@
 												?></td>
 										<td><?= $a->tanggal; ?></td>
 										<td><?= $a->kelas, "-", $a->nama_jurusan; ?></td>
-										<td>Edit Delete</td>
-									</tr>
+										</tr>
 								</tbody>
 							<?php endforeach; ?>
 						</table>

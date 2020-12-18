@@ -25,6 +25,7 @@
                   <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
                 <?php endforeach; ?>
               </select>
+              <input hidden type="text" name="id" value="<?= $m->id_jurusan; ?>">
               <button type="submit" class="btn btn-primary">Cari</button>
             </form>
             <table class="table table-striped">

@@ -40,9 +40,18 @@
                     <?php endforeach; ?>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="<?= base_url('User/Guru/wali_kelas/DaftarSiswa') ?>">Wali Kelas</a>
-            </li>
+            <?php
+            $nip = $this->session->userdata('nip');
+            $queryWalikelas = "SELECT * FROM `wali_kelas` WHERE nip = $nip";
+            $wali = $this->db->query($queryWalikelas)->result();
+            if ($wali) { ?>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="<?= base_url('User/Guru/wali_kelas/DaftarSiswa') ?>">Wali Kelas</a>
+                </li>
+            <?php } else {
+                echo '';
+            } ?>
+
             <li class="nav-item">
                 <a class="nav-link text-white" href="<?= base_url('User/Guru/Absensi'); ?>">Absensi</a>
             </li>

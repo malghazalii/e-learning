@@ -8,7 +8,7 @@
 					<div class="px-md-5 px-4  pb-md-5 pb-4">
 						<br>
 						<a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Meta Pelajaran
+							Mata Pelajaran
 						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 							<a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
@@ -20,13 +20,17 @@
 						<br>
 						<br>
 						<form action="<?= base_url('User/Guru/Report_absensi/tanggal'); ?>" method="POST">
-							<select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
+							<div class="col-sm-3" style="float: left;">
+								<input type="date" id="tanggal" name="tanggal" class="form-control">
+							</div>
+							<!-- <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
 								<?php foreach ($tanggal as $m) : ?>
 									<option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
 								<?php endforeach; ?>
-							</select>
+							</select> -->
 							<button type="submit" class="btn btn-primary">Cari</button>
 						</form>
+						<br>
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -35,7 +39,7 @@
 									<th scope="col">Status</th>
 									<th scope="col">Tanggal Berakhir</th>
 									<th scope="col">Kelas</th>
-									</tr>
+								</tr>
 							</thead>
 							<?php foreach ($absensi as $a) : ?>
 								<tbody>
@@ -43,18 +47,18 @@
 										<td><?= $a->NAMA; ?></td>
 										<td><?= $a->nis; ?></td>
 										<td><?php if ($a->status == 1) {
-													echo 'Hadir';
-												} else if ($a->status == 2) {
-													echo 'Sakit';
-												} else if ($a->status == 3) {
-													echo 'Izin';
-												} else if ($a->status == 4) {
-													echo 'Terlambat';
-												}
-												?></td>
+												echo 'Hadir';
+											} else if ($a->status == 2) {
+												echo 'Sakit';
+											} else if ($a->status == 3) {
+												echo 'Izin';
+											} else if ($a->status == 4) {
+												echo 'Terlambat';
+											}
+											?></td>
 										<td><?= $a->tanggal; ?></td>
 										<td><?= $a->kelas, "-", $a->nama_jurusan; ?></td>
-										</tr>
+									</tr>
 								</tbody>
 							<?php endforeach; ?>
 						</table>

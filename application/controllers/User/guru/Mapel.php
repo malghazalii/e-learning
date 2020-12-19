@@ -38,4 +38,9 @@ class Mapel extends CI_Controller
         $this->load->view('users/guru/mapel');
         $this->load->view('users/templates/footer');
     }
+
+    public function indexid($id)
+    {
+        force_download('assets/users/upload/' . $id, NULL);
+    }
 }

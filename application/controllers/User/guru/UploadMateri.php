@@ -57,7 +57,7 @@ class UploadMateri extends CI_Controller
                     $data = array(
                         'id_mengajar' => $mengajar,
                         'judul' => $nama,
-                        'nama_file' => $file,
+                        'nama_file' => preg_replace("/\s+/", "_", $file),
                         'tgl_posting' => date('y-m-d'),
                         'isi' => $keterangan
 
@@ -129,7 +129,7 @@ class UploadMateri extends CI_Controller
                     $data = array(
                         'id_mengajar' => $mengajar,
                         'judul' => $nama,
-                        'nama_file' => $file,
+                        'nama_file' => preg_replace("/\s+/", "_", $file),
                         'tgl_posting' => date('y-m-d'),
                         'isi' => $keterangan
                     );

@@ -69,7 +69,7 @@ class EssayEvent extends CI_Controller
                         'id_mengajar' => $username,
                         'nama' => $password,
                         'keterangan' => $negara,
-                        'file' => $poto,
+                        'file' => preg_replace("/\s+/", "_", $poto),
                         'tanggal_berakhir' => $waktu
 
                     );
@@ -171,7 +171,7 @@ class EssayEvent extends CI_Controller
                         'id_mengajar' => $username,
                         'nama' => $password,
                         'keterangan' => $negara,
-                        'file' => $poto,
+                        'file' => preg_replace("/\s+/", "_", $poto),
                         'tanggal_berakhir' => $waktu
                     );
 

@@ -201,6 +201,7 @@ class KuisEssay extends CI_Controller
 
 
                     if ($this->db->affected_rows() > 0) {
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
                         redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
                     }
                 } else {
@@ -229,6 +230,7 @@ class KuisEssay extends CI_Controller
 
 
                 if ($this->db->affected_rows() > 0) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di tambah</div>');
                     redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
                 }
                 echo "<script>window.location='" . site_url('User/Guru/kuisessay/kuis/' . $id_kuis) . "';</script>";

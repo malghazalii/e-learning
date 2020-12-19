@@ -94,7 +94,7 @@
                       <tr>
                         <td><?= $d->nama_ujian ?></td>
                         <?php if ($d->nama_file) : ?>
-                          <td><img src="<?= base_url('assets/users/upload/' . $d->nama_file); ?>"></td>
+                          <td><img width="50px" height="50px" src="<?= base_url('assets/users/upload/' . $d->nama_file); ?>"></td>
                           <td><?= $d->soal ?></td>
                           <td>
                             <?php

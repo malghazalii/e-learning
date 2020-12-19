@@ -14,8 +14,8 @@
     <div class="card-body">
       <?php
       foreach ($materi as $m) : ?>
-        <img src="<?php echo base_url(); ?>assets/users/images/online-class.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $m->judul ?>
-        <p><img src="<?= base_url('assets/users/upload/' . $m->nama_file); ?>"></p>
+        <img src="<?php echo base_url(); ?>assets/users/images/online-class.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $m->judul ?> <br>
+        <a href="<?php echo base_url() . 'User/Guru/Mapel/indexid/' . $m->nama_file ?>"><?= $m->nama_file ?></a>
         <a href="<?php echo base_url('user/guru/uploadmateri/editMateri/' . $m->id_materi); ?>" class="btn btn-outline-danger" style="float:right; margin-left:10px">Edit</a>
         <p><?= $m->isi ?></p>
         <p class="card-text-left"><?= $m->tgl_posting ?></p>
@@ -29,8 +29,8 @@
     <div class="card-body">
       <?php
       foreach ($tugas as $t) : ?>
-        <img src="<?php echo base_url(); ?>assets/users/images/doc1.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $t->NAMA ?>
-        <p><img src="<?= base_url('assets/users/upload/' . $t->file); ?>"></p>
+        <img src="<?php echo base_url(); ?>assets/users/images/doc1.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $t->NAMA ?> <br>
+        <a href="<?php echo base_url() . 'User/Guru/Mapel/indexid/' . $t->file ?>"><?= $t->file ?></a>
         <a href="<?php echo base_url('user/guru/essayevent/editTugas/' . $t->id_tugas); ?>" class="btn btn-outline-danger" style="float:right; margin-left:10px">Edit</a>
         <a href="#" class="btn btn-outline-danger" style="float:right;">Cek Pengumpulan Tugas</a>
         <p><?= $t->keterangan ?></p>

@@ -105,12 +105,15 @@ class Report_absensi extends CI_Controller
 
 		$tanggal = "SELECT * FROM `absen_siswa` 
 		JOIN mengajar ON mengajar.id_mengajar = absen_siswa.id_mengajar 
+		JOIN guru ON guru.nip = mengajar.nip
+		JOIN mata_pelajaran ON mata_pelajaran.id_mapel = mengajar.id_mapel
+		JOIN penjurusan ON penjurusan.id_jurusan = mengajar.id_jurusan
+		JOIN kelas ON kelas.id_kelas = penjurusan.id_kelas
 		WHERE mengajar.id_jurusan=$id";
-		$data['tanggal'] = $this->db->query($tanggal)->result();
-
+		$data['tanggal'] = $this->db->query($tanggal)->row();
 		$data['title'] = 'Laporan Absen';
-		$data['mengajar'] = $this->db->query($queryMengajar)->result();
 		$data['absensi'] = $this->db->query($ngambilabsen)->result();
+		$data['mengajar'] = $this->db->query($queryMengajar)->result();
 
 		$this->load->view('users/templates/header', $data);
 		$this->load->view('users/templates/navguru');
@@ -143,8 +146,12 @@ class Report_absensi extends CI_Controller
 
 		$tanggal = "SELECT * FROM `absen_siswa` 
 		JOIN mengajar ON mengajar.id_mengajar = absen_siswa.id_mengajar 
+		JOIN guru ON guru.nip = mengajar.nip
+		JOIN mata_pelajaran ON mata_pelajaran.id_mapel = mengajar.id_mapel
+		JOIN penjurusan ON penjurusan.id_jurusan = mengajar.id_jurusan
+		JOIN kelas ON kelas.id_kelas = penjurusan.id_kelas
 		WHERE mengajar.id_jurusan=$id";
-		$data['tanggal'] = $this->db->query($tanggal)->result();
+		$data['tanggal'] = $this->db->query($tanggal)->row();
 
 
 		$data['title'] = 'Laporan Absen';

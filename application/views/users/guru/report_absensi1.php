@@ -8,7 +8,7 @@
           <div class="px-md-5 px-4  pb-md-5 pb-4">
             <br>
             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Meta Pelajaran
+              <?= $tanggal->mata_pelajaran ?> <?= $tanggal->kelas ?> <?= $tanggal->nama_jurusan ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
@@ -20,14 +20,13 @@
             <br>
             <br>
             <form action="<?= base_url('User/Guru/Report_absensi/tanggal1/'); ?>" method="POST">
-              <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
-                <?php foreach ($tanggal as $m) : ?>
-                  <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
-                <?php endforeach; ?>
-              </select>
-              <input hidden type="text" name="id" value="<?= $m->id_jurusan; ?>">
+              <div class="col-sm-3" style="float: left;">
+                <input type="date" id="tanggal" name="tanggal" class="form-control">
+              </div>
+              <input hidden type="text" name="id" value="<?= $tanggal->id_jurusan; ?>">
               <button type="submit" class="btn btn-primary">Cari</button>
             </form>
+            <br>
             <table class="table table-striped">
               <thead>
                 <tr>

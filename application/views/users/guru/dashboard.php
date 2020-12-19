@@ -13,7 +13,7 @@
         foreach ($absen as $a) : ?>
           <div id="ulang<?= $s; ?>">
             <img src="<?php echo base_url(); ?>assets/users/images/doc1.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $a->mata_pelajaran ?> <?= $a->kelas ?> <?= $a->nama_jurusan ?>
-            <a href="#" class="btn btn-outline-danger" style="float:right;">Cek Hasil Absensi</a>
+            <a href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $a->id_jurusan); ?>" class="btn btn-outline-danger" style="float:right;">Cek Hasil Absensi</a>
             <p class="card-text-left"><?= $a->tanggal ?></p>
             <hr>
           </div>

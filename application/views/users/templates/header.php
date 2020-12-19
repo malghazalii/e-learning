@@ -57,8 +57,22 @@
                     <h1 class="text-capitalize text-white col-7">
                         <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>welcome to eLearning</h1>
                     <!-- social icons -->
-                    <div class="social-icons text-right col-5">
-                        <a href="<?= base_url() ?>" class="button-head-mow3 text-white">Login</a>
+                    <a style="margin-left: 325px;" class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php
+                        $nip = $this->session->userdata('nip');
+                        $nis = $this->session->userdata('nis');
+                        if ($nip) {
+                            $guru = "SELECT * FROM guru WHERE nip=$nip";
+                            $nama = $this->db->query($guru)->row();
+                            echo $nama->nama;
+                        } else if ($nis) {
+                            $siswa = "SELECT * FROM siswa WHERE nis=$nis";
+                            $nama = $this->db->query($siswa)->row();
+                            echo $nama->nama;
+                        } ?>
+                    </a>
+                    <div style="" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="btn btn-primary dropdown-item" href="<?= base_url('Auth/logout/'); ?>">Logout</a>
                     </div>
                     <!-- //social icons -->
                 </div>

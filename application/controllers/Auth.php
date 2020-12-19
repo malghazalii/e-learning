@@ -12,7 +12,7 @@ class Auth extends CI_Controller
     public function index()
     {
         $data['title'] = 'Login';
-        $this->load->view('users/templates/header', $data);
+        $this->load->view('users/templates/headerAuth', $data);
         $this->load->view('users/login');
         $this->load->view('users/templates/footer');
     }
@@ -60,7 +60,7 @@ class Auth extends CI_Controller
     public function blok()
     {
         $data['title'] = 'akses ditolak';
-        $this->load->view('Admin/templates/header', $data);
+        $this->load->view('Admin/templates/headerAuth', $data);
         $this->load->view('blok');
         $this->load->view('Admin/templates/footer');
     }

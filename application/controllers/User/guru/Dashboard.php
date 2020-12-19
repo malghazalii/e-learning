@@ -19,11 +19,6 @@ class Dashboard extends CI_Controller
     JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
     JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas WHERE mengajar.nip = $nip ORDER BY tugas_siswa.id_tugas DESC";
 
-    $querymapel = "SELECT * FROM mengajar JOIN guru on guru.nip = mengajar.nip 
-    JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
-    JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan 
-    JOIN kelas on kelas.id_kelas = penjurusan.id_kelas WHERE mengajar.nip=$nip";
-
     $queryabsen = "SELECT * FROM absen_siswa JOIN mengajar on mengajar.id_mengajar = absen_siswa.id_mengajar JOIN guru on guru.nip = mengajar.nip 
     JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
     JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan 
@@ -37,7 +32,6 @@ class Dashboard extends CI_Controller
     $data['tugas'] = $this->db->query($querytugas)->result();
     $data['absen'] = $this->db->query($queryabsen)->result();
     $data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
-    $data['mapel'] = $this->db->query($querymapel)->result();
     $data['kuis'] = $this->db->query($querykuis)->result();
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navguru', $data);

@@ -15,7 +15,7 @@ class KuisPilgan extends CI_Controller
         $data['soal'] = $this->db->query($querysoal)->row();
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
-        $this->load->view('users/guru/create_event/kuispilgan', $data);
+        $this->load->view('users/guru/create_event/kuisessay', $data);
         $this->load->view('users/templates/footer');
     }
 
@@ -23,12 +23,16 @@ class KuisPilgan extends CI_Controller
     {
         $nip = $this->session->userdata('nip');
 
-        $hasilnamaujian = "SELECT * FROM tr_kuis join kuis on kuis.id_kuis = tr_kuis.id_kuis JOIN soal on soal.id_soal = tr_kuis.id_soal 
-        WHERE tr_kuis.id_kuis=$id";
+        $hasilnamaujian = "SELECT *, soal.id_soal as idk, tr_soal.id_soal as id FROM `tr_kuis` 
+        JOIN kuis ON kuis.id_kuis = tr_kuis.id_kuis
+        JOIN mengajar ON mengajar.id_mengajar = kuis.id_mengajar
+        JOIN soal ON tr_kuis.id_soal = soal.id_soal
+        LEFT JOIN tr_soal ON soal.id_soal = tr_soal.id_soal 
+        WHERE tr_kuis.id_kuis=$id
+        ORDER BY `tr_kuis`.`id_soal` ASC";
 
         $idsoal = $this->db->query($hasilnamaujian)->row();
 
-        $hasilpilgan = "SELECT soal.nama_file, soal.soal, tr_soal.opsiA, tr_soal.opsiB, tr_soal.opsiC, tr_soal.opsiD, tr_soal.opsiE FROM tr_soal JOIN soal ON soal.id_soal=tr_soal.id_soal WHERE soal.id_soal=$idsoal->id_soal";
 
         $querykuis = "SELECT * FROM kuis JOIN mengajar on mengajar.id_mengajar = kuis.id_mengajar WHERE mengajar.nip=$nip";
 
@@ -38,14 +42,13 @@ class KuisPilgan extends CI_Controller
 
         $data['title'] = 'Input Soal Ujian Pilihan Ganda';
         $data['detail'] = $this->db->query($hasilnamaujian)->result();
-        $data['pilgan'] = $this->db->query($hasilpilgan)->result();
         $data['nama'] = $this->db->query($querykuis)->result();
         $data['det'] = $this->db->query($querykuisid)->row();
         $data['soal'] = $this->db->query($querysoal)->row();
         $data['data'] = $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array();
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
-        $this->load->view('users/guru/create_event/kuispilgan', $data);
+        $this->load->view('users/guru/create_event/kuisessay', $data);
         $this->load->view('users/templates/footer');
     }
 
@@ -128,16 +131,14 @@ class KuisPilgan extends CI_Controller
                     $this->db->insert('soal', $data);
                     $this->db->insert('tr_kuis', $datakuis);
                     $this->db->insert('tr_soal', $datatrsoal);
-
-
-
                     if ($this->db->affected_rows() > 0) {
-                        redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
+                        redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
                     }
                 } else {
                     $error = array('error' => $this->upload->display_errors());
                     echo "<script>alert('Format file salah');</script>";
-                    echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
+                    echo "<script>window.location='" . site_url('User/Guru/kuisessay/kuis/' . $id_kuis) . "';</script>";
                 }
                 // if ($this->db->affected_rows() > 0) {
                 //     echo "<script>alert('Data berhasil ditambah');</script>";
@@ -169,7 +170,8 @@ class KuisPilgan extends CI_Controller
                 $this->db->insert('tr_soal', $datatrsoal);
 
                 if ($this->db->affected_rows() > 0) {
-                    redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di tambah</div>');
+                    redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
                 }
                 echo "<script>window.location='" . site_url('User/Guru/kuisessay/kuis/' . $id_kuis) . "';</script>";
             }

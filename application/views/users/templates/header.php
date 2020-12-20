@@ -71,7 +71,7 @@
                             echo $nama->nama;
                         } ?>
                     </a>
-                    <div style="" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="btn btn-primary dropdown-item" href="<?= base_url('Auth/logout/'); ?>">Logout</a>
                     </div>
                     <!-- //social icons -->

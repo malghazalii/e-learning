@@ -45,97 +45,93 @@
                     </div>
                 </div>
             </div>
-
             <hr>
             <?php if ($title == "Input Soal Ujian Pilihan Ganda") : ?>
                 <div class="panel-body">
                     <!-- membuat form  -->
                     <!-- gunakan tanda [] untuk menampung array  -->
-                    <form action="proses.php" method="POST">
-                        <div class="control-group after-add-more">
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
-                                    <div class="col-sm-3">
-                                        <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
-                                        <input type="text" name="soal" hidden value="<?= $soal->hello + 1 ?>">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" id="tekssoal" name="tekssoal" placeholder="teks soal" class="form-control" autofocus>
-                                        <?= form_error('tekssoal', '<small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
+                    <div class="control-group after-add-more">
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
+                                <div class="col-sm-3">
+                                    <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
+                                    <input type="text" name="soal" hidden value="<?= $soal->hello + 1 ?>">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="tekssoal" name="tekssoal" placeholder="teks soal" class="form-control" autofocus>
+                                    <?= form_error('tekssoal', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
-                            <hr>
-                            </br>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
-                                    <!-- <div class="col-sm-3">
+                        </div>
+                        <hr>
+                        </br>
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
+                                <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputA" id="fileinputA" class="btn btn-success upload">
                                     </div> -->
-                                    <div class="col-sm-6">
-                                        <input type="text" id="jawabanA" name="jawabanA" placeholder="jawaban" class="form-control" autofocus>
-                                        <?= form_error('jawabanA', '<small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="jawabanA" name="jawabanA" placeholder="jawaban" class="form-control" autofocus>
+                                    <?= form_error('jawabanA', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
-                                    <!-- <div class="col-sm-3">
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
+                                <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputB" id="fileinputB" class="btn btn-success upload">
                                     </div> -->
-                                    <div class="col-sm-6">
-                                        <input type="text" id="jawabanB" name="jawabanB" placeholder="jawaban" class="form-control" autofocus>
-                                        <?= form_error('jawabanB', '<small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="jawabanB" name="jawabanB" placeholder="jawaban" class="form-control" autofocus>
+                                    <?= form_error('jawabanB', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
-                                    <!-- <div class="col-sm-3">
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
+                                <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputC" id="fileinputC" class="btn btn-success upload">
                                     </div> -->
-                                    <div class="col-sm-6">
-                                        <input type="text" id="jawabanC" name="jawabanC" placeholder="jawaban" class="form-control" autofocus>
-                                        <?= form_error('jawabanC', '<small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="jawabanC" name="jawabanC" placeholder="jawaban" class="form-control" autofocus>
+                                    <?= form_error('jawabanC', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
-                                    <!-- <div class="col-sm-3">
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
+                                <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputD" id="fileinputD" class="btn btn-success upload">
                                     </div> -->
-                                    <div class="col-sm-6">
-                                        <input type="text" id="jawabanD" name="jawabanD" placeholder="jawaban" class="form-control" autofocus>
-                                        <?= form_error('jawabanD', '<small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="jawabanD" name="jawabanD" placeholder="jawaban" class="form-control" autofocus>
+                                    <?= form_error('jawabanD', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
-                                    <!-- <div class="col-sm-3">
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
+                                <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputE" id="fileinputE" class="btn btn-success upload">
                                     </div> -->
-                                    <div class="col-sm-6">
-                                        <input type="text" id="jawabanE" name="jawabanE" placeholder="jawaban" class="form-control" autofocus>
-                                        <?= form_error('jawabanE', '<small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="jawabanE" name="jawabanE" placeholder="jawaban" class="form-control" autofocus>
+                                    <?= form_error('jawabanE', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
-                            <hr>
-                            </br>
                         </div>
-                        <button class="btn btn-primary" type="submit">Tambah</button>
+                        <hr>
+                        </br>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Tambah</button>
                 </div>
-
                 <hr>
-
                 <div class="row justify-content-center pt-7">
                     <div class="col-lg-12 agile-course-main">
                         <div class="w3ls-cource-first">

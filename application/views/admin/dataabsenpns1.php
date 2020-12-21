@@ -2,19 +2,19 @@
 <div class="container-fluid">
     <?= $this->session->flashdata('message'); ?>
     <div style="padding-bottom: 10px;">
-        <form action="<?= base_url('Admin/Dataabsengtt/tanggal'); ?>" method="POST">
+        <form action="<?= base_url('Admin/Dataabsenpns/tanggal'); ?>" method="POST">
             <h6 class="m-0 font-weight-bold text-primary" style="padding-bottom: 10px;">Berdasarkan Tanggal :</h6>
             <div class="col-sm-3" style="float: left; margin-left: -10px">
                 <input type="date" id="tanggal" name="tanggal" class="form-control">
             </div>
             <button type="submit" style="margin-right: 10px;" class="btn btn-primary">Cari</button>
-            <!-- <a href="<?= base_url('Admin/Dataabsengtt'); ?>" class="btn btn-primary">Semua Guru GTT</a> -->
+            <a href="<?= base_url('Admin/Dataabsenpns'); ?>" class="btn btn-primary">Semua Guru PNS</a>
         </form>
     </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tabel Absensi Golongan GTT</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Tabel Absensi Golongan PNS</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -49,9 +49,9 @@
                                 <td><?= $g->nama_golongan ?></td>
                                 <td>
                                     <?php
-                                    echo anchor(base_url('Admin/Dataabsengtt/detail/' . $g->id_absen . '/' . $g->id_gol), 'Read');
+                                    echo anchor(base_url('Admin/Dataabsenpns/detail/' . $g->id_absen . '/' . $g->id_gol), 'Read');
                                     echo ' | ';
-                                    echo anchor(base_url('Admin/Dataabsengtt/delete/' . $g->id_absen), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                                    echo anchor(base_url('Admin/Dataabsenpns/delete/' . $g->id_absen), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
                                     ?>
                                 </td>
                             </tr>

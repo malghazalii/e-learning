@@ -1,6 +1,16 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <?= $this->session->flashdata('message'); ?>
+    <div style="padding-bottom: 10px;">
+        <form action="<?= base_url('Admin/Dataabsenpns/tanggal'); ?>" method="POST">
+            <h6 class="m-0 font-weight-bold text-primary" style="padding-bottom: 10px;">Berdasarkan Tanggal :</h6>
+            <div class="col-sm-3" style="float: left; margin-left: -10px">
+                <input type="date" id="tanggal" name="tanggal" class="form-control">
+            </div>
+            <button type="submit" style="margin-right: 10px;" class="btn btn-primary">Cari</button>
+            <!-- <a href="<?= base_url('Admin/Dataabsenpns'); ?>" class="btn btn-primary">Semua Guru PNS</a> -->
+        </form>
+    </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">

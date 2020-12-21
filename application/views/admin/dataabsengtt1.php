@@ -8,7 +8,7 @@
                 <input type="date" id="tanggal" name="tanggal" class="form-control">
             </div>
             <button type="submit" style="margin-right: 10px;" class="btn btn-primary">Cari</button>
-            <!-- <a href="<?= base_url('Admin/Dataabsengtt'); ?>" class="btn btn-primary">Semua Guru GTT</a> -->
+            <a href="<?= base_url('Admin/Dataabsengtt'); ?>" class="btn btn-primary">Semua Guru GTT</a>
         </form>
     </div>
     <!-- DataTales Example -->

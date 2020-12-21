@@ -2,8 +2,10 @@
 <div class="container-fluid">
     <div style="padding-bottom: 10px;">
         <form action="<?= base_url('Admin/absensi_guru/simpanData'); ?>" method="post">
-            <h4 class="m-0 font-weight-bold text-primary">Tanggal dan Jam Absen Berakhir</h4>
-            <input type="datetime-local" name="tanggal" id="tanggal" placeholder="Tanggal Berakhir" class="form-control" autofocus>
+            <h6 class="m-0 font-weight-bold text-primary" style="padding-bottom: 10px;">Tanggal dan Jam Absen Berakhir</h6>
+            <div class="col-sm-3" style="float: left; margin-left: -10px">
+                <input type="datetime-local" name="tanggal" id="tanggal" placeholder="Tanggal Berakhir" class="form-control" autofocus>
+            </div>
             <button type="submit" class="btn btn-primary">Aktifkan Absen</button>
         </form>
     </div>

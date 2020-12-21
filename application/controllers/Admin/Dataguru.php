@@ -8,7 +8,7 @@ class Dataguru extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
     $this->load->model('m_dataguru');
-    //cek_login_admin();
+    cek_login_admin();
   }
 
   public function index()

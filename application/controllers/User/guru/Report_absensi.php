@@ -8,7 +8,7 @@ class Report_absensi extends CI_Controller
 	{
 		parent::__construct();
 
-		//cek_login_admin();
+		cek_login_guru();
 	}
 	public function index()
 	{

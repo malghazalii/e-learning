@@ -8,7 +8,7 @@ class EssayEvent extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         //$this->load->model('m_');
-        //cek_login_admin();
+        cek_login_guru();
     }
     public function index()
     {

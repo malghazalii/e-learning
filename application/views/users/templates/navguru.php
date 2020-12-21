@@ -1,5 +1,4 @@
 <!-- banner -->
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
     <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -18,7 +17,6 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="<?= base_url('User/Guru/Dashboard') ?>">Tampil Event</a>
                     <a class="dropdown-item" href="<?= base_url('User/Guru/BuatKuis') ?>">Buat Tugas</a>
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/HasilTugas') ?>">Tugas Siswa</a>
                 </div>
             </li>
             <li class="nav-item dropdown ">
@@ -61,7 +59,7 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="<?= base_url('User/Guru/Absensi'); ?>">Absensi</a>
             </li>
-            
+
         </ul>
     </div>
 </nav>

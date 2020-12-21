@@ -7,7 +7,7 @@ class Absensi_Guru extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_absensi_guru');
-        //cek_login_admin();
+        cek_login_admin();
     }
 
     public function index()

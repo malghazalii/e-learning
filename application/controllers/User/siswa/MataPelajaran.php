@@ -3,7 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class MataPelajaran extends CI_Controller
 {
-
+    function __construct()
+    {
+        parent::__construct();
+        cek_login_siswa();
+    }
     public function index()
     {
         $data['title'] = 'Mata Pelajaran';

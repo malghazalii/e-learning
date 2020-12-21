@@ -7,6 +7,7 @@ class UploadMateri extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        cek_login_guru();
     }
 
     public function index()

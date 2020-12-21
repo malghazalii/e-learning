@@ -7,7 +7,7 @@ class Datasiswa extends CI_Controller
   {
     parent::__construct();
     $this->load->model('m_datasiswa');
-    //cek_login_admin();
+    cek_login_admin();
   }
 
   public function index()

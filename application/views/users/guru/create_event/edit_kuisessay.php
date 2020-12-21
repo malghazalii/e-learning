@@ -8,7 +8,7 @@
 <body>
     <br>
     <div class="container">
-        <form method="POST" action="<?= base_url('User/Guru/KuisEssay/update/' . $detail->id_soal); ?>" enctype="multipart/form-data">
+        <form method="POST" action="<?= base_url('User/Guru/KuisEssay/update/' . $detail->idk . '/' . $detail->id_kuis); ?>" enctype="multipart/form-data">
 
             <hr>
 

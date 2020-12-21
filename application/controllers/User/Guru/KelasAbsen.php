@@ -7,7 +7,7 @@ class KelasAbsen extends CI_Controller
   {
     parent::__construct();
     $this->load->model('m_absen_siswa');
-    //cek_login_admin();
+    cek_login_guru();
   }
   public function index()
   {

@@ -45,8 +45,8 @@
                 <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
                 <div class="col-sm-3">
                   <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
-                  <input type="text" id="idkuis" name="idkuis" hidden value="<?= $det->id_kuis ?>">
-                  <input type="text" name="soal" hidden value="<?= $soal->hello + 1 ?>">
+                  <input type="text" hidden id="idkuis" name="idkuis" value="<?= $det->id_kuis ?>">
+                  <input type="text" hidden name="soal" value="<?= $soal->hello + 1 ?>">
                 </div>
                 <div class="col-sm-6">
                   <input type="text" id="tekssoal" name="tekssoal" placeholder="teks soal" class="form-control" autofocus>
@@ -171,23 +171,29 @@
                     <td><?= $d->nama_ujian ?></td>
                     <?php if ($d->nama_file) : ?>
                       <td><img width="50px" height="50px" src="<?= base_url('assets/users/upload/' . $d->nama_file); ?>"></td>
-                      <td><?= $d->soal ?></td>
                     <?php else : ?>
                       <td></td>
-                      <td><?= $d->soal ?></td>
                     <?php endif; ?>
+                    <td><?= $d->soal ?></td>
                     <?php if ($d->idk == $d->id) : ?>
-                      <td>Essay</td>
-                    <?php else : ?>
                       <td>Pilgan</td>
+                      <td>
+                        <?php
+                        echo anchor(base_url('User/Guru/KuisPilgan/edit/' . $d->idk), 'Edit');
+                        echo ' | ';
+                        echo anchor(base_url('User/Guru/KuisPilgan/delete/' . $d->idk . '/' . $d->id_kuis), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                        ?>
+                      </td>
+                    <?php elseif ($d->idk != $d->id) : ?>
+                      <td>Essay</td>
+                      <td>
+                        <?php
+                        echo anchor(base_url('User/Guru/KuisEssay/edit/' . $d->idk), 'Edit');
+                        echo ' | ';
+                        echo anchor(base_url('User/Guru/KuisEssay/delete/' . $d->idk . '/' . $d->id_kuis), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                        ?>
+                      </td>
                     <?php endif; ?>
-                    <td>
-                      <?php
-                      echo anchor(base_url('User/Guru/KuisEssay/edit/' . $d->id_soal), 'Edit');
-                      echo ' | ';
-                      echo anchor(base_url('User/Guru/KuisEssay/delete/' . $d->id_soal), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
-                      ?>
-                    </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

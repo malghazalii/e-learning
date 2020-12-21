@@ -28,6 +28,9 @@
                     <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi') ?>">Hasil Absensi</a>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="<?= base_url('User/Guru/TampilKuis'); ?>">Tampil Kuis</a>
+            </li>
             <?php
             $nip = $this->session->userdata('nip');
             $querymapel = "SELECT * FROM mengajar JOIN guru on guru.nip = mengajar.nip 

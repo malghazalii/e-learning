@@ -4,10 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class BuatKuis extends CI_Controller
 {
     public function __construct()
-	{
-		parent::__construct();
-		cek_login_guru();
-	}
+    {
+        parent::__construct();
+        cek_login_guru();
+    }
     public function index()
     {
         $nip = $this->session->userdata('nip');
@@ -30,6 +30,12 @@ class BuatKuis extends CI_Controller
     {
         $this->form_validation->set_rules('namaujian', 'Namaujian', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('mengajar', 'Mengajar', 'required|trim', [
+            'required' => 'Anda perlu memilih salah satu'
+        ]);
+        $this->form_validation->set_rules('jenisujian', 'Jenisujian', 'required|trim', [
+            'required' => 'Anda perlu memilih salah satu'
         ]);
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
             'required' => 'Field tidak boleh kosong'

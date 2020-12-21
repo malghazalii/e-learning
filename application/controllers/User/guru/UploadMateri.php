@@ -31,6 +31,9 @@ class UploadMateri extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
+        $this->form_validation->set_rules('mapel', 'Mapel', 'required|trim', [
+            'required' => 'Anda perlu memilih salah satu'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $this->index();

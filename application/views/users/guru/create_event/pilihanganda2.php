@@ -41,6 +41,7 @@
                                     <th scope="col">Tanggal Berakhir</th>
                                     <th scope="col">Nama Mapel</th>
                                     <th scope="col">Kelas</th>
+                                    <th scope="col">Nilai</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -54,7 +55,12 @@
                                         <td><?= $a->tanggal_berakhir; ?></td>
                                         <td><?= $a->mata_pelajaran; ?></td>
                                         <td><?= $a->kelas, ' ', $a->nama_jurusan; ?></td>
-                                        <td><a href="<?= base_url('User/Guru/TampilKuis/Koreksi' . $a->id_ujian); ?>"> Koreksi</a></td>
+                                        <?php if ($a->nilai == 0) : ?>
+                                            <td>0</td>
+                                        <?php else : ?>
+                                            <td><?= $a->nilai; ?></td>
+                                        <?php endif; ?>
+                                        <td><a href="<?= base_url('User/Guru/TampilKuis/Koreksi/' . $a->id_ujian); ?>"> Koreksi</a></td>
                                     </tr>
                                 </tbody>
                             <?php endforeach; ?>

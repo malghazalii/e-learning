@@ -14,7 +14,7 @@
 							<a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
 							<?php foreach ($mengajar as $t) :
 							?>
-								<a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $t->id_jurusan); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
+								<a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
 							<?php endforeach; ?>
 						</div>
 						<br>

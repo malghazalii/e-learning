@@ -8,104 +8,92 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head> -->
+
 <body>
-<br>
-    
-<div class="container  py-xl-5 py-lg-3">
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Pilih Minggu
-        </button>
-             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Minggu 1</a>
-                <a class="dropdown-item" href="#">Minggu 2</a>
-                 <a class="dropdown-item" href="#">Minggu 3</a>
-            
-            </div>
-    </div>
-    </div>
+  <br>
 
-<div class="container">
 
-  <div class="panel panel-default">    
-    <div class="panel-body">
-      <!-- membuat form  -->
-      <!-- gunakan tanda [] untuk menampung array  -->
+
+  <div class="container">
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Tugas
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="<?= base_url('User/Guru/wali_kelas/PenilaianMapel/mapeltugas/' . $siswarow->id_mengajar); ?>">Tugas</a>
+      <a class="dropdown-item" href="<?= base_url('User/Guru/wali_kelas/PenilaianMapel/mapelkuis/' . $siswarow->id_mengajar); ?>">Kuis</a>
+    </div>
+    <form style="margin-left: -15px; margin-top: 10px" action="<?= base_url('User/Guru/wali_kelas/PenilaianMapel/tanggaltugas/' . $siswarow->id_mengajar); ?>" method="POST">
+      <div class="col-sm-3" style="float: left;">
+        <input type="date" id="tanggal" name="tanggal" class="form-control">
+      </div>
+      <!-- <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
+                <?php foreach ($tanggal as $m) : ?>
+                  <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
+                <?php endforeach; ?>
+              </select> -->
+      <button type="submit" class="btn btn-primary">Cari</button>
+    </form>
+    <hr>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <!-- membuat form  -->
+        <!-- gunakan tanda [] untuk menampung array  -->
         <form action="proses.php" method="POST">
           <div class="control-group after-add-more">
             <div class="form-group">
-					<div class="row">
-					<label for="birthDate" class="col-sm-2 control-label">Nama mata pelajaran</label>
-					</div>
-            </div>
-          <div class="form-group">
-					<div class="row">
-					<a for="birthDate" class="col-sm-2 control-label">Kelas Anda</a>
-                    <label for="birthDate" class="col-sm-2 control-label">*nama kelas</label>
-					</div>
+              <div class="row">
+                <a for="birthDate" class="col-sm-2 control-label">Mata Pelajaran :</a>
+                <label for="birthDate" class="col-sm-2 control-label"><?= $mapel->mata_pelajaran ?></label>
               </div>
-      <div class="form-group">
-					<div class="row">
-					<a for="birthDate" class="col-sm-2 control-label">Jumlah Siswa</a>
-          <label for="birthDate" class="col-sm-2 control-label">*jumlah siswa</label>
-					</div>
-			</div>
-      </div>
-            <hr>
-            <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">Nama Siswa</th>
-      <th scope="col">NIS</th>
-      <th scope="col">Tugas 1</th>
-      <th scope="col">Tugas 2</th>
-      <th scope="col">Tugas 3</th>
-      <th scope="col">Tugas 4</th>
-      <th scope="col">Presentase</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Sugali dong</td>
-      <td>123456789</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>100%</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Nafis dong</td>
-      <td>123456789</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>100%</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Eki dong</td>
-      <td>987654321</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>100%</td>
-    </tr>
-  </tbody>
-</table>
-            </br>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <a for="birthDate" class="col-sm-2 control-label">Kelas Anda</a>
+                <label for="birthDate" class="col-sm-2 control-label"><?= $walikelas->kelas ?> <?= $walikelas->nama_jurusan ?></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <a for="birthDate" class="col-sm-2 control-label">Jumlah Siswa</a>
+                <label for="birthDate" class="col-sm-2 control-label"><?= $sum->jumlah ?></label>
+              </div>
+            </div>
           </div>
-        </form>
+          <hr>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Nama Siswa</th>
+                <th scope="col">NIS</th>
+                <th scope="col">Judul Tugas</th>
+                <th scope="col">Tanggal Berakhir</th>
+                <th scope="col">Nilai</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $no = 1;
+              foreach ($siswa as $s) : ?>
+                <tr>
+                  <th scope="row"><?= $no++ ?></th>
+                  <td><?= $s->nama ?></td>
+                  <td><?= $s->nis ?></td>
+                  <td><?= $s->NAMA ?></td>
+                  <td><?= $s->tanggal_berakhir ?></td>
+                  <td><?= $s->nilai ?></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+          </br>
+      </div>
+      </form>
     </div>
   </div>
-</div>
+  </div>
 
 
 
 </body>
+
 </html>

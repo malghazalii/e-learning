@@ -13,8 +13,31 @@
 <body>
   <br>
 
-  <div class="container  py-xl-5 py-lg-3">
-
+  <div class="container">
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Semua Mapel
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="<?= base_url('User/Guru/wali_kelas/AbsenSiswa'); ?>">Semua Mapel</a>
+      <?php foreach ($mengajar as $t) :
+      ?>
+        <a class="dropdown-item" href="<?= base_url('User/Guru/wali_kelas/AbsenSiswa/Mapel/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran ?></a>
+      <?php endforeach; ?>
+    </div>
+    <br>
+    <form style="margin-left: -15px; padding-top: 10px" action="<?= base_url('User/Guru/wali_kelas/AbsenSiswa/tanggal'); ?>" method="POST">
+      <div class="col-sm-3" style="float: left;">
+        <input type="date" id="tanggal" name="tanggal" class="form-control">
+      </div>
+      <!-- <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
+                <?php foreach ($tanggal as $m) : ?>
+                  <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
+                <?php endforeach; ?>
+              </select> -->
+      <button type="submit" class="btn btn-primary">Cari</button>
+    </form>
+    <hr>
+    <br>
     <div class="panel panel-default">
       <div class="panel-body">
         <!-- membuat form  -->
@@ -34,32 +57,6 @@
           </div>
         </div>
         <hr>
-        <div class="form-group">
-          <div class="row">
-            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Meta Pelajaran
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="<?= base_url('User/Guru/wali_kelas/AbsenSiswa'); ?>">Semua Mapel</a>
-              <?php foreach ($mengajar as $t) :
-              ?>
-                <a class="dropdown-item" href="<?= base_url('User/Guru/wali_kelas/AbsenSiswa/Mapel/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran ?></a>
-              <?php endforeach; ?>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <form action="<?= base_url('User/Guru/wali_kelas/AbsenSiswa/tanggal'); ?>" method="POST">
-              <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
-                <?php foreach ($tanggal as $m) : ?>
-                  <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
-                <?php endforeach; ?>
-              </select>
-              <button type="submit" class="btn btn-primary">Cari</button>
-            </form>
-          </div>
-        </div>
         <table class="table table-bordered">
           <thead>
             <tr>

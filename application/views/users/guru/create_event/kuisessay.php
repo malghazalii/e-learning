@@ -13,7 +13,11 @@
         <div class="form-group">
           <label>Pilih Nama Ujian</label> <br>
           <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?= $det->nama_ujian ?>
+            <?php if ($title == "Input Soal Ujian Essay" || $title == "Input Soal Ujian Pilihan Ganda") : ?>
+              <?= $det->nama_ujian ?>
+            <?php else : ?>
+              Daftar Nama Ujian
+            <?php endif; ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <?php foreach ($nama as $n) : ?>
@@ -27,8 +31,13 @@
             Soal Essay
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan/kuis/' . $det->id_kuis); ?>">Input Soal Pilihan Ganda</a>
-            <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay/kuis/' . $det->id_kuis); ?>">Input Soal Essay</a>
+            <?php if ($title == "Input Soal Ujian Essay" || $title == "Input Soal Ujian Pilihan Ganda") : ?>
+              <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan/kuis/' . $det->id_kuis); ?>">Input Soal Pilihan Ganda</a>
+              <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay/kuis/' . $det->id_kuis); ?>">Input Soal Essay</a>
+            <?php else : ?>
+              <a class="dropdown-item" href="<?= base_url('User/Guru/kuispilgan'); ?>">Input Soal Pilihan Ganda</a>
+              <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay'); ?>">Input Soal Essay</a>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -153,58 +162,74 @@
       <div class="col-lg-12 agile-course-main">
         <div class="w3ls-cource-first">
           <div class="px-md-5 px-4  pb-md-5 pb-4">
-            <table class="table table-striped">
+            <?php if ($title == "Input Soal Ujian Essay" || $title == "Input Soal Ujian Pilihan Ganda") : ?>
+              <table class="table table-striped">
 
-              <thead>
-                <tr>
-                  <th scope="col">Nama Ujian</th>
-                  <th scope="col">Gambar</th>
-                  <th scope="col">Soal</th>
-                  <th scope="col">Kategori</th>
-                  <th scope="col">Action</th>
-                  <!-- <th scope="col">Poin</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach ($detail as $d) : ?>
+                <thead>
                   <tr>
-                    <td><?= $d->nama_ujian ?></td>
-                    <?php if ($d->nama_file) : ?>
-                      <td><img width="50px" height="50px" src="<?= base_url('assets/users/upload/' . $d->nama_file); ?>"></td>
-                    <?php else : ?>
-                      <td></td>
-                    <?php endif; ?>
-                    <td><?= $d->soal ?></td>
-                    <?php if ($d->idk == $d->id) : ?>
-                      <td>Pilgan</td>
-                      <td>
-                        <?php
-                        echo anchor(base_url('User/Guru/KuisPilgan/edit/' . $d->idk), 'Edit');
-                        echo ' | ';
-                        echo anchor(base_url('User/Guru/KuisPilgan/delete/' . $d->idk . '/' . $d->id_kuis), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
-                        ?>
-                      </td>
-                    <?php elseif ($d->idk != $d->id) : ?>
-                      <td>Essay</td>
-                      <td>
-                        <?php
-                        echo anchor(base_url('User/Guru/KuisEssay/edit/' . $d->idk), 'Edit');
-                        echo ' | ';
-                        echo anchor(base_url('User/Guru/KuisEssay/delete/' . $d->idk . '/' . $d->id_kuis), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
-                        ?>
-                      </td>
-                    <?php endif; ?>
+                    <th scope="col">Nama Ujian</th>
+                    <th scope="col">Gambar</th>
+                    <th scope="col">Soal</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Action</th>
+                    <!-- <th scope="col">Poin</th> -->
                   </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($detail as $d) : ?>
+                    <tr>
+                      <td><?= $d->nama_ujian ?></td>
+                      <?php if ($d->nama_file) : ?>
+                        <td><img width="50px" height="50px" src="<?= base_url('assets/users/upload/' . $d->nama_file); ?>"></td>
+                      <?php else : ?>
+                        <td></td>
+                      <?php endif; ?>
+                      <td><?= $d->soal ?></td>
+                      <?php if ($d->idk == $d->id) : ?>
+                        <td>Pilgan</td>
+                        <td>
+                          <?php
+                          echo anchor(base_url('User/Guru/KuisPilgan/edit/' . $d->idk), 'Edit');
+                          echo ' | ';
+                          echo anchor(base_url('User/Guru/KuisPilgan/delete/' . $d->idk . '/' . $d->id_kuis), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                          ?>
+                        </td>
+                      <?php elseif ($d->idk != $d->id) : ?>
+                        <td>Essay</td>
+                        <td>
+                          <?php
+                          echo anchor(base_url('User/Guru/KuisEssay/edit/' . $d->idk), 'Edit');
+                          echo ' | ';
+                          echo anchor(base_url('User/Guru/KuisEssay/delete/' . $d->idk . '/' . $d->id_kuis), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                          ?>
+                        </td>
+                    </tr>
+                  <?php endif; ?>
                 <?php endforeach; ?>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            <?php else : ?>
+              <table class="table table-striped">
+
+                <thead>
+                  <tr>
+                    <th scope="col">Nama Ujian</th>
+                    <th scope="col">Gambar</th>
+                    <th scope="col">Soal</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Action</th>
+                    <!-- <th scope="col">Poin</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
           </div>
         </div>
       </div>
     </div>
     <hr>
-
-  </div>
+  <?php endif; ?>
   </div>
   </div>
   </div>

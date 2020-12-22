@@ -32,7 +32,7 @@
         <img src="<?php echo base_url(); ?>assets/users/images/doc1.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $t->NAMA ?> <br>
         <a href="<?php echo base_url() . 'User/Guru/Mapel/indexid/' . $t->file ?>"><?= $t->file ?></a>
         <a href="<?php echo base_url('user/guru/essayevent/editTugas/' . $t->id_tugas); ?>" class="btn btn-outline-danger" style="float:right; margin-left:10px">Edit</a>
-        <a href="#" class="btn btn-outline-danger" style="float:right;">Cek Pengumpulan Tugas</a>
+        <a href="<?php echo base_url('user/guru/mapel/tugas/' . $t->id_tugas); ?>" class="btn btn-outline-danger" style="float:right;">Cek Pengumpulan Tugas</a>
         <p><?= $t->keterangan ?></p>
         <p class="card-text-left"><?= $t->TANGGAL ?></p>
         <hr>

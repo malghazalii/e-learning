@@ -46,7 +46,7 @@
       <?php
       foreach ($kuis as $k) : ?>
         <img src="<?php echo base_url(); ?>assets/users/images/pie.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $k->nama_ujian ?>
-        <a href="#" class="btn btn-outline-danger" style="float:right;">Cek Pengumpulan Tugas</a>
+        <a href="<?= base_url('User/Guru/TampilKuis/mengajar/' . $k->id_mengajar); ?>" class="btn btn-outline-danger" style="float:right;">Cek Pengumpulan Tugas</a>
         <p><?= $k->jenis ?></p>
         <p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
         <hr>

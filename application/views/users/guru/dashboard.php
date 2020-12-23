@@ -116,6 +116,7 @@
       foreach ($kuis as $k) : ?>
         <div class="card-body" id="looping<?= $s ?>">
           <img src="<?php echo base_url(); ?>assets/users/images/pie.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $k->nama_ujian ?>
+          <a href="<?= base_url('User/Guru/TampilKuis/mengajar/' . $k->id_mengajar); ?>" class="btn btn-outline-danger" style="float:right;">Cek Hasil Kuis</a><br>
           <p><?= $k->jenis ?></p>
           <p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
         </div>

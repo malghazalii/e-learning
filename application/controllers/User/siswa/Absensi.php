@@ -3,21 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Absensi extends CI_Controller
 {
-    function __construct()
-    {
-        parent::__construct();
-        cek_login_siswa();
-    }
     public function index()
     {
         $nis = $this->session->userdata('nis');
 
-        $querytrabsen = "SELECT absen_siswa.tanggal_berakhir, guru.nama, mata_pelajaran.mata_pelajaran, tr_absen_siswa.status FROM 
+        $querytrabsen = "SELECT absen_siswa.tanggal, guru.nama, mata_pelajaran.mata_pelajaran, tr_absen_siswa.status FROM 
         tr_absen_siswa JOIN absen_siswa ON tr_absen_siswa.id_absen = absen_siswa.id_absen JOIN mengajar ON mengajar.id_mengajar = 
         absen_siswa.id_mengajar JOIN guru ON guru.nip = mengajar.nip JOIN mata_pelajaran ON mata_pelajaran.id_mapel = mengajar.id_mapel 
         WHERE tr_absen_siswa.nis=$nis;";
 
-        $queryabsen = "SELECT absen_siswa.id_absen, absen_siswa.tanggal_berakhir, guru.nama, mata_pelajaran.mata_pelajaran FROM 
+        $queryabsen = "SELECT absen_siswa.id_absen, absen_siswa.tanggal, guru.nama, mata_pelajaran.mata_pelajaran FROM 
         absen_siswa JOIN mengajar ON mengajar.id_mengajar = absen_siswa.id_mengajar JOIN guru ON guru.nip = 
         mengajar.nip JOIN mata_pelajaran ON mata_pelajaran.id_mapel = mengajar.id_mapel WHERE NOT EXISTS
         (SELECT * FROM tr_absen_siswa WHERE absen_siswa.id_absen=tr_absen_siswa.id_absen and tr_absen_siswa.nis=$nis) ";
@@ -68,5 +63,19 @@ class Absensi extends CI_Controller
         $this->db->insert('tr_absen_siswa', $data);
 
         redirect('User/siswa/Absensi');
+    }
+
+    public function inputData($id)
+    {
+        $nis = $this->session->userdata('nis');
+
+        $data = [
+            'id_absen' => $id,
+            'nis' => $nis,
+            'status' => '4'
+        ];
+
+        $this->db->insert('tr_absen_siswa', $data);
+        redirect('User/Siswa/Dashboard');
     }
 }

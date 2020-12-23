@@ -43,7 +43,7 @@ class PenilaianMapel extends CI_Controller
 		$data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
 		$data['sum'] = $this->db->query($sum)->row();
 		$data['siswa'] = $this->db->query($jawabantugas)->result();
-		$data['siswarow'] = $this->db->query($jawabantugas)->row();
+		$data['siswarow'] = $this->db->query($querymapel)->row();
 		$data['walikelas'] = $this->db->query($querywalikelas)->row();
 		$data['mapel'] = $this->db->query($querymapel)->row();
 		$this->load->view('users/templates/header', $data);
@@ -115,7 +115,7 @@ class PenilaianMapel extends CI_Controller
 		$data['sum'] = $this->db->query($sum)->row();
 		$data['siswa'] = $this->db->query($jawabantugas)->result();
 		$data['kuis'] = $this->db->query($ikutujian)->result();
-		$data['siswarow'] = $this->db->query($jawabantugas)->row();
+		$data['siswarow'] = $this->db->query($querymapel)->row();
 		$data['walikelas'] = $this->db->query($querywalikelas)->row();
 		$data['mapel'] = $this->db->query($querymapel)->row();
 		$this->load->view('users/templates/header', $data);

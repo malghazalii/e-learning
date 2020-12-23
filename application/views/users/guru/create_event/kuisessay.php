@@ -28,7 +28,15 @@
         <div class="form-group">
           <label>Pilih Tipe Soal</label> <br>
           <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Soal Essay
+            <?php if ($title == "Input Soal Essay") : ?>
+              Soal Essay
+            <?php elseif ($title == "Input Soal Pilihan Ganda") : ?>
+              Soal Pilihan Ganda
+            <?php elseif ($title == "Input Soal Ujian Essay") : ?>
+              Soal Essay
+            <?php elseif ($title == "Input Soal Ujian Pilihan Ganda") : ?>
+              Soal Pilihan Ganda
+            <?php endif; ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <?php if ($title == "Input Soal Ujian Essay" || $title == "Input Soal Ujian Pilihan Ganda") : ?>

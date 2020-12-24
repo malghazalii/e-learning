@@ -7,7 +7,7 @@
 
 <body>
     <br>
-    <div class="container">
+    <div class="container py-xl-5 py-lg-3">
         <?php if ($title == "Input Soal Ujian Pilihan Ganda") : ?>
             <form method="POST" action="<?= base_url('User/Guru/KuisPilgan/tambahData/' . $det->id_kuis); ?>" enctype="multipart/form-data">
             <?php endif; ?>

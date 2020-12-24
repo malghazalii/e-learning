@@ -45,7 +45,7 @@
                                 <input type="date" id="tanggal" name="tanggal" value="<?= set_value('tanggal'); ?>" class="form-control" min="<?= $tanggal ?>">
                                 <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 <input type="time" id="jam" name="jam" value="<?= set_value('jam'); ?>" class="form-control">
                                 <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-3 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block">Lanjut</button>
+                        <button type="submit" class="btn btn-primary btn-block" class="text-right">Lanjut</button>
                     </div>
                 </div>
             </form>

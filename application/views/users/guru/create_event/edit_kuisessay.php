@@ -7,11 +7,10 @@
 
 <body>
     <br>
-    <div class="container">
+    <div class="container py-xl-5 py-lg-3"">
+    <div class="card">
+    <div class="card-body">
         <form method="POST" action="<?= base_url('User/Guru/KuisEssay/update/' . $detail->idk . '/' . $detail->id_kuis); ?>" enctype="multipart/form-data">
-
-            <hr>
-
             <div class="panel-body">
                 <!-- membuat form  -->
                 <!-- gunakan tanda [] untuk menampung array  -->
@@ -34,9 +33,9 @@
                 <button class="btn btn-primary" type="submit">Simpan</button>
             </div>
 
-            <hr>
-
         </form>
+        </div>
+        </div>
     </div>
     </div>
     </div>

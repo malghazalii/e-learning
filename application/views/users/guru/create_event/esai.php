@@ -39,7 +39,7 @@
                         <input type="date" id="tanggal" name="tanggal" class="form-control" value="<?= set_value('tanggal'); ?>" min="<?= $tanggal ?>">
                         <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-6">
                         <input type="time" id="jam" name="jam" value="<?= set_value('jam'); ?>" class="form-control">
                         <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>

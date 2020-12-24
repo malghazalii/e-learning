@@ -2,7 +2,7 @@
 <br>
 
 <body onload="JavaScript:AutoRefresh(30000);">
-  <div class="container">
+  <div class="container py-xl-5 py-lg-3">
     <img src="<?php echo base_url(); ?>assets/users/images/menu.png" style=”float:left; margin:0 8px 4px 0;” /><strong> Event Guru</strong>
     <hr>
     <div class="card">

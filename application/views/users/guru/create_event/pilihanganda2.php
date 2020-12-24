@@ -76,8 +76,8 @@
                                 <th scope="col">Tanggal Berakhir</th>
                                 <th scope="col">Nama Mapel</th>
                                 <th scope="col">Kelas</th>
-                                <th scope="col">Nilai</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Nilai</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -91,17 +91,15 @@
                                     <td><?= $a->tanggal_berakhir; ?></td>
                                     <td><?= $a->mata_pelajaran; ?></td>
                                     <td><?= $a->kelas, ' ', $a->nama_jurusan; ?></td>
-                                    <?php if ($a->nilai == 0) : ?>
-                                        <td>0</td>
-                                    <?php else : ?>
-                                        <td><?= $a->nilai; ?></td>
-                                    <?php endif; ?>
                                     <?php if ($a->status == 1) : ?>
                                         <td>Mengerjakan</td>
+                                        <td><?= $a->nilai; ?></td>
+                                        <td><a href="<?= base_url('User/Guru/TampilKuis/Koreksi/' . $a->id_ujian); ?>"> Koreksi</a></td>
                                     <?php else : ?>
                                         <td>Tidak Ikut Ujian</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                     <?php endif; ?>
-                                    <td><a href="<?= base_url('User/Guru/TampilKuis/Koreksi/' . $a->id_ujian); ?>"> Koreksi</a></td>
                                 </tr>
                             </tbody>
                         <?php endforeach; ?>

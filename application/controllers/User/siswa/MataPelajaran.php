@@ -41,7 +41,7 @@ class MataPelajaran extends CI_Controller
         JOIN mengajar on mengajar.id_mengajar = tugas_siswa.id_mengajar 
         JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
         JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas 
-        JOIN siswa on siswa.nis = jawaban_tugas.nis WHERE jawaban_tugas.nis=$nis and jawaban_tugas.id_tugas=$tugass->id_tugas";
+        JOIN siswa on siswa.nis = jawaban_tugas.nis WHERE jawaban_tugas.nis=$nis";
 
         $querymateri = "SELECT * FROM materi JOIN mengajar on mengajar.id_mengajar = materi.id_mengajar 
         JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 

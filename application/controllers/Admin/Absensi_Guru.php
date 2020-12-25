@@ -20,6 +20,7 @@ class Absensi_Guru extends CI_Controller
         $this->load->view('admin/templates/topbar', $data);
         $this->load->view('admin/absensi_guru', $data);
         $this->load->view('admin/templates/footer', $data);
+        $this->load->view('auto');
     }
 
     public function simpanData()

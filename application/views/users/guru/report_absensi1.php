@@ -29,10 +29,11 @@
               </div>
               <?php if ($tanggal == null) : ?>
                 <input hidden type="text" name="id">
+                <button hidden type="submit" class="btn btn-primary">Cari</button>
               <?php else : ?>
                 <input hidden type="text" name="id" value="<?= $tanggal->id_jurusan; ?>">
+                <button type="submit" class="btn btn-primary">Cari</button>
               <?php endif; ?>
-              <button type="submit" class="btn btn-primary">Cari</button>
             </form>
             <br>
             <table class="table table-striped">

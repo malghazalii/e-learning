@@ -36,5 +36,6 @@ class Matematika extends CI_Controller
         $this->load->view('users/templates/navAbsensi');
         $this->load->view('users/siswa/absen/matematika');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
     }
 }

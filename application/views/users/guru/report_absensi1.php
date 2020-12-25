@@ -8,7 +8,11 @@
           <div class="px-md-5 px-4  pb-md-5 pb-4">
             <br>
             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?= $tanggal->mata_pelajaran ?> <?= $tanggal->kelas ?> <?= $tanggal->nama_jurusan ?>
+              <?php if ($tanggal == null) : ?>
+                Mata Pelajaran
+              <?php else : ?>
+                <?= $tanggal->mata_pelajaran ?> <?= $tanggal->kelas ?> <?= $tanggal->nama_jurusan ?>
+              <?php endif; ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
@@ -23,7 +27,11 @@
               <div class="col-sm-3" style="float: left;">
                 <input type="date" id="tanggal" name="tanggal" class="form-control">
               </div>
-              <input hidden type="text" name="id" value="<?= $tanggal->id_jurusan; ?>">
+              <?php if ($tanggal == null) : ?>
+                <input hidden type="text" name="id">
+              <?php else : ?>
+                <input hidden type="text" name="id" value="<?= $tanggal->id_jurusan; ?>">
+              <?php endif; ?>
               <button type="submit" class="btn btn-primary">Cari</button>
             </form>
             <br>

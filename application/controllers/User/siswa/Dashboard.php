@@ -59,5 +59,6 @@ class Dashboard extends CI_Controller
     $this->load->view('users/templates/navsiswa');
     $this->load->view('users/siswa/dashboard');
     $this->load->view('users/templates/footer');
+    $this->load->view('auto');
   }
 }

@@ -15,6 +15,7 @@ class Kuis extends CI_Controller
         $this->load->view('users/templates/navguru');
         $this->load->view('users/guru/create_event/kuis');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
 
     }
 }

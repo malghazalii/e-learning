@@ -25,6 +25,7 @@ class Dataabsenpns extends CI_Controller
     $this->load->view('admin/templates/topbar', $data);
     $this->load->view('admin/dataabsenpns', $data);
     $this->load->view('admin/templates/footer', $data);
+    $this->load->view('auto');
   }
 
   public function tanggal()

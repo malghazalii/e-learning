@@ -16,5 +16,6 @@ class PilganEvent extends CI_Controller
         $this->load->view('users/templates/navPilihan');
         $this->load->view('users/guru/create_event/pilihanganda');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
     }
 }

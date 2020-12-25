@@ -15,5 +15,6 @@ class F_Tugas1 extends CI_Controller
         $this->load->view('users/templates/navsiswa');
         $this->load->view('users/siswa/f_tugas1');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
     }
 }

@@ -11,6 +11,7 @@ class Tugas extends CI_Controller
         $this->load->view('users/templates/navsiswa');
         $this->load->view('users/siswa/tugas');
         $this->load->view('users/templates/footer');
+        // $this->load->view('auto');
     }
 
     public function updateData($id)

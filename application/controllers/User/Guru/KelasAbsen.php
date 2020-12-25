@@ -39,6 +39,7 @@ class KelasAbsen extends CI_Controller
     $this->load->view('users/templates/navguru');
     $this->load->view('users/guru/kelasAbsen');
     $this->load->view('users/templates/footer');
+    $this->load->view('auto');
   }
   public function Tampil($id)
   {

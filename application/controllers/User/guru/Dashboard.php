@@ -37,6 +37,7 @@ class Dashboard extends CI_Controller
     $this->load->view('users/templates/navguru', $data);
     $this->load->view('users/guru/dashboard', $data);
     $this->load->view('users/templates/footer');
+    $this->load->view('auto');
   }
 
   public function indexid($id)

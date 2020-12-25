@@ -31,6 +31,7 @@ class Absensi extends CI_Controller
         $this->load->view('users/templates/navAbsensi');
         $this->load->view('users/siswa/absensi');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
     }
 
     public function status($id)

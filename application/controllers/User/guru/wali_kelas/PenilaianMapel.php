@@ -50,6 +50,7 @@ class PenilaianMapel extends CI_Controller
 		$this->load->view('users/templates/navwali', $data);
 		$this->load->view('users/guru/wali_kelas/penilaianmapel');
 		$this->load->view('users/templates/footer');
+		// $this->load->view('auto');
 	}
 
 	public function tanggaltugas($id)

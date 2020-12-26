@@ -80,7 +80,11 @@
                   <td><?= $s->nis ?></td>
                   <td><?= $s->NAMA ?></td>
                   <td><?= $s->tanggal_berakhir ?></td>
-                  <td><?= $s->nilai ?></td>
+                  <?php if ($s->nilai == 0) : ?>
+                    <td>-</td>
+                  <?php else : ?>
+                    <td><?= $s->nilai ?></td>
+                  <?php endif; ?>
                 </tr>
               <?php endforeach; ?>
             </tbody>

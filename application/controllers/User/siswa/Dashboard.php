@@ -45,6 +45,15 @@ class Dashboard extends CI_Controller
     (SELECT * FROM tr_absen_siswa WHERE absen_siswa.id_absen = tr_absen_siswa.id_absen AND tr_absen_siswa.nis = $nis)
     AND penjurusan.id_jurusan = $s->id_jurusan";
 
+    $querykuiss = "SELECT * FROM kuis 
+      JOIN mengajar ON mengajar.id_mengajar = kuis.id_mengajar
+      JOIN penjurusan ON penjurusan.id_jurusan = mengajar.id_jurusan
+      JOIN kelas ON kelas.id_kelas = penjurusan.id_kelas
+      JOIN mata_pelajaran ON mata_pelajaran.id_mapel = mengajar.id_mapel
+      WHERE NOT EXISTS
+      (SELECT * FROM ikut_ujian WHERE kuis.id_kuis = ikut_ujian.id_kuis AND ikut_ujian.nis = $nis)
+      AND penjurusan.id_jurusan = $s->id_jurusan";
+
     $data['title'] = 'Dashboard';
     $data['data'] = $this->db->get_where('siswa', ['nis' => $this->session->userdata('nis')])->row_array();
     $data['siswa'] = $this->db->query($siswa)->row();
@@ -54,7 +63,7 @@ class Dashboard extends CI_Controller
     $data['tugastelat'] = $this->db->query($tugastelat)->result();
     $data['tugas'] = $this->db->query($querytugas)->result();
     $data['tugass'] = $this->db->query($querytugas)->row();
-    $data['kuis'] = $this->db->query($querykuis)->result();
+    $data['kuis'] = $this->db->query($querykuiss)->result();
     $data['kuiss'] = $this->db->query($querykuis)->row();
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navsiswa');

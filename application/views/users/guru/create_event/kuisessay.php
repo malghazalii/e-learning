@@ -50,7 +50,6 @@
         </div>
       </div>
     </div>
-    <hr>
     <?php if ($title == "Input Soal Ujian Essay") : ?>
       <form method="POST" action="<?= base_url('User/Guru/KuisEssay/tambahData/' . $det->id_kuis); ?>" enctype="multipart/form-data">
         <div class="panel-body">
@@ -164,8 +163,9 @@
         </div>
       </form>
     <?php endif; ?>
-    <hr>
+      <br>
     <?= $this->session->flashdata('message'); ?>
+    
     <div class="row justify-content-center pt-7">
       <div class="col-lg-12 agile-course-main">
         <div class="w3ls-cource-first">
@@ -236,11 +236,9 @@
         </div>
       </div>
     </div>
-    <hr>
-  <?php endif; ?>
   </div>
-  </div>
-  </div>
+    <?php endif; ?>
+
 </body>
 
 </html>

@@ -1,8 +1,7 @@
 <div class="course-w3ls py-5">
-  <div class="container py-xl-5 py-lg-3">
-    <h3 class="title text-capitalize font-weight-light text-dark text-center mb-sm-5 mb-4">Tabel Absen
-    </h3>
-    <div class="row justify-content-center pt-7">
+  <div class="container ">
+  <h3 class="text-center mb-sm-5 mb-4">Tabel Absen</h3>
+    <div class="row justify-content-center  ">
       <?= $this->session->flashdata('message'); ?>
       <div class="col-lg-10 agile-course-main">
         <div class="w3ls-cource-first">

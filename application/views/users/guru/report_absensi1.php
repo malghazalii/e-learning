@@ -38,7 +38,7 @@
               </div>
             </div>
             <br>
-            <table class="table table-striped">
+            <table class="table table-bordered">
               <thead>
                 <tr>
                   <th scope="col">Nama</th>

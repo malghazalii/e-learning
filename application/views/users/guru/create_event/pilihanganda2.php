@@ -1,8 +1,7 @@
 <body onload="JavaScript:AutoRefresh(30000);">
     <div class="course-w3ls py-5">
-        <div class="container py-xl-5 py-lg-3">
-            <h3 class="title text-capitalize font-weight-light text-dark text-center mb-sm-5 mb-4">Tampil Kuis
-            </h3>
+        <div class="container">
+            <h3 class="text-center mb-sm-5 mb-4">Tampil kuis</h3>
             <div class="row justify-content-center pt-7">
                 <div class="col-lg-10 agile-course-main">
                     <div class="w3ls-cource-first">
@@ -23,9 +22,11 @@
                         </div>
                         <br>
                         <br>
+                        <div class="form-group">
+                        <div class="row">
                         <?php if ($title == 'Tampil kuis') : ?>
                             <form action="<?= base_url('User/Guru/TampilKuis/Mengajar/' . $mapel->id_mengajar); ?>" method="POST">
-                                <div class="col-sm-3">
+                                <div class="col-sm-9">
                                     <select id="country" name="jenisujian" class="form-control">>
                                         <option value="">Semua Jenis</option>
                                         <option value="Ulangan Harian">Ulangan Harian</option>
@@ -34,7 +35,7 @@
                                     </select>
                                 </div>
                                 <br>
-                                <div class="col-sm-3" style="float: left;">
+                                <div class="col-sm-9" style="float: left;">
                                     <input type="date" id="tanggal" name="tanggal" class="form-control">
                                 </div>
                                 <!-- <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
@@ -42,11 +43,15 @@
                                         <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
                                     <?php endforeach; ?>
                                 </select> -->
-                                <button type="submit" class="btn btn-primary">Cari</button>
+                                <button type="submit" class="btn btn-success">Cari</button>
                             </form>
+                        </div>
+                        </div>
+                        <br>
+                        <br>
                         <?php else : ?>
                             <form action="<?= base_url('User/Guru/TampilKuis/'); ?>" method="POST">
-                                <div class="col-sm-3">
+                                <div class="col-sm-9">
                                     <select id="country" name="jenisujian" class="form-control">>
                                         <option value="">Semua Jenis</option>
                                         <option value="Ulangan Harian">Ulangan Harian</option>
@@ -55,7 +60,7 @@
                                     </select>
                                 </div>
                                 <br>
-                                <div class="col-sm-3" style="float: left;">
+                                <div class="col-sm-9" style="float: left;">
                                     <input type="date" id="tanggal" name="tanggal" class="form-control">
                                 </div>
                                 <!-- <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
@@ -63,11 +68,12 @@
                                         <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
                                     <?php endforeach; ?>
                                 </select> -->
-                                <button type="submit" class="btn btn-primary">Cari</button>
+                                <button type="submit" class="btn btn-success">Cari</button>
                             </form>
                         <?php endif; ?>
                         <br>
-                        <table class="table table-striped">
+                        <br>
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th scope="col">Nama</th>

@@ -13,30 +13,33 @@
 <body>
     <br>
 
-    <div class="container">
-
-        <div class="panel panel-default">
-            <div class="panel-body">
+    <div class="container py-xl-5 py-lg-3">
+        
+    <div class="row justify-content-center pt-7">
+      <div class="col-lg-12 agile-course-main">
+        <div class="w3ls-cource-first">
+          <div class="px-md-5 px-4  pb-md-5 pb-4">
                 <!-- membuat form  -->
                 <!-- gunakan tanda [] untuk menampung array  -->
                 <div class="control-group after-add-more">
+                    <br>
                     <div class="form-group">
                         <div class="row">
-                            <a for="birthDate" class="col-sm-2 control-label">Kelas Anda</a>
+                            <a for="birthDate" class="col-sm-2 control-label"><strong>Kelas Anda</strong></a>
                             <label for="birthDate" class="col-sm-2 control-label"><?= $tugass->kelas ?> <?= $tugass->nama_jurusan ?></label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <a for="birthDate" class="col-sm-2 control-label">Mata Pelajaran</a>
+                            <a for="birthDate" class="col-sm-2 control-label"><strong>Mata Pelajaran</strong></a>
                             <label for="birthDate" class="col-sm-2 control-label"><?= $tugass->mata_pelajaran ?></label>
                         </div>
                     </div>
                     <form action="<?= base_url('User/Guru/Mapel/updatenilai/' . $tugass->id_jawaban); ?>" method="POST">
                         <div class="form-group">
                             <div class="row">
-                                <a for="birthDate" class="col-sm-2 control-label">Nilai</a>
-                                <input style="margin-right: 10px; width: 80px" type="number" name="nilai">
+                                <a for="birthDate" class="col-sm-2 control-label"><strong>Nilai</strong></a>
+                                <input style="margin-right: 10px; width: 100px" type="number" name="nilai">
                                 <input type="text" name="tugas" hidden value="<?= $tugass->id_tugas ?>">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
@@ -82,6 +85,9 @@
         </div>
     </div>
     </div>
+                                </div>
+                                
+                                </div>
 
 
 

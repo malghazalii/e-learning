@@ -30,6 +30,9 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-white" href="<?= base_url('User/Guru/Absensi'); ?>">Absensi Guru</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white" href="<?= base_url('User/Guru/TampilKuis'); ?>">Tampil Kuis</a>
             </li>
             <?php
@@ -60,9 +63,7 @@
             <?php } else {
                 echo '';
             } ?>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="<?= base_url('User/Guru/Absensi'); ?>">Absensi</a>
-            </li>
+            
 
         </ul>
     </div>

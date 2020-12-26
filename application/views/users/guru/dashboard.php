@@ -119,6 +119,7 @@
           <a href="<?= base_url('User/Guru/TampilKuis/mengajar/' . $k->id_mengajar); ?>" class="btn btn-outline-danger" style="float:right;">Cek Hasil Kuis</a><br>
           <p><?= $k->jenis ?></p>
           <p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
+        <hr>
         </div>
         <script>
           // Mengatur waktu akhir perhitungtitan mundur

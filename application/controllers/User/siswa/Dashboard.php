@@ -19,7 +19,8 @@ class Dashboard extends CI_Controller
     $querytugas = "SELECT *, tugas_siswa.nama as NAMA FROM tugas_siswa JOIN mengajar on mengajar.id_mengajar = tugas_siswa.id_mengajar 
     JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
     JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas WHERE NOT EXISTS
-    (SELECT * FROM jawaban_tugas WHERE tugas_siswa.id_tugas=jawaban_tugas.id_tugas and jawaban_tugas.nis=$nis) ";
+    (SELECT * FROM jawaban_tugas WHERE tugas_siswa.id_tugas=jawaban_tugas.id_tugas and jawaban_tugas.nis=$nis) 
+    AND penjurusan.id_jurusan = $s->id_jurusan";
 
 
     $tugastelat = "SELECT *, tugas_siswa.nama as NAMA FROM jawaban_tugas JOIN tugas_siswa on tugas_siswa.id_tugas = jawaban_tugas.id_tugas JOIN mengajar on mengajar.id_mengajar = tugas_siswa.id_mengajar 

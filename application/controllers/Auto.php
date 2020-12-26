@@ -54,7 +54,7 @@ class Auto extends CI_Controller
     $data = [
       'id_tugas' => $id_tugas,
       'nis' => $nis,
-      'status' => '2',
+      'status' => '3',
       'nilai' => 0
     ];
 

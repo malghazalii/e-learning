@@ -43,7 +43,7 @@
     <div class="card-body">
       <?php foreach ($kuis as $k) : ?>
         <img src="<?php echo base_url(); ?>assets/users/images/pie.png " style=”float:left; margin:0 8px 4px 0;” /> <?= $k->nama_ujian ?> <br>
-        <a href="<?= base_url('User/Guru/TampilKuis/mengajar/' . $k->id_mengajar); ?>" class="btn btn-outline-danger" style="float:right;">Pergi ke aktifitas</a>
+        <a href="<?= base_url('#' . $k->id_kuis); ?>" class="btn btn-outline-danger" style="float:right;">Pergi ke aktifitas</a>
         <p><?= $k->jenis ?></p>
         <p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
         <hr>

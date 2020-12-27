@@ -15,7 +15,6 @@
                     Event
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= base_url('User/Guru/Dashboard') ?>">Tampil Event</a>
                     <a class="dropdown-item" href="<?= base_url('User/Guru/BuatKuis') ?>">Buat Tugas</a>
                     <a class="dropdown-item" href="<?= base_url('User/Guru/Kuisessay') ?>">Input Soal Ujian</a>
                 </div>

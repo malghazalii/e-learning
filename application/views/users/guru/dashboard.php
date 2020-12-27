@@ -3,8 +3,7 @@
 
 <body onload="JavaScript:AutoRefresh(30000);">
   <div class="container py-xl-5 py-lg-3">
-    <img src="<?php echo base_url(); ?>assets/users/images/menu.png" style=”float:left; margin:0 8px 4px 0;” /><strong> Event Guru</strong>
-    <hr>
+  <h3 class="text-center mb-sm-5 mb-4">Dashboard</h3>
     <div class="card">
       <h5 class="card-header">Absensi</h5>
       <div class="card-body">

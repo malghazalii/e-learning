@@ -58,6 +58,7 @@
                         <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>welcome to eLearning</h1>
                     <!-- social icons -->
                     <a style="margin-left: 325px;" class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="<?php echo base_url(); ?>assets/users/images/user.png ">
                         <?php
                         $nip = $this->session->userdata('nip');
                         $nis = $this->session->userdata('nis');

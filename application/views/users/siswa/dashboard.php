@@ -130,7 +130,7 @@
           foreach ($kuis as $k) : ?>
             <div id="kuis<?= $s; ?>">
               <img src="<?php echo base_url(); ?>assets/users/images/pie.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $k->nama_ujian ?>
-              <a href="<?= base_url('#' . $k->id_kuis); ?>" class="btn btn-outline-primary" style="float:right;">Pergi ke aktifitas</a>
+              <a href="<?= base_url('User/Siswa/Kuis/Ikut/' . $k->id_kuis); ?>" class="btn btn-outline-primary" style="float:right;">Pergi ke aktifitas</a>
               <p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
               <hr>
             </div>

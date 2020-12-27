@@ -118,7 +118,7 @@
 				<div class="card-body" id="looping<?= $s ?>">
 					<img src="<?php echo base_url(); ?>assets/users/images/pie.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $k->nama_ujian ?>
 					<p class="card-text-left"><?= $k->mata_pelajaran ?></p>
-					<a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas/' . $k->id_kuis); ?>" type="button" class="btn btn-outline-primary" style="float:right;">Pergi ke aktifitas</a> <br>
+					<a href="<?php echo base_url('User/Siswa/Kuis/Ikut/' . $k->id_kuis); ?>" type="button" class="btn btn-outline-primary" style="float:right;">Pergi ke aktifitas</a> <br>
 					<p><?= $k->jenis ?></p>
 					<p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
 				</div>

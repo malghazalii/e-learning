@@ -37,6 +37,9 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="<?= base_url('User/Siswa/Event') ?>">Event</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="<?= base_url('User/Siswa/jadwal') ?>">Jadwal Mata Pelajaran</a>
+            </li>
         </ul>
 
 

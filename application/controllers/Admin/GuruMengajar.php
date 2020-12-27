@@ -49,13 +49,11 @@ class GuruMengajar extends CI_Controller
             $nip = $this->input->post('nip');
             $mapel = $this->input->post('mapel');
             $kelas = $this->input->post('kelas');
-            $jam = $this->input->post('jam');
 
             $data = [
                 'nip' => $nip,
                 'id_mapel' => $mapel,
-                'id_jurusan' => $kelas,
-                'jam' => $jam
+                'id_jurusan' => $kelas
             ];
 
             $simpan = $this->m_guru_mengajar->insert($data);
@@ -101,13 +99,11 @@ class GuruMengajar extends CI_Controller
         $mengajar = $this->input->post('id');
         $mapel = $this->input->post('mapel');
         $kelas = $this->input->post('kelas');
-        $jam = $this->input->post('jam');
 
         $data = [
             'id_mengajar' => $mengajar,
             'id_mapel' => $mapel,
-            'id_jurusan' => $kelas,
-            'jam' => $jam
+            'id_jurusan' => $kelas
         ];
 
         $save = $this->m_guru_mengajar->update($data, $mengajar);

@@ -62,8 +62,9 @@
             <?php } else {
                 echo '';
             } ?>
-            
-
+            <li class="nav-item">
+                <a class="nav-link text-white" href="<?= base_url('User/Guru/jadwal'); ?>">Jadwal Mata Pelajaran</a>
+            </li>
         </ul>
     </div>
 </nav>

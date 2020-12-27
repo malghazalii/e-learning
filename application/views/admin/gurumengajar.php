@@ -21,7 +21,6 @@
                             <th>Nama</th>
                             <th>Mata Pelajaran</th>
                             <th>Kelas</th>
-                            <th>Jam</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,7 +33,6 @@
                                 <td><?= $m->nama ?></td>
                                 <td><?= $m->mata_pelajaran ?></td>
                                 <td><?= $m->kelas ?> <?= $m->nama_jurusan ?></td>
-                                <td><?= $m->jam ?></td>
                                 <td>
                                     <?php
                                     echo anchor(base_url('Admin/GuruMengajar/edit/' . $m->id_mengajar), 'Edit');

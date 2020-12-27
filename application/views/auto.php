@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <?php
 $absen = "SELECT * FROM `absen_siswa`
 JOIN mengajar ON mengajar.id_mengajar = absen_siswa.id_mengajar

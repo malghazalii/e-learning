@@ -14,7 +14,7 @@ class Absensi extends CI_Controller
         $nip = $this->session->userdata('nip');
 
         $querytrabsen = "SELECT * FROM `tr_absen_guru` join absen_guru on absen_guru.id_absen = tr_absen_guru.id_absen 
-        WHERE tr_absen_guru.nip=$nip ";
+        WHERE tr_absen_guru.nip=$nip ORDER BY absen_guru.tanggal_berakhir DESC";
 
         $querytryabsen = "SELECT * FROM `tr_absen_guru` join absen_guru on absen_guru.id_absen = tr_absen_guru.id_absen 
         WHERE tr_absen_guru.nip=$nip";
@@ -22,7 +22,8 @@ class Absensi extends CI_Controller
         $queryabsen = "SELECT *
         FROM absen_guru
         WHERE NOT EXISTS
-        (SELECT * FROM tr_absen_guru WHERE absen_guru.id_absen=tr_absen_guru.id_absen and tr_absen_guru.nip=$nip) ";
+        (SELECT * FROM tr_absen_guru WHERE absen_guru.id_absen=tr_absen_guru.id_absen and tr_absen_guru.nip=$nip) 
+        ORDER BY absen_guru.tanggal_berakhir DESC ";
 
 
         $data['title'] = 'Absensi';

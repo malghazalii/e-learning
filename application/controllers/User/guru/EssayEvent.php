@@ -18,7 +18,7 @@ class EssayEvent extends CI_Controller
         on mata_pelajaran.id_mapel = mengajar.id_mapel join penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas 
         on kelas.id_kelas = penjurusan.id_kelas  WHERE mengajar.nip = $nip";
 
-        $data['title'] = 'Essay Event';
+        $data['title'] = 'Tugas';
         $data['mengajar'] = $this->db->query($queryMengajar)->result();
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');

@@ -25,6 +25,7 @@ class EssayEvent extends CI_Controller
         $this->load->view('users/templates/navPilihan');
         $this->load->view('users/guru/create_event/esai');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
     }
 
     function tambahData()

@@ -1,33 +1,44 @@
 <div class="course-w3ls py-5">
-  <div class="container py-xl-5 py-lg-3">
-    <h3 class="title text-capitalize font-weight-light text-dark text-center mb-sm-5 mb-4">Report Absensi
-    </h3>
+  <div class="container">
+    <h3 class="text-center mb-sm-5 mb-4">Report absensi</h3>
     <div class="row justify-content-center pt-7">
       <div class="col-lg-10 agile-course-main">
         <div class="w3ls-cource-first">
           <div class="px-md-5 px-4  pb-md-5 pb-4">
             <br>
-            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?= $tanggal->mata_pelajaran ?> <?= $tanggal->kelas ?> <?= $tanggal->nama_jurusan ?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
-              <?php foreach ($mengajar as $t) :
-              ?>
-                <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
-              <?php endforeach; ?>
+            <div class="form-group">
+                <div class="row">
+                <label class="col-sm-3 control-label"><strong>Pilih berdasarkan : </strong></label>
+                   <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <?php if ($tanggal == null) : ?>
+                        Mata Pelajaran
+                       <?php else : ?>
+                       <?= $tanggal->mata_pelajaran ?> <?= $tanggal->kelas ?> <?= $tanggal->nama_jurusan ?>
+                       <?php endif; ?>
+                   </a>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                     <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
+                     <?php foreach ($mengajar as $t) :
+                     ?>
+                     <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
+                     <?php endforeach; ?>
+                 </div>
+                 <form action="<?= base_url('User/Guru/Report_absensi/tanggal1/'); ?>" method="POST">
+                     <div class="col-sm-9" style="float: left;">
+                        <input type="date" id="tanggal" name="tanggal" class="form-control">
+                     </div>
+                      <?php if ($tanggal == null) : ?>
+                      <input hidden type="text" name="id">
+                      <button hidden type="submit" class="btn btn-primary">Cari</button>
+                      <?php else : ?>
+                      <input hidden type="text" name="id" value="<?= $tanggal->id_jurusan; ?>">
+                      <button type="submit" class="btn btn-success" style="width: 25%;">Cari</button>
+                      <?php endif; ?>
+                  </form>
+              </div>
             </div>
             <br>
-            <br>
-            <form action="<?= base_url('User/Guru/Report_absensi/tanggal1/'); ?>" method="POST">
-              <div class="col-sm-3" style="float: left;">
-                <input type="date" id="tanggal" name="tanggal" class="form-control">
-              </div>
-              <input hidden type="text" name="id" value="<?= $tanggal->id_jurusan; ?>">
-              <button type="submit" class="btn btn-primary">Cari</button>
-            </form>
-            <br>
-            <table class="table table-striped">
+            <table class="table table-bordered">
               <thead>
                 <tr>
                   <th scope="col">Nama</th>

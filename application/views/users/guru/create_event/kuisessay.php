@@ -1,13 +1,13 @@
 <html lang="en">
 
 <head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
 <body>
   <br>
-  <div class="container">
+  <div class="container py-xl-5 py-lg-3">
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="form-group">
@@ -50,7 +50,6 @@
         </div>
       </div>
     </div>
-    <hr>
     <?php if ($title == "Input Soal Ujian Essay") : ?>
       <form method="POST" action="<?= base_url('User/Guru/KuisEssay/tambahData/' . $det->id_kuis); ?>" enctype="multipart/form-data">
         <div class="panel-body">
@@ -73,7 +72,7 @@
             </div>
             <hr>
           </div>
-          <button class="btn btn-primary" type="submit">Tambah</button>
+          <button class="btn btn-success" type="submit">Tambah</button>
         </div>
       </form>
     <?php elseif ($title == "Input Soal Ujian Pilihan Ganda") : ?>
@@ -164,8 +163,9 @@
         </div>
       </form>
     <?php endif; ?>
-    <hr>
+      <br>
     <?= $this->session->flashdata('message'); ?>
+    
     <div class="row justify-content-center pt-7">
       <div class="col-lg-12 agile-course-main">
         <div class="w3ls-cource-first">
@@ -236,11 +236,9 @@
         </div>
       </div>
     </div>
-    <hr>
-  <?php endif; ?>
   </div>
-  </div>
-  </div>
+    <?php endif; ?>
+
 </body>
 
 </html>

@@ -92,6 +92,7 @@ class TampilKuis extends CI_Controller
         $this->load->view('users/templates/navguru');
         $this->load->view('users/guru/create_event/pilihanganda2');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
     }
     public function mengajar($id)
     {

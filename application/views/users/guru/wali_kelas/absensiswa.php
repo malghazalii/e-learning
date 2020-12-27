@@ -13,7 +13,12 @@
 <body>
   <br>
 
-  <div class="container">
+  <div class="container  py-xl-5 py-lg-3">
+  <div class="row justify-content-center pt-7">
+      <div class="col-lg-12 agile-course-main">
+        <div class="w3ls-cource-first">
+          <div class="px-md-5 px-4  pb-md-5 pb-4">
+            <br>
     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Semua Mapel
     </a>
@@ -34,7 +39,7 @@
                   <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
                 <?php endforeach; ?>
               </select> -->
-      <button type="submit" class="btn btn-primary">Cari</button>
+      <button type="submit" class="btn btn-success">Cari</button>
     </form>
     <hr>
     <br>
@@ -45,13 +50,13 @@
         <div class="control-group after-add-more">
           <div class="form-group">
             <div class="row">
-              <a for="birthDate" class="col-sm-2 control-label">Kelas Anda</a>
+              <a for="birthDate" class="col-sm-2 control-label"><strong>Kelas Anda</strong></a>
               <label for="birthDate" class="col-sm-2 control-label"><?= $walikelas->kelas ?> <?= $walikelas->nama_jurusan ?></label>
             </div>
           </div>
           <div class="form-group">
             <div class="row">
-              <a for="birthDate" class="col-sm-2 control-label">Jumlah Siswa</a>
+              <a for="birthDate" class="col-sm-2 control-label"><strong>Jumlah Siswa</strong></a>
               <label for="birthDate" class="col-sm-2 control-label"><?= $sum->jumlah ?></label>
             </div>
           </div>
@@ -92,6 +97,10 @@
         </table>
         </br>
       </div>
+    </div>
+  </div>
+  </div>
+  </div>
     </div>
   </div>
   </div>

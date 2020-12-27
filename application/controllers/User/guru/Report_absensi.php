@@ -44,6 +44,7 @@ class Report_absensi extends CI_Controller
 		$this->load->view('users/templates/navguru');
 		$this->load->view('users/guru/report_absensi');
 		$this->load->view('users/templates/footer');
+		$this->load->view('auto');
 	}
 	public function tanggal()
 	{
@@ -162,8 +163,6 @@ class Report_absensi extends CI_Controller
 		$data['title'] = 'Laporan Absen';
 		$data['mengajar'] = $this->db->query($queryMengajar)->result();
 		$data['absensi'] = $this->db->query($ngambilabsen)->result();
-
-
 
 		$this->load->view('users/templates/header', $data);
 		$this->load->view('users/templates/navguru');

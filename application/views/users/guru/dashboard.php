@@ -1,8 +1,8 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <br>
 
 <body onload="JavaScript:AutoRefresh(30000);">
-  <div class="container">
+  <div class="container py-xl-5 py-lg-3">
     <img src="<?php echo base_url(); ?>assets/users/images/menu.png" style=”float:left; margin:0 8px 4px 0;” /><strong> Event Guru</strong>
     <hr>
     <div class="card">
@@ -119,6 +119,7 @@
           <a href="<?= base_url('User/Guru/TampilKuis/mengajar/' . $k->id_mengajar); ?>" class="btn btn-outline-danger" style="float:right;">Cek Hasil Kuis</a><br>
           <p><?= $k->jenis ?></p>
           <p class="card-text-left"><?= $k->tanggal_berakhir ?></p>
+        <hr>
         </div>
         <script>
           // Mengatur waktu akhir perhitungtitan mundur

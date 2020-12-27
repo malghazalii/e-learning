@@ -5,77 +5,80 @@ class Absensi extends CI_Controller
 {
     public function index()
     {
-        $nis = $this->session->userdata('nis');
-
-        $querytrabsen = "SELECT absen_siswa.tanggal, guru.nama, mata_pelajaran.mata_pelajaran, tr_absen_siswa.status FROM 
-        tr_absen_siswa JOIN absen_siswa ON tr_absen_siswa.id_absen = absen_siswa.id_absen JOIN mengajar ON mengajar.id_mengajar = 
-        absen_siswa.id_mengajar JOIN guru ON guru.nip = mengajar.nip JOIN mata_pelajaran ON mata_pelajaran.id_mapel = mengajar.id_mapel 
-        WHERE tr_absen_siswa.nis=$nis;";
-
-        $queryabsen = "SELECT absen_siswa.id_absen, absen_siswa.tanggal, guru.nama, mata_pelajaran.mata_pelajaran FROM 
-        absen_siswa JOIN mengajar ON mengajar.id_mengajar = absen_siswa.id_mengajar JOIN guru ON guru.nip = 
-        mengajar.nip JOIN mata_pelajaran ON mata_pelajaran.id_mapel = mengajar.id_mapel WHERE NOT EXISTS
-        (SELECT * FROM tr_absen_siswa WHERE absen_siswa.id_absen=tr_absen_siswa.id_absen and tr_absen_siswa.nis=$nis) ";
-
-        // $queryabsen = "SELECT *
-        // FROM absen_guru
-        // WHERE NOT EXISTS
-        // (SELECT * FROM tr_absen_guru WHERE absen_guru.id_absen=tr_absen_guru.id_absen) ";
 
         $data['title'] = 'Absensi';
         $data['data'] = $this->db->get_where('siswa', ['nis' => $this->session->userdata('nis')])->row_array();
-        $data['absen'] = $this->db->query($querytrabsen)->result();
-        $data['tanggal'] = $this->db->query($queryabsen)->result();
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
         $this->load->view('users/templates/navAbsensi');
         $this->load->view('users/siswa/absensi');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
     }
 
-    public function status($id)
+    public function absen($id)
     {
         $nis = $this->session->userdata('nis');
 
-        $queryabsen = "SELECT * FROM `absen_siswa` WHERE id_absen=$id";
+        $queryabsen = "SELECT * FROM absen_siswa JOIN mengajar on mengajar.id_mengajar = absen_siswa.id_mengajar 
+        JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
+        JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas 
+        WHERE id_absen=$id";
+
+        $trabsensiswa = "SELECT * FROM tr_absen_siswa WHERE tr_absen_siswa.id_absen=$id and tr_absen_siswa.nis=$nis";
 
         $data['title'] = 'Absensi';
         $data['data'] = $this->db->get_where('siswa', ['nis' => $this->session->userdata('nis')])->row_array();
-        $data['tampil'] = $this->db->query($queryabsen)->row();
+        $data['absen'] = $this->db->query($queryabsen)->row();
+        $data['trabsen'] = $this->db->query($trabsensiswa)->row();
         $this->load->view('users/templates/header', $data);
-        $this->load->view('users/templates/navguru');
-        $this->load->view('users/siswa/aksi_absensi');
+        $this->load->view('users/templates/navsiswa');
+        $this->load->view('users/siswa/absensi');
         $this->load->view('users/templates/footer');
     }
 
-    public function simpanData()
+    public function simpanData($id)
     {
-        $id_absen = $this->input->post('id_absen');
-        $nis = $this->input->post('nis');
+        $nis = $this->session->userdata('nis');
         $status = $this->input->post('status');
 
-        $data = [
-            'id_absen' => $id_absen,
-            'nis' => $nis,
-            'status' => $status
-        ];
+        if ($status == null) {
+            echo "<script>alert('Pilih salah satu status absen');</script>";
+            echo "<script>window.location='" . site_url('User/Siswa/Absensi/absen/' . $id) . "';</script>";
+        } else {
+            $data = [
+                'id_absen' => $id,
+                'nis' => $nis,
+                'status' => $status
+            ];
 
-        $this->db->insert('tr_absen_siswa', $data);
+            $insert = $this->db->insert('tr_absen_siswa', $data);
 
-        redirect('User/siswa/Absensi');
+            if ($insert) {
+                echo "<script>alert('Data berhasil di simpan');</script>";
+                echo "<script>window.location='" . site_url('User/Siswa/Absensi/absen/' . $id) . "';</script>";
+            }
+        }
     }
 
     public function inputData($id)
     {
         $nis = $this->session->userdata('nis');
 
-        $data = [
-            'id_absen' => $id,
-            'nis' => $nis,
-            'status' => '4'
-        ];
+        $queryabsen = "SELECT * FROM absen_siswa JOIN mengajar on mengajar.id_mengajar = absen_siswa.id_mengajar 
+        JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
+        JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas 
+        WHERE id_absen=$id";
 
-        $this->db->insert('tr_absen_siswa', $data);
-        redirect('User/Siswa/Dashboard');
+        $trabsensiswa = "SELECT * FROM tr_absen_siswa WHERE tr_absen_siswa.id_absen=$id and tr_absen_siswa.nis=$nis";
+
+        $data['title'] = 'Absensi';
+        $data['data'] = $this->db->get_where('guru', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['absen'] = $this->db->query($queryabsen)->row();
+        $data['trabsen'] = $this->db->query($trabsensiswa)->row();
+        $this->load->view('users/templates/header', $data);
+        $this->load->view('users/templates/navsiswa');
+        $this->load->view('users/siswa/aksi_absensi');
+        $this->load->view('users/templates/footer');
     }
 }

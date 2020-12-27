@@ -1,13 +1,13 @@
 <html lang="en">
 
 <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
 <body>
     <br>
-    <div class="container">
+    <div class="container py-xl-5 py-lg-3">
         <?php if ($title == "Input Soal Ujian Pilihan Ganda") : ?>
             <form method="POST" action="<?= base_url('User/Guru/KuisPilgan/tambahData/' . $det->id_kuis); ?>" enctype="multipart/form-data">
             <?php endif; ?>

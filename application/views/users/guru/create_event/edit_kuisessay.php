@@ -1,17 +1,16 @@
 <html lang="en">
 
 <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
 <body>
     <br>
-    <div class="container">
+    <div class="container py-xl-5 py-lg-3"">
+    <div class="card">
+    <div class="card-body">
         <form method="POST" action="<?= base_url('User/Guru/KuisEssay/update/' . $detail->idk . '/' . $detail->id_kuis); ?>" enctype="multipart/form-data">
-
-            <hr>
-
             <div class="panel-body">
                 <!-- membuat form  -->
                 <!-- gunakan tanda [] untuk menampung array  -->
@@ -34,9 +33,9 @@
                 <button class="btn btn-primary" type="submit">Simpan</button>
             </div>
 
-            <hr>
-
         </form>
+        </div>
+        </div>
     </div>
     </div>
     </div>

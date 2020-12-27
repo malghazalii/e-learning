@@ -15,6 +15,7 @@ class Mapel extends CI_Controller
         $this->load->view('users/templates/navguru');
         $this->load->view('users/guru/mapel');
         $this->load->view('users/templates/footer');
+        
     }
 
     public function getMapel($id)

@@ -15,6 +15,7 @@ class Auth extends CI_Controller
         $this->load->view('users/templates/headerAuth', $data);
         $this->load->view('users/login');
         $this->load->view('users/templates/footer');
+        $this->load->view('auto');
     }
     public function login()
     {

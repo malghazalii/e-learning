@@ -1,13 +1,14 @@
 <html lang="en">
 
 <head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
 <body>
   <br>
-  <div class="container">
+  <div class="container py-xl-5 py-lg-3">
+  <div class="card">
     <form method="POST" action="<?= base_url('User/Guru/KuisPilgan/update/' . $detail->idk . '/' . $detail->id_kuis); ?>" enctype="multipart/form-data">
       <div class="panel-body">
         <!-- membuat form  -->
@@ -33,7 +34,7 @@
               <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputA" id="fileinputA" class="btn btn-success upload">
                                     </div> -->
-              <div class="col-sm-6">
+              <div class="col-sm-9">
                 <input type="text" id="jawabanA" name="jawabanA" value="<?= $detail->opsiA ?>" placeholder="jawaban" class="form-control" autofocus>
                 <?= form_error('jawabanA', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
@@ -45,7 +46,7 @@
               <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputB" id="fileinputB" class="btn btn-success upload">
                                     </div> -->
-              <div class="col-sm-6">
+              <div class="col-sm-9">
                 <input type="text" id="jawabanB" name="jawabanB" placeholder="jawaban" value="<?= $detail->opsiB ?>" class="form-control" autofocus>
                 <?= form_error('jawabanB', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
@@ -57,7 +58,7 @@
               <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputC" id="fileinputC" class="btn btn-success upload">
                                     </div> -->
-              <div class="col-sm-6">
+              <div class="col-sm-9">
                 <input type="text" id="jawabanC" name="jawabanC" value="<?= $detail->opsiB ?>" placeholder="jawaban" class="form-control" autofocus>
                 <?= form_error('jawabanC', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
@@ -69,7 +70,7 @@
               <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputD" id="fileinputD" class="btn btn-success upload">
                                       </div> -->
-              <div class="col-sm-6">
+              <div class="col-sm-9">
                 <input type="text" id="jawabanD" name="jawabanD" placeholder="jawaban" value="<?= $detail->opsiD ?>" class="form-control" autofocus>
                 <?= form_error('jawabanD', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
@@ -81,14 +82,13 @@
               <!-- <div class="col-sm-3">
                                         <input type="file" name="fileinputE" id="fileinputE" class="btn btn-success upload">
                                       </div> -->
-              <div class="col-sm-6">
+              <div class="col-sm-9">
                 <input type="text" id="jawabanE" name="jawabanE" placeholder="jawaban" class="form-control" value="<?= $detail->opsiE ?>" autofocus>
                 <?= form_error('jawabanE', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
             </div>
           </div>
           <hr>
-          </br>
         </div>
         <button class="btn btn-primary" type="submit">Simpan</button>
       </div>
@@ -97,6 +97,7 @@
   </div>
   </div>
   </div>
+  </dic>
 </body>
 
 </html>

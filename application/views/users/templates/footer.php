@@ -101,7 +101,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'Guru/BuatKuis') !== false){
 	<?php
 }elseif(strpos($_SERVER['REQUEST_URI'], 'guru/uploadmateri/editMateri') !== false){
 	?>
-	<div class="footer" style="position:fixed">
+	<div class="footer" style="position:static">
 	<div class="container">
 	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
 	</div>
@@ -125,7 +125,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'Guru/BuatKuis') !== false){
 	<?php
 }elseif(strpos($_SERVER['REQUEST_URI'], 'guru/essayevent/editTugas') !== false){
 	?>
-	<div class="footer" style="position:fixed">
+	<div class="footer" style="position:static">
 	<div class="container">
 	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
 	</div>
@@ -133,7 +133,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'Guru/BuatKuis') !== false){
 	<?php
 }elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/wali_kelas/DaftarSiswa') !== false){
 	?>
-	<div class="footer" style="position:fixed">
+	<div class="footer" style="position:static">
 	<div class="container">
 	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
 	</div>
@@ -142,6 +142,14 @@ if (strpos($_SERVER['REQUEST_URI'], 'Guru/BuatKuis') !== false){
 }elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/wali_kelas/AbsenSiswa') !== false){
 	?>
 	<div class="footer" style="position:fixed">
+	<div class="container">
+	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+	</div>
+	</div>
+	<?php
+}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/wali_kelas/PenilaianMapel') !== false){
+	?>
+	<div class="footer" style="position:static">
 	<div class="container">
 	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
 	</div>

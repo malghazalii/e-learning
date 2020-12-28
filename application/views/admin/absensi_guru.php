@@ -5,11 +5,13 @@
             <h6 class="m-0 font-weight-bold text-primary" style="padding-bottom: 10px;">Tanggal dan Jam Absen Berakhir</h6>
             <div class="col-sm-3" style="float: left; margin-left: -10px">
                 <input type="datetime-local" name="tanggal" id="tanggal" placeholder="Tanggal Berakhir" class="form-control" autofocus>
+                <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
             <button type="submit" class="btn btn-primary">Aktifkan Absen</button>
         </form>
     </div>
     <?= $this->session->flashdata('message'); ?>
+    <br>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">

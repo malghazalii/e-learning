@@ -1,6 +1,6 @@
 <div class="course-w3ls py-5">
    <div class="container ">
-   <h3 class="text-center mb-sm-5 mb-4">Absensi murid</h3>
+      <h3 class="text-center mb-sm-5 mb-4">Absensi murid</h3>
       <div class="row justify-content-center pt-7">
          <div class="col-lg-10 agile-course-main">
             <div class="w3ls-cource-first">
@@ -13,12 +13,6 @@
                            <td width="80">:</td>
                            <td width="250"><input style="width: 162px;" type="time" id="tanggal" name="jam"></td>
                            <td width="250"><input type="date" id="tanggal" name="tanggal" min="<?= $tanggal; ?>"></td>
-                        </tr>
-                        <br>
-                        <tr>
-                           <td><strong>Waktu Mengejar</strong></td>
-                           <td>:</td>
-                           <td><input readonly type="time" id="waktuawal" name="waktuawal"  value="<?= $mengajar->jam; ?>"> </td>
                         </tr>
                         <br>
                         <tr>

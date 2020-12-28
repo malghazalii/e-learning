@@ -25,21 +25,29 @@ class Absensi_Guru extends CI_Controller
 
     public function simpanData()
     { {
-            $tanggal = $this->input->post('tanggal');
-            $data = [
-                'tanggal_berakhir' => $tanggal,
-                //'is_active' => 1
-            ];
+            $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim', [
+                'required' => 'Field tidak boleh kosong'
+            ]);
 
-            $simpan = $this->m_absensi_guru->insert($data);
-
-            if ($simpan) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Absen berhasil diaktifkan</div>');
+            if ($this->form_validation->run() == false) {
+                $this->index();
             } else {
-                $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Absen tidak berhasil di non aktifkan</div>');
-            }
+                $tanggal = $this->input->post('tanggal');
+                $data = [
+                    'tanggal_berakhir' => $tanggal,
+                    //'is_active' => 1
+                ];
 
-            redirect('Admin/Absensi_Guru');
+                $simpan = $this->m_absensi_guru->insert($data);
+
+                if ($simpan) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Absen berhasil diaktifkan</div>');
+                } else {
+                    $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Absen tidak berhasil di non aktifkan</div>');
+                }
+
+                redirect('Admin/Absensi_Guru');
+            }
         }
     }
 

@@ -28,7 +28,7 @@ class KelasAbsen extends CI_Controller
     JOIN mata_pelajaran ON mata_pelajaran.id_mapel=mengajar.id_mapel
     JOIN penjurusan on penjurusan.id_jurusan=mengajar.id_jurusan
     JOIN kelas ON kelas.id_kelas=penjurusan.id_kelas
-    WHERE mengajar.nip = $nip";
+    WHERE mengajar.nip = $nip ORDER BY absen_siswa.tanggal DESC";
 
     $data['title'] = 'Buat Absen';
     $data['mengajar'] = $this->db->query($queryMengajar)->result();

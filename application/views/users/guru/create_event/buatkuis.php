@@ -38,6 +38,18 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="row">
+                        <label for="namatugas" class="col-sm-3 control-label">Lama Ujian</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="namaujian" name="hour" placeholder="Jam" value="<?= set_value('hour'); ?>" class="form-control" autofocus>
+                            <?= form_error('hour', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <br>
+                            <input type="number" id="namaujian" name="minute" placeholder="Menit" value="<?= set_value('minute'); ?>" class="form-control" autofocus>
+                            <?= form_error('minute', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="form-group">
                         <div class="row">
                             <label for="birthDate" class="col-sm-3 control-label">Batas Akhir</label>
@@ -48,6 +60,21 @@
                             <div class="col-sm-6">
                                 <input type="time" id="jam" name="jam" value="<?= set_value('jam'); ?>" class="form-control">
                                 <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="birthDate" class="col-sm-3 control-label">Tanggal Mulai</label>
+                            <div class="col-sm-3">
+                                <input type="date" id="tanggal" name="tanggalmulai" value="<?= set_value('tanggalmulai'); ?>" class="form-control" min="<?= $tanggal ?>">
+                                <?= form_error('tanggalmulai', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="time" id="jam" name="jammulai" value="<?= set_value('jammulai'); ?>" class="form-control">
+                                <?= form_error('jammulai', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
                     </div>

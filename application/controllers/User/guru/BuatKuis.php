@@ -32,6 +32,12 @@ class BuatKuis extends CI_Controller
         $this->form_validation->set_rules('namaujian', 'Namaujian', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
+        $this->form_validation->set_rules('hour', 'Hour', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('minute', 'Minute', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
         $this->form_validation->set_rules('mengajar', 'Mengajar', 'required|trim', [
             'required' => 'Anda perlu memilih salah satu'
         ]);
@@ -44,6 +50,12 @@ class BuatKuis extends CI_Controller
         $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
+        $this->form_validation->set_rules('tanggalmulai', 'Tanggalmulai', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
+        $this->form_validation->set_rules('jammulai', 'Jammulai', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
         $this->form_validation->set_rules('jmlsoalkeluar', 'Jmlsoalkeluar', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
@@ -53,19 +65,27 @@ class BuatKuis extends CI_Controller
         } else {
             $mengajar = $this->input->post('mengajar');
             $namaujian = $this->input->post('namaujian');
+            $hour = $this->input->post('hour');
+            $minute = $this->input->post('minute');
             $jenisujian = $this->input->post('jenisujian');
             $jam = $this->input->post('jam');
             $tanggal = $this->input->post('tanggal');
+            $jammulai = $this->input->post('jammulai');
+            $tanggalmulai = $this->input->post('tanggalmulai');
             $jmlsoalkeluar = $this->input->post('jmlsoalkeluar');
 
             $waktu = $tanggal . " " . $jam;
+            $waktumulai = $tanggalmulai . " " . $jammulai;
 
             $data = [
                 'id_mengajar' => $mengajar,
                 'nama_ujian' => $namaujian,
                 'tanggal_berakhir' => $waktu,
+                'tanggal_mulai' => $waktumulai,
                 'jenis' => $jenisujian,
-                'jumlah_keluar' => $jmlsoalkeluar
+                'jumlah_keluar' => $jmlsoalkeluar,
+                'jam' => $hour,
+                'menit' => $minute
             ];
 
             $simpan = $this->db->insert('kuis', $data);

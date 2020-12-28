@@ -7,34 +7,34 @@
           <div class="px-md-5 px-4  pb-md-5 pb-4">
             <br>
             <div class="form-group">
-                <div class="row">
+              <div class="row">
                 <label class="col-sm-3 control-label"><strong>Pilih berdasarkan : </strong></label>
-                   <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       <?php if ($tanggal == null) : ?>
-                        Mata Pelajaran
-                       <?php else : ?>
-                       <?= $tanggal->mata_pelajaran ?> <?= $tanggal->kelas ?> <?= $tanggal->nama_jurusan ?>
-                       <?php endif; ?>
-                   </a>
-                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                     <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
-                     <?php foreach ($mengajar as $t) :
-                     ?>
-                     <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
-                     <?php endforeach; ?>
-                 </div>
-                 <form action="<?= base_url('User/Guru/Report_absensi/tanggal1/'); ?>" method="POST">
-                     <div class="col-sm-9" style="float: left;">
-                        <input type="date" id="tanggal" name="tanggal" class="form-control">
-                     </div>
-                      <?php if ($tanggal == null) : ?>
-                      <input hidden type="text" name="id">
-                      <button hidden type="submit" class="btn btn-primary">Cari</button>
-                      <?php else : ?>
-                      <input hidden type="text" name="id" value="<?= $tanggal->id_jurusan; ?>">
-                      <button type="submit" class="btn btn-success" style="width: 25%;">Cari</button>
-                      <?php endif; ?>
-                  </form>
+                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php if ($tanggal == null) : ?>
+                    Mata Pelajaran
+                  <?php else : ?>
+                    <?= $tanggal->mata_pelajaran ?> <?= $tanggal->kelas ?> <?= $tanggal->nama_jurusan ?>
+                  <?php endif; ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi'); ?>">Semua Kelas</a>
+                  <?php foreach ($mengajar as $t) :
+                  ?>
+                    <a class="dropdown-item" href="<?= base_url('User/Guru/Report_absensi/mengajar/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
+                  <?php endforeach; ?>
+                </div>
+                <form action="<?= base_url('User/Guru/Report_absensi/tanggal1/'); ?>" method="POST">
+                  <div class="col-sm-9" style="float: left;">
+                    <input type="date" id="tanggal" name="tanggal" class="form-control">
+                  </div>
+                  <?php if ($tanggal == null) : ?>
+                    <input hidden type="text" name="id">
+                    <button hidden type="submit" class="btn btn-primary">Cari</button>
+                  <?php else : ?>
+                    <input hidden type="text" name="id" value="<?= $tanggal->id_jurusan; ?>">
+                    <button type="submit" class="btn btn-success" style="width: 25%;">Cari</button>
+                  <?php endif; ?>
+                </form>
               </div>
             </div>
             <br>
@@ -66,7 +66,6 @@
                         ?></td>
                     <td><?= $a->tanggal; ?></td>
                     <td><?= $a->kelas, "-", $a->nama_jurusan; ?></td>
-                    <td>Edit Delete</td>
                   </tr>
                 </tbody>
               <?php endforeach; ?>

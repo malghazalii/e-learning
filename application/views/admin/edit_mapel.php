@@ -12,7 +12,7 @@
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">Mata Pelajaran</h6>
                     </label>
-                    <input type="varchar" class="form-control form-control-user" name="mata_pelajaran" id="mata_pelajaran" placeholder="mapel" value="<?= $mapel->mata_pelajaran ?>" />
+                    <input type="varchar" class="form-control form-control-user" name="mata_pelajaran" id="mata_pelajaran" placeholder="mapel" onkeypress="return event.charCode < 48 || event.charCode  >57" value="<?= $mapel->mata_pelajaran ?>" />
                     <?= form_error('mata_pelajaran', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>

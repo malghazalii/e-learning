@@ -8,11 +8,11 @@ class KuisPilgan extends CI_Controller
         $nip = $this->session->userdata('nip');
 
         $querykuis = "SELECT * FROM kuis JOIN mengajar on mengajar.id_mengajar = kuis.id_mengajar WHERE mengajar.nip=$nip";
-        $querysoal = "SELECT MAX(soal.id_soal) AS hello FROM soal JOIN guru ON guru.nip = soal.nip WHERE guru.nip = $nip";
+        $querysoal = "SELECT MAX(soal.id_soal) AS hello FROM soal";
 
         $data['title'] = 'Input Soal Pilihan Ganda';
         $data['nama'] = $this->db->query($querykuis)->result();
-        $data['soal'] = $this->db->query($querysoal)->row();
+        $data['soall'] = $this->db->query($querysoal)->row();
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navguru');
         $this->load->view('users/guru/create_event/kuisessay', $data);
@@ -39,7 +39,7 @@ class KuisPilgan extends CI_Controller
 
         $querykuisid = "SELECT * FROM kuis JOIN mengajar on mengajar.id_mengajar = kuis.id_mengajar WHERE kuis.id_kuis=$id and mengajar.nip=$nip";
 
-        $querysoal = "SELECT MAX(soal.id_soal) AS hello FROM soal JOIN guru ON guru.nip = soal.nip WHERE guru.nip = $nip";
+        $querysoal = "SELECT MAX(soal.id_soal) AS hello FROM soal";
 
         $data['title'] = 'Input Soal Ujian Pilihan Ganda';
         $data['detail'] = $this->db->query($hasilnamaujian)->result();
@@ -208,7 +208,7 @@ class KuisPilgan extends CI_Controller
 
         $querykuisid = "SELECT * FROM kuis JOIN mengajar on mengajar.id_mengajar = kuis.id_mengajar WHERE mengajar.nip=$nip";
 
-        $querysoal = "SELECT MAX(soal.id_soal) AS hello FROM soal JOIN guru ON guru.nip = soal.nip WHERE guru.nip = $nip";
+        $querysoal = "SELECT MAX(soal.id_soal) AS hello FROM soal";
 
         $data['title'] = 'Edit Soal Ujian Essay';
         $data['detail'] = $this->db->query($hasilnamaujian)->row();

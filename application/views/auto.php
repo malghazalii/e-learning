@@ -170,7 +170,7 @@ foreach ($kuiss as $ta) : {
     $jawabann = $this->db->query($jawaban)->result();
     $bbb = 0;
     foreach ($jawabann as $ja) : { ?>
-        <a href="<?= base_url('Auto/Auto3/' . $ta->id_tugas . '/' . $ja->nis); ?>" id="lo<?= $aaa, $bbb; ?>">GAS</a>
+        <a hidden href="<?= base_url('Auto/Auto3/' . $ta->id_tugas . '/' . $ja->nis); ?>" id="lo<?= $aaa, $bbb; ?>">GAS</a>
         <script>
           // Mengatur waktu akhir perhitungan mundur
           var countDownDate = new Date("<?= $ta->tanggal_berakhir; ?>").getTime();

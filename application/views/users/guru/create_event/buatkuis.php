@@ -41,9 +41,6 @@
                     <div class="row">
                         <label for="namatugas" class="col-sm-3 control-label">Lama Ujian</label>
                         <div class="col-sm-9">
-                            <input type="number" id="namaujian" name="hour" placeholder="Jam" value="<?= set_value('hour'); ?>" class="form-control" autofocus>
-                            <?= form_error('hour', '<small class="text-danger pl-3">', '</small>'); ?>
-                            <br>
                             <input type="number" id="namaujian" name="minute" placeholder="Menit" value="<?= set_value('minute'); ?>" class="form-control" autofocus>
                             <?= form_error('minute', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>

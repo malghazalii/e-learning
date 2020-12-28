@@ -9,6 +9,7 @@ class m_guru_mengajar extends CI_Model
         $this->db->join('mata_pelajaran', 'mata_pelajaran.id_mapel=mengajar.id_mapel');
         $this->db->join('penjurusan', 'penjurusan.id_jurusan=mengajar.id_jurusan');
         $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
+        $this->db->order_by('kelas, nama_jurusan', 'ASC');
         $query = $this->db->get();
         return $query;
     }

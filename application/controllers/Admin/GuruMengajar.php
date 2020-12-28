@@ -51,7 +51,7 @@ class GuruMengajar extends CI_Controller
         $yok = $this->db->query($mengajar)->row();
 
         if ($yok) {
-            echo "<script>alert('sudah');</script>";
+            echo "<script>alert('Guru Ini Sudah Mengajar Mata Pelajaran Tersebut');</script>";
             echo "<script>window.location='" . site_url('Admin/GuruMengajar/tambahData') . "';</script>";
         } else {
 

@@ -32,7 +32,7 @@
                     <div class="row">
                         <label for="namatugas" class="col-sm-3 control-label">Nama Ujian</label>
                         <div class="col-sm-9">
-                            <input type="text" id="namaujian" onkeypress="return event.charCode < 48 || event.charCode  >57" name="namaujian" placeholder="nama ujian" value="<?= set_value('namaujian'); ?>" class="form-control" autofocus>
+                            <input type="text" id="namaujian" name="namaujian" placeholder="nama ujian" value="<?= set_value('namaujian'); ?>" class="form-control" autofocus>
                             <?= form_error('namaujian', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>

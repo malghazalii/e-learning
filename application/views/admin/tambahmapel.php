@@ -11,7 +11,7 @@
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">Mata Pelajaran</h6>
                     </label>
-                    <input type="varchar" class="form-control form-control-user" name="mapel" id="mapel" placeholder="mapel" value="<?= set_value('mapel'); ?>" />
+                    <input type="varchar" class="form-control form-control-user" name="mapel" id="mapel" placeholder="mapel" onkeypress="return event.charCode < 48 || event.charCode  >57" value="<?= set_value('mapel'); ?>" />
                     <?= form_error('mapel', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>

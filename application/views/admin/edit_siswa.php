@@ -19,7 +19,7 @@
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">NAMA</h6>
                     </label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" value="<?= $edit->nama ?>" />
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" onkeypress="return event.charCode < 48 || event.charCode  >57" value="<?= $edit->nama ?>" />
                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">

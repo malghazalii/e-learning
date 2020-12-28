@@ -46,7 +46,7 @@ class UploadMateri extends CI_Controller
 
 
             $config['upload_path']        =    './assets/users/upload';
-            $config['allowed_types']    =    'pdf|docx|pptx';
+            $config['allowed_types']    =    'pdf|docx|pptx|xlsx';
             $config['max_size']            =    10048;
             // $config['file_name']		=	'picture-'.date('ymd').'-'.substr(md5(rand()),0,10);
             // $config['file_name']        =    $poto;

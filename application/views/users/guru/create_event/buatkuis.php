@@ -49,21 +49,6 @@
                 <div class="form-group">
                     <div class="form-group">
                         <div class="row">
-                            <label for="birthDate" class="col-sm-3 control-label">Batas Akhir</label>
-                            <div class="col-sm-3">
-                                <input type="date" id="tanggal" name="tanggal" value="<?= set_value('tanggal'); ?>" class="form-control" min="<?= $tanggal ?>">
-                                <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="time" id="jam" name="jam" value="<?= set_value('jam'); ?>" class="form-control">
-                                <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-group">
-                        <div class="row">
                             <label for="birthDate" class="col-sm-3 control-label">Tanggal Mulai</label>
                             <div class="col-sm-3">
                                 <input type="date" id="tanggal" name="tanggalmulai" value="<?= set_value('tanggalmulai'); ?>" class="form-control" min="<?= $tanggal ?>">
@@ -76,7 +61,21 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="birthDate" class="col-sm-3 control-label">Batas Akhir</label>
+                            <div class="col-sm-3">
+                                <input type="date" id="tanggal" name="tanggal" value="<?= set_value('tanggal'); ?>" class="form-control" min="<?= $tanggal ?>">
+                                <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="time" id="jam" name="jam" value="<?= set_value('jam'); ?>" class="form-control">
+                                <?= form_error('jam', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="row">
                         <label for="namatugas" class="col-sm-3 control-label">Jumlah Soal Keluar</label>
@@ -91,7 +90,7 @@
                         <button type="submit" class="btn btn-primary btn-block" class="text-right">Lanjut</button>
                     </div>
                 </div>
-                </div>
-                </div>
-            </form>
+        </div>
+        </div>
+        </form>
         </div> <!-- /.form-group -->

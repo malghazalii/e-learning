@@ -1,5 +1,6 @@
 <style>
 .footer {
+   position: fixed;
    left: 0;
    bottom: 0;
    width: 100%;
@@ -9,170 +10,11 @@
 }
 </style>
 
-<?php 
-if (strpos($_SERVER['REQUEST_URI'], 'Guru/BuatKuis') !== false){
-?>
-<div class="footer" style="position:fixed">
-<div class="container">
-  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-</div>
-</div>
-<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/TampilKuis') !== false){
-?>
-<div class="footer" style="position:fixed">
-<div class="container">
-  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-</div>
-</div>
-<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Siswa/Absensi/absen') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/kuisessay/kuis') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/UploadMateri') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/EssayEvent') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/Kuisessay') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/KuisPilgan/edit') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/KuisEssay/edit') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/Report_absensi') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/Absensi') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'guru/uploadmateri/editMateri') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], '/guru/mapel/tugas') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/Mapel/Koreksi') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'guru/essayevent/editTugas') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/wali_kelas/DaftarSiswa') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/wali_kelas/AbsenSiswa') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/kuispilgan') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}elseif(strpos($_SERVER['REQUEST_URI'], 'Guru/kuisessay') !== false){
-	?>
-	<div class="footer" style="position:fixed">
-	<div class="container">
-	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
-	</div>
-	</div>
-	<?php
-}else{
-?>
 <div class="footer">
 <div class="container">
   <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
 </div>
 </div>
-<?php
-}
-?>
-
 
 
 	<!-- Js files -->

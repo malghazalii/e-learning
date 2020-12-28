@@ -37,7 +37,10 @@ class Auto extends CI_Controller
   }
   public function Auto2($id_kuis, $nis)
   {
+    $sql = "SELECT MAX(id_ujian) as s FROM ikut_ujian";
+    $s = $this->db->query($sql)->row();
     $data = [
+      'id_ujian' => $s->s + 1,
       'nis' => $nis,
       'id_kuis' => $id_kuis,
       'nilai' => 0,

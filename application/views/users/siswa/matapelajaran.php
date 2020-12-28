@@ -32,7 +32,7 @@
       <?php foreach ($tugas as $t) : ?>
         <img src="<?php echo base_url(); ?>assets/users/images/doc1.png" style=”float:left; margin:0 8px 4px 0;” /> <?= $t->NAMA ?>
         <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas/' . $t->id_tugas); ?>" type="button" class="btn btn-outline-primary" style="float:right;">Pergi ke aktifitas</a> <br>
-        <button class="card-text-left btn btn-warning"><?= $t->TANGGAL ?></button>
+        <p class="card-text-left"><?= $t->TANGGAL ?></p>
         <hr>
       <?php endforeach; ?>
     </div>

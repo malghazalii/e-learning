@@ -6,7 +6,15 @@
     <img src="<?php echo base_url(); ?>assets/users/images/menu.png" style=”float:left; margin:0 8px 4px 0;” /><strong> Ringkasan Tugas</strong>
     <hr>
     <a href="<?php echo base_url('User/Siswa/Dashboard'); ?>" type="button" class="btn btn-primary">Semua</a>
-    <button type="button" class="btn btn-danger">Mata Pelajaran</button>
+    <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Mata Pelajaran
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <?php foreach ($mapel as $m) :
+      ?>
+        <a class="dropdown-item" href="<?= base_url('User/siswa/dashboard/Mapel/' . $m->id_mengajar); ?>"><?= $m->mata_pelajaran ?></a>
+      <?php endforeach; ?>
+    </div>
     <br>
     <br>
     <div class="card">

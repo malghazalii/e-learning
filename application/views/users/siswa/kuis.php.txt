@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+  <br>
+  <div class="container">
+    <br>
+    <h3>Status</h3>
+    <br>
+    <table class="table table-striped">
+      <tbody>
+        <form action="<?= base_url('User/Siswa/Kuis/Submit/'); ?>" method="POST">
+          <?php $querysoal = "SELECT MAX(id_ujian) AS id FROM ikut_ujian";
+          $naa = $this->db->query($querysoal)->row();
+          ?>
+          <input hidden type="text" name="id_kuis" value="<?= $jawaban->id_kuis; ?>">
+          <input hidden type="text" name="id_ujian" value="<?= $naa->id + 1; ?>">
+          <tr>
+            <td>Nama Ujian</td>
+            <td><?= $jawaban->nama_ujian; ?></td>
+          </tr>
+          <tr>
+            <td>Nama Mata Pelajaran</td>
+            <td><?= $jawaban->mata_pelajaran; ?></td>
+          </tr>
+
+          <tr>
+            <td>Nama Kelas</td>
+            <td><?= $jawaban->kelas, ' ', $jawaban->nama_jurusan ?></td>
+          </tr>
+          <tr>
+            <td>Ujian Berakhir</td>
+            <td><?= $jawaban->tanggal_berakhir ?></td>
+          </tr>
+          <tr>
+            <td>Ujian dimulai</td>
+            <td><?= $jawaban->tanggal_mulai ?></td>
+          </tr>
+          <tr>
+            <td>Status Ujian</td>
+            <td><?= $jawaban->jenis; ?></td>
+          </tr>
+          <tr>
+            <td>Jumlah Soal</td>
+            <td><?= $jawaban->jumlah_keluar ?> </td>
+          </tr>
+          <tr>
+            <td>Waktu Ujian</td>
+            <td><?= $jawaban->Jam, ' Jam ', $jawaban->menit, ' Menit' ?> </td>
+          </tr>
+      </tbody>
+    </table>
+
+    <?php
+    if ($sql) : ?>
+      <a href="<?= base_url('User/Siswa/Kuis/TampilHasil/' . $sql->id_ujian . '/' . $sql->id_kuis); ?>" class="btn btn-primary">Review ujian</a>
+    <?php else : ?>
+      <button class="btn btn-primary">Ikut Ujian</button>
+    <?php endif; ?>
+    <hr>
+    </form>
+    <br>
+    <br>
+  </div>
+</body>
+
+</html>

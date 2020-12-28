@@ -1,0 +1,82 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div class="container  py-xl-5 py-lg-3">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <!-- membuat form  -->
+      <!-- gunakan tanda [] untuk menampung array  -->
+      <hr>
+      <div class="card-body">
+        <div class="form-group">
+          <?php $no = 1;
+          foreach ($soal as $n) : ?>
+            <input hidden type="text" name="id_ujian" value="<?= $n->id_ujian; ?>">
+            <div class="row">
+              <div class="col-sm-9">
+                <?php if ($n->nama_file) : ?>
+                  <p style="margin-left: 10px;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
+                  <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->nama_file); ?>" />
+                <?php else : ?>
+                  <p style="margin-left: 10px;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
+                <?php endif; ?>
+              </div>
+              <?php if ($n->sid == $n->trid) : ?>
+                <input hidden type="text" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
+                <div class="col-sm-9">
+                  <?php if ($n->jawaban == $n->opsiA) : ?>
+                    <h7><strong>A. <?= $n->opsiA; ?></strong></h7>
+                    <p>B. <?= $n->opsiB; ?></p>
+                    <p>C. <?= $n->opsiC; ?></p>
+                    <p>D. <?= $n->opsiD; ?></p>
+                    <p>E. <?= $n->opsiE; ?></p>
+                  <?php elseif ($n->jawaban == $n->opsiB) : ?>
+                    <p>A. <?= $n->opsiA; ?></p>
+                    <h7><strong>B. <?= $n->opsiB; ?></strong></h7>
+                    <p>C. <?= $n->opsiC; ?></p>
+                    <p>D. <?= $n->opsiD; ?></p>
+                    <p>E. <?= $n->opsiE; ?></p>
+                  <?php elseif ($n->jawaban == $n->opsiC) : ?>
+                    <p>A. <?= $n->opsiA; ?></p>
+                    <p>B. <?= $n->opsiB; ?></p>
+                    <h7><strong>C. <?= $n->opsiC; ?></strong></h7>
+                    <p>D. <?= $n->opsiD; ?></p>
+                    <p>E. <?= $n->opsiE; ?></p>
+                  <?php elseif ($n->jawaban == $n->opsiD) : ?>
+                    <p>>A. <?= $n->opsiA; ?></p>
+                    <p>>B. <?= $n->opsiB; ?></p>
+                    <p>>C. <?= $n->opsiC; ?></p>
+                    <h7><strong>D. <?= $n->opsiD; ?></strong></h7>
+                    <p>E. <?= $n->opsiE; ?></p>
+                  <?php elseif ($n->jawaban == $n->opsiE) : ?>
+                    <p>A. <?= $n->opsiA; ?></p>
+                    <p>B. <?= $n->opsiB; ?></p>
+                    <p>C. <?= $n->opsiC; ?></p>
+                    <p>D. <?= $n->opsiD; ?></p>
+                    <h7><strong>E. <?= $n->opsiE; ?></strong></h7>
+                  <?php else : ?>
+                    <p>A. <?= $n->opsiA; ?></p>
+                    <p>B. <?= $n->opsiB; ?></p>
+                    <p>C. <?= $n->opsiC; ?></p>
+                    <p>D. <?= $n->opsiD; ?></p>
+                    <p>E. <?= $n->opsiE; ?></p>
+                  <?php endif; ?>
+                </div>
+              <?php else : ?>
+                <div class="col-sm-9">
+                  <textarea readonly style="margin: 10px;" name="" id="" cols="90" rows="10"><?= $n->jawaban; ?></textarea>
+                </div>
+              <?php endif; ?>
+            <?php $no++;
+          endforeach; ?>
+            <div class="col-sm-9">
+              <h3 id="demo"></h3>
+            </div>
+            </div>
+        </div>
+      </div>
+      <a id="gas" href="<?= base_url('User/Siswa/Kuis/Ikut/' . $kuis->id_kuis); ?>" class="btn btn-primary">Selesai</a>
+      </br>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>

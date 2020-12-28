@@ -91,5 +91,7 @@
                         <button type="submit" class="btn btn-primary btn-block" class="text-right">Lanjut</button>
                     </div>
                 </div>
+                </div>
+                </div>
             </form>
         </div> <!-- /.form-group -->

@@ -80,7 +80,7 @@
                     <div class="row">
                         <label for="namatugas" class="col-sm-3 control-label">Jumlah Soal Keluar</label>
                         <div class="col-sm-9">
-                            <input type="number" id="jmlsoalkeluar" name="jmlsoalkeluar" placeholder="jumlah soal keluar" value="<?= set_value('jmlsoalkeluar'); ?>" class="form-control" autofocus>
+                            <input type="number" id="jmlsoalkeluar" min="1" max="100" name="jmlsoalkeluar" placeholder="jumlah soal keluar" value="<?= set_value('jmlsoalkeluar'); ?>" class="form-control" autofocus>
                             <?= form_error('jmlsoalkeluar', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>

@@ -198,7 +198,8 @@ class TampilKuis extends CI_Controller
         WHERE jawaban_ujian.id_ujian = $id
         ORDER BY `jawaban_ujian`.`waktu` DESC";
 
-        $sum = "SELECT *, SUM(nilai) AS total FROM `jawaban_ujian` WHERE id_ujian = $id ORDER BY `waktu` DESC";
+        // $sum = "SELECT *, SUM(nilai) AS total FROM `jawaban_ujian` WHERE id_ujian = $id ORDER BY `waktu` DESC";
+        $sum = "SELECT (if(sum(nilai)< 100, sum(nilai), 100))as total FROM `jawaban_ujian` WHERE id_ujian = $id ORDER BY `waktu` DESC";
         $uj = "SELECT * FROM `ikut_ujian` WHERE id_ujian = $id";
 
         $data['title'] = 'Tampil Kuis';

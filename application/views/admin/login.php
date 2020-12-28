@@ -39,11 +39,11 @@
                   <?= $this->session->flashdata('message'); ?>
                   <form class="user" method="POST" action="<?= base_url('Admin/auth/login'); ?>">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="nip" placeholder="Masukkan Nip" name="nip" value="<?= set_value('nip'); ?>">
+                      <input type="text" class="form-control form-control-user" id="nip" placeholder="Masukkan Nip" name="nip" onkeypress="return event.charCode >= 48 && event.charCode <=57" value="<?= set_value('nip'); ?>">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password">
-                      </div>
+                    </div>
                     <div class="form-group">
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">

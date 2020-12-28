@@ -8,6 +8,7 @@ class m_datasiswa extends CI_Model
         $this->db->join('penjurusan', 'penjurusan.id_jurusan=siswa.id_jurusan');
         $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
         $this->db->join('tahun_angkatan', 'tahun_angkatan.id_tahun=siswa.id_tahun');
+        $this->db->order_by('nis', 'ASC');
         $query = $this->db->get();
         return $query;
     }
@@ -20,6 +21,7 @@ class m_datasiswa extends CI_Model
         $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
         $this->db->join('tahun_angkatan', 'tahun_angkatan.id_tahun=siswa.id_tahun');
         $this->db->where('siswa.nis', $id);
+        $this->db->order_by('nis', 'ASC');
         $query = $this->db->get();
         return $query;
     }

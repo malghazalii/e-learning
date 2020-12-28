@@ -9,6 +9,7 @@ class m_walikelas extends CI_Model
         $this->db->join('guru', 'guru.nip=wali_kelas.nip');
         $this->db->join('penjurusan', 'penjurusan.id_jurusan=wali_kelas.id_jurusan');
         $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
+        $this->db->order_by('kelas, nama_jurusan', 'ASC');
         $query = $this->db->get();
         return $query;
     }

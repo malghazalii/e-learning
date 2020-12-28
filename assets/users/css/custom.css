@@ -375,7 +375,7 @@ label{
   box-shadow: 0 0 2px 0 #ccc;
   bottom: 0;
   border-width: 0 0 1px;
-  position: fixed;
+	position: static; 
   right: 0;
   left: 0;
   z-index: 1030;

@@ -218,6 +218,12 @@
               </table>
               <br>
               <br>
+              </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  
             <?php else : ?>
               <table class="table table-striped">
 

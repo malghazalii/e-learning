@@ -11,7 +11,7 @@
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">NIS</h6>
                     </label>
-                    <input type="number" class="form-control" name="nis" id="nis" placeholder="nis" value="<?= set_value('nis'); ?>" />
+                    <input type="number" class="form-control" name="nis" id="nis" placeholder="nis" onkeypress="return event.charCode >= 48 && event.charCode <=57" value="<?= set_value('nis'); ?>" />
                     <?= form_error('nis', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">

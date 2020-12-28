@@ -11,7 +11,8 @@
                     <label for="varchar">
                         <h6 class="m-0 font-weight-bold text-dark">NIS</h6>
                     </label>
-                    <input type="number" class="form-control" name="nis" id="nis" placeholder="nis" value="<?= $edit->nis ?>" />
+                    <input type="number" disabled class="form-control" name="ni1" id="nis1" placeholder="nis" value="<?= $edit->nis ?>" />
+                    <input type="hidden" class="form-control" name="nis" id="nis" placeholder="nis" value="<?= $edit->nis ?>" />
                     <?= form_error('nis', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">

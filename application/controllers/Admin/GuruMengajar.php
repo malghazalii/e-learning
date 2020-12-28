@@ -25,6 +25,9 @@ class GuruMengajar extends CI_Controller
 
     public function tambahData()
     {
+        $mengajar = "SELECT * FROM mengajar";
+        $data['mengajar'] = $this->db->query($mengajar)->result();
+
         $data['title'] = 'Tambah Guru Mengajar';
         $data['kelas'] = $this->m_guru_mengajar->joinkelasjurusan()->result();
         $data['guru'] = $this->m_guru_mengajar->TampilGuru();
@@ -39,16 +42,18 @@ class GuruMengajar extends CI_Controller
 
     public function simpanData()
     {
-        $this->form_validation->set_rules('jam', 'Jam', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
 
-        if ($this->form_validation->run() == false) {
-            $this->tambahData();
+        $nip = $this->input->post('nip');
+        $mapel = $this->input->post('mapel');
+        $kelas = $this->input->post('kelas');
+
+        $mengajar = "SELECT * FROM mengajar WHERE id_mapel=$mapel and id_jurusan=$kelas ";
+        $yok = $this->db->query($mengajar)->row();
+
+        if ($yok) {
+            echo "<script>alert('sudah');</script>";
+            echo "<script>window.location='" . site_url('Admin/GuruMengajar/tambahData') . "';</script>";
         } else {
-            $nip = $this->input->post('nip');
-            $mapel = $this->input->post('mapel');
-            $kelas = $this->input->post('kelas');
 
             $data = [
                 'nip' => $nip,
@@ -57,6 +62,7 @@ class GuruMengajar extends CI_Controller
             ];
 
             $simpan = $this->m_guru_mengajar->insert($data);
+
 
             if ($simpan) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');

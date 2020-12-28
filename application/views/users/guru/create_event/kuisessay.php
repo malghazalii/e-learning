@@ -12,18 +12,29 @@
       <div class="panel-heading">
         <div class="form-group">
           <label>Pilih Nama Ujian</label> <br>
-          <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php if ($title == "Input Soal Ujian Essay" || $title == "Input Soal Ujian Pilihan Ganda") : ?>
-              <?= $det->nama_ujian ?>
+          <?php if ($title == "Input Soal Ujian Essay" || $title == "Input Soal Ujian Pilihan Ganda") : ?>
+            <?php if ($detail) : ?>
+              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?= $det->nama_ujian ?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <?php foreach ($nama as $n) : ?>
+                  <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay/kuis/' . $n->id_kuis); ?>"><?= $n->nama_ujian ?></a>
+                <?php endforeach; ?>
+              </div>
             <?php else : ?>
-              Daftar Nama Ujian
+              <p>Harus Mengisi Soal Meskipun 1 baru bisa melanjutkan kembali memilih Ujian</p>
             <?php endif; ?>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <?php foreach ($nama as $n) : ?>
-              <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay/kuis/' . $n->id_kuis); ?>"><?= $n->nama_ujian ?></a>
-            <?php endforeach; ?>
-          </div>
+          <?php else : ?>
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Daftar Nama Ujian
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <?php foreach ($nama as $n) : ?>
+                <a class="dropdown-item" href="<?= base_url('User/Guru/kuisessay/kuis/' . $n->id_kuis); ?>"><?= $n->nama_ujian ?></a>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
         </div>
         <div class="form-group">
           <label>Pilih Tipe Soal</label> <br>
@@ -218,31 +229,31 @@
               </table>
               <br>
               <br>
-              </div>
-          </div>
-          </div>
-          </div>
-          </div>
-            <?php else : ?>
-              <table class="table table-striped">
-
-                <thead>
-                  <tr>
-                    <th scope="col">Nama Ujian</th>
-                    <th scope="col">Gambar</th>
-                    <th scope="col">Soal</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Action</th>
-                    <!-- <th scope="col">Poin</th> -->
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
           </div>
         </div>
       </div>
     </div>
+  </div>
+<?php else : ?>
+  <table class="table table-striped">
+
+    <thead>
+      <tr>
+        <th scope="col">Nama Ujian</th>
+        <th scope="col">Gambar</th>
+        <th scope="col">Soal</th>
+        <th scope="col">Kategori</th>
+        <th scope="col">Action</th>
+        <!-- <th scope="col">Poin</th> -->
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  </div>
   </div>
   <br>
   <br>

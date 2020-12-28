@@ -62,7 +62,7 @@
                 <div class="col-sm-3">
                   <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
                   <input type="text" hidden id="idkuis" name="idkuis" value="<?= $det->id_kuis ?>">
-                  <input type="text" hidden name="soal" value="<?= $soal->hello + 1 ?>">
+                  <input hidden type="text" name="soal" value="<?= $soal->hello + 1; ?>">
                 </div>
                 <div class="col-sm-6">
                   <input type="text" id="tekssoal" name="tekssoal" placeholder="teks soal" class="form-control" autofocus>
@@ -86,7 +86,7 @@
                 <label for="birthDate" class="col-sm-3 control-label">Teks Soal</label>
                 <div class="col-sm-3">
                   <input type="file" name="file_input" id="file_input" class="btn btn-info upload">
-                  <input type="text" name="soal" hidden value="<?= $soal->hello + 1 ?>">
+                  <input hidden type="text" name="soal" value="<?= $soal->hello + 1 ?>">
                 </div>
                 <div class="col-sm-6">
                   <input type="text" id="tekssoal" name="tekssoal" placeholder="teks soal" class="form-control" autofocus>
@@ -163,9 +163,9 @@
         </div>
       </form>
     <?php endif; ?>
-      <br>
+    <br>
     <?= $this->session->flashdata('message'); ?>
-    
+
     <div class="row justify-content-center pt-7">
       <div class="col-lg-12 agile-course-main">
         <div class="w3ls-cource-first">
@@ -216,6 +216,13 @@
                 <?php endforeach; ?>
                 </tbody>
               </table>
+              <br>
+              <br>
+              </div>
+          </div>
+          </div>
+          </div>
+          </div>
             <?php else : ?>
               <table class="table table-striped">
 
@@ -237,7 +244,9 @@
       </div>
     </div>
   </div>
-    <?php endif; ?>
+  <br>
+  <br>
+<?php endif; ?>
 
 </body>
 

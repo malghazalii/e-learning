@@ -114,10 +114,13 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <div class="col-lg-5 agile-course-main-2 mt-4">
                     <img src="images/am1.jpg" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </body>

@@ -32,9 +32,6 @@ class BuatKuis extends CI_Controller
         $this->form_validation->set_rules('namaujian', 'Namaujian', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('hour', 'Hour', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
         $this->form_validation->set_rules('minute', 'Minute', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
@@ -65,7 +62,6 @@ class BuatKuis extends CI_Controller
         } else {
             $mengajar = $this->input->post('mengajar');
             $namaujian = $this->input->post('namaujian');
-            $hour = $this->input->post('hour');
             $minute = $this->input->post('minute');
             $jenisujian = $this->input->post('jenisujian');
             $jam = $this->input->post('jam');
@@ -84,7 +80,6 @@ class BuatKuis extends CI_Controller
                 'tanggal_mulai' => $waktumulai,
                 'jenis' => $jenisujian,
                 'jumlah_keluar' => $jmlsoalkeluar,
-                'jam' => $hour,
                 'menit' => $minute
             ];
 

@@ -32,7 +32,7 @@
                     <div class="row">
                         <label for="namatugas" class="col-sm-3 control-label">Nama Ujian</label>
                         <div class="col-sm-9">
-                            <input type="text" id="namaujian" name="namaujian" placeholder="nama ujian" value="<?= set_value('namaujian'); ?>" class="form-control" autofocus>
+                            <input type="text" id="namaujian" onkeypress="return event.charCode < 48 || event.charCode  >57" name="namaujian" placeholder="nama ujian" value="<?= set_value('namaujian'); ?>" class="form-control" autofocus>
                             <?= form_error('namaujian', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="row">
                         <label for="namatugas" class="col-sm-3 control-label">Jumlah Soal Keluar</label>
                         <div class="col-sm-9">
-                            <input type="number" id="jmlsoalkeluar" name="jmlsoalkeluar" placeholder="jumlah soal keluar" value="<?= set_value('jmlsoalkeluar'); ?>" class="form-control" autofocus>
+                            <input type="number" id="jmlsoalkeluar" min="1" max="100" name="jmlsoalkeluar" placeholder="jumlah soal keluar" value="<?= set_value('jmlsoalkeluar'); ?>" class="form-control" autofocus>
                             <?= form_error('jmlsoalkeluar', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                         <button type="submit" class="btn btn-primary btn-block" class="text-right">Lanjut</button>
                     </div>
                 </div>
-                </div>
-                </div>
-            </form>
+        </div>
+        </div>
+        </form>
         </div> <!-- /.form-group -->

@@ -80,7 +80,7 @@
       </script>
       <?php
       $a = date('Y-m-d H:i:s');
-      $b = strtotime($a . "+" . $kuis->jam . "hour" . $kuis->menit . "minute");
+      $b = strtotime($a . "+" . $kuis->menit . "minute");
       $tanggal = date("Y-m-d H:i:s", $b);
       ?>
 

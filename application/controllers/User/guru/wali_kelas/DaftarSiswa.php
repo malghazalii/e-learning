@@ -18,7 +18,7 @@ class DaftarSiswa extends CI_Controller
 		$walikelas = $this->db->query($querywalikelas)->row();
 
 		$querysiswa = "SELECT siswa.nama, siswa.nis FROM siswa join penjurusan on siswa.id_jurusan = penjurusan.id_jurusan
-			WHERE siswa.id_jurusan=$walikelas->id_jurusan";
+			WHERE siswa.id_jurusan=$walikelas->id_jurusan ORDER BY nama ASC";
 
 		$sum = "SELECT COUNT(nis) AS jumlah FROM siswa WHERE id_jurusan=$walikelas->id_jurusan";
 

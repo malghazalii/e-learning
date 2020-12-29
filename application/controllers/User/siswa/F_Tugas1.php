@@ -32,7 +32,7 @@ class F_Tugas1 extends CI_Controller
         JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas 
         JOIN siswa on siswa.nis = jawaban_tugas.nis WHERE jawaban_tugas.nis=$nis and jawaban_tugas.id_tugas=$id";
 
-        $data['title'] = 'Foem Tugas';
+        $data['title'] = 'Form Tugas';
         $data['data'] = $this->db->get_where('siswa', ['nis' => $this->session->userdata('nis')])->row_array();
         $data['tugas'] = $this->db->query($querytugas)->row();
         $data['jawaban'] = $this->db->query($jawabantugas)->row();
@@ -56,7 +56,7 @@ class F_Tugas1 extends CI_Controller
         JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas 
         JOIN siswa on siswa.nis = jawaban_tugas.nis WHERE jawaban_tugas.nis=$nis and jawaban_tugas.id_tugas=$id";
 
-        $data['title'] = 'Foem Tugas';
+        $data['title'] = 'Form Tugas';
         $data['data'] = $this->db->get_where('siswa', ['nis' => $this->session->userdata('nis')])->row_array();
         $data['tugas'] = $this->db->query($querytugas)->row();
         $data['jawaban'] = $this->db->query($jawabantugas)->row();

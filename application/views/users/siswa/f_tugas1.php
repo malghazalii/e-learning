@@ -72,7 +72,7 @@
         </tr> -->
           </tbody>
         </table>
-        <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">add submission</a>
+        <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">Tambahkan Pengiriman</a>
 
       <?php elseif ($jawaban->status == 2) : ?>
         <table class="table table-striped">
@@ -106,7 +106,7 @@
             </tr>
             <?php if ($jawaban->FILEsiswa) : ?>
               <tr>
-                <td>File Submission</td>
+                <td>File Pengiriman</td>
                 <td><a href="<?php echo base_url() . 'User/Siswa/F_Tugas1/indexid/' . $jawaban->FILEsiswa ?>"><?= $jawaban->FILEsiswa ?></a> </td>
               </tr>
             <?php else : ?>
@@ -117,7 +117,7 @@
             <?php endif; ?>
           </tbody>
         </table>
-        <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">edit submission</a>
+        <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">edit pengumpulan</a>
 
       <?php elseif ($jawaban->status == 1) : ?>
         <table class="table table-striped">
@@ -180,7 +180,7 @@
             </tr>
             <?php if ($jawaban->FILEsiswa) : ?>
               <tr>
-                <td>File Submission</td>
+                <td>File Pengiriman</td>
                 <td><a href="<?php echo base_url() . 'User/Siswa/F_Tugas1/indexid/' . $jawaban->FILEsiswa ?>"><?= $jawaban->FILEsiswa ?></a></td>
               </tr>
             <?php else : ?>
@@ -252,7 +252,7 @@
         </tr> -->
         </tbody>
       </table>
-      <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">add submission</a>
+      <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">Tambahkan pengumpulan</a>
     <?php endif; ?>
     <br>
     <br>

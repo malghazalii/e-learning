@@ -56,7 +56,7 @@
                     <table class="table table-striped">
                         <tbody>
                             <tr>
-                                <td>File Submissions</td>
+                                <td>File Pengumpulan</td>
                                 <td><input type="file" name="file_input" id="file_input" class="btn btn-success upload"></td>
                             </tr>
                         </tbody>
@@ -80,7 +80,7 @@
                     <table class="table table-striped">
                         <tbody>
                             <tr>
-                                <td>File Submissions</td>
+                                <td>File Pengumpulan</td>
                                 <td><input type="file" name="file_input" id="file_input" class="btn btn-success upload"></td>
                             </tr>
                         </tbody>
@@ -104,7 +104,7 @@
                     <table class="table table-striped">
                         <tbody>
                             <tr>
-                                <td>File Submissions</td>
+                                <td>File Pengumpulan</td>
                                 <td><input type="file" name="file_input" id="file_input" class="btn btn-success upload"></td>
                             </tr>
                         </tbody>
@@ -127,7 +127,7 @@
                 <table class="table table-striped">
                     <tbody>
                         <tr>
-                            <td>File Submissions</td>
+                            <td>File Pengumpulan</td>
                             <td><input type="file" name="file_input" id="file_input" class="btn btn-success upload"></td>
                         </tr>
                     </tbody>

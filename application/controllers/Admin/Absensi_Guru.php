@@ -34,7 +34,7 @@ class Absensi_Guru extends CI_Controller
             } else {
                 $tanggal = $this->input->post('tanggal');
                 $data = [
-                    'tanggal_berakhir' => $tanggal,
+                    'tanggal_berakhir' => date('Y-m-d' . ' ' . $tanggal),
                     //'is_active' => 1
                 ];
 

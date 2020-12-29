@@ -46,24 +46,24 @@
         <table class="table table-striped">
           <tbody>
             <tr>
-              <td>Submission status</td>
-              <td>No attempt</td>
+              <td>Status pengiriman</td>
+              <td>Kosong</td>
             </tr>
             <tr>
-              <td>Grading status</td>
-              <td>Not gradedThornton</td>
+              <td>Status penilaian</td>
+              <td>Kosong</td>
             </tr>
             <tr>
-              <td>Due date</td>
+              <td>Batas waktu</td>
               <td><?= $tugas->TANGGAL ?></td>
             </tr>
             <tr>
-              <td>Time remaining</td>
-              <td id="demo" style="color: red;">Over Due</td>
+              <td>Waktu yang tersisa</td>
+              <td id="demo" style="color: red;">Jatuh tempo</td>
 
             </tr>
             <tr>
-              <td>Last modified</td>
+              <td>Terakhir diubah</td>
               <td>-</td>
             </tr>
             <!-- <tr>
@@ -78,30 +78,30 @@
         <table class="table table-striped">
           <tbody>
             <tr>
-              <td>Submission status</td>
-              <td>Submitted for grading</td>
+              <td>Status pengiriman</td>
+              <td>Kosong</td>
             </tr>
             <?php if ($jawaban->nilai == 0) : ?>
               <tr>
-                <td>Grading status</td>
-                <td>Not gradedThornton</td>
+              <td>Status penilaian</td>
+              <td>Kosong</td>
               </tr>
             <?php else : ?>
               <tr>
-                <td>Grading status</td>
+                <td>Status penilaian</td>
                 <td><?= $jawaban->nilai ?></td>
               </tr>
             <?php endif; ?>
             <tr>
-              <td>Due date</td>
+              <td>Batas waktu</td>
               <td><?= $tugas->TANGGAL ?></td>
             </tr>
             <tr>
-              <td>Time remaining</td>
-              <td style="background-color: red;">Over Due</td>
+              <td>Waktu yang tersisa</td>
+              <td style="background-color: red;">Jatuh tempo</td>
             </tr>
             <tr>
-              <td>Last modified</td>
+              <td>Terakhir diubah</td>
               <td><?= $jawaban->tgl_kirim ?> </td>
             </tr>
             <?php if ($jawaban->FILEsiswa) : ?>
@@ -123,26 +123,26 @@
         <table class="table table-striped">
           <tbody>
             <tr>
-              <td>Submission status</td>
-              <td>Submitted for grading</td>
+              <td>Status pengiriman</td>
+              <td>Dikirim untuk nilai</td>
             </tr>
             <?php if ($jawaban->nilai == 0) : ?>
               <tr>
-                <td>Grading status</td>
-                <td>Not gradedThornton</td>
+                <td>Status penilaian</td>
+                <td>Kosong</td>
               </tr>
             <?php else : ?>
               <tr>
-                <td>Grading status</td>
+                <td>Status penilaian</td>
                 <td><?= $jawaban->nilai ?></td>
               </tr>
             <?php endif; ?>
             <tr>
-              <td>Due date</td>
+              <td>Batas waktu</td>
               <td><?= $tugas->TANGGAL ?></td>
             </tr>
             <tr>
-              <td>Time remaining</td>
+              <td>Waktu yang tersisa</td>
               <td id="demo" style="background-color: lightseagreen;"></td>
               <script>
                 // Mengatur waktu akhir perhitungan mundur
@@ -175,7 +175,7 @@
               </script>
             </tr>
             <tr>
-              <td>Last modified</td>
+              <td>terakhir diubah</td>
               <td><?= $jawaban->tgl_kirim ?> </td>
             </tr>
             <?php if ($jawaban->FILEsiswa) : ?>
@@ -198,19 +198,19 @@
       <table class="table table-striped">
         <tbody>
           <tr>
-            <td>Submission status</td>
-            <td>No attempt</td>
+              <td>Status pengiriman</td>
+              <td>Dikirim untuk nilai</td>
           </tr>
           <tr>
-            <td>Grading status</td>
-            <td>Not gradedThornton</td>
+                <td>Status penilaian</td>
+                <td>Kosong</td>
           </tr>
           <tr>
-            <td>Due date</td>
+            <td>Batas waktu</td>
             <td><?= $tugas->TANGGAL ?></td>
           </tr>
           <tr>
-            <td>Time remaining</td>
+            <td>Waktu yang tersisa</td>
             <td id="demo"></td>
             <script>
               // Mengatur waktu akhir perhitungan mundur
@@ -243,7 +243,7 @@
             </script>
           </tr>
           <tr>
-            <td>Last modified</td>
+            <td>Terakhir diubah</td>
             <td>-</td>
           </tr>
           <!-- <tr>

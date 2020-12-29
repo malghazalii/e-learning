@@ -32,6 +32,10 @@ class KuisPilgan extends CI_Controller
         WHERE tr_kuis.id_kuis=$id
         ORDER BY `tr_kuis`.`id_soal` ASC";
 
+        $hasil = "SELECT * FROM `kuis` 
+        WHERE kuis.id_kuis=$id";
+        $data['hasil'] = $this->db->query($hasil)->row();
+
         $idsoal = $this->db->query($hasilnamaujian)->row();
 
 

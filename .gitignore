@@ -32,3 +32,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.php
 *.php
 application/views/users/guru/report_absensi1.php
+*.txt

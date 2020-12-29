@@ -10,7 +10,7 @@ class F_Tugas1 extends CI_Controller
     }
     public function index()
     {
-        $data['title'] = 'Foem Tugas';
+        $data['title'] = 'Form Tugas';
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navsiswa');
         $this->load->view('users/siswa/f_tugas1');

@@ -12,7 +12,7 @@
 <div class="card">
   <div class="card-body">
     <h3><?= $tugas->mata_pelajaran ?></h3>
-  <div class="container ">
+  <!-- <div class="container"> -->
     <div class="panel panel-default">
       <div class="panel-body">
         <!-- membuat form  -->
@@ -35,9 +35,9 @@
             </div>
           </div>
         </form>
-        </div>
       </div>
     </div>
+  
     <br>
     <h3>Status</h3>
     <br>

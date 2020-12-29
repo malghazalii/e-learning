@@ -13,7 +13,7 @@
         <div class="form-group">
           <label>Pilih Nama Ujian</label> <br>
           <?php if ($title == "Input Soal Ujian Essay" || $title == "Input Soal Ujian Pilihan Ganda") : ?>
-            <?php if ($detail) : ?>
+            <?php if ($hasil->jml_soal >= $hasil->jumlah_keluar) : ?>
               <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <?= $det->nama_ujian ?>
               </a>
@@ -23,7 +23,7 @@
                 <?php endforeach; ?>
               </div>
             <?php else : ?>
-              <p>Harus Mengisi Soal Meskipun 1 baru bisa melanjutkan kembali memilih Ujian</p>
+              <div style="color: red;">Harus Mengisi Soal Minimal <?= $hasil->jumlah_keluar; ?>, baru bisa melanjutkan kembali memilih Ujian</div>
             <?php endif; ?>
           <?php else : ?>
             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

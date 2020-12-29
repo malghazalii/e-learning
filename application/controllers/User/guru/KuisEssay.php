@@ -144,6 +144,10 @@ class KuisEssay extends CI_Controller
         WHERE tr_kuis.id_kuis=$id 
         ORDER BY `tr_kuis`.`id_soal` ASC";
 
+        $hasil = "SELECT * FROM `kuis` 
+        WHERE kuis.id_kuis=$id";
+        $data['hasil'] = $this->db->query($hasil)->row();
+
         $querykuis = "SELECT * FROM kuis JOIN mengajar on mengajar.id_mengajar = kuis.id_mengajar WHERE mengajar.nip=$nip";
 
         $querykuisid = "SELECT * FROM kuis JOIN mengajar on mengajar.id_mengajar = kuis.id_mengajar WHERE kuis.id_kuis=$id and mengajar.nip=$nip";

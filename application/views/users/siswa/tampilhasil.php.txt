@@ -1,10 +1,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="container  py-xl-5 py-lg-3">
+<div class="row justify-content-center pt-7">
+                <div class="col-lg-10 agile-course-main">
+                    <div class="w3ls-cource-first">
+                        <div class="px-md-5 px-4  pb-md-5 pb-4">
   <div class="panel panel-default">
     <div class="panel-body">
       <!-- membuat form  -->
       <!-- gunakan tanda [] untuk menampung array  -->
-      <hr>
+      <br>
       <div class="card-body">
         <div class="form-group">
           <?php $no = 1;
@@ -13,10 +17,10 @@
             <div class="row">
               <div class="col-sm-9">
                 <?php if ($n->nama_file) : ?>
-                  <p style="margin-left: 10px;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
+                  <p style="margin-left: 10px; color: black;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
                   <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->nama_file); ?>" />
                 <?php else : ?>
-                  <p style="margin-left: 10px;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
+                  <p style="margin-left: 10px; color: black;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
                 <?php endif; ?>
               </div>
               <?php if ($n->sid == $n->trid) : ?>
@@ -60,11 +64,13 @@
                     <p>E. <?= $n->opsiE; ?></p>
                   <?php endif; ?>
                 </div>
+                <br>
               <?php else : ?>
                 <div class="col-sm-9">
                   <textarea readonly style="margin: 10px;" name="" id="" cols="90" rows="10"><?= $n->jawaban; ?></textarea>
                 </div>
               <?php endif; ?>
+            </div>
             <?php $no++;
           endforeach; ?>
             <div class="col-sm-9">
@@ -73,10 +79,14 @@
             </div>
         </div>
       </div>
-      <a id="gas" href="<?= base_url('User/Siswa/Kuis/Ikut/' . $kuis->id_kuis); ?>" class="btn btn-primary">Selesai</a>
+      <a id="gas" href="<?= base_url('User/Siswa/Kuis/Ikut/' . $kuis->id_kuis); ?>" class="btn btn-success" style="float: right; width: 25%;">Selesai</a>
       </br>
       <br>
       <br>
     </div>
   </div>
+</div>
+</div>
+  </div>
+</div>
 </div>

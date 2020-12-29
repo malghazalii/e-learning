@@ -8,12 +8,11 @@
 <body>
   <br>
 
-  <div class="container  py-xl-5 py-lg-3">
+<div class="container  py-xl-5 py-lg-3">
+<div class="card">
+  <div class="card-body">
     <h3><?= $tugas->mata_pelajaran ?></h3>
-  </div>
-
-  <div class="container">
-
+  <div class="container ">
     <div class="panel panel-default">
       <div class="panel-body">
         <!-- membuat form  -->
@@ -36,6 +35,7 @@
             </div>
           </div>
         </form>
+        </div>
       </div>
     </div>
     <br>
@@ -254,9 +254,10 @@
       </table>
       <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">add submission</a>
     <?php endif; ?>
-    <hr>
     <br>
     <br>
+  </div>
+  </div>
   </div>
 </body>
 

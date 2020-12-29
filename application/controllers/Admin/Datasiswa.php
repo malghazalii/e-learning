@@ -66,7 +66,10 @@ class Datasiswa extends CI_Controller
 
   public function delete($id)
   {
-    $delete = $this->m_datasiswa->delete($id);
+    $delete = $this->db->where('nis', $id)->delete('tr_absen_siswa');
+    $delete = $this->db->where('nis', $id)->delete('jawaban_tugas');
+    $delete = $this->db->where('nis', $id)->delete('ikut_ujian');
+    $delete = $this->db->where('nis', $id)->delete('siswa');
     if ($delete) {
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data yang anda pilih telah terhapus</div>');
     } else {

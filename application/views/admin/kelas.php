@@ -34,7 +34,7 @@
                                 <td><?= $k->nama_jurusan ?></td>
                                 <td>
                                     <?php
-                                    echo anchor(base_url('Admin/kelas/delete/' . $k->id_jurusan), 'Delete', 'onclick="javasciprt: return confirm(\'Anda Yakin Hapus ?\')"');
+                                    echo anchor(base_url('Admin/kelas/delete/' . $k->id_jurusan), 'Delete', 'onclick="javasciprt: return confirm(\'Anda yakin ingin menghapus jurusan ini? ini menyebabkan data siswa juga hilang!\')"');
                                     ?>
                                 </td>
                             </tr>

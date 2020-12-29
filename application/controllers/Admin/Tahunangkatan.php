@@ -26,8 +26,8 @@ class Tahunangkatan extends CI_Controller
 
     public function delete($id)
     {
-        $delete = $this->db->where('id_tahun', $id)->delete('tahun_angkatan');
         $delete = $this->db->where('id_tahun', $id)->delete('siswa');
+        $delete = $this->db->where('id_tahun', $id)->delete('tahun_angkatan');
         if ($delete) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data yang anda pilih telah terhapus</div>');
         } else {

@@ -58,7 +58,10 @@ class Kelas extends CI_Controller
 
     public function delete($id)
     {
-        $delete = $this->m_kelas->delete($id);
+        $delete = $this->db->where('id_jurusan', $id)->delete('wali_kelas');
+        $delete = $this->db->where('id_jurusan', $id)->delete('siswa');
+        $delete = $this->db->where('id_jurusan', $id)->delete('mengajar');
+        $delete = $this->db->where('id_jurusan', $id)->delete('penjurusan');
 
         if ($delete) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data yang anda pilih telah terhapus</div>');

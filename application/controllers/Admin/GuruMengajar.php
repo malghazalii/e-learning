@@ -76,7 +76,12 @@ class GuruMengajar extends CI_Controller
 
     public function delete($id)
     {
-        $delete = $this->m_guru_mengajar->delete($id);
+        $delete = $this->db->where('id_mengajar', $id)->delete('kuis');
+        $delete = $this->db->where('id_mengajar', $id)->delete('absen_siswa');
+        $delete = $this->db->where('id_mengajar', $id)->delete('jadwal');
+        $delete = $this->db->where('id_mengajar', $id)->delete('materi');
+        $delete = $this->db->where('id_mengajar', $id)->delete('tugas_siswa');
+        $delete = $this->db->where('id_mengajar', $id)->delete('mengajar');
         if ($delete) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data yang anda pilih telah terhapus</div>');
         } else {
@@ -103,11 +108,13 @@ class GuruMengajar extends CI_Controller
     public function update()
     {
         $mengajar = $this->input->post('id');
+        $nip = $this->input->post('nip');
         $mapel = $this->input->post('mapel');
         $kelas = $this->input->post('kelas');
 
         $data = [
             'id_mengajar' => $mengajar,
+            'nip' => $nip,
             'id_mapel' => $mapel,
             'id_jurusan' => $kelas
         ];

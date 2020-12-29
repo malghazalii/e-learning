@@ -37,7 +37,11 @@ class Dataguru extends CI_Controller
 
   public function delete($id)
   {
-    $delete = $this->m_dataguru->delete($id);
+    $delete = $this->db->where('nip', $id)->delete('wali_kelas');
+    $delete = $this->db->where('nip', $id)->delete('tr_absen_guru');
+    $delete = $this->db->where('nip', $id)->delete('soal');
+    $delete = $this->db->where('nip', $id)->delete('mengajar');
+    $delete = $this->db->where('nip', $id)->delete('guru');
     if ($delete) {
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data yang anda pilih telah terhapus</div>');
     } else {

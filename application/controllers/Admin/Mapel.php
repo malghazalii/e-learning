@@ -65,7 +65,8 @@ class Mapel extends CI_Controller
 
     public function delete($id)
     {
-        $delete = $this->m_mapel->delete($id);
+        $delete = $this->db->where('id_mapel', $id)->delete('mengajar');
+        $delete = $this->db->where('id_mapel', $id)->delete('mata_pelajaran');
         if ($delete) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data yang anda pilih telah terhapus</div>');
         } else {

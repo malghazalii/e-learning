@@ -42,6 +42,7 @@ class m_guru_mengajar extends CI_Model
         $this->db->select('*');
         $this->db->from('penjurusan');
         $this->db->join('kelas', 'kelas.id_kelas=penjurusan.id_kelas');
+        $this->db->order_by('kelas, nama_jurusan', 'ASC');
         $query = $this->db->get();
         return $query;
     }
@@ -53,6 +54,7 @@ class m_guru_mengajar extends CI_Model
 
     public function delete($id)
     {
+        return $this->db->where('id_mengajar', $id)->delete('kuis');
         return $this->db->where('id_mengajar', $id)->delete('mengajar');
     }
 

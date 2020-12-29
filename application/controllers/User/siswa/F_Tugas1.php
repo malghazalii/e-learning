@@ -79,7 +79,7 @@ class F_Tugas1 extends CI_Controller
         $file = $_FILES['file_input']['name'];
 
         $config['upload_path']        =    './assets/users/upload';
-        $config['allowed_types']    =    'pdf|docx|pptx|jpg|jpeg|png';
+        $config['allowed_types']    =    'pdf|docx|pptx|jpg|jpeg|png|xlsx';
         $config['max_size']            =    10048;
 
         $this->load->library('upload', $config);
@@ -139,7 +139,7 @@ class F_Tugas1 extends CI_Controller
         $file = $_FILES['file_input']['name'];
 
         $config['upload_path']        =    './assets/users/upload';
-        $config['allowed_types']    =    'pdf|docx|pptx|jpg|jpeg|png';
+        $config['allowed_types']    =    'pdf|docx|pptx|jpg|jpeg|png|xlsx';
         $config['max_size']            =    10048;
 
         $this->load->library('upload', $config);

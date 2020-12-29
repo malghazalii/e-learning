@@ -12,7 +12,7 @@
     <div class="container  py-xl-5 py-lg-3">
         <h3><?= $tugas->mata_pelajaran ?></h3>
     </div>
-    <div class="container">
+    <!-- <div class="container"> -->
         <div class="panel panel-default">
             <div class="panel-body">
                 <!-- membuat form  -->
@@ -37,7 +37,7 @@
                 </form>
             </div>
         </div>
-        </div>
+    <!-- </div> -->
         <br>
 
         <?php if ($jawaban) :

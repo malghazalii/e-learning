@@ -27,6 +27,22 @@ if (strpos($_SERVER['REQUEST_URI'], 'Guru/BuatKuis') !== false){
 </div>
 </div>
 <?php
+}elseif(strpos($_SERVER['REQUEST_URI'], 'Siswa/F_Tugas1/tugas1') !== false){
+	?>
+	<div class="footer" style="position:static">
+	<div class="container">
+	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+	</div>
+	</div>
+	<?php
+}elseif(strpos($_SERVER['REQUEST_URI'], 'Siswa/Kuis/Ikut') !== false){
+	?>
+	<div class="footer" style="position:static">
+	<div class="container">
+	  <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+	</div>
+	</div>
+	<?php
 }elseif(strpos($_SERVER['REQUEST_URI'], 'Siswa/Absensi/absen') !== false){
 	?>
 	<div class="footer" style="position:fixed">

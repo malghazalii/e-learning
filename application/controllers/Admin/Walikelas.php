@@ -40,20 +40,28 @@ class Walikelas extends CI_Controller
         $nip = $this->input->post('nip');
         $id_kelas = $this->input->post('kelas');
 
-        $data = [
-            'nip' => $nip,
-            'id_jurusan' => $id_kelas
-        ];
+        $wali_kelas = "SELECT * FROM wali_kelas WHERE id_jurusan=$id_kelas ";
+        $yok = $this->db->query($wali_kelas)->row();
 
-        $simpan = $this->m_walikelas->insert($data);
-
-        if ($simpan) {
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
+        if ($yok) {
+            echo "<script>alert('Kelas ini sudah memiliki walikelas! Silahkan memilih kelas lain');</script>";
+            echo "<script>window.location='" . site_url('Admin/Walikelas/tambahData') . "';</script>";
         } else {
-            $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Data tidak berhasil ditambah</div>');
-        }
+            $data = [
+                'nip' => $nip,
+                'id_jurusan' => $id_kelas
+            ];
 
-        redirect('Admin/walikelas', $data);
+            $simpan = $this->m_walikelas->insert($data);
+
+            if ($simpan) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
+            } else {
+                $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Data tidak berhasil ditambah</div>');
+            }
+
+            redirect('Admin/walikelas', $data);
+        }
     }
 
     public function delete($id)

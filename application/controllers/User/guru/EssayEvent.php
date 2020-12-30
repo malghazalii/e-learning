@@ -98,7 +98,6 @@ class EssayEvent extends CI_Controller
                     'id_mengajar' => $username,
                     'nama' => $password,
                     'keterangan' => $negara,
-                    'file' => null,
                     'tanggal_berakhir' => $waktu
                 );
 
@@ -116,6 +115,7 @@ class EssayEvent extends CI_Controller
     public function editTugas($id)
     {
         $nip = $this->session->userdata('nip');
+        $data['tanggal'] = date('Y-m-d');
 
         $queryMengajar = "SELECT * FROM `mengajar` JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran 
         on mata_pelajaran.id_mapel = mengajar.id_mapel join penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas 
@@ -162,7 +162,7 @@ class EssayEvent extends CI_Controller
 
 
             $config['upload_path']        =    './assets/users/upload';
-            $config['allowed_types']    =    'pdf|docx|pptx';
+            $config['allowed_types']    =    'pdf|docx|pptx|xlsx|rar';
             $config['max_size']            =    10000;
             // $config['file_name']		=	'picture-'.date('ymd').'-'.substr(md5(rand()),0,10);
             // $config['file_name']        =    $poto;

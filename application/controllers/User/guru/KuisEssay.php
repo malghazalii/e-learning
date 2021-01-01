@@ -81,7 +81,7 @@ class KuisEssay extends CI_Controller
                 if ($this->upload->do_upload('file_input')) {
                     $data = array(
                         'soal' => $tekssoal,
-                        'nama_file' => $poto,
+                        'nama_file' => preg_replace("/\s+/", "_", $poto),
                         'tanggal_input' => date('Y:m:d H:i:s'),
                         'nip' => $nip
                     );
@@ -111,7 +111,7 @@ class KuisEssay extends CI_Controller
                 $this->db->where('id_soal', $id)->update('soal', $data);
 
                 if ($this->db->affected_rows() > 0) {
-                    echo "<script>alert('Data berhasil di update');</script>";
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update</div>');
                     redirect('User/Guru/kuisessay/kuis/' . $idkuis);
                 }
                 echo "<script>window.location='" . site_url('User/Guru/kuisessay/kuis/' . $idkuis) . "';</script>";
@@ -204,7 +204,7 @@ class KuisEssay extends CI_Controller
                     $data = array(
                         'id_soal' => $soal,
                         'soal' => $tekssoal,
-                        'nama_file' => $poto,
+                        'nama_file' => preg_replace("/\s+/", "_", $poto),
                         'tanggal_input' => date('Y:m:d H:i:s'),
                         'nip' => $nip
                     );

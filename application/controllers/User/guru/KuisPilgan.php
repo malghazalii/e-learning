@@ -116,7 +116,7 @@ class KuisPilgan extends CI_Controller
                     $data = array(
                         'id_soal' => $soal,
                         'soal' => $tekssoal,
-                        'nama_file' => $poto,
+                        'nama_file' => preg_replace("/\s+/", "_", $poto),
                         'tanggal_input' => date('Y:m:d H:i:s'),
                         'nip' => $nip
                     );
@@ -278,7 +278,7 @@ class KuisPilgan extends CI_Controller
                 if ($this->upload->do_upload('file_input')) {
                     $data = array(
                         'soal' => $tekssoal,
-                        'nama_file' => $poto,
+                        'nama_file' => preg_replace("/\s+/", "_", $poto),
                         'tanggal_input' => date('Y:m:d H:i:s'),
                         'nip' => $nip
                     );
@@ -292,16 +292,18 @@ class KuisPilgan extends CI_Controller
                         'opsiE' => $jwbE
                     );
 
-                    $this->db->insert('soal', $data);
-                    $this->db->insert('tr_soal', $datatrsoal);
+                    $this->db->where('id_soal', $id)->update('soal', $data);
+                    $this->db->where('id_soal', $id)->update('tr_soal', $datatrsoal);
+
                     if ($this->db->affected_rows() > 0) {
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
-                        redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update</div>');
+                        redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
                     }
+                    echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
                 } else {
                     $error = array('error' => $this->upload->display_errors());
                     echo "<script>alert('Format file salah');</script>";
-                    echo "<script>window.location='" . site_url('User/Guru/kuisessay/kuis/' . $id_kuis) . "';</script>";
+                    echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
                 }
                 // if ($this->db->affected_rows() > 0) {
                 //     echo "<script>alert('Data berhasil ditambah');</script>";
@@ -328,9 +330,9 @@ class KuisPilgan extends CI_Controller
 
                 if ($this->db->affected_rows() > 0) {
                     echo "<script>alert('Data berhasil di update');</script>";
-                    redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
+                    redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
                 }
-                echo "<script>window.location='" . site_url('User/Guru/kuisessay/kuis/' . $id_kuis) . "';</script>";
+                echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
             }
         }
     }

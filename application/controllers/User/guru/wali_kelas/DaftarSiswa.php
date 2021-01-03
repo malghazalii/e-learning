@@ -7,6 +7,7 @@ class DaftarSiswa extends CI_Controller
 	{
 		parent::__construct();
 		cek_login_guru();
+		cek_jumlah_keluar();
 	}
 	public function index()
 	{

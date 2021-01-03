@@ -10,6 +10,7 @@ class KuisEssay extends CI_Controller
     }
     public function index()
     {
+        cek_jumlah_keluar();
         $nip = $this->session->userdata('nip');
 
         $querykuis = "SELECT * FROM kuis JOIN mengajar on mengajar.id_mengajar = kuis.id_mengajar WHERE mengajar.nip=$nip";
@@ -147,6 +148,14 @@ class KuisEssay extends CI_Controller
         $hasil = "SELECT * FROM `kuis` 
         WHERE kuis.id_kuis=$id";
         $data['hasil'] = $this->db->query($hasil)->row();
+        $db = $this->db->query($hasil)->row();
+        $seasson = [
+            'id_kuis' => $id,
+            'jml_soal' => $db->jml_soal,
+            'jumlah_keluar' => $db->jumlah_keluar
+        ];
+        $this->session->set_userdata($seasson);
+
 
         $querykuis = "SELECT * FROM kuis JOIN mengajar on mengajar.id_mengajar = kuis.id_mengajar WHERE mengajar.nip=$nip";
 

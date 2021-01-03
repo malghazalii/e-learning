@@ -7,6 +7,7 @@ class BuatKuis extends CI_Controller
     {
         parent::__construct();
         cek_login_guru();
+        cek_jumlah_keluar();
     }
     public function index()
     {
@@ -82,7 +83,6 @@ class BuatKuis extends CI_Controller
                 'jumlah_keluar' => $jmlsoalkeluar,
                 'menit' => $minute
             ];
-
             $simpan = $this->db->insert('kuis', $data);
 
             if ($simpan) {

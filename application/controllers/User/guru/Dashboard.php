@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller
     $this->load->model('Guru/m_absensi');
     $this->load->helper(array('url', 'download'));
     cek_login_guru();
+    cek_jumlah_keluar();
   }
   public function index()
   {

@@ -10,6 +10,7 @@ class Kuis extends CI_Controller
   }
   public function index()
   {
+    cek_ujian();
     $data['title'] = 'Foem Tugas';
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navsiswa');
@@ -21,6 +22,7 @@ class Kuis extends CI_Controller
   public function Ikut($id)
   {
     $nis = $this->session->userdata('nis');
+    cek_ujian();
 
     $jawabantugas = "SELECT *, kuis.jam as Jam FROM `kuis` 
     JOIN mengajar ON mengajar.id_mengajar = kuis.id_mengajar
@@ -35,11 +37,14 @@ class Kuis extends CI_Controller
     WHERE EXISTS
     (SELECT * FROM ikut_ujian WHERE kuis.id_kuis = ikut_ujian.id_kuis AND ikut_ujian.nis = $nis)
     AND kuis.id_kuis = $id AND ikut_ujian.nis = $nis";
+    $sql1 = "SELECT * FROM `kuis` 
+    WHERE kuis.id_kuis = $id";
 
     $data['title'] = 'Ikut Ujian';
     $data['data'] = $this->db->get_where('siswa', ['nis' => $this->session->userdata('nis')])->row_array();
     $data['jawaban'] = $this->db->query($jawabantugas)->row();
     $data['sql'] = $this->db->query($sql)->row();
+    $data['sql1'] = $this->db->query($sql1)->row();
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navsiswa');
     $this->load->view('users/siswa/kuis');
@@ -51,12 +56,15 @@ class Kuis extends CI_Controller
 
     $id_ujian = $this->input->post('id_ujian');
     $id_kuis = $this->input->post('id_kuis');
+
     $data = [
-      'id_ujian' => $id_ujian,
       'nis' => $nis,
+      'id_ujian' => $id_ujian,
       'id_kuis' => $id_kuis,
       'nilai' => 0,
-      'status' => '1'
+      'status' => '1',
+      'proses' => 'belum',
+      'time' => date('Y-m-d H:i:s')
     ];
     $this->db->insert('ikut_ujian', $data);
 
@@ -81,24 +89,33 @@ class Kuis extends CI_Controller
       ];
       $this->db->insert('jawaban_ujian', $dataa);
     endforeach;
+
     redirect('User/Siswa/Kuis/TampilUjian/' . $id_ujian . '/' . $id_kuis);
   }
   public function TampilUjian($id_ujian, $id_kuis)
   {
     $nis = $this->session->userdata('nis');
+    $ikut = "SELECT * FROM ikut_ujian WHERE id_ujian = $id_ujian";
+    $ik = $this->db->query($ikut)->row();
 
+    $se = [
+      'id_ujian' => $id_ujian,
+      'now' => $ik->time,
+      'id_kuis' => $id_kuis,
+      'belum' => $ik->proses
+    ];
+    $this->session->set_userdata($se);
     $soal = "SELECT *, soal.id_soal as sid, tr_soal.id_soal as trid FROM `jawaban_ujian`  
     JOIN tr_kuis ON tr_kuis.id_tr_kuis = jawaban_ujian.id_tr_kuis
     JOIN soal ON tr_kuis.id_soal = soal.id_soal
     LEFT JOIN tr_soal ON soal.id_soal = tr_soal.id_soal
     WHERE jawaban_ujian.id_ujian = $id_ujian
     ORDER BY `jawaban_ujian`.`waktu` ASC";
-
     $kuis = "SELECT * FROM kuis WHERE id_kuis = $id_kuis";
+    $data['kuis'] = $this->db->query($kuis)->row();
 
     $data['title'] = 'Ujian ';
     $data['soal'] = $this->db->query($soal)->result();
-    $data['kuis'] = $this->db->query($kuis)->row();
     $this->load->view('users/templates/header', $data);
     $this->load->view('users/templates/navsiswa');
     $this->load->view('users/siswa/tampilkuis');
@@ -106,6 +123,7 @@ class Kuis extends CI_Controller
   }
   public function TampilHasil($id_ujian, $id_kuis)
   {
+    cek_ujian();
     $nis = $this->session->userdata('nis');
 
     $soal = "SELECT *, soal.id_soal as sid, tr_soal.id_soal as trid FROM `jawaban_ujian`  
@@ -140,6 +158,8 @@ class Kuis extends CI_Controller
 
     $soal = $this->db->query($soal)->result();
 
+    $upd = "UPDATE ikut_ujian SET proses = 'selesai' WHERE id_ujian = $id_ujian";
+    $v = $this->db->query($upd);
     $no = 1;
     foreach ($soal as $s) :
       $id_tr_kuis = $this->input->post('id_tr_kuis' . $no);

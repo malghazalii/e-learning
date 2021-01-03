@@ -7,6 +7,7 @@ class F_Tugas1 extends CI_Controller
     {
         parent::__construct();
         cek_login_siswa();
+        cek_ujian();
     }
     public function index()
     {

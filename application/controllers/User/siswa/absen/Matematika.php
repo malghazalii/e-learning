@@ -7,6 +7,7 @@ class Matematika extends CI_Controller
     {
         parent::__construct();
         cek_login_siswa();
+        cek_ujian();
     }
     public function index()
     {

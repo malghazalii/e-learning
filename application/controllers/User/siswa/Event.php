@@ -3,10 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Event extends CI_Controller
 {
+   
     function __construct()
     {
         parent::__construct();
         cek_login_siswa();
+        cek_ujian();
     }
     public function index()
     {

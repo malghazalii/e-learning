@@ -1,131 +1,131 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="container  py-xl-5 py-lg-3">
-<div class="row justify-content-center pt-7">
-                <div class="col-lg-10 agile-course-main">
-                    <div class="w3ls-cource-first">
-                        <div class="px-md-5 px-4  pb-md-5 pb-4">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <!-- membuat form  -->
-      <!-- gunakan tanda [] untuk menampung array  -->
-      <br>
-      <div class="card-body">
-        <form class="form-horizontal" role="form" action="<?= base_url('User/Siswa/Kuis/Tambah/'); ?>" method="POST">
-          <div class="form-group">
-            <?php $no = 1;
-            foreach ($soal as $n) : ?>
-              <input hidden type="text" name="id_ujian" value="<?= $n->id_ujian; ?>">
-              <input hidden type="text" name="id_kuis" value="<?= $n->id_kuis; ?>">
-              <div class="row">
-                <div class="col-sm-9">
-                  <?php if ($n->nama_file) : ?>
-                    <p style="margin-left: 10px; color: black;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
-                    <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->nama_file); ?>" />
-                  <?php else : ?>
-                    <p style="margin-left: 10px; color: black;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
-                  <?php endif; ?>
-                </div>
-                <?php if ($n->sid == $n->trid) : ?>
-                  <input hidden type="text" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
-                  <div class="col-sm-9">
-                    <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiA; ?>">
-                    <label for="status">A. <?= $n->opsiA; ?></label><br />
-                    <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiB; ?>">
-                    <label for="status">C. <?= $n->opsiB; ?></label><br />
-                    <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiC; ?>">
-                    <label for="status">D. <?= $n->opsiC; ?></label><br />
-                    <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiD; ?>">
-                    <label for="status">E. <?= $n->opsiD; ?></label><br />
-                    <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiE; ?>">
-                    <label for="status">E. <?= $n->opsiE; ?></label><br />
+  <div class="row justify-content-center pt-7">
+    <div class="col-lg-10 agile-course-main">
+      <div class="w3ls-cource-first">
+        <div class="px-md-5 px-4  pb-md-5 pb-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <!-- membuat form  -->
+              <!-- gunakan tanda [] untuk menampung array  -->
+              <br>
+              <div class="card-body">
+                <form class="form-horizontal" role="form" action="<?= base_url('User/Siswa/Kuis/Tambah/'); ?>" method="POST">
+                  <div class="form-group">
+                    <?php $no = 1;
+                    foreach ($soal as $n) : ?>
+                      <input hidden type="text" name="id_ujian" value="<?= $n->id_ujian; ?>">
+                      <input hidden type="text" name="id_kuis" value="<?= $n->id_kuis; ?>">
+                      <div class="row">
+                        <div class="col-sm-9">
+                          <?php if ($n->nama_file) : ?>
+                            <p style="margin-left: 10px; color: black;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
+                            <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->nama_file); ?>" />
+                          <?php else : ?>
+                            <p style="margin-left: 10px; color: black;"><strong><?= $no, '. ', $n->soal; ?></strong></p>
+                          <?php endif; ?>
+                        </div>
+                        <?php if ($n->sid == $n->trid) : ?>
+                          <input hidden type="text" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
+                          <div class="col-sm-9">
+                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiA; ?>">
+                            <label for="status">A. <?= $n->opsiA; ?></label><br />
+                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiB; ?>">
+                            <label for="status">C. <?= $n->opsiB; ?></label><br />
+                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiC; ?>">
+                            <label for="status">D. <?= $n->opsiC; ?></label><br />
+                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiD; ?>">
+                            <label for="status">E. <?= $n->opsiD; ?></label><br />
+                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiE; ?>">
+                            <label for="status">E. <?= $n->opsiE; ?></label><br />
+                          </div>
+                        <?php else : ?>
+                          <input hidden type="text" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
+                          <div class="col-sm-9">
+                            <textarea style="margin: 10px;" name="jawaban<?= $no; ?>" id="" cols="90" rows="10"></textarea>
+                          </div>
+                        <?php endif; ?>
+                      </div>
+                    <?php $no++;
+                    endforeach; ?>
+                    <div class="col-sm-9">
+                      <h3 id="demo"></h3>
+                    </div>
                   </div>
-                <?php else : ?>
-                  <input hidden type="text" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
-                  <div class="col-sm-9">
-                    <textarea style="margin: 10px;" name="jawaban<?= $no; ?>" id="" cols="90" rows="10"></textarea>
-                  </div>
-                <?php endif; ?>
               </div>
-              <?php $no++;
-            endforeach; ?>
-              <div class="col-sm-9">
-                <h3 id="demo"></h3>
-              </div>
-              </div>
+            </div>
+            <button id="gas" type="submit" class="btn btn-success" style="float: right; width: 25%;">Selesai</button>
+            <script>
+              // Mengatur waktu akhir perhitungan mundur
+              var countDownDate = new Date("<?= $kuis->tanggal_berakhir; ?>").getTime();
+
+              var x = setInterval(function() {
+                // Memperbarui hitungan mundur setiap 1 detik
+
+                // Untuk mendapatkan tanggal dan waktu hari ini
+                var now = new Date().getTime();
+
+                // Temukan jarak antara sekarang dan tanggal hitung mundur
+                var distance = countDownDate - now;
+
+                // Perhitungan waktu untuk hari, jam, menit dan detik
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Keluarkan hasil dalam elemen dengan id = "demo"
+                document.getElementById("demo1").innerHTML = hours + "h " +
+                  minutes + "m " + seconds + "s ";
+
+                // Jika hitungan mundur selesai, tulis beberapa teks 
+                if (distance < 0) {
+                  document.getElementById("gas").click();
+                }
+              }, 1000);
+            </script>
+            <?php
+            $a = $this->session->userdata('now');
+            $b = strtotime($a . "+" . $kuis->menit . "minute");
+            $tanggal = date("Y-m-d H:i:s", $b);
+            ?>
+
+            <script>
+              // Mengatur waktu akhir perhitungan mundur
+              var countDownDate = new Date("<?= $tanggal; ?>").getTime();
+
+              // Memperbarui hitungan mundur setiap 1 detik
+              var x = setInterval(function() {
+
+                // Untuk mendapatkan tanggal dan waktu hari ini
+                var now = new Date().getTime();
+
+                // Temukan jarak antara sekarang dan tanggal hitung mundur
+                var distance = countDownDate - now;
+
+                // Perhitungan waktu untuk hari, jam, menit dan detik
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Keluarkan hasil dalam elemen dengan id = "demo"
+                document.getElementById("demo").innerHTML = hours + "h " +
+                  minutes + "m " + seconds + "s ";
+
+                // Jika hitungan mundur selesai, tulis beberapa teks 
+                if (distance < 0) {
+
+                  document.getElementById("demo").innerHTML = "EXPIRED";
+                  document.getElementById("gas").click();
+                }
+              }, 1000);
+            </script>
+            </form>
+            </br>
+            <br>
+            <br>
           </div>
+        </div>
       </div>
-      <button id="gas" type="submit" class="btn btn-success" style="float: right; width: 25%;">Selesai</button>
-      <script>
-        // Mengatur waktu akhir perhitungan mundur
-        var countDownDate = new Date("<?= $kuis->tanggal_berakhir; ?>").getTime();
-
-        var x = setInterval(function() {
-          // Memperbarui hitungan mundur setiap 1 detik
-
-          // Untuk mendapatkan tanggal dan waktu hari ini
-          var now = new Date().getTime();
-
-          // Temukan jarak antara sekarang dan tanggal hitung mundur
-          var distance = countDownDate - now;
-
-          // Perhitungan waktu untuk hari, jam, menit dan detik
-          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          // Keluarkan hasil dalam elemen dengan id = "demo"
-          document.getElementById("demo1").innerHTML = hours + "h " +
-            minutes + "m " + seconds + "s ";
-
-          // Jika hitungan mundur selesai, tulis beberapa teks 
-          if (distance < 0) {
-            document.getElementById("gas").click();
-          }
-        }, 1000);
-      </script>
-      <?php
-      $a = date('Y-m-d H:i:s');
-      $b = strtotime($a . "+" . $kuis->jam . "hour" . $kuis->menit . "minute");
-      $tanggal = date("Y-m-d H:i:s", $b);
-      ?>
-
-      <script>
-        // Mengatur waktu akhir perhitungan mundur
-        var countDownDate = new Date("<?= $tanggal; ?>").getTime();
-
-        // Memperbarui hitungan mundur setiap 1 detik
-        var x = setInterval(function() {
-
-          // Untuk mendapatkan tanggal dan waktu hari ini
-          var now = new Date().getTime();
-
-          // Temukan jarak antara sekarang dan tanggal hitung mundur
-          var distance = countDownDate - now;
-
-          // Perhitungan waktu untuk hari, jam, menit dan detik
-          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          // Keluarkan hasil dalam elemen dengan id = "demo"
-          document.getElementById("demo").innerHTML = hours + "h " +
-            minutes + "m " + seconds + "s ";
-
-          // Jika hitungan mundur selesai, tulis beberapa teks 
-          if (distance < 0) {
-
-            document.getElementById("demo").innerHTML = "EXPIRED";
-            document.getElementById("gas").click();
-          }
-        }, 1000);
-      </script>
-      </form>
-      </br>
-      <br>
-      <br>
     </div>
-  </div>
-</div>
-</div>
   </div>
 </div>

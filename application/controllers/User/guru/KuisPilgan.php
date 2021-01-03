@@ -35,7 +35,13 @@ class KuisPilgan extends CI_Controller
         $hasil = "SELECT * FROM `kuis` 
         WHERE kuis.id_kuis=$id";
         $data['hasil'] = $this->db->query($hasil)->row();
-
+        $db = $this->db->query($hasil)->row();
+        $seasson = [
+            'id_kuis' => $id,
+            'jml_soal' => $db->jml_soal,
+            'jumlah_keluar' => $db->jumlah_keluar
+        ];
+        $this->session->set_userdata($seasson);
         $idsoal = $this->db->query($hasilnamaujian)->row();
 
 
@@ -94,6 +100,11 @@ class KuisPilgan extends CI_Controller
             $soal = $this->input->post('soal');
             $tekssoal = $this->input->post('tekssoal');
             $poto = $_FILES['file_input']['name'];
+            $poto1 = $_FILES['file_input1']['name'];
+            $poto2 = $_FILES['file_input2']['name'];
+            $poto3 = $_FILES['file_input3']['name'];
+            $poto4 = $_FILES['file_input4']['name'];
+            $poto5 = $_FILES['file_input5']['name'];
             $jwbA = $this->input->post('jawabanA');
             $jwbB = $this->input->post('jawabanB');
             $jwbC = $this->input->post('jawabanC');
@@ -139,7 +150,7 @@ class KuisPilgan extends CI_Controller
                     $this->db->insert('tr_kuis', $datakuis);
                     $this->db->insert('tr_soal', $datatrsoal);
                     if ($this->db->affected_rows() > 0) {
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
+                        $this->session  ->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
                         redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
                     }
                 } else {

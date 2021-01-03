@@ -9,6 +9,7 @@ class EssayEvent extends CI_Controller
         $this->load->library('form_validation');
         //$this->load->model('m_');
         cek_login_guru();
+        cek_jumlah_keluar();
     }
     public function index()
     {

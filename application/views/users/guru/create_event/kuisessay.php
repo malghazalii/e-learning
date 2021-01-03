@@ -110,9 +110,9 @@
             <div class="form-group">
               <div class="row">
                 <label for="birthDate" class="col-sm-3 control-label">Jawaban A</label>
-                <!-- <div class="col-sm-3">
-                                        <input type="file" name="fileinputA" id="fileinputA" class="btn btn-success upload">
-                                    </div> -->
+                <div class="col-sm-3">
+                  <input type="file" name="file_input1" id="fileinputA" class="btn btn-success upload">
+                </div>
                 <div class="col-sm-6">
                   <input type="text" id="jawabanA" name="jawabanA" placeholder="jawaban" class="form-control" autofocus>
                   <?= form_error('jawabanA', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -122,9 +122,9 @@
             <div class="form-group">
               <div class="row">
                 <label for="birthDate" class="col-sm-3 control-label">Jawaban B</label>
-                <!-- <div class="col-sm-3">
-                                        <input type="file" name="fileinputB" id="fileinputB" class="btn btn-success upload">
-                                    </div> -->
+                <div class="col-sm-3">
+                  <input type="file" name="file_input2" id="fileinputB" class="btn btn-success upload">
+                </div>
                 <div class="col-sm-6">
                   <input type="text" id="jawabanB" name="jawabanB" placeholder="jawaban" class="form-control" autofocus>
                   <?= form_error('jawabanB', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -134,9 +134,9 @@
             <div class="form-group">
               <div class="row">
                 <label for="birthDate" class="col-sm-3 control-label">Jawaban C</label>
-                <!-- <div class="col-sm-3">
-                                        <input type="file" name="fileinputC" id="fileinputC" class="btn btn-success upload">
-                                    </div> -->
+                <div class="col-sm-3">
+                  <input type="file" name="file_input3" id="fileinputC" class="btn btn-success upload">
+                </div>
                 <div class="col-sm-6">
                   <input type="text" id="jawabanC" name="jawabanC" placeholder="jawaban" class="form-control" autofocus>
                   <?= form_error('jawabanC', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -146,9 +146,9 @@
             <div class="form-group">
               <div class="row">
                 <label for="birthDate" class="col-sm-3 control-label">Jawaban D</label>
-                <!-- <div class="col-sm-3">
-                                        <input type="file" name="fileinputD" id="fileinputD" class="btn btn-success upload">
-                                      </div> -->
+                <div class="col-sm-3">
+                  <input type="file" name="file_input4" id="fileinputD" class="btn btn-success upload">
+                </div>
                 <div class="col-sm-6">
                   <input type="text" id="jawabanD" name="jawabanD" placeholder="jawaban" class="form-control" autofocus>
                   <?= form_error('jawabanD', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -158,9 +158,9 @@
             <div class="form-group">
               <div class="row">
                 <label for="birthDate" class="col-sm-3 control-label">Jawaban E</label>
-                <!-- <div class="col-sm-3">
-                                        <input type="file" name="fileinputE" id="fileinputE" class="btn btn-success upload">
-                                      </div> -->
+                <div class="col-sm-3">
+                  <input type="file" name="file_input5" id="fileinputE" class="btn btn-success upload">
+                </div>
                 <div class="col-sm-6">
                   <input type="text" id="jawabanE" name="jawabanE" placeholder="jawaban" class="form-control" autofocus>
                   <?= form_error('jawabanE', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -186,6 +186,7 @@
 
                 <thead>
                   <tr>
+                    <th scope="col">No</th>
                     <th scope="col">Nama Ujian</th>
                     <th scope="col">Gambar</th>
                     <th scope="col">Soal</th>
@@ -195,8 +196,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($detail as $d) : ?>
+                  <?php
+                  $i = 0;
+                  foreach ($detail as $d) : ?>
                     <tr>
+                      <td><?= $i++; ?></td>
                       <td><?= $d->nama_ujian ?></td>
                       <?php if ($d->nama_file) : ?>
                         <td><img width="50px" height="50px" src="<?= base_url('assets/users/upload/' . $d->nama_file); ?>"></td>

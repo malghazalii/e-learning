@@ -62,7 +62,7 @@
       <a href="<?= base_url('User/Siswa/Kuis/TampilHasil/' . $sql->id_ujian . '/' . $sql->id_kuis); ?>" class="btn btn-primary">Review ujian</a>
     <?php else : ?>
       <?php if ($sql1->jml_soal <= $sql1->jumlah_keluar) : ?>
-        <p>kuis belum tersedia</p>
+        <p>kuis belum tersedia, Soal yang diinput masih kurang, Silahkan menghubungi guru anda!</p>
       <?php else : ?>
         <button id="lo" class="btn btn-primary">Ikut Ujian</button>
       <?php endif; ?>

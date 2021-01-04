@@ -57,7 +57,7 @@ function cek_jumlah_keluar()
   $id = $ci->session->userdata('id_kuis');
   $jml = $ci->session->userdata('jml_soal');
   $keluar = $ci->session->userdata('jumlah_keluar');
-  if ($jml <= $keluar) {
+  if ($jml < $keluar) {
     redirect('User/Guru/kuisessay/kuis/' . $id);
   }
 }

@@ -197,7 +197,7 @@
                 </thead>
                 <tbody>
                   <?php
-                  $i = 0;
+                  $i = 1;
                   foreach ($detail as $d) : ?>
                     <tr>
                       <td><?= $i++; ?></td>

@@ -33,10 +33,17 @@ class F_Tugas1 extends CI_Controller
         JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas 
         JOIN siswa on siswa.nis = jawaban_tugas.nis WHERE jawaban_tugas.nis=$nis and jawaban_tugas.id_tugas=$id";
 
+        $sql = "SELECT *, jawaban_tugas.file as FILEsiswa FROM jawaban_tugas JOIN tugas_siswa on tugas_siswa.id_tugas = jawaban_tugas.id_tugas 
+        JOIN mengajar on mengajar.id_mengajar = tugas_siswa.id_mengajar 
+        JOIN guru on guru.nip = mengajar.nip JOIN mata_pelajaran on mata_pelajaran.id_mapel = mengajar.id_mapel 
+        JOIN penjurusan on penjurusan.id_jurusan = mengajar.id_jurusan JOIN kelas on kelas.id_kelas = penjurusan.id_kelas 
+        JOIN siswa on siswa.nis = jawaban_tugas.nis WHERE jawaban_tugas.nis=$nis and jawaban_tugas.status=1 and jawaban_tugas.id_tugas=$id";
+
         $data['title'] = 'Form Tugas';
         $data['data'] = $this->db->get_where('siswa', ['nis' => $this->session->userdata('nis')])->row_array();
         $data['tugas'] = $this->db->query($querytugas)->row();
         $data['jawaban'] = $this->db->query($jawabantugas)->row();
+        $data['satu'] = $this->db->query($sql)->row();
         $this->load->view('users/templates/header', $data);
         $this->load->view('users/templates/navsiswa');
         $this->load->view('users/siswa/f_tugas1');

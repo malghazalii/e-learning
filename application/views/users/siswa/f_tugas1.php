@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-  </head> 
+</head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
@@ -72,7 +72,7 @@
         </tr> -->
             </tbody>
           </table>
-          <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">Tambahkan Pengiriman</a>
+          <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">Tambahkan Pengumpulan</a>
 
         <?php elseif ($jawaban->status == 2) : ?>
           <table class="table table-striped">
@@ -143,36 +143,40 @@
               </tr>
               <tr>
                 <td>Waktu yang tersisa</td>
-                <td id="demo" style="background-color: lightseagreen;"></td>
-                <script>
-                  // Mengatur waktu akhir perhitungan mundur
-                  var countDownDate = new Date("<?= $tugas->TANGGAL; ?>").getTime();
+                <?php if ($satu) : ?>
+                  <td style="background-color: lightseagreen;">Tepat Waktu</td>
+                <?php else : ?>
+                  <td id="demo" style="background-color: lightseagreen;"></td>
+                  <script>
+                    // Mengatur waktu akhir perhitungan mundur
+                    var countDownDate = new Date("<?= $tugas->TANGGAL; ?>").getTime();
 
-                  // Memperbarui hitungan mundur setiap 1 detik
-                  var x = setInterval(function() {
+                    // Memperbarui hitungan mundur setiap 1 detik
+                    var x = setInterval(function() {
 
-                    // Untuk mendapatkan tanggal dan waktu hari ini
-                    var now = new Date().getTime();
+                      // Untuk mendapatkan tanggal dan waktu hari ini
+                      var now = new Date().getTime();
 
-                    // Temukan jarak antara sekarang dan tanggal hitung mundur
-                    var distance = countDownDate - now;
+                      // Temukan jarak antara sekarang dan tanggal hitung mundur
+                      var distance = countDownDate - now;
 
-                    // Perhitungan waktu untuk hari, jam, menit dan detik
-                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                      // Perhitungan waktu untuk hari, jam, menit dan detik
+                      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                    // Keluarkan hasil dalam elemen dengan id = "demo"
-                    document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
-                      minutes + "m " + seconds + "s ";
+                      // Keluarkan hasil dalam elemen dengan id = "demo"
+                      document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
+                        minutes + "m " + seconds + "s ";
 
-                    // Jika hitungan mundur selesai, tulis beberapa teks 
-                    if (distance < 0) {
-                      document.getElementById("demo").innerHTML = "Tepat Waktu";
-                    }
-                  }, 1000);
-                </script>
+                      // Jika hitungan mundur selesai, tulis beberapa teks 
+                      if (distance < 0) {
+                        document.getElementById("demo").innerHTML = "Tepat Waktu";
+                      }
+                    }, 1000);
+                  </script>
+                <?php endif; ?>
               </tr>
               <tr>
                 <td>terakhir diubah</td>
@@ -191,7 +195,7 @@
               <?php endif; ?>
             </tbody>
           </table>
-          <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">edit submission</a>
+          <a href="<?php echo base_url('User/Siswa/F_Tugas1/tugas1/' . $tugas->id_tugas); ?>" class="btn btn-primary center-block" type="submit">edit pengumpulan</a>
         <?php endif; ?>
 
       <?php else : ?>

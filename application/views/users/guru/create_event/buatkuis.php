@@ -21,8 +21,9 @@
                             <select id="country" name="jenisujian" class="form-control">>
                                 <option value="">Jenis Ujian</option>
                                 <option value="Ulangan Harian">Ulangan Harian</option>
-                                <option value="Ulangan Tengah Semester">Ujian Tengah Semester</option>
-                                <option value="Ulangan Akhir Sekolah">Ujian Akhir Sekolah</option>
+                                <option value="Ulangan Tengah Semester">Penilaian Tengah Semester</option>
+                                <option value="Ulangan Akhir Sekolah">Penilaian Akhir Semester</option>
+                                <option value="Ulangan Akhir Sekolah">Penilaian Akhir Tahun</option>
                             </select>
                             <?= form_error('mengajar', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>

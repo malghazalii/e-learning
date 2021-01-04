@@ -252,4 +252,14 @@ class TampilKuis extends CI_Controller
             }
         }
     }
+
+    public function delete($id)
+    {
+        $delete = $this->db->where('id_ujian', $id)->delete('jawaban_ujian');
+        $delete = $this->db->where('id_ujian', $id)->delete('ikut_ujian');
+        if ($delete) {
+            echo "<script>alert('Data berhasil di hapus');</script>";
+            echo "<script>window.location='" . site_url('User/Guru/TampilKuis') . "';</script>";
+        }
+    }
 }

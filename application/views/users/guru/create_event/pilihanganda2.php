@@ -9,46 +9,46 @@
                             <br>
                             <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php if ($title == 'Tampil kuis') : ?>
-                                    <?= $mapel->mata_pelajaran; ?> </a>
-                        <?php else : ?>
-                            <?= $mapel; ?>
-                        <?php endif; ?>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="<?= base_url('User/Guru/TampilKuis'); ?>">Semua Kelas</a>
-                            <?php foreach ($mengajar as $t) :
-                            ?>
-                                <a class="dropdown-item" href="<?= base_url('User/Guru/TampilKuis/mengajar/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
-                            <?php endforeach; ?>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="form-group">
-                        <div class="row">
-                        <?php if ($title == 'Tampil kuis') : ?>
-                            <form action="<?= base_url('User/Guru/TampilKuis/Mengajar/' . $mapel->id_mengajar); ?>" method="POST">
-                                <div class="col-sm-9">
-                                    <select id="country" name="jenisujian" class="form-control">>
-                                        <option value="">Semua Jenis</option>
-                                        <option value="Ulangan Harian">Ulangan Harian</option>
-                                        <option value="Ulangan Tengah Semester">Ujian Tengah Semester</option>
-                                        <option value="Ulangan Akhir Sekolah">Ujian Akhir Sekolah</option>
-                                    </select>
-                                </div>
-                                <br>
-                                <div class="col-sm-9" style="float: left;">
-                                    <input type="date" id="tanggal" name="tanggal" class="form-control">
-                                </div>
-                                <!-- <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
+                                    <?= $mapel->mata_pelajaran; ?>
+                                <?php else : ?>
+                                    <?= $mapel; ?>
+                                <?php endif; ?> </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="<?= base_url('User/Guru/TampilKuis'); ?>">Semua Mapel</a>
+                                <?php foreach ($mengajar as $t) :
+                                ?>
+                                    <a class="dropdown-item" href="<?= base_url('User/Guru/TampilKuis/mengajar/' . $t->id_mengajar); ?>"><?= $t->mata_pelajaran, " Di Kelas ", $t->kelas, " ", $t->nama_jurusan ?></a>
+                                <?php endforeach; ?>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                                <div class="row">
+                                    <?php if ($title == 'Tampil kuis') : ?>
+                                        <form action="<?= base_url('User/Guru/TampilKuis/Mengajar/' . $mapel->id_mengajar); ?>" method="POST">
+                                            <div class="col-sm-9">
+                                                <select id="country" name="jenisujian" class="form-control">>
+                                                    <option value="">Semua Jenis</option>
+                                                    <option value="Ulangan Harian">Ulangan Harian</option>
+                                                    <option value="Ulangan Tengah Semester">Ujian Tengah Semester</option>
+                                                    <option value="Ulangan Akhir Sekolah">Ujian Akhir Sekolah</option>
+                                                </select>
+                                            </div>
+                                            <br>
+                                            <div class="col-sm-9" style="float: left;">
+                                                <input type="date" id="tanggal" name="tanggal" class="form-control">
+                                            </div>
+                                            <!-- <select style="width: 175px; margin-bottom: 15px;" id="country" name="tanggal" class="form-control">
                                     <?php foreach ($tanggal as $m) : ?>
                                         <option value="<?= $m->tanggal ?>"> <?= $m->tanggal ?></option>
                                     <?php endforeach; ?>
                                 </select> -->
-                                <button type="submit" class="btn btn-success">Cari</button>
-                            </form>
-                        </div>
-                        </div>
-                        <br>
-                        <br>
+                                            <button type="submit" class="btn btn-success">Cari</button>
+                                        </form>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
                         <?php else : ?>
                             <form action="<?= base_url('User/Guru/TampilKuis/'); ?>" method="POST">
                                 <div class="col-sm-9">
@@ -101,8 +101,11 @@
                                         <?php if ($a->status == 1) : ?>
                                             <td>Mengerjakan</td>
                                             <td><?= $a->nilai; ?></td>
-                                            <td><a href="<?= base_url('User/Guru/TampilKuis/Koreksi/' . $a->id_ujian); ?>"> Koreksi</a></td>
-                                        <?php else : ?>
+                                            <td> <?php
+                                                    echo anchor(base_url('User/Guru/TampilKuis/Koreksi/' . $a->id_ujian), 'Koreksi');
+                                                    echo ' | ';
+                                                    echo anchor(base_url('User/Guru/TampilKuis/delete/' . $a->id_ujian), 'Delete'); ?>
+                                            <?php else : ?>
                                             <td>Tidak Ikut Ujian</td>
                                             <td>-</td>
                                             <td>-</td>
@@ -114,12 +117,12 @@
                         </div>
                     </div>
                 </div>
-                </div>
-                <div class="col-lg-5 agile-course-main-2 mt-4">
-                    <img src="images/am1.jpg" alt="" class="img-fluid">
-                </div>
+            </div>
+            <div class="col-lg-5 agile-course-main-2 mt-4">
+                <img src="images/am1.jpg" alt="" class="img-fluid">
             </div>
         </div>
+    </div>
     </div>
     </div>
     </div>

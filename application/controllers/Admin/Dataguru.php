@@ -72,6 +72,7 @@ class Dataguru extends CI_Controller
       $jenis_kelamin = $this->input->post('jenis_kelamin');
       $alamat = $this->input->post('alamat');
       $no_hp = $this->input->post('no_hp');
+      $email = $this->input->post('email');
       $golongan = $this->input->post('golongan');
 
       $data = [
@@ -81,6 +82,7 @@ class Dataguru extends CI_Controller
         'jenis_kelamin' => $jenis_kelamin,
         'alamat' => $alamat,
         'no_hp' => $no_hp,
+        'email' => $email,
         'id_gol' => $golongan
       ];
 
@@ -120,6 +122,7 @@ class Dataguru extends CI_Controller
       $jenis_kelamin = $this->input->post('jenis_kelamin');
       $alamat = $this->input->post('alamat');
       $no_hp = $this->input->post('no_hp');
+      $email = $this->input->post('email');
       $golongan = $this->input->post('golongan');
 
       $data = [
@@ -129,6 +132,7 @@ class Dataguru extends CI_Controller
         'jenis_kelamin' => $jenis_kelamin,
         'alamat' => $alamat,
         'no_hp' => $no_hp,
+        'email' => $email,
         'id_gol' => $golongan
       ];
 
@@ -150,6 +154,10 @@ class Dataguru extends CI_Controller
       'is_unique' => 'NIP guru sudah ada',
       'min_length' => 'Nip terlalu pendek'
     ]);
+    $this->form_validation->set_rules('email', 'Email', 'required|trim|is_unique[guru.email]', [
+      'required' => 'Field tidak boleh kosong',
+      'is_unique' => 'Email guru sudah ada'
+    ]);
     $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
       'required' => 'Field tidak boleh kosong'
     ]);
@@ -165,6 +173,9 @@ class Dataguru extends CI_Controller
     $this->form_validation->set_rules('nip', 'Nip', 'required|trim|min_length[2]', [
       'required' => 'Field tidak boleh kosong',
       'min_length' => 'Nip terlalu pendek'
+    ]);
+    $this->form_validation->set_rules('email', 'Email', 'required|trim', [
+      'required' => 'Field tidak boleh kosong'
     ]);
     $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
       'required' => 'Field tidak boleh kosong'

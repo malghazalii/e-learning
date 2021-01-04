@@ -107,6 +107,7 @@ class Datasiswa extends CI_Controller
       $alamat = $this->input->post('alamat');
       $agama = $this->input->post('agama');
       $no_hp = $this->input->post('no_hp');
+      $email = $this->input->post('email');
       $password = $this->input->post('password');
       $id_kelas = $this->input->post('kelas');
       $tahun = $this->input->post('tahunangkatan');
@@ -118,6 +119,7 @@ class Datasiswa extends CI_Controller
         'alamat' => $alamat,
         'agama' => $agama,
         'no_hp' => $no_hp,
+        'email' => $email,
         'password' => md5($password),
         'id_jurusan' => $id_kelas,
         'id_tahun' => $tahun
@@ -159,6 +161,7 @@ class Datasiswa extends CI_Controller
       $alamat = $this->input->post('alamat');
       $agama = $this->input->post('agama');
       $no_hp = $this->input->post('no_hp');
+      $email = $this->input->post('email');
       $password = 'sma1jaya';
       $id_kelas = $this->input->post('kelas');
       $tahun_angkatan = $this->input->post('tahunangkatan');
@@ -170,6 +173,7 @@ class Datasiswa extends CI_Controller
         'alamat' => $alamat,
         'agama' => $agama,
         'no_hp' => $no_hp,
+        'email' => $email,
         'password' => md5($password),
         'id_jurusan' => $id_kelas,
         'id_tahun' => $tahun_angkatan
@@ -194,6 +198,10 @@ class Datasiswa extends CI_Controller
       'is_unique' => 'Nis siswa sudah ada',
       'min_length' => 'Nis terlalu pendek'
     ]);
+    $this->form_validation->set_rules('email', 'Email', 'required|trim|is_unique[siswa.email]', [
+      'required' => 'Field tidak boleh kosong',
+      'is_unique' => 'Email siswa sudah ada'
+    ]);
     $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
       'required' => 'Field tidak boleh kosong'
     ]);
@@ -209,6 +217,9 @@ class Datasiswa extends CI_Controller
     $this->form_validation->set_rules('nis', 'Nis', 'required|trim|min_length[2]', [
       'required' => 'Field tidak boleh kosong',
       'min_length' => 'Nis terlalu pendek'
+    ]);
+    $this->form_validation->set_rules('email', 'Email', 'required|trim', [
+      'required' => 'Field tidak boleh kosong',
     ]);
     $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
       'required' => 'Field tidak boleh kosong'

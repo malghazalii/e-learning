@@ -27,8 +27,7 @@
 
 					<!-- //switch -->
 					<input type="submit" value="Log In">
-					<p class="text-center dont-do mt-4 text-white">Some courses may allow guest access
-					</p>
+					<a class="text-center dont-do mt-4 text-white" href="<?= base_url('auth/forgotpassword'); ?>">Lupa Password ?</a>
 				</form>
 			</div>
 			<!-- //content -->

@@ -44,6 +44,12 @@
                     <?= form_error('no_hp', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                    <label for="varchar">
+                        <h6 class="m-0 font-weight-bold text-dark">EMAIL</h6>
+                    </label> <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="<?= set_value('email'); ?>" />
+                    <?= form_error('emaik', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
                     <label for="enum">
                         <h6 class="m-0 font-weight-bold text-dark">GOLONGAN</h6>
                     </label>

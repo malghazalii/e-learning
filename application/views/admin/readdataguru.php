@@ -36,6 +36,10 @@
                 <td><?= $d->no_hp; ?></td>
               </tr>
               <tr>
+                <td>email</td>
+                <td><?= $d->email; ?></td>
+              </tr>
+              <tr>
                 <td>golongan</td>
                 <td><?= $d->nama_golongan; ?></td>
               </tr>

@@ -70,26 +70,6 @@ class KuisPilgan extends CI_Controller
             'required' => 'Field tidak boleh kosong'
         ]);
 
-        $this->form_validation->set_rules('jawabanA', 'JawabanA', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('jawabanB', 'JawabanB', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('jawabanC', 'JawabanC', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('jawabanD', 'JawabanD', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('jawabanE', 'JawabanE', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
         if ($this->form_validation->run() == false) {
             $this->kuis($id);
         } else {
@@ -122,12 +102,136 @@ class KuisPilgan extends CI_Controller
 
             $this->load->library('upload', $config);
 
-            if (@$_FILES['file_input']['name'] != null) {
-                if ($this->upload->do_upload('file_input')) {
+            if ($poto) {
+                if ($poto1 && $poto2 && $poto3 && $poto4 && $poto5) {
+                    if ($this->upload->do_upload('file_input') && $this->upload->do_upload('file_input1') && $this->upload->do_upload('file_input2') && $this->upload->do_upload('file_input3') && $this->upload->do_upload('file_input4') && $this->upload->do_upload('file_input5')) {
+                        $data = array(
+                            'id_soal' => $soal,
+                            'soal' => $tekssoal,
+                            'nama_file' => preg_replace("/\s+/", "_", $poto),
+                            'tanggal_input' => date('Y:m:d H:i:s'),
+                            'nip' => $nip
+                        );
+
+                        $datakuis = array(
+                            'id_soal' => $soal,
+                            'id_kuis' => $id_kuis,
+                        );
+
+                        $datatrsoal = array(
+                            'id_soal' => $soal,
+                            'gambarA' => preg_replace("/\s+/", "_", $poto1),
+                            'gambarB' => preg_replace("/\s+/", "_", $poto2),
+                            'gambarC' => preg_replace("/\s+/", "_", $poto3),
+                            'gambarD' => preg_replace("/\s+/", "_", $poto4),
+                            'gambarE' => preg_replace("/\s+/", "_", $poto5),
+                            'opsiA' => $jwbA,
+                            'opsiB' => $jwbB,
+                            'opsiC' => $jwbC,
+                            'opsiD' => $jwbD,
+                            'opsiE' => $jwbE
+                        );
+
+                        $this->db->insert('soal', $data);
+                        $this->db->insert('tr_kuis', $datakuis);
+                        $this->db->insert('tr_soal', $datatrsoal);
+                        if ($this->db->affected_rows() > 0) {
+                            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
+                            redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
+                        }
+                    } else {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo "<script>alert('Format file salah');</script>";
+                        echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
+                    }
+                } else {
+                    if ($this->upload->do_upload('file_input')) {
+                        $data = array(
+                            'id_soal' => $soal,
+                            'soal' => $tekssoal,
+                            'nama_file' => preg_replace("/\s+/", "_", $poto),
+                            'tanggal_input' => date('Y:m:d H:i:s'),
+                            'nip' => $nip
+                        );
+
+                        $datakuis = array(
+                            'id_soal' => $soal,
+                            'id_kuis' => $id_kuis,
+                        );
+
+                        $datatrsoal = array(
+                            'id_soal' => $soal,
+                            'opsiA' => $jwbA,
+                            'opsiB' => $jwbB,
+                            'opsiC' => $jwbC,
+                            'opsiD' => $jwbD,
+                            'opsiE' => $jwbE
+                        );
+
+                        $this->db->insert('soal', $data);
+                        $this->db->insert('tr_kuis', $datakuis);
+                        $this->db->insert('tr_soal', $datatrsoal);
+
+                        if ($this->db->affected_rows() > 0) {
+                            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di tambah</div>');
+                            redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
+                        }
+                    } else {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo "<script>alert('Format file salah');</script>";
+                        echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
+                    }
+                }
+
+                // if ($this->db->affected_rows() > 0) {
+                //     echo "<script>alert('Data berhasil ditambah');</script>";
+                // }
+                // echo "<script>window.location='" . site_url('User/Guru/Dashboard') . "';</script>";
+            } else {
+                if ($poto1 && $poto2 && $poto3 && $poto4 && $poto5) {
+                    if ($this->upload->do_upload('file_input1') && $this->upload->do_upload('file_input2') && $this->upload->do_upload('file_input3') && $this->upload->do_upload('file_input4') && $this->upload->do_upload('file_input5')) {
+                        $data = array(
+                            'id_soal' => $soal,
+                            'soal' => $tekssoal,
+                            'tanggal_input' => date('Y:m:d H:i:s'),
+                            'nip' => $nip
+                        );
+
+                        $datakuis = array(
+                            'id_soal' => $soal,
+                            'id_kuis' => $id_kuis,
+                        );
+
+                        $datatrsoal = array(
+                            'id_soal' => $soal,
+                            'gambarA' => preg_replace("/\s+/", "_", $poto1),
+                            'gambarB' => preg_replace("/\s+/", "_", $poto2),
+                            'gambarC' => preg_replace("/\s+/", "_", $poto3),
+                            'gambarD' => preg_replace("/\s+/", "_", $poto4),
+                            'gambarE' => preg_replace("/\s+/", "_", $poto5),
+                            'opsiA' => $jwbA,
+                            'opsiB' => $jwbB,
+                            'opsiC' => $jwbC,
+                            'opsiD' => $jwbD,
+                            'opsiE' => $jwbE
+                        );
+
+                        $this->db->insert('soal', $data);
+                        $this->db->insert('tr_kuis', $datakuis);
+                        $this->db->insert('tr_soal', $datatrsoal);
+                        if ($this->db->affected_rows() > 0) {
+                            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
+                            redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
+                        }
+                    } else {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo "<script>alert('Format file salah');</script>";
+                        echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
+                    }
+                } else {
                     $data = array(
                         'id_soal' => $soal,
                         'soal' => $tekssoal,
-                        'nama_file' => preg_replace("/\s+/", "_", $poto),
                         'tanggal_input' => date('Y:m:d H:i:s'),
                         'nip' => $nip
                     );
@@ -149,53 +253,17 @@ class KuisPilgan extends CI_Controller
                     $this->db->insert('soal', $data);
                     $this->db->insert('tr_kuis', $datakuis);
                     $this->db->insert('tr_soal', $datatrsoal);
+
                     if ($this->db->affected_rows() > 0) {
-                        $this->session  ->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambah</div>');
-                        redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di tambah</div>');
+                        redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
                     }
-                } else {
-                    $error = array('error' => $this->upload->display_errors());
-                    echo "<script>alert('Format file salah');</script>";
-                    echo "<script>window.location='" . site_url('User/Guru/kuisessay/kuis/' . $id_kuis) . "';</script>";
+                    echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
                 }
-                // if ($this->db->affected_rows() > 0) {
-                //     echo "<script>alert('Data berhasil ditambah');</script>";
-                // }
-                // echo "<script>window.location='" . site_url('User/Guru/Dashboard') . "';</script>";
-            } else {
-                $data = array(
-                    'id_soal' => $soal,
-                    'soal' => $tekssoal,
-                    'tanggal_input' => date('Y:m:d H:i:s'),
-                    'nip' => $nip
-                );
-
-                $datakuis = array(
-                    'id_soal' => $soal,
-                    'id_kuis' => $id_kuis,
-                );
-
-                $datatrsoal = array(
-                    'id_soal' => $soal,
-                    'opsiA' => $jwbA,
-                    'opsiB' => $jwbB,
-                    'opsiC' => $jwbC,
-                    'opsiD' => $jwbD,
-                    'opsiE' => $jwbE
-                );
-
-                $this->db->insert('soal', $data);
-                $this->db->insert('tr_kuis', $datakuis);
-                $this->db->insert('tr_soal', $datatrsoal);
-
-                if ($this->db->affected_rows() > 0) {
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di tambah</div>');
-                    redirect('User/Guru/kuisessay/kuis/' . $id_kuis);
-                }
-                echo "<script>window.location='" . site_url('User/Guru/kuisessay/kuis/' . $id_kuis) . "';</script>";
             }
         }
     }
+
     public function delete($id, $id_kuis)
     {
         $delete = $this->db->where('id_soal', $id)->delete('tr_kuis');
@@ -206,7 +274,7 @@ class KuisPilgan extends CI_Controller
         } else {
             $this->session->set_flashdata('messgae', '<div class="alert alert-danger" role="alert">Tidak bisa hapus data</div>');
         }
-        redirect('User/Guru/KuisEssay/kuis/' . $id_kuis);
+        redirect('User/Guru/Kuispilgan/kuis/' . $id_kuis);
     }
     public function edit($id)
     {
@@ -240,34 +308,20 @@ class KuisPilgan extends CI_Controller
             'required' => 'Field tidak boleh kosong'
         ]);
 
-        $this->form_validation->set_rules('jawabanA', 'JawabanA', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('jawabanB', 'JawabanB', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('jawabanC', 'JawabanC', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('jawabanD', 'JawabanD', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
-        $this->form_validation->set_rules('jawabanE', 'JawabanE', 'required|trim', [
-            'required' => 'Field tidak boleh kosong'
-        ]);
-
         if ($this->form_validation->run() == false) {
             $this->edit($id);
         } else {
 
             $nip = $this->session->userdata('nip');
 
+            $soal = $this->input->post('soal');
             $tekssoal = $this->input->post('tekssoal');
             $poto = $_FILES['file_input']['name'];
+            $poto1 = $_FILES['file_input1']['name'];
+            $poto2 = $_FILES['file_input2']['name'];
+            $poto3 = $_FILES['file_input3']['name'];
+            $poto4 = $_FILES['file_input4']['name'];
+            $poto5 = $_FILES['file_input5']['name'];
             $jwbA = $this->input->post('jawabanA');
             $jwbB = $this->input->post('jawabanB');
             $jwbC = $this->input->post('jawabanC');
@@ -285,15 +339,116 @@ class KuisPilgan extends CI_Controller
 
             $this->load->library('upload', $config);
 
-            if (@$_FILES['file_input']['name'] != null) {
-                if ($this->upload->do_upload('file_input')) {
+            if ($poto) {
+                if ($poto1 && $poto2 && $poto3 && $poto4 && $poto5) {
+                    if ($this->upload->do_upload('file_input') && $this->upload->do_upload('file_input1') && $this->upload->do_upload('file_input2') && $this->upload->do_upload('file_input3') && $this->upload->do_upload('file_input4') && $this->upload->do_upload('file_input5')) {
+                        $data = array(
+                            'soal' => $tekssoal,
+                            'nama_file' => preg_replace("/\s+/", "_", $poto),
+                            'tanggal_input' => date('Y:m:d H:i:s'),
+                            'nip' => $nip
+                        );
+
+                        $datatrsoal = array(
+                            'gambarA' => preg_replace("/\s+/", "_", $poto1),
+                            'gambarB' => preg_replace("/\s+/", "_", $poto2),
+                            'gambarC' => preg_replace("/\s+/", "_", $poto3),
+                            'gambarD' => preg_replace("/\s+/", "_", $poto4),
+                            'gambarE' => preg_replace("/\s+/", "_", $poto5),
+                            'opsiA' => $jwbA,
+                            'opsiB' => $jwbB,
+                            'opsiC' => $jwbC,
+                            'opsiD' => $jwbD,
+                            'opsiE' => $jwbE
+                        );
+
+                        $this->db->where('id_soal', $id)->update('tr_soal', $datatrsoal);
+                        $this->db->where('id_soal', $id)->update('soal', $data);
+
+                        if ($this->db->affected_rows() > 0) {
+                            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate</div>');
+                            redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
+                        }
+                    } else {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo "<script>alert('Format file salah');</script>";
+                        echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
+                    }
+                } else {
+                    if ($this->upload->do_upload('file_input')) {
+                        $data = array(
+                            'soal' => $tekssoal,
+                            'nama_file' => preg_replace("/\s+/", "_", $poto),
+                            'tanggal_input' => date('Y:m:d H:i:s'),
+                            'nip' => $nip
+                        );
+
+                        $datatrsoal = array(
+                            'opsiA' => $jwbA,
+                            'opsiB' => $jwbB,
+                            'opsiC' => $jwbC,
+                            'opsiD' => $jwbD,
+                            'opsiE' => $jwbE
+                        );
+
+                        $this->db->where('id_soal', $id)->update('tr_soal', $datatrsoal);
+                        $this->db->where('id_soal', $id)->update('soal', $data);
+
+                        if ($this->db->affected_rows() > 0) {
+                            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update</div>');
+                            redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
+                        }
+                    } else {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo "<script>alert('Format file salah');</script>";
+                        echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
+                    }
+                }
+
+                // if ($this->db->affected_rows() > 0) {
+                //     echo "<script>alert('Data berhasil ditambah');</script>";
+                // }
+                // echo "<script>window.location='" . site_url('User/Guru/Dashboard') . "';</script>";
+            } else {
+                if ($poto1 && $poto2 && $poto3 && $poto4 && $poto5) {
+                    if ($this->upload->do_upload('file_input1') && $this->upload->do_upload('file_input2') && $this->upload->do_upload('file_input3') && $this->upload->do_upload('file_input4') && $this->upload->do_upload('file_input5')) {
+                        $data = array(
+                            'soal' => $tekssoal,
+                            'tanggal_input' => date('Y:m:d H:i:s'),
+                            'nip' => $nip
+                        );
+
+                        $datatrsoal = array(
+                            'gambarA' => preg_replace("/\s+/", "_", $poto1),
+                            'gambarB' => preg_replace("/\s+/", "_", $poto2),
+                            'gambarC' => preg_replace("/\s+/", "_", $poto3),
+                            'gambarD' => preg_replace("/\s+/", "_", $poto4),
+                            'gambarE' => preg_replace("/\s+/", "_", $poto5),
+                            'opsiA' => $jwbA,
+                            'opsiB' => $jwbB,
+                            'opsiC' => $jwbC,
+                            'opsiD' => $jwbD,
+                            'opsiE' => $jwbE
+                        );
+
+                        $this->db->where('id_soal', $id)->update('tr_soal', $datatrsoal);
+                        $this->db->where('id_soal', $id)->update('soal', $data);
+
+                        if ($this->db->affected_rows() > 0) {
+                            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil update</div>');
+                            redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
+                        }
+                    } else {
+                        $error = array('error' => $this->upload->display_errors());
+                        echo "<script>alert('Format file salah');</script>";
+                        echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
+                    }
+                } else {
                     $data = array(
                         'soal' => $tekssoal,
-                        'nama_file' => preg_replace("/\s+/", "_", $poto),
                         'tanggal_input' => date('Y:m:d H:i:s'),
                         'nip' => $nip
                     );
-
 
                     $datatrsoal = array(
                         'opsiA' => $jwbA,
@@ -303,47 +458,15 @@ class KuisPilgan extends CI_Controller
                         'opsiE' => $jwbE
                     );
 
-                    $this->db->where('id_soal', $id)->update('soal', $data);
                     $this->db->where('id_soal', $id)->update('tr_soal', $datatrsoal);
+                    $this->db->where('id_soal', $id)->update('soal', $data);
 
                     if ($this->db->affected_rows() > 0) {
                         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update</div>');
                         redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
                     }
                     echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
-                } else {
-                    $error = array('error' => $this->upload->display_errors());
-                    echo "<script>alert('Format file salah');</script>";
-                    echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
                 }
-                // if ($this->db->affected_rows() > 0) {
-                //     echo "<script>alert('Data berhasil ditambah');</script>";
-                // }
-                // echo "<script>window.location='" . site_url('User/Guru/Dashboard') . "';</script>";
-            } else {
-                $data = array(
-                    'soal' => $tekssoal,
-                    'tanggal_input' => date('Y:m:d H:i:s'),
-                    'nip' => $nip
-                );
-
-
-                $datatrsoal = array(
-                    'opsiA' => $jwbA,
-                    'opsiB' => $jwbB,
-                    'opsiC' => $jwbC,
-                    'opsiD' => $jwbD,
-                    'opsiE' => $jwbE
-                );
-
-                $this->db->where('id_soal', $id)->update('soal', $data);
-                $this->db->where('id_soal', $id)->update('tr_soal', $datatrsoal);
-
-                if ($this->db->affected_rows() > 0) {
-                    echo "<script>alert('Data berhasil di update');</script>";
-                    redirect('User/Guru/kuispilgan/kuis/' . $id_kuis);
-                }
-                echo "<script>window.location='" . site_url('User/Guru/kuispilgan/kuis/' . $id_kuis) . "';</script>";
             }
         }
     }

@@ -29,16 +29,17 @@
                           <input hidden type="text" id="id_tr_kuis<?= $no; ?>" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
                           <div class="col-sm-9">
                             <?php
-                            $slA = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiA'";
+                            $slA = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiA' OR jawaban = '$n->gambarA'";
                             $alA = $this->db->query($slA)->row();
-                            $slB = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiB'";
+                            $slB = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiB' OR jawaban = '$n->gambarB'";
                             $alB = $this->db->query($slB)->row();
-                            $slC = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiC'";
+                            $slC = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiC' OR jawaban = '$n->gambarC'";
                             $alC = $this->db->query($slC)->row();
-                            $slD = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiD'";
+                            $slD = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiD' OR jawaban = '$n->gambarD'";
                             $alD = $this->db->query($slD)->row();
-                            $slE = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiE'";
+                            $slE = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiE' OR jawaban = '$n->gambarE'";
                             $alE = $this->db->query($slE)->row();
+
                             // var_dump($alA);
                             // die;
                             if ($alA == null && $alB == null && $alC == null && $alD == null && $alE == null) :
@@ -62,7 +63,7 @@
                             elseif ($alC) :
                               $cekA = '';
                               $cekB = '';
-                              $cekC = 'chicked';
+                              $cekC = 'checked';
                               $cekD = '';
                               $cekE = '';
                             elseif ($alD) :
@@ -79,20 +80,37 @@
                               $cekE = 'checked';
                             endif; ?>
                             <div id="myForm">
-                              <input type="radio" id="jawabanA" name="radioName" <?= $cekA; ?> value="<?= $n->opsiA; ?>">
-                              <label for="status">A. <?= $n->opsiA; ?></label><br />
+                              <?php if ($n->opsiA && $n->opsiB && $n->opsiC && $n->opsiD && $n->opsiE) : ?>
+                                <input type="radio" id="jawabanA" name="radioName" <?= $cekA; ?> value="<?= $n->opsiA; ?>">
+                                <label for="status">A. <?= $n->opsiA; ?></label><br />
 
-                              <input type="radio" id="jawabanB" name="radioName" <?= $cekB; ?> value="<?= $n->opsiB; ?>">
-                              <label for="status">C. <?= $n->opsiB; ?></label><br />
+                                <input type="radio" id="jawabanB" name="radioName" <?= $cekB; ?> value="<?= $n->opsiB; ?>">
+                                <label for="status">B. <?= $n->opsiB; ?></label><br />
 
-                              <input type="radio" id="jawabanC" name="radioName" <?= $cekC; ?> value="<?= $n->opsiC; ?>">
-                              <label for="status">D. <?= $n->opsiC; ?></label><br />
+                                <input type="radio" id="jawabanC" name="radioName" <?= $cekC; ?> value="<?= $n->opsiC; ?>">
+                                <label for="status">C. <?= $n->opsiC; ?></label><br />
 
-                              <input type="radio" id="jawabanD" name="radioName" <?= $cekD; ?> value="<?= $n->opsiD; ?>">
-                              <label for="status">E. <?= $n->opsiD; ?></label><br />
+                                <input type="radio" id="jawabanD" name="radioName" <?= $cekD; ?> value="<?= $n->opsiD; ?>">
+                                <label for="status">D. <?= $n->opsiD; ?></label><br />
 
-                              <input type="radio" id="jawabanE" name="radioName" <?= $cekE; ?> value="<?= $n->opsiE; ?>">
-                              <label for="status">E. <?= $n->opsiE; ?></label><br />
+                                <input type="radio" id="jawabanE" name="radioName" <?= $cekE; ?> value="<?= $n->opsiE; ?>">
+                                <label for="status">E. <?= $n->opsiE; ?></label><br />
+                              <?php else : ?>
+                                <input type="radio" id="jawabanA" name="radioName" <?= $cekA; ?> value="<?= $n->gambarA; ?>">
+                                <label for="status">A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></label><br />
+
+                                <input type="radio" id="jawabanB" name="radioName" <?= $cekB; ?> value="<?= $n->gambarB; ?>">
+                                <label for="status">B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></label><br />
+
+                                <input type="radio" id="jawabanC" name="radioName" <?= $cekC; ?> value="<?= $n->gambarC; ?>">
+                                <label for="status">C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></label><br />
+
+                                <input type="radio" id="jawabanD" name="radioName" <?= $cekD; ?> value="<?= $n->gambarD; ?>">
+                                <label for="status">D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" /></label><br />
+
+                                <input type="radio" id="jawabanE" name="radioName" <?= $cekE; ?> value="<?= $n->gambarE; ?>">
+                                <label for="status">E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></label><br />
+                              <?php endif; ?>
                             </div>
                             <input hidden type="text" id="jawaban<?= $no; ?>" value="<?= $n->jawaban; ?>">
                             <script>

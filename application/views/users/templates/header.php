@@ -56,7 +56,8 @@
             <div class="container">
                 <div class="row">
                     <h1 class="text-capitalize text-white col-7">
-                        <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>e-learning</h1>
+                        <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>e-learning
+                    </h1>
                     <!-- social icons -->
                     <a style="margin-left:265px" class="btn btn-primary dropdown-toggle text-right" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="<?php echo base_url(); ?>assets/users/images/user.png ">
@@ -74,8 +75,13 @@
                         } ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                    <a class="btn btn-primary dropdown-item" href="<?= base_url('Auth/logout/'); ?>">Edit Password</a>
-                        <a class="btn btn-primary dropdown-item" href="<?= base_url('Auth/logout/'); ?>">Logout</a>
+                        <?php if ($nip) : ?>
+                            <a class="btn btn-primary dropdown-item" href="<?= base_url('user/guru/editpassword'); ?>">Edit Password</a>
+                            <a class="btn btn-primary dropdown-item" href="<?= base_url('Auth/logout/'); ?>">Logout</a>
+                        <?php elseif ($nis) : ?>
+                            <a class="btn btn-primary dropdown-item" href="<?= base_url('user/siswa/editpassword'); ?>">Edit Password</a>
+                            <a class="btn btn-primary dropdown-item" href="<?= base_url('Auth/logout/'); ?>">Logout</a>
+                        <?php endif; ?>
                     </div>
                     <!-- //social icons -->
                 </div>

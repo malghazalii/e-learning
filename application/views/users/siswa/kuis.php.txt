@@ -52,7 +52,7 @@
           </tr>
           <tr>
             <td>Waktu Ujian</td>
-            <td><?= $jawaban->Jam, ' Jam ', $jawaban->menit, ' Menit' ?> </td>
+            <td><?= $jawaban->menit, ' Menit' ?> </td>
           </tr>
       </tbody>
     </table>

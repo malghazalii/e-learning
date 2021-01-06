@@ -1,4 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="container  py-xl-5 py-lg-3">
   <div class="row justify-content-center pt-7">
     <div class="col-lg-10 agile-course-main">
@@ -10,12 +9,13 @@
               <!-- gunakan tanda [] untuk menampung array  -->
               <br>
               <div class="card-body">
-                <form class="form-horizontal" role="form" action="<?= base_url('User/Siswa/Kuis/Tambah/'); ?>" method="POST">
+                <form class="form-horizontal" role="form" action="<?= base_url('User/Siswa/Kuis/Tambah/'); ?>" method="POST" name="xyz">
                   <div class="form-group">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                     <?php $no = 1;
                     foreach ($soal as $n) : ?>
-                      <input hidden type="text" name="id_ujian" value="<?= $n->id_ujian; ?>">
-                      <input hidden type="text" name="id_kuis" value="<?= $n->id_kuis; ?>">
+                      <input hidden type="text" id="id_ujian1" name="id_ujian1" value="<?= $n->id_ujian; ?>">
+                      <input hidden type="text" name="id_kuis1" value="<?= $n->id_kuis; ?>">
                       <div class="row">
                         <div class="col-sm-9">
                           <?php if ($n->nama_file) : ?>
@@ -26,35 +26,123 @@
                           <?php endif; ?>
                         </div>
                         <?php if ($n->sid == $n->trid) : ?>
-                          <input hidden type="text" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
+                          <input hidden type="text" id="id_tr_kuis<?= $no; ?>" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
                           <div class="col-sm-9">
-                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiA; ?>">
-                            <label for="status">A. <?= $n->opsiA; ?></label><br />
-                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiB; ?>">
-                            <label for="status">C. <?= $n->opsiB; ?></label><br />
-                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiC; ?>">
-                            <label for="status">D. <?= $n->opsiC; ?></label><br />
-                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiD; ?>">
-                            <label for="status">E. <?= $n->opsiD; ?></label><br />
-                            <input type="radio" id="status" name="jawaban<?= $no; ?>" value="<?= $n->opsiE; ?>">
-                            <label for="status">E. <?= $n->opsiE; ?></label><br />
+                            <?php
+                            $slA = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiA'";
+                            $alA = $this->db->query($slA)->row();
+                            $slB = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiB'";
+                            $alB = $this->db->query($slB)->row();
+                            $slC = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiC'";
+                            $alC = $this->db->query($slC)->row();
+                            $slD = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiD'";
+                            $alD = $this->db->query($slD)->row();
+                            $slE = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiE'";
+                            $alE = $this->db->query($slE)->row();
+                            // var_dump($alA);
+                            // die;
+                            if ($alA == null && $alB == null && $alC == null && $alD == null && $alE == null) :
+                              $cekA = '';
+                              $cekB = '';
+                              $cekC = '';
+                              $cekD = '';
+                              $cekE = '';
+                            elseif ($alA) :
+                              $cekA = 'checked';
+                              $cekB = '';
+                              $cekC = '';
+                              $cekD = '';
+                              $cekE = '';
+                            elseif ($alB) :
+                              $cekA = '';
+                              $cekB = 'checked';
+                              $cekC = '';
+                              $cekE = '';
+                              $cekD = '';
+                            elseif ($alC) :
+                              $cekA = '';
+                              $cekB = '';
+                              $cekC = 'chicked';
+                              $cekD = '';
+                              $cekE = '';
+                            elseif ($alD) :
+                              $cekA = '';
+                              $cekB = '';
+                              $cekC = '';
+                              $cekD = 'checked';
+                              $cekE = '';
+                            elseif ($alE) :
+                              $cekA = '';
+                              $cekB = '';
+                              $cekC = '';
+                              $cekD = '';
+                              $cekE = 'checked';
+                            endif; ?>
+                            <div id="myForm">
+                              <input type="radio" id="jawabanA" name="radioName" <?= $cekA; ?> value="<?= $n->opsiA; ?>">
+                              <label for="status">A. <?= $n->opsiA; ?></label><br />
+
+                              <input type="radio" id="jawabanB" name="radioName" <?= $cekB; ?> value="<?= $n->opsiB; ?>">
+                              <label for="status">C. <?= $n->opsiB; ?></label><br />
+
+                              <input type="radio" id="jawabanC" name="radioName" <?= $cekC; ?> value="<?= $n->opsiC; ?>">
+                              <label for="status">D. <?= $n->opsiC; ?></label><br />
+
+                              <input type="radio" id="jawabanD" name="radioName" <?= $cekD; ?> value="<?= $n->opsiD; ?>">
+                              <label for="status">E. <?= $n->opsiD; ?></label><br />
+
+                              <input type="radio" id="jawabanE" name="radioName" <?= $cekE; ?> value="<?= $n->opsiE; ?>">
+                              <label for="status">E. <?= $n->opsiE; ?></label><br />
+                            </div>
+                            <input hidden type="text" id="jawaban<?= $no; ?>" value="<?= $n->jawaban; ?>">
+                            <script>
+                              $('#myForm input').on('change', function() {
+                                $('#jawaban<?= $no; ?>').val($('input[name=radioName]:checked', '#myForm').val());
+                              });
+                            </script>
                           </div>
                         <?php else : ?>
-                          <input hidden type="text" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
+                          <input hidden type="text" id="id_tr_kuis<?= $no; ?>" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
                           <div class="col-sm-9">
-                            <textarea style="margin: 10px;" name="jawaban<?= $no; ?>" id="" cols="90" rows="10"></textarea>
+                            <textarea style="margin: 10px;" name="jawaban<?= $no; ?>" id="jawaban<?= $no; ?>" cols="90" rows="10"><?= $n->jawaban; ?></textarea>
                           </div>
                         <?php endif; ?>
                       </div>
+                      <script>
+                        $(document).ready(function() {
+
+                          function autoSave() {
+
+                            var post_jawaban = $('#jawaban<?= $no; ?>').val();
+                            var post_id_ujian1 = $('#id_ujian1').val();
+                            var post_id_tr_kuis = $('#id_tr_kuis<?= $no; ?>').val();
+                            // document.getElementById("anjir").innerHTML = $('#jawaban4').val();
+                            $.ajax({
+                              url: "<?= base_url('/User/Siswa/Kuis/Tambah/'); ?>" + post_id_ujian1,
+                              method: "POST",
+                              data: {
+                                id_tr_kuis: post_id_tr_kuis,
+                                jawaban: post_jawaban
+                              },
+                              dataType: "text",
+                            });
+                          }
+                          setInterval(function() {
+                            autoSave();
+                          }, 1000);
+                        });
+                      </script>
                     <?php $no++;
                     endforeach; ?>
+                    <!-- <p id="anjir"></p> -->
                     <div class="col-sm-9">
                       <h3 id="demo"></h3>
                     </div>
+
                   </div>
               </div>
             </div>
-            <button id="gas" type="submit" class="btn btn-success" style="float: right; width: 25%;">Selesai</button>
+            <a id="gas" type="submit" class="btn btn-success" style="float: right; width: 25%;" href="<?= base_url('User/Siswa/Kuis/Selesai/' . $soal1->id_ujian . '/' . $kuis->id_kuis); ?>">Selesai</a>
             <script>
               // Mengatur waktu akhir perhitungan mundur
               var countDownDate = new Date("<?= $kuis->tanggal_berakhir; ?>").getTime();

@@ -57,66 +57,63 @@
                                                 </div>
                                                 <?php if ($n->idk == $n->id) : ?>
                                                     <div class="col-sm-9">
-                                                        <?php if ($n->jawaban == $n->opsiA) : ?>
-                                                            <h7><strong>A. <?= $n->opsiA; ?></strong></h7>
-                                                            <p>B. <?= $n->opsiB; ?></p>
-                                                            <p>C. <?= $n->opsiC; ?></p>
-                                                            <p>D. <?= $n->opsiD; ?></p>
-                                                            <p>E. <?= $n->opsiE; ?></p>
-                                                        <?php elseif ($n->jawaban == $n->opsiB) : ?>
-                                                            <p>A. <?= $n->opsiA; ?></p>
-                                                            <h7><strong>B. <?= $n->opsiB; ?></strong></h7>
-                                                            <p>C. <?= $n->opsiC; ?></p>
-                                                            <p>D. <?= $n->opsiD; ?></p>
-                                                            <p>E. <?= $n->opsiE; ?></p>
-                                                        <?php elseif ($n->jawaban == $n->opsiC) : ?>
-                                                            <p>A. <?= $n->opsiA; ?></p>
-                                                            <p>B. <?= $n->opsiB; ?></p>
-                                                            <h7><strong>C. <?= $n->opsiC; ?></strong></h7>
-                                                            <p>D. <?= $n->opsiD; ?></p>
-                                                            <p>E. <?= $n->opsiE; ?></p>
-                                                        <?php elseif ($n->jawaban == $n->opsiD) : ?>
-                                                            <p>>A. <?= $n->opsiA; ?></p>
-                                                            <p>>B. <?= $n->opsiB; ?></p>
-                                                            <p>>C. <?= $n->opsiC; ?></p>
-                                                            <h7><strong>D. <?= $n->opsiD; ?></strong></h7>
-                                                            <p>E. <?= $n->opsiE; ?></p>
-                                                        <?php elseif ($n->jawaban == $n->opsiE) : ?>
-                                                            <p>A. <?= $n->opsiA; ?></p>
-                                                            <p>B. <?= $n->opsiB; ?></p>
-                                                            <p>C. <?= $n->opsiC; ?></p>
-                                                            <p>D. <?= $n->opsiD; ?></p>
-                                                            <h7><strong>E. <?= $n->opsiE; ?></strong></h7>
-                                                        <?php elseif ($n->jawaban == $n->gambarA) : ?>
-                                                            <h7><strong>A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></strong></h7>
-                                                            <p>B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></p>
-                                                            <p>C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></p>
-                                                            <p>D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" /></p>
-                                                            <p>E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></p>
-                                                        <?php elseif ($n->jawaban == $n->gambarB) : ?>
-                                                            <p>A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></p>
-                                                            <h7><strong>B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></strong></h7>
-                                                            <p>C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></p>
-                                                            <p>D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" /></p>
-                                                            <p>E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></p>
-                                                        <?php elseif ($n->jawaban == $n->gambarC) : ?>
-                                                            <p>A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></p>
-                                                            <p>B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></p>
-                                                            <h7><strong>C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></strong></h7>
-                                                            <p>D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" /></p>
-                                                            <p>E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></p>
-                                                        <?php elseif ($n->jawaban == $n->gambarD) : ?>
-                                                            <p>>A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></p>
-                                                            <p>>B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></p>
-                                                            <p>>C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></p>
-                                                            <h7><strong>D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" /></strong></h7>
-                                                            <p>E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></p>
-                                                        <?php elseif ($n->jawaban == $n->gambarE) : ?>
-                                                            <p>A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></p>
-                                                            <p>B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></p>
-                                                            <p>C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></p>
-                                                            <p>D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" />></p>
-                                                            <h7><strong>E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></strong></h7>
+                                                        <?php if ($n->opsiA && $n->opsiB && $n->opsiC && $n->opsiD && $n->opsiE) : ?>
+                                                            <?php if ($n->jawaban == $n->opsiA) : ?>
+                                                                <label for="status"><strong> A. <?= $n->opsiA; ?></strong></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">A. <?= $n->opsiA; ?></label><br />
+                                                            <?php endif; ?>
+
+                                                            <?php if ($n->jawaban == $n->opsiB) : ?>
+                                                                <label for="status"><strong> B. <?= $n->opsiB; ?> </strong></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">B. <?= $n->opsiB; ?></label><br />
+                                                            <?php endif; ?>
+
+                                                            <?php if ($n->jawaban == $n->opsiC) : ?>
+                                                                <label for="status"><strong> C. <?= $n->opsiC; ?> </strong></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">C. <?= $n->opsiC; ?></label><br />
+                                                            <?php endif; ?>
+
+                                                            <?php if ($n->jawaban == $n->opsiD) : ?>
+                                                                <label for="status"><strong> D. <?= $n->opsiD; ?></strong></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">D. <?= $n->opsiD; ?></label><br />
+                                                            <?php endif; ?>
+
+                                                            <?php if ($n->jawaban == $n->opsiE) : ?>
+                                                                <label for="status"><strong> E. <?= $n->opsiE; ?></strong></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">E. <?= $n->opsiE; ?></label><br />
+                                                            <?php endif; ?>
+                                                        <?php else : ?>
+
+                                                            <?php if ($n->jawaban == $n->gambarA) : ?>
+                                                                <label for="status"><strong> A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></strong></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></label><br />
+                                                            <?php endif; ?>
+                                                            <?php if ($n->jawaban == $n->gambarB) : ?>
+                                                                <label for="status"><strong> B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></strong></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></label><br />
+                                                            <?php endif; ?>
+                                                            <?php if ($n->jawaban == $n->gambarC) : ?>
+                                                                <label for="status">C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></label><br />
+                                                            <?php endif; ?>
+                                                            <?php if ($n->jawaban == $n->gambarD) : ?>
+                                                                <label for="status">D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" /></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" /></label><br />
+                                                            <?php endif; ?>
+                                                            <?php if ($n->jawaban == $n->gambarE) : ?>
+                                                                <label for="status">E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></label><br />
+                                                            <?php else : ?>
+                                                                <label for="status">E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></label><br />
+                                                            <?php endif; ?>
                                                         <?php endif; ?>
                                                     </div>
                                                 <?php else : ?>

@@ -29,18 +29,52 @@
                           <input hidden type="text" id="id_tr_kuis<?= $no; ?>" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
                           <div class="col-sm-9">
                             <?php
-                            $slA = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiA' OR jawaban = '$n->gambarA'";
+                            if ($n->gambarA !== '') {
+                              $jawabanA = $n->gambarA;
+                            } else if ($n->opsiA !== '') {
+                              $jawabanA = $n->opsiA;
+                            }
+                            $slA = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$jawabanA'";
                             $alA = $this->db->query($slA)->row();
-                            $slB = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiB' OR jawaban = '$n->gambarB'";
+                            if ($n->gambarB !== '') {
+                              $jawabanB = $n->gambarB;
+                            } else if ($n->opsiB !== '') {
+                              $jawabanB = $n->opsiB;
+                            }
+                            $slB = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$jawabanB'";
                             $alB = $this->db->query($slB)->row();
-                            $slC = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiC' OR jawaban = '$n->gambarC'";
+                            if ($n->gambarC !== '') {
+                              $jawabanC = $n->gambarC;
+                            } else if ($n->opsiC !== '') {
+                              $jawabanC = $n->opsiC;
+                            }
+                            $slC = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$jawabanC'";
                             $alC = $this->db->query($slC)->row();
-                            $slD = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiD' OR jawaban = '$n->gambarD'";
+                            if ($n->gambarD !== '') {
+                              $jawabanD = $n->gambarD;
+                            } else if ($n->opsiD !== '') {
+                              $jawabanD = $n->opsiD;
+                            }
+                            $slD = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$jawabanD'";
                             $alD = $this->db->query($slD)->row();
-                            $slE = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$n->opsiE' OR jawaban = '$n->gambarE'";
+                            if ($n->gambarE !== '') {
+                              $jawabanE = $n->gambarE;
+                            } else if ($n->opsiE !== '') {
+                              $jawabanE = $n->opsiE;
+                            }
+                            $slE = "SELECT * FROM jawaban_ujian WHERE id_ujian = $n->id_ujian AND jawaban = '$jawabanE'";
                             $alE = $this->db->query($slE)->row();
 
-                            // var_dump($alA);
+                            // var_dump($slA);
+                            // echo '----';
+                            // var_dump($slB);
+                            // echo '----';
+                            // var_dump($slC);
+                            // echo '----';
+                            // var_dump($slD);
+                            // echo '----';
+                            // var_dump($slE);
+                            // echo '----';
                             // die;
                             if ($alA == null && $alB == null && $alC == null && $alD == null && $alE == null) :
                               $cekA = '';
@@ -79,45 +113,41 @@
                               $cekD = '';
                               $cekE = 'checked';
                             endif; ?>
-                            <div id="myForm">
+                            <div id="myForm<?= $no; ?>">
                               <?php if ($n->opsiA && $n->opsiB && $n->opsiC && $n->opsiD && $n->opsiE) : ?>
-                                <input type="radio" id="jawabanA" name="radioName" <?= $cekA; ?> value="<?= $n->opsiA; ?>">
+                                <input type="radio" id="jawabanA" name="radioName<?= $no; ?>" <?= $cekA; ?> value="<?= $n->opsiA; ?>">
                                 <label for="status">A. <?= $n->opsiA; ?></label><br />
 
-                                <input type="radio" id="jawabanB" name="radioName" <?= $cekB; ?> value="<?= $n->opsiB; ?>">
+                                <input type="radio" id="jawabanB" name="radioName<?= $no; ?>" <?= $cekB; ?> value="<?= $n->opsiB; ?>">
                                 <label for="status">B. <?= $n->opsiB; ?></label><br />
 
-                                <input type="radio" id="jawabanC" name="radioName" <?= $cekC; ?> value="<?= $n->opsiC; ?>">
+                                <input type="radio" id="jawabanC" name="radioName<?= $no; ?>" <?= $cekC; ?> value="<?= $n->opsiC; ?>">
                                 <label for="status">C. <?= $n->opsiC; ?></label><br />
 
-                                <input type="radio" id="jawabanD" name="radioName" <?= $cekD; ?> value="<?= $n->opsiD; ?>">
+                                <input type="radio" id="jawabanD" name="radioName<?= $no; ?>" <?= $cekD; ?> value="<?= $n->opsiD; ?>">
                                 <label for="status">D. <?= $n->opsiD; ?></label><br />
 
-                                <input type="radio" id="jawabanE" name="radioName" <?= $cekE; ?> value="<?= $n->opsiE; ?>">
+                                <input type="radio" id="jawabanE" name="radioName<?= $no; ?>" <?= $cekE; ?> value="<?= $n->opsiE; ?>">
                                 <label for="status">E. <?= $n->opsiE; ?></label><br />
+                                <input hidden type="text" id="jawaban<?= $no; ?>" name="jawaban<?= $no; ?>" value="<?= $n->jawaban; ?>">
                               <?php else : ?>
-                                <input type="radio" id="jawabanA" name="radioName" <?= $cekA; ?> value="<?= $n->gambarA; ?>">
+                                <input type="radio" id="jawabanA" name="radioName<?= $no; ?>" <?= $cekA; ?> value="<?= $n->gambarA; ?>">
                                 <label for="status">A. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarA); ?>" /></label><br />
 
-                                <input type="radio" id="jawabanB" name="radioName" <?= $cekB; ?> value="<?= $n->gambarB; ?>">
+                                <input type="radio" id="jawabanB" name="radioName<?= $no; ?>" <?= $cekB; ?> value="<?= $n->gambarB; ?>">
                                 <label for="status">B. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarB); ?>" /></label><br />
 
-                                <input type="radio" id="jawabanC" name="radioName" <?= $cekC; ?> value="<?= $n->gambarC; ?>">
+                                <input type="radio" id="jawabanC" name="radioName<?= $no; ?>" <?= $cekC; ?> value="<?= $n->gambarC; ?>">
                                 <label for="status">C. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarC); ?>" /></label><br />
 
-                                <input type="radio" id="jawabanD" name="radioName" <?= $cekD; ?> value="<?= $n->gambarD; ?>">
+                                <input type="radio" id="jawabanD" name="radioName<?= $no; ?>" <?= $cekD; ?> value="<?= $n->gambarD; ?>">
                                 <label for="status">D. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarD); ?>" /></label><br />
 
-                                <input type="radio" id="jawabanE" name="radioName" <?= $cekE; ?> value="<?= $n->gambarE; ?>">
+                                <input type="radio" id="jawabanE" name="radioName<?= $no; ?>" <?= $cekE; ?> value="<?= $n->gambarE; ?>">
                                 <label for="status">E. <img style="margin-left: 10px; width: 200px; height: 145px;" src="<?php echo base_url('assets/users/upload/' . $n->gambarE); ?>" /></label><br />
+                                <input hidden type="text" id="jawaban<?= $no; ?>" name="jawaban<?= $no; ?>" value="<?= $n->jawaban; ?>">
                               <?php endif; ?>
                             </div>
-                            <input hidden type="text" id="jawaban<?= $no; ?>" value="<?= $n->jawaban; ?>">
-                            <script>
-                              $('#myForm input').on('change', function() {
-                                $('#jawaban<?= $no; ?>').val($('input[name=radioName]:checked', '#myForm').val());
-                              });
-                            </script>
                           </div>
                         <?php else : ?>
                           <input hidden type="text" id="id_tr_kuis<?= $no; ?>" name="id_tr_kuis<?= $no; ?>" value="<?= $n->id_tr_kuis; ?>">
@@ -126,6 +156,11 @@
                           </div>
                         <?php endif; ?>
                       </div>
+                      <script>
+                        $('#myForm<?= $no; ?> input').on('change', function() {
+                          $('#jawaban<?= $no; ?>').val($('input[name=radioName<?= $no; ?>]:checked', '#myForm<?= $no; ?>').val());
+                        });
+                      </script>
                       <script>
                         $(document).ready(function() {
 
@@ -235,3 +270,242 @@
     </div>
   </div>
 </div>
+<style>
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1D244F;
+    color: white;
+    text-align: left;
+  }
+</style>
+
+<?php
+if (strpos($_SERVER['REQUEST_URI'], 'Guru/BuatKuis') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/Dashboard') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/TampilKuis') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Siswa/F_Tugas1/tugas1') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Siswa/F_Tugas1/tugas') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Siswa/Kuis/Ikut') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Siswa/Absensi/absen') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/kuisessay/kuis') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/UploadMateri') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/EssayEvent') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/Kuisessay') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/KuisPilgan/edit') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/KuisEssay/edit') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/Report_absensi') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/Absensi') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'guru/uploadmateri/editMateri') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], '/guru/mapel/tugas') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/Mapel/Koreksi') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'guru/essayevent/editTugas') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/wali_kelas/DaftarSiswa') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/wali_kelas/AbsenSiswa') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/wali_kelas/PenilaianMapel') !== false) {
+?>
+  <div class="footer" style="position:static">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/kuispilgan') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} elseif (strpos($_SERVER['REQUEST_URI'], 'Guru/kuisessay') !== false) {
+?>
+  <div class="footer" style="position:fixed">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+<?php
+} else {
+?>
+  <div class="footer">
+    <div class="container">
+      <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Copyright © eLearning SMAN 1 Bondowoso 2020. All rights reserved.</p>
+    </div>
+  </div>
+
+<?php
+}
+?>
+<!-- Js files -->
+<!-- JavaScript -->
+<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+<!-- smooth scrolling -->
+<script src="<?= base_url('assets/users/') ?>js/SmoothScroll.min.js"></script>
+<!-- //smooth scrolling -->
+
+<!-- move-top -->
+<script src="<?= base_url('assets/users/') ?>js/move-top.js"></script>
+<!-- easing -->
+<script src="<?= base_url('assets/users/') ?>js/easing.js"></script>
+<!--  necessary snippets for few javascript files -->
+<script src="<?= base_url('assets/users/') ?>js/edulearn.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<!-- //Js files -->
+
+
+</body>
+
+</html>
